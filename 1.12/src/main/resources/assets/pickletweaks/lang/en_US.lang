@@ -86,6 +86,8 @@ tooltip.pt.filled=Filled
 tooltip.pt.disabled=Disabled
 tooltip.pt.enabled=Enabled
 
+tooltip.pt.unbreakable=Unbreakable
+
 # JEI CATEGORY
 jei.pt.advanced_crafting=Advanced Crafting
 

@@ -94,7 +94,10 @@ public class FeatureSwordInfo {
         }
 	}
 	
-	public String getDurability(ItemStack stack){
+	public String getDurability(ItemStack stack) {
+		if (stack.getMaxDamage() == -1) {
+			return Utils.localize("tooltip.pt.unbreakable");
+		}
 		int durability = stack.getMaxDamage() - stack.getItemDamage();
 		return durability + Colors.GRAY + "/" + Colors.WHITE + stack.getMaxDamage();
 	}
