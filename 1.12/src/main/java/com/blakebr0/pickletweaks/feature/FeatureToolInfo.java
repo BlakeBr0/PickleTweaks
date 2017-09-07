@@ -10,20 +10,17 @@ import com.blakebr0.cucumber.helper.StackHelper;
 import com.blakebr0.cucumber.lib.Colors;
 import com.blakebr0.cucumber.util.Utils;
 import com.blakebr0.pickletweaks.PickleTweaks;
-import com.blakebr0.pickletweaks.tweaks.tools.ToolTweaks;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item.ToolMaterial;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.config.ConfigCategory;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.world.BlockEvent.BreakEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -127,24 +124,7 @@ public class FeatureToolInfo {
 	}
 	
 	public ToolMaterial getToolMaterial(ItemTool item){
-		String materialName = null;
-		for(ToolMaterial mat : ToolMaterial.values()){
-			// Because CoFH messes with the tool material name getter, we have to special case it.
-			if(ForgeRegistries.ITEMS.getKey(item).getResourceDomain().equals("thermalfoundation")){
-				if(mat.name().equals("TF:" + item.getToolMaterialName())){
-					materialName = mat.name();
-					break;
-				}
-			}
-			if(mat.toString() == item.getToolMaterialName()){
-				materialName = mat.name();
-				break;
-			}
-		}
-		if(materialName == null){
-			return null;
-		}
-		return ToolMaterial.valueOf(materialName);
+		return item.toolMaterial;
 	}
 	
 	public float getMiningSpeed(ItemTool item){

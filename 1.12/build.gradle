@@ -63,3 +63,10 @@ processResources {
         exclude 'mcmod.info'
     }
 }
+
+jar {
+    classifier = 'universal'
+    manifest {
+        attributes 'FMLAT': 'pickletweaks_at.cfg'
+    }
+}
