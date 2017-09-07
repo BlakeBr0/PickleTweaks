@@ -1,0 +1,36 @@
+{
+  "conditions": [
+     {
+	    "type": "minecraft:item_exists",
+		"item": "pickletweaks:wooden_paxel"
+	 }
+  ],
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "ABC",
+    " S ",
+    " S "
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:wooden_axe",
+      "data": 0
+    },
+    "B": {
+      "item": "minecraft:wooden_pickaxe",
+      "data": 0
+    },
+    "C": {
+      "item": "minecraft:wooden_shovel",
+      "data": 0
+    },
+	"S": {
+      "type": "forge:ore_dict",
+      "ore": "stickWood"
+    }
+  },
+  "result": {
+    "item": "pickletweaks:wooden_paxel",
+	"data": 0
+  }
+}

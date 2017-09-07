@@ -1,0 +1,28 @@
+{
+  "type": "forge:ore_shapeless",
+  "conditions": [
+     {
+	    "type": "minecraft:item_exists",
+		"item": "pickletweaks:reinforced_mesh"
+	 }
+  ],
+  "ingredients": [
+    {
+      "item": "pickletweaks:reinforced_mesh",
+	  "data": 32767
+    },
+    {
+      "type": "forge:ore_dict",
+      "ore": "gravel"
+    },
+    {
+      "type": "forge:ore_dict",
+      "ore": "gravel"
+    }
+  ],
+  "result": {
+    "item": "minecraft:flint",
+	"count": 1,
+    "data": 0
+  }
+}

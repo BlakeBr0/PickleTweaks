@@ -1,0 +1,28 @@
+{
+  "type": "forge:ore_shapeless",
+  "conditions": [
+     {
+	    "type": "minecraft:item_exists",
+		"item": "pickletweaks:dye_powder"
+	 },
+	 {
+        "type": "minecraft:item_exists",
+        "item": "pickletweaks:mortar_and_pestle"
+     }
+  ],
+  "ingredients": [
+    {
+      "item": "pickletweaks:mortar_and_pestle",
+	  "data": 0
+    },
+    {
+      "item": "minecraft:dye",
+      "data": 13
+    }
+  ],
+  "result": {
+    "item": "pickletweaks:dye_powder",
+	"count": 1,
+    "data": 2
+  }
+}

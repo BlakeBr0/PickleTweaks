@@ -1,0 +1,28 @@
+{
+  "conditions": [
+     {
+	    "type": "minecraft:item_exists",
+		"item": "pickletweaks:mortar_and_pestle"
+	 }
+  ],
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "  S",
+    "ISI",
+    " I "
+  ],
+  "key": {
+    "I": {
+      "type": "forge:ore_dict",
+      "ore": "stone"
+    },
+	"S": {
+      "type": "forge:ore_dict",
+      "ore": "stickWood"
+    }
+  },
+  "result": {
+    "item": "pickletweaks:mortar_and_pestle",
+	"data": 0
+  }
+}

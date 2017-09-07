@@ -1,0 +1,28 @@
+{
+  "conditions": [
+     {
+	    "type": "minecraft:item_exists",
+		"item": "pickletweaks:flint_pickaxe"
+	 }
+  ],
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "FFF",
+    " S ",
+    " S "
+  ],
+  "key": {
+    "F": {
+      "item": "minecraft:flint",
+	  "data": 0
+    },
+	"S": {
+      "type": "forge:ore_dict",
+      "ore": "stickWood"
+    }
+  },
+  "result": {
+    "item": "pickletweaks:flint_pickaxe",
+	"data": 0
+  }
+}

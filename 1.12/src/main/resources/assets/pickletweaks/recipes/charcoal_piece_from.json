@@ -1,0 +1,20 @@
+{
+  "type": "forge:ore_shapeless",
+  "conditions": [
+     {
+	    "type": "minecraft:item_exists",
+		"item": "pickletweaks:coal_piece"
+	 }
+  ],
+  "ingredients": [
+    {
+      "item": "minecraft:coal",
+      "data": 1
+    }
+  ],
+  "result": {
+    "item": "pickletweaks:coal_piece",
+	"count": 8,
+    "data": 1
+  }
+}
