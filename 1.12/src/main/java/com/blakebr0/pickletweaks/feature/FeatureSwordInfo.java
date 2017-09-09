@@ -11,6 +11,7 @@ import com.blakebr0.pickletweaks.PickleTweaks;
 import com.blakebr0.pickletweaks.tweaks.tools.ToolTweaks;
 
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemBow;
 import net.minecraft.item.ItemStack;
@@ -56,7 +57,12 @@ public class FeatureSwordInfo {
 	            if(stack.getItem() instanceof ItemSword){
 					NBTTagCompound tag = stack.getOrCreateSubCompound(PickleTweaks.MOD_ID);
 					if(!((tag.getInteger("DamageDealt") + event.getAmount()) >= Integer.MAX_VALUE)){
-						tag.setInteger("DamageDealt", tag.getInteger("DamageDealt") + (int)event.getAmount());
+						EntityLivingBase living = event.getEntityLiving();
+						if (living.getHealth() < event.getAmount()) {
+							tag.setInteger("DamageDealt", tag.getInteger("DamageDealt") + (int)living.getHealth());
+						} else {
+							tag.setInteger("DamageDealt", tag.getInteger("DamageDealt") + (int)event.getAmount());
+						}
 					}
 	            }
             }

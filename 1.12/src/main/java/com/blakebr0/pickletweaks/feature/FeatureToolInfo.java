@@ -82,7 +82,7 @@ public class FeatureToolInfo {
         ListIterator<String> tooltip = event.getToolTip().listIterator();
         
         if (stack.getItem() instanceof ItemTool) {
-            ItemTool tool = (ItemTool)stack.getItem();
+            ItemTool tool = (ItemTool) stack.getItem();
             boolean shift = false;
             if (Keyboard.isCreated()) {
                 shift = Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT);
@@ -105,7 +105,7 @@ public class FeatureToolInfo {
 	}
 	
 	public String getMiningLevelName(ItemStack stack, String toolClass, EntityPlayer player) {
-		ItemTool tool = (ItemTool)stack.getItem();
+		ItemTool tool = (ItemTool) stack.getItem();
 		int level;
 		if (toolClass.equals("")) {
 			if (getToolMaterial(tool) != null) {
