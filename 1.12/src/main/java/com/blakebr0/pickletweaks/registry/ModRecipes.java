@@ -15,7 +15,9 @@ public class ModRecipes {
 	
 	public static void init(){
 		// They're all in JSON files!
-		ForgeRegistries.RECIPES.register(new GridRepairRecipe()); // TODO: Cucumber registration
+		if (ModConfig.confGridRepair) {
+			ForgeRegistries.RECIPES.register(new GridRepairRecipe()); // TODO: Cucumber registration
+		}
 	}
 	
 	public static void post(){

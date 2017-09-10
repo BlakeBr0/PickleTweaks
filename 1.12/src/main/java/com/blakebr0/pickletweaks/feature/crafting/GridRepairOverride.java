@@ -79,7 +79,7 @@ public class GridRepairOverride {
 	
 	public static boolean hasOverride(ItemStack tool, ItemStack mat) {
 		for (Map.Entry<ItemStack, ItemStack> entry : overrides.entrySet()) {
-			if (entry.getKey().isItemEqualIgnoreDurability(tool) && entry.getValue().isItemEqual(mat)){
+			if (entry.getKey().isItemEqualIgnoreDurability(tool) && entry.getValue().isItemEqual(mat)) {
 				return true;
 			}
 		}

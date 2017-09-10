@@ -44,6 +44,9 @@ public class ModConfig {
     public static Set<String> confUselessHoes = new HashSet<String>();    
     public static Set<String> confUselessWeapons = new HashSet<String>();
 	
+    public static boolean confGridRepair;
+    public static int confRepairCost;
+    
 	public static boolean confCoin;
     
 	@SubscribeEvent
@@ -100,6 +103,11 @@ public class ModConfig {
         		+ "\n- Syntax: modid:itemid"
         		+ "\n- Example: minecraft:stone_sword");
         confUselessWeapons.addAll(Arrays.asList(weapons));
+        
+        category = "grid_repair";
+        config.setCategoryComment(category, "Crafting Grid Tool Repair settings.");
+        confGridRepair = config.getBoolean("grid_repair", category, true, "Should Crafting Grid Tool Repairing be enabled?");
+        confRepairCost = config.getInt("repair_cost", category, 4, 1, 8, "How much material should be required to fully repair a tool.");
         
         category = "zebras";
         config.setCategoryComment(category, "Random stuff that is disabled by default.");

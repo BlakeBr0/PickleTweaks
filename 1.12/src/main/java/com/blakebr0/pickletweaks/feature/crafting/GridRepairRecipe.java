@@ -1,5 +1,7 @@
 package com.blakebr0.pickletweaks.feature.crafting;
 
+import com.blakebr0.pickletweaks.config.ModConfig;
+
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -67,7 +69,7 @@ public class GridRepairRecipe extends Impl<IRecipe> implements IRecipe {
 			}
 		}
 		
-		int damage = tool.getMaxDamage() / 4;
+		int damage = tool.getMaxDamage() / ModConfig.confRepairCost;
 		if (damage * matCount > tool.getItemDamage() + damage) {
 			return ItemStack.EMPTY;
 		}
