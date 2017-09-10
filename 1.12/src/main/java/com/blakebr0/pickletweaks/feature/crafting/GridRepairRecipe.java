@@ -28,6 +28,12 @@ public class GridRepairRecipe extends Impl<IRecipe> implements IRecipe {
 	}
 	
 	public ItemStack getRepairOutput(InventoryCrafting inv) {
+		if (ModConfig.confRequires3x3) {
+			if (inv.getWidth() < 3 || inv.getHeight() < 3) {
+				return ItemStack.EMPTY;
+			}
+		}
+		
 		ItemStack tool = ItemStack.EMPTY;
 		boolean foundTool = false;
 		NonNullList<ItemStack> inputs = NonNullList.<ItemStack>create();
