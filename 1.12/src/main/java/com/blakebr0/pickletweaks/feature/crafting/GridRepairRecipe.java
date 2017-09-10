@@ -86,7 +86,7 @@ public class GridRepairRecipe extends Impl<IRecipe> implements IRecipe {
 
 	@Override
 	public boolean canFit(int width, int height) {
-		return true;
+		return ModConfig.confRequires3x3 ? (width >= 3 && height >= 3) : true;
 	}
 
 	@Override
