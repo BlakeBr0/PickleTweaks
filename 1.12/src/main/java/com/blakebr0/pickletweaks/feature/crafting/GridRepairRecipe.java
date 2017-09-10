@@ -4,6 +4,7 @@ import com.blakebr0.pickletweaks.config.ModConfig;
 
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.NonNullList;
@@ -49,6 +50,10 @@ public class GridRepairRecipe extends Impl<IRecipe> implements IRecipe {
 		}
 		
 		if (tool.isEmpty()) {
+			return ItemStack.EMPTY;
+		}
+		
+		if (tool.getItem() instanceof ItemArmor) {
 			return ItemStack.EMPTY;
 		}
 		
