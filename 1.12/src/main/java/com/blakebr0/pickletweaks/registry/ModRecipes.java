@@ -3,8 +3,10 @@ package com.blakebr0.pickletweaks.registry;
 import com.blakebr0.cucumber.helper.RecipeHelper;
 import com.blakebr0.cucumber.helper.StackHelper;
 import com.blakebr0.pickletweaks.config.ModConfig;
+import com.blakebr0.pickletweaks.feature.crafting.GridRepairRecipe;
 
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.oredict.OreDictionary;
 
 public class ModRecipes {
@@ -13,6 +15,7 @@ public class ModRecipes {
 	
 	public static void init(){
 		// They're all in JSON files!
+		ForgeRegistries.RECIPES.register(new GridRepairRecipe()); // TODO: Cucumber registration
 	}
 	
 	public static void post(){
