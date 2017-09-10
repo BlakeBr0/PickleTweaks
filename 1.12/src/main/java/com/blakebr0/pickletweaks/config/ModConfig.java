@@ -7,6 +7,7 @@ import java.util.Set;
 
 import com.blakebr0.pickletweaks.PickleTweaks;
 import com.blakebr0.pickletweaks.feature.FeatureToolInfo;
+import com.blakebr0.pickletweaks.feature.crafting.GridRepairOverride;
 import com.blakebr0.pickletweaks.tweaks.TweakBlockHardness;
 import com.blakebr0.pickletweaks.tweaks.TweakBlockHarvest;
 import com.blakebr0.pickletweaks.tweaks.TweakFlintDrop;
@@ -113,6 +114,8 @@ public class ModConfig {
     public static void post(){
     	
     	FeatureToolInfo.configure(config);
+    	
+    	GridRepairOverride.configure(config);
     	
     	TweakFlintDrop.configure(config);
     	TweakStackSize.configure(config);

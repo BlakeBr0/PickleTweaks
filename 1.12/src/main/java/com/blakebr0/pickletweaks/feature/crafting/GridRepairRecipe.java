@@ -60,10 +60,10 @@ public class GridRepairRecipe extends Impl<IRecipe> implements IRecipe {
 		
 		int matCount = 0;
 		for (ItemStack mat : inputs) {
-			if (!tool.getItem().getIsRepairable(tool, mat)) {
-				return ItemStack.EMPTY;
-			} else {
+			if (tool.getItem().getIsRepairable(tool, mat) || GridRepairOverride.hasOverride(tool, mat)) {
 				matCount++;
+			} else {
+				return ItemStack.EMPTY;
 			}
 		}
 		
