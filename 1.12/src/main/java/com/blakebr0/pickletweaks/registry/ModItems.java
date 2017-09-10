@@ -1,5 +1,6 @@
 package com.blakebr0.pickletweaks.registry;
 
+import com.blakebr0.cucumber.helper.StackHelper;
 import com.blakebr0.cucumber.registry.ModRegistry;
 import com.blakebr0.pickletweaks.PickleTweaks;
 import com.blakebr0.pickletweaks.config.ModConfig;
@@ -21,6 +22,8 @@ import com.blakebr0.pickletweaks.items.flint.ItemModPickaxe;
 import com.blakebr0.pickletweaks.items.flint.ItemModShovel;
 import com.blakebr0.pickletweaks.items.flint.ItemModSword;
 
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraftforge.common.util.EnumHelper;
 
@@ -69,19 +72,19 @@ public class ModItems {
 		registry.register(itemMortarAndPestle, "mortar_and_pestle");
 		registry.register(itemDyePowder, "dye_powder");
 		
-		registry.register(itemWoodenPaxel, "wooden_paxel");
-		registry.register(itemStonePaxel, "stone_paxel");
-		registry.register(itemIronPaxel, "iron_paxel");
-		registry.register(itemGoldenPaxel, "golden_paxel");
-		registry.register(itemDiamondPaxel, "diamond_paxel");
+		registry.register(itemWoodenPaxel, "wooden_paxel", StackHelper.to(Blocks.PLANKS));
+		registry.register(itemStonePaxel, "stone_paxel", StackHelper.to(Blocks.STONE));
+		registry.register(itemIronPaxel, "iron_paxel", StackHelper.to(Items.IRON_INGOT));
+		registry.register(itemGoldenPaxel, "golden_paxel", StackHelper.to(Items.GOLD_INGOT));
+		registry.register(itemDiamondPaxel, "diamond_paxel", StackHelper.to(Items.DIAMOND));
 		
 		if(ModConfig.confFlintTools){
-			registry.register(itemFlintSword, "flint_sword");
-			registry.register(itemFlintPickaxe, "flint_pickaxe");
-			registry.register(itemFlintShovel, "flint_shovel");
-			registry.register(itemFlintAxe, "flint_axe");
-			registry.register(itemFlintHoe, "flint_hoe");
-			registry.register(itemFlintPaxel, "flint_paxel");
+			registry.register(itemFlintSword, "flint_sword", StackHelper.to(Items.FLINT));
+			registry.register(itemFlintPickaxe, "flint_pickaxe", StackHelper.to(Items.FLINT));
+			registry.register(itemFlintShovel, "flint_shovel", StackHelper.to(Items.FLINT));
+			registry.register(itemFlintAxe, "flint_axe", StackHelper.to(Items.FLINT));
+			registry.register(itemFlintHoe, "flint_hoe", StackHelper.to(Items.FLINT));
+			registry.register(itemFlintPaxel, "flint_paxel", StackHelper.to(Items.FLINT));
 		}
 	}
 }

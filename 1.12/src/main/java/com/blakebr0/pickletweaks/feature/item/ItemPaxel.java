@@ -15,7 +15,7 @@ import net.minecraftforge.oredict.OreDictionary;
 
 public class ItemPaxel extends ItemTool implements IRepairMaterial, IEnableable {
 	
-	public ItemStack repairMaterial;
+	private ItemStack repairMaterial;
 
 	public ItemPaxel(String name, ToolMaterial material) {
 		super(4, -3.2F, material, new HashSet<>());
