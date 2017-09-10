@@ -59,8 +59,8 @@ public class GridRepairRecipe extends Impl<IRecipe> implements IRecipe {
 			}
 		}
 		
-		int damage = Math.min(tool.getItemDamage(), tool.getMaxDamage() / 4);
-		if (((damage * matCount) / 4) > damage) {
+		int damage = tool.getMaxDamage() / 4;
+		if ((damage * matCount) - damage > damage) {
 			return ItemStack.EMPTY;
 		}
 		

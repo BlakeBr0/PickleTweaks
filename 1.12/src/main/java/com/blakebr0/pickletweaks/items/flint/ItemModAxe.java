@@ -5,6 +5,7 @@ import com.blakebr0.pickletweaks.PickleTweaks;
 
 import net.minecraft.item.ItemAxe;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.OreDictionary;
 
 public class ItemModAxe extends ItemAxe implements IRepairMaterial {
 
@@ -15,6 +16,11 @@ public class ItemModAxe extends ItemAxe implements IRepairMaterial {
 		this.setUnlocalizedName("pt." + name);
 		this.setCreativeTab(PickleTweaks.tab);
 	}
+	
+	@Override
+    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
+        return OreDictionary.itemMatches(getRepairMaterial(), repair, false);
+    }
 
 	@Override
 	public ItemStack getRepairMaterial() {
