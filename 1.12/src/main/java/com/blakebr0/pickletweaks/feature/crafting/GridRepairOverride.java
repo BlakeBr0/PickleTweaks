@@ -23,7 +23,7 @@ public class GridRepairOverride {
 		category.get("_repair_materials").setComment("Here you can set your own repair materials to tools."
 				+ "\n- Syntax: (tool=material) modid:itemid=modid:itemid:meta"
 				+ "\n- Example: minecraft:stone_pickaxe=minecraft:apple:0"
-				+ "\n- Note: not putting a meta value will make the meta 0.");
+				+ "\n- Note: the tool doesn't have a meta. If no meta is put for the material it will automatically become 0.");
 		
 		for (String value : values) {
 			String[] parts = value.split("=");
