@@ -15,6 +15,7 @@ import net.minecraft.init.Enchantments;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.NonNullList;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickBlock;
@@ -41,12 +42,13 @@ public class FeatureRightClickHarvest {
 			BlockCrops crop = (BlockCrops)state.getBlock();
 			if(crop.isMaxAge(state) && getSeed(crop) != null){
 				int fortune = EnchantmentHelper.getEnchantmentLevel(Enchantments.FORTUNE, event.getItemStack());
-				List<ItemStack> drops = crop.getDrops(event.getWorld(), event.getPos(), state, fortune);
+				NonNullList<ItemStack> drops = NonNullList.create();
+				crop.getDrops(drops, event.getWorld(), event.getPos(), state, fortune);
 				ListIterator<ItemStack> itr = drops.listIterator();
 				while(itr.hasNext()){
 					ItemStack drop = itr.next();
 					Item seed = drop.getItem();
-					if(seed != null && seed == getSeed(crop)){
+					if(!drop.isEmpty() && seed != null && seed == getSeed(crop)){
 						drop.shrink(1);
 						break;
 					}
