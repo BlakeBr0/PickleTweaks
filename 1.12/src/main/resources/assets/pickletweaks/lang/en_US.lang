@@ -88,6 +88,8 @@ tooltip.pt.enabled=Enabled
 
 tooltip.pt.unbreakable=Unbreakable
 
+tooltip.pt.harvest_level=Harvest Level :
+
 # JEI CATEGORY
 jei.pt.advanced_crafting=Advanced Crafting
 
