@@ -20,7 +20,7 @@ public class PickleTweaks {
 	
 	public static final String MOD_ID = "pickletweaks";
 	public static final String NAME = "PickleTweaks";
-	public static final String VERSION = "2.0.0";
+	public static final String VERSION = "${version}";
 	public static final String DEPENDENCIES = "required-after:cucumber@[1.0.0,);before:crafttweaker";
 	public static final String GUI_FACTORY = "com.blakebr0.pickletweaks.config.GuiFactory";
 	

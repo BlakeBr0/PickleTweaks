@@ -3,7 +3,7 @@
   "modid": "pickletweaks",
   "name": "Pickle Tweaks",
   "description": "Adds a whole bunch of awesome blocks, items, features, and tweaks!",
-  "version": "2.0.0",
+  "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "https://minecraft.curseforge.com/projects/pickle-tweaks",
   "updateUrl": "",
