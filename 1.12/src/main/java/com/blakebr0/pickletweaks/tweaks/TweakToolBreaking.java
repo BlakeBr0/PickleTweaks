@@ -23,40 +23,40 @@ public class TweakToolBreaking {
 	
 	@SubscribeEvent
 	public void onBreakingBlock(PlayerEvent.BreakSpeed event) {
-        if (event.getEntityPlayer() == null) { return; }
+		if (event.getEntityPlayer() == null) { return; }
 
-        ItemStack stack = event.getEntityPlayer().getHeldItemMainhand();
-        if (stack == null) { return; }
+		ItemStack stack = event.getEntityPlayer().getHeldItemMainhand();
+		if (stack == null) { return; }
         if (!(stack.getItem() instanceof ItemTool) 
         		&& !(stack.getItem() instanceof ItemSword) 
         		&& !(stack.getItem() instanceof ItemHoe)) { return; }
 
         if (stack.isItemStackDamageable()) {
-            if (stack.getItemDamage() >= stack.getMaxDamage()) {
-            	event.setNewSpeed(0.0F);
-            }
+        	if (stack.getItemDamage() >= stack.getMaxDamage()) {
+        		event.setNewSpeed(0.0F);
+        	}
         }
 	}
 	
 	@SideOnly(Side.CLIENT)
 	@SubscribeEvent
 	public void onItemTooltip(ItemTooltipEvent event) {
-        if (event.getEntityPlayer() == null) { return; }
-
-        ItemStack stack = event.getItemStack();
-        if (!(stack.getItem() instanceof ItemTool) 
+		if (event.getEntityPlayer() == null) { return; }
+		
+		ItemStack stack = event.getItemStack();
+		if (!(stack.getItem() instanceof ItemTool) 
         		&& !(stack.getItem() instanceof ItemSword) 
         		&& !(stack.getItem() instanceof ItemHoe)) { return; }
 
-        ListIterator<String> itr = event.getToolTip().listIterator();
-        if (stack.isItemStackDamageable()) {
-            if (stack.getItemDamage() >= stack.getMaxDamage()) {
-                while (itr.hasNext()) {
-                	itr.next();
-                	itr.add(Colors.RED + Colors.ITALICS + Utils.localize("tooltip.pt.broken"));
+		ListIterator<String> itr = event.getToolTip().listIterator();
+		if (stack.isItemStackDamageable()) {
+			if (stack.getItemDamage() >= stack.getMaxDamage()) {
+            	while (itr.hasNext()) {
+            		itr.next();
+            		itr.add(Colors.RED + Colors.ITALICS + Utils.localize("tooltip.pt.broken"));
                 	break;
-                }
-            }
-        }
+            	}
+			}
+		}
 	}
 }
