@@ -14,6 +14,7 @@ import com.blakebr0.pickletweaks.registry.ModBlocks;
 import com.blakebr0.pickletweaks.registry.ModItems;
 import com.blakebr0.pickletweaks.registry.ModRecipes;
 import com.blakebr0.pickletweaks.tweaks.TweakHoeUselessifier;
+import com.blakebr0.pickletweaks.tweaks.TweakToolBreaking;
 import com.blakebr0.pickletweaks.tweaks.TweakFlintDrop;
 import com.blakebr0.pickletweaks.tweaks.TweakToolUselessifier;
 import com.blakebr0.pickletweaks.tweaks.TweakWeaponUselessifier;
@@ -45,6 +46,8 @@ public class CommonProxy {
 		MinecraftForge.EVENT_BUS.register(new FeatureToolInfo());
 		MinecraftForge.EVENT_BUS.register(new FeatureSwordInfo());
 		MinecraftForge.EVENT_BUS.register(new FeatureRightClickHarvest());
+		
+		MinecraftForge.EVENT_BUS.register(new TweakToolBreaking());
 	}
 	
 	public void init(FMLInitializationEvent e){

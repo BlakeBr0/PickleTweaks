@@ -71,6 +71,8 @@ tooltip.pt.damage_dealt=Damage Dealt:
 
 tooltip.pt.gives_buffs=Gives Buffs:
 
+tooltip.pt.broken=Broken
+
 tooltip.useless_tool_1=This tool cannot mine anything.
 tooltip.useless_hoe_1=This hoe cannot till anything.
 tooltip.useless_weapon_1=This weapon cannot hurt anything.
