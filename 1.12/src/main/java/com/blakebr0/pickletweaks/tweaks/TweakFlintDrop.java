@@ -21,21 +21,21 @@ public class TweakFlintDrop {
 	public static void configure(Configuration config){
 		
 		ConfigCategory category = config.getCategory("tweaks");
-		String value = config.get(category.getName(), "flint_drop_item", "minecraft:gravel;0").getString();
+		String value = config.get(category.getName(), "flint_drop_item", "minecraft:gravel:0").getString();
 		category.get("flint_drop_item").setComment("Define the item that should replace Flint from Gravel."
-				+ "\n- Syntax: modid:itemid;meta");
+				+ "\n- Syntax: modid:itemid:meta");
 		
-		String[] parts = value.split(";");
+		String[] parts = value.split(":");
 		
-		if(parts.length != 2){
+		if(parts.length != 3){
 			return;
 		}
 		
-		String itemName = parts[0];
+		String itemName = parts[0] + ":" + parts[1];
 		int meta;
 		
 		try {
-			meta = Integer.valueOf(parts[1]);
+			meta = Integer.valueOf(parts[2]);
 		} catch(NumberFormatException e){
 			return;
 		}
