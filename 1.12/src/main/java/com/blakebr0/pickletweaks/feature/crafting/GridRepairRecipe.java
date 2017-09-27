@@ -59,7 +59,7 @@ public class GridRepairRecipe extends Impl<IRecipe> implements IRecipe {
 			return ItemStack.EMPTY;
 		}
 		
-		if (tool.getItem() instanceof ItemArmor) {
+		if (!ModConfig.confAllowArmor && tool.getItem() instanceof ItemArmor) {
 			return ItemStack.EMPTY;
 		}
 		

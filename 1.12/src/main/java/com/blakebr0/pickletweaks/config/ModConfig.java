@@ -47,6 +47,7 @@ public class ModConfig {
     public static boolean confGridRepair;
     public static int confRepairCost;
     public static boolean confRequires3x3;
+    public static boolean confAllowArmor;
     
 	public static boolean confCoin;
     
@@ -110,6 +111,7 @@ public class ModConfig {
         confGridRepair = config.getBoolean("grid_repair", category, true, "Should Crafting Grid Tool Repairing be enabled?");
         confRepairCost = config.getInt("repair_cost", category, 4, 1, 8, "How much material should be required to fully repair a tool.");
         confRequires3x3 = config.getBoolean("requires_3x3", category, false, "Should the player need atleast a 3x3 table to repair?");
+        confAllowArmor = config.getBoolean("allow_armor", category, false, "Should you be able to repair armor as well?");
         
         category = "zebras";
         config.setCategoryComment(category, "Random stuff that is disabled by default.");
