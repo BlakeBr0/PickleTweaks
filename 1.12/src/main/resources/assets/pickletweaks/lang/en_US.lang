@@ -68,6 +68,7 @@ tooltip.pt.blocks_broken=Blocks Broken:
 tooltip.pt.attack_damage=Attack Damage:
 tooltip.pt.enemies_killed=Enemies Killed:
 tooltip.pt.damage_dealt=Damage Dealt:
+tooltip.pt.blocks_tilled=Blocks Tilled:
 
 tooltip.pt.gives_buffs=Gives Buffs:
 
@@ -80,7 +81,7 @@ tooltip.useless_tool_2=It can only be used for crafting.
 
 tooltip.blocks_broken=Blocks Broken
 tooltip.kills=Kills
-tooltip.blocks_hoed=Blocks Hoed
+tooltip.blocks_tilled=Blocks Tilled
 
 tooltip.pt.empty=Empty
 tooltip.pt.filled=Filled

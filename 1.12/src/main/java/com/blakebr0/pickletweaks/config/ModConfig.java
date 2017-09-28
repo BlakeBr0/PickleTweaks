@@ -36,6 +36,7 @@ public class ModConfig {
 
 	public static boolean confToolInfoTooltip;
 	public static boolean confSwordInfoTooltip;
+	public static boolean confHoeInfoTooltip;
 	public static boolean confHammerToPlateRecipes;
 	public static int confMagnetRange;
 	public static boolean confRightClickHarvest;
@@ -90,6 +91,7 @@ public class ModConfig {
 
 		confToolInfoTooltip = config.getBoolean("tool_info_tooltip", category, true, "Should the tool information tooltips be enabled?");
 		confSwordInfoTooltip = config.getBoolean("sword_info_tooltip", category, true, "Should the sword information tooltips be enabled?");
+		confHoeInfoTooltip = config.getBoolean("hoe_info_tooltip", category, true, "Should the hoe information tooltips be enabled?");
 		confHammerToPlateRecipes = config.getBoolean("hammer_plate_recipes", category, true, "Should the hammering ingots into plates recipes be enabled?");
 		confMagnetRange = config.getInt("magnet_range", category, 7, 1, 16, "The radius in which the Magnet shall succ.");
 		confRightClickHarvest = config.getBoolean("right_click_harvest", category, true, "Should right click crop harvesting be enabled?");
