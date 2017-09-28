@@ -3,6 +3,7 @@ package com.blakebr0.pickletweaks.feature;
 import java.util.List;
 
 import com.blakebr0.cucumber.util.Utils;
+import com.blakebr0.pickletweaks.config.ModConfig;
 
 import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
@@ -22,6 +23,7 @@ import net.minecraft.world.World;
 public class FeatureWailaTooltips implements IWailaDataProvider {
 
 	public static void callbackRegister(IWailaRegistrar registrar) {
+		if (!ModConfig.confWailaHarvestLevel) { return; }
 		registrar.registerBodyProvider(new FeatureWailaTooltips(), Block.class);
 	}
 

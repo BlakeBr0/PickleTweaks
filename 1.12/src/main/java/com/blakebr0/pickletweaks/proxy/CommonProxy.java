@@ -7,7 +7,6 @@ import com.blakebr0.pickletweaks.feature.FeatureHoeInfo;
 import com.blakebr0.pickletweaks.feature.FeatureRightClickHarvest;
 import com.blakebr0.pickletweaks.feature.FeatureSwordInfo;
 import com.blakebr0.pickletweaks.feature.FeatureToolInfo;
-import com.blakebr0.pickletweaks.feature.counters.FeatureBlockHoedCounter;
 import com.blakebr0.pickletweaks.feature.counters.FeatureKillCounter;
 import com.blakebr0.pickletweaks.feature.item.ItemMagnet;
 import com.blakebr0.pickletweaks.feature.item.ItemNightvisionGoggles;

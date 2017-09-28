@@ -40,6 +40,7 @@ public class ModConfig {
 	public static boolean confHammerToPlateRecipes;
 	public static int confMagnetRange;
 	public static boolean confRightClickHarvest;
+	public static boolean confWailaHarvestLevel;
 
 	public static boolean confFlintDrop;
 	public static boolean confBrokenTools;
@@ -95,6 +96,7 @@ public class ModConfig {
 		confHammerToPlateRecipes = config.getBoolean("hammer_plate_recipes", category, true, "Should the hammering ingots into plates recipes be enabled?");
 		confMagnetRange = config.getInt("magnet_range", category, 7, 1, 16, "The radius in which the Magnet shall succ.");
 		confRightClickHarvest = config.getBoolean("right_click_harvest", category, true, "Should right click crop harvesting be enabled?");
+		confWailaHarvestLevel = config.getBoolean("waila_harvest_level", category, true, "Adds a harvest level tooltip to WAILA, using the names from mining_level_names.");
 
 		category = "tweaks";
 		config.addCustomCategoryComment(category, "All the different things this mod tweaks.");
