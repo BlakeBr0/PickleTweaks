@@ -87,7 +87,6 @@ public class ModConfig {
 		confNightvisionGoggles = config.getBoolean("nightvision_goggles", category, true, "Should Night Vision Goggles be enabled?");
 		confDyePowder = config.getBoolean("dye_powder", category, true, "Should the Dye Powders be enabled?");
 		confMortarAndPestle = config.getBoolean("mortar_and_pestle", category, true, "Should the Mortar And Pestle be enabled?");
-		confPaxels = config.getBoolean("paxels", category, true, "Should the paxels be enabled?");
 		confFlintTools = config.getBoolean("flint_tools", category, true, "Should the Flint Tools be enabled?");
 
 		confToolInfoTooltip = config.getBoolean("tool_info_tooltip", category, true, "Should the tool information tooltips be enabled?");
@@ -122,6 +121,10 @@ public class ModConfig {
 		confRepairCost = config.getInt("repair_cost", category, 4, 1, 8, "How much material should be required to fully repair a tool.");
 		confRequires3x3 = config.getBoolean("requires_3x3", category, false, "Should the player need atleast a 3x3 table to repair?");
 		confAllowArmor = config.getBoolean("allow_armor", category, false, "Should you be able to repair armor as well?");
+		
+		category = "paxels";
+		config.setCategoryComment(category, "Paxel settings.");
+		confPaxels = config.getBoolean("paxels", category, true, "Should the paxels be enabled?");
 
 		category = "zebras";
 		config.setCategoryComment(category, "Random stuff that is disabled by default.");
