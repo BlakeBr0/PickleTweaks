@@ -13,7 +13,7 @@ public class ToolTweaks {
 	public static Set<Item> uselessHoes = new HashSet<Item>();
 	public static Set<Item> uselessWeapons = new HashSet<Item>();
 	
-    public static void findToolsFromConfig(){
+    public static void findToolsFromConfig() {
     	
     	for (String identifier : ModConfig.confUselessTools) {
             Item item = Item.getByNameOrId(identifier);
