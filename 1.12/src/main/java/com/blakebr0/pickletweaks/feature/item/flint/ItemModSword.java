@@ -11,7 +11,7 @@ public class ItemModSword extends ItemSword implements IRepairMaterial {
 
 	private ItemStack repairMaterial;
 	
-	public ItemModSword(String name, ToolMaterial material){
+	public ItemModSword(String name, ToolMaterial material) {
 		super(material);
 		this.setUnlocalizedName("pt." + name);
 		this.setCreativeTab(PickleTweaks.tab);

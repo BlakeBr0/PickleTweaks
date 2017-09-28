@@ -1,7 +1,6 @@
 package com.blakebr0.pickletweaks.feature;
 
 import java.lang.reflect.Method;
-import java.util.List;
 import java.util.ListIterator;
 
 import com.blakebr0.pickletweaks.PickleTweaks;
@@ -16,7 +15,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.NonNullList;
-import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickBlock;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;

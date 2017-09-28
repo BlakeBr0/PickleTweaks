@@ -9,22 +9,22 @@ import net.minecraftforge.fml.client.IModGuiFactory;
 public class GuiFactory implements IModGuiFactory {
 
 	@Override
-	public void initialize(Minecraft minecraftInstance){
+	public void initialize(Minecraft minecraft) {
 		
 	}
 
 	@Override
-	public Set<RuntimeOptionCategoryElement> runtimeGuiCategories(){
+	public Set<RuntimeOptionCategoryElement> runtimeGuiCategories() {
 		return null;
 	}
 
 	@Override
-	public boolean hasConfigGui(){
+	public boolean hasConfigGui() {
 		return true;
 	}
 
 	@Override
-	public GuiScreen createConfigGui(GuiScreen parentScreen){
-		return new ConfigGui(parentScreen);
+	public GuiScreen createConfigGui(GuiScreen parent) {
+		return new ConfigGui(parent);
 	}
 }

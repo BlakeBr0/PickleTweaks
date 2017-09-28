@@ -2,13 +2,11 @@ package com.blakebr0.pickletweaks.tweaks;
 
 import java.util.ListIterator;
 
-import com.blakebr0.pickletweaks.config.ModConfig;
 import com.blakebr0.pickletweaks.tweaks.tools.ToolTweaks;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemHoe;
-import net.minecraft.item.ItemSpade;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
 import net.minecraft.util.text.TextComponentTranslation;

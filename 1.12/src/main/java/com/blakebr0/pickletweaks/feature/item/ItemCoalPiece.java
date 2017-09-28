@@ -8,20 +8,20 @@ import com.blakebr0.pickletweaks.config.ModConfig;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.IFuelHandler;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-
+// TODO: Item.getBurnTime()
 public class ItemCoalPiece extends ItemMeta implements IEnableable {
 	
 	public static ItemStack itemCoalPiece;
 	public static ItemStack itemCharcoalPiece;
 	
-	public ItemCoalPiece(){
+	public ItemCoalPiece() {
 		super("pt.coal_piece", PickleTweaks.REGISTRY);
 		this.setCreativeTab(PickleTweaks.tab);
 		this.setHasSubtypes(true);
 	}
 	
 	@Override
-	public void init(){
+	public void init() {
 		itemCoalPiece = addItem(0, "coal");
 		itemCharcoalPiece = addItem(1, "charcoal");
 		
@@ -29,7 +29,7 @@ public class ItemCoalPiece extends ItemMeta implements IEnableable {
 	}
 	
 	@Override
-	public boolean isEnabled(){
+	public boolean isEnabled() {
 		return ModConfig.confCoalPiece;
 	}
 	

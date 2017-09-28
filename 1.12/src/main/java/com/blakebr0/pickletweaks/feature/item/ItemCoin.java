@@ -16,14 +16,14 @@ public class ItemCoin extends ItemMeta implements IEnableable {
 	public static ItemStack itemDiamondCoin;
 	public static ItemStack itemEmeraldCoin;
 	
-	public ItemCoin(){
+	public ItemCoin() {
 		super("pt.coin", PickleTweaks.REGISTRY);
 		this.setCreativeTab(PickleTweaks.tab);
 		this.setHasSubtypes(true);
 	}
 
 	@Override
-	public void init(){
+	public void init() {
 		itemWoodenCoin = addItem(0, "wooden");
 		itemStoneCoin = addItem(1, "stone");
 		itemIronCoin = addItem(2, "iron");
@@ -33,7 +33,7 @@ public class ItemCoin extends ItemMeta implements IEnableable {
 	}
 
 	@Override
-	public boolean isEnabled(){
+	public boolean isEnabled() {
 		return ModConfig.confCoin;
 	}
 }

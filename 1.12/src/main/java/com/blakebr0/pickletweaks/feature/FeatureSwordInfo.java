@@ -9,15 +9,12 @@ import com.blakebr0.cucumber.lib.Colors;
 import com.blakebr0.cucumber.util.Utils;
 import com.blakebr0.pickletweaks.PickleTweaks;
 import com.blakebr0.pickletweaks.config.ModConfig;
-import com.blakebr0.pickletweaks.tweaks.tools.ToolTweaks;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemBow;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
-import net.minecraft.item.ItemTool;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;

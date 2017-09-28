@@ -1,8 +1,6 @@
 package com.blakebr0.pickletweaks.proxy;
 
 import com.blakebr0.cucumber.item.color.ItemDyeColorHandler;
-import com.blakebr0.pickletweaks.feature.item.ItemDyePowder;
-import com.blakebr0.pickletweaks.registry.ModBlocks;
 import com.blakebr0.pickletweaks.registry.ModItems;
 
 import net.minecraft.client.Minecraft;

@@ -4,7 +4,6 @@ import java.util.ListIterator;
 
 import org.lwjgl.input.Keyboard;
 
-import com.blakebr0.cucumber.helper.StackHelper;
 import com.blakebr0.cucumber.lib.Colors;
 import com.blakebr0.cucumber.util.Utils;
 import com.blakebr0.pickletweaks.PickleTweaks;
@@ -12,13 +11,9 @@ import com.blakebr0.pickletweaks.config.ModConfig;
 
 import net.minecraft.item.ItemHoe;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemTool;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.EnumActionResult;
-import net.minecraft.util.EnumFacing;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.entity.player.UseHoeEvent;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickBlock;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
