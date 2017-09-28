@@ -16,11 +16,11 @@ import com.blakebr0.pickletweaks.feature.item.ItemMortarAndPestle;
 import com.blakebr0.pickletweaks.feature.item.ItemNightvisionGoggles;
 import com.blakebr0.pickletweaks.feature.item.ItemPaxel;
 import com.blakebr0.pickletweaks.feature.item.ItemWateringCan;
-import com.blakebr0.pickletweaks.items.flint.ItemModAxe;
-import com.blakebr0.pickletweaks.items.flint.ItemModHoe;
-import com.blakebr0.pickletweaks.items.flint.ItemModPickaxe;
-import com.blakebr0.pickletweaks.items.flint.ItemModShovel;
-import com.blakebr0.pickletweaks.items.flint.ItemModSword;
+import com.blakebr0.pickletweaks.feature.item.flint.ItemModAxe;
+import com.blakebr0.pickletweaks.feature.item.flint.ItemModHoe;
+import com.blakebr0.pickletweaks.feature.item.flint.ItemModPickaxe;
+import com.blakebr0.pickletweaks.feature.item.flint.ItemModShovel;
+import com.blakebr0.pickletweaks.feature.item.flint.ItemModSword;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;

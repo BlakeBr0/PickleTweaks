@@ -1,18 +1,18 @@
-package com.blakebr0.pickletweaks.items.flint;
+package com.blakebr0.pickletweaks.feature.item.flint;
 
 import com.blakebr0.cucumber.iface.IRepairMaterial;
 import com.blakebr0.pickletweaks.PickleTweaks;
 
-import net.minecraft.item.ItemPickaxe;
+import net.minecraft.item.ItemAxe;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
-public class ItemModPickaxe extends ItemPickaxe implements IRepairMaterial {
+public class ItemModAxe extends ItemAxe implements IRepairMaterial {
 
 	private ItemStack repairMaterial;
 	
-	public ItemModPickaxe(String name, ToolMaterial material){
-		super(material);
+	public ItemModAxe(String name, ToolMaterial material){
+		super(material, material.getDamageVsEntity(), -3.2F);
 		this.setUnlocalizedName("pt." + name);
 		this.setCreativeTab(PickleTweaks.tab);
 	}
@@ -21,7 +21,7 @@ public class ItemModPickaxe extends ItemPickaxe implements IRepairMaterial {
     public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
         return OreDictionary.itemMatches(getRepairMaterial(), repair, false);
     }
-	
+
 	@Override
 	public ItemStack getRepairMaterial() {
 		return repairMaterial;

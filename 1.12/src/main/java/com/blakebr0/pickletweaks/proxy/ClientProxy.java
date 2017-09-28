@@ -1,7 +1,7 @@
 package com.blakebr0.pickletweaks.proxy;
 
+import com.blakebr0.cucumber.item.color.ItemDyeColorHandler;
 import com.blakebr0.pickletweaks.feature.item.ItemDyePowder;
-import com.blakebr0.pickletweaks.feature.item.ItemDyePowder.ColorHandler;
 import com.blakebr0.pickletweaks.registry.ModBlocks;
 import com.blakebr0.pickletweaks.registry.ModItems;
 
@@ -20,7 +20,7 @@ public class ClientProxy extends CommonProxy {
 	@Override
 	public void init(FMLInitializationEvent e){
 		super.init(e);
-		Minecraft.getMinecraft().getItemColors().registerItemColorHandler(new ItemDyePowder.ColorHandler(), ModItems.itemDyePowder); // TODO: add this functionality to Cucumbe
+		Minecraft.getMinecraft().getItemColors().registerItemColorHandler(new ItemDyeColorHandler(), ModItems.itemDyePowder);
 	}
 		
 	@Override

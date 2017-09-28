@@ -1,4 +1,4 @@
-package com.blakebr0.pickletweaks.items.flint;
+package com.blakebr0.pickletweaks.feature.item.flint;
 
 import com.blakebr0.cucumber.iface.IRepairMaterial;
 import com.blakebr0.pickletweaks.PickleTweaks;
