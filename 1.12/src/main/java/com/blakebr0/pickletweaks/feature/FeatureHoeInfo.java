@@ -38,7 +38,7 @@ public class FeatureHoeInfo {
 
 	@SideOnly(Side.CLIENT)
 	@SubscribeEvent
-	public void addToolInfoTooltip(ItemTooltipEvent event) {
+	public void addHoeInfoTooltip(ItemTooltipEvent event) {
 		if (!ModConfig.confHoeInfoTooltip) { return; }
         if (event.getEntityPlayer() == null) { return; }
         
