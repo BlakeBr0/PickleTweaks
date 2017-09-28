@@ -7,16 +7,14 @@ import com.blakebr0.pickletweaks.tweaks.tools.ToolTweaks;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemHoe;
-import net.minecraft.item.ItemSpade;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemTool;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.translation.I18n;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickBlock;
+import net.minecraftforge.event.entity.player.UseHoeEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -86,12 +84,12 @@ public class TweakHoeUselessifier {
     }
     
     @SubscribeEvent
-    public void onRightClickBlock(RightClickBlock event){
+    public void onRightClickBlock(UseHoeEvent event){
     	if(event.getEntityPlayer() == null){
     		return;
     	}
     	
-    	ItemStack stack = event.getEntityPlayer().getHeldItemMainhand();
+    	ItemStack stack = event.getCurrent();
     	if(stack == null){
     		return;
     	}
