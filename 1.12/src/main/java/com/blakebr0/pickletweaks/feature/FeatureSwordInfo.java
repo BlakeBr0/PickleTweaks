@@ -8,6 +8,7 @@ import com.blakebr0.cucumber.helper.StackHelper;
 import com.blakebr0.cucumber.lib.Colors;
 import com.blakebr0.cucumber.util.Utils;
 import com.blakebr0.pickletweaks.PickleTweaks;
+import com.blakebr0.pickletweaks.config.ModConfig;
 import com.blakebr0.pickletweaks.tweaks.tools.ToolTweaks;
 
 import net.minecraft.entity.Entity;
@@ -30,6 +31,7 @@ public class FeatureSwordInfo {
 	
 	@SubscribeEvent
 	public void onEntityKilled(LivingDeathEvent event){
+		if (!ModConfig.confSwordInfoTooltip) { return; }
         DamageSource source = event.getSource();
         Entity entity = source.getTrueSource();
         if(entity != null && entity instanceof EntityPlayer){
@@ -48,6 +50,7 @@ public class FeatureSwordInfo {
 	
 	@SubscribeEvent
 	public void onEntityDamaged(LivingHurtEvent event){
+		if (!ModConfig.confSwordInfoTooltip) { return; }
         DamageSource source = event.getSource();
         Entity entity = source.getTrueSource();
         if(entity != null && entity instanceof EntityPlayer){
@@ -72,9 +75,8 @@ public class FeatureSwordInfo {
 	@SideOnly(Side.CLIENT)
 	@SubscribeEvent
 	public void addToolInfoTooltip(ItemTooltipEvent event){
-        if(event.getEntityPlayer() == null){
-            return;
-        }
+		if (!ModConfig.confSwordInfoTooltip) { return; }
+        if (event.getEntityPlayer() == null){ return; }
             
         ItemStack stack = event.getItemStack();
         ListIterator<String> tooltip = event.getToolTip().listIterator();

@@ -10,6 +10,7 @@ import com.blakebr0.cucumber.helper.StackHelper;
 import com.blakebr0.cucumber.lib.Colors;
 import com.blakebr0.cucumber.util.Utils;
 import com.blakebr0.pickletweaks.PickleTweaks;
+import com.blakebr0.pickletweaks.config.ModConfig;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item.ToolMaterial;
@@ -60,6 +61,7 @@ public class FeatureToolInfo {
 	
 	@SubscribeEvent
 	public void onBlockBroken(BreakEvent event) {
+		if (!ModConfig.confToolInfoTooltip) { return; }
 		ItemStack stack = event.getPlayer().getHeldItemMainhand();
 		if (!StackHelper.isNull(stack) && stack.getItem() != null) {
 			if (stack.getItem() instanceof ItemTool) {
@@ -74,9 +76,8 @@ public class FeatureToolInfo {
 	@SideOnly(Side.CLIENT)
 	@SubscribeEvent
 	public void addToolInfoTooltip(ItemTooltipEvent event) {
-        if (event.getEntityPlayer() == null) {
-            return;
-        }
+		if (!ModConfig.confToolInfoTooltip) { return; }
+        if (event.getEntityPlayer() == null) { return; }
         
         ItemStack stack = event.getItemStack();
         ListIterator<String> tooltip = event.getToolTip().listIterator();
