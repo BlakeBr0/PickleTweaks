@@ -47,7 +47,7 @@ public class CommonProxy {
 		MinecraftForge.EVENT_BUS.register(new FeatureSwordInfo());
 		MinecraftForge.EVENT_BUS.register(new FeatureRightClickHarvest());
 		
-		//MinecraftForge.EVENT_BUS.register(new TweakToolBreaking());
+		MinecraftForge.EVENT_BUS.register(new TweakToolBreaking());
 	}
 	
 	public void init(FMLInitializationEvent e){

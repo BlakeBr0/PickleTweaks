@@ -21,9 +21,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 public class ModConfig {
 
 	public static Configuration config;
-	
-	public static boolean confFlintDrop;
-	
+		
 	public static boolean confCoalPiece;
 	public static boolean confApples;
 	public static boolean confWateringCan;
@@ -40,13 +38,16 @@ public class ModConfig {
 	public static int confMagnetRange;
 	public static boolean confRightClickHarvest;
 	
-	public static Set<String> confUselessTools = new HashSet<String>();    
-    public static Set<String> confUselessHoes = new HashSet<String>();    
-    public static Set<String> confUselessWeapons = new HashSet<String>();
+	public static boolean confFlintDrop;
+	public static boolean confBrokenTools;
 	
-    public static boolean confGridRepair;
-    public static int confRepairCost;
-    public static boolean confRequires3x3;
+	public static Set<String> confUselessTools = new HashSet<String>();    
+	public static Set<String> confUselessHoes = new HashSet<String>();    
+	public static Set<String> confUselessWeapons = new HashSet<String>();
+	
+	public static boolean confGridRepair;
+	public static int confRepairCost;
+	public static boolean confRequires3x3;
     public static boolean confAllowArmor;
     
 	public static boolean confCoin;
@@ -93,6 +94,7 @@ public class ModConfig {
 		config.addCustomCategoryComment(category, "All the different things this mod tweaks.");
 		
 		confFlintDrop = config.getBoolean("flint_drop", category, true, "Should Flint dropped from Gravel be replaced with the item defined in 'flint_drop_item'?");		
+		confBrokenTools = config.getBoolean("tools_dont_break", category, false, "EXPERIMENTAL: Once tools have 1 use left, they become ineffective.");
         String[] tools = config.getStringList("useless_tools", category, new String[0], "All tools listed will not be able to mine blocks."
         		+ "\n- Syntax: modid:itemid"
         		+ "\n- Example: minecraft:stone_pickaxe");

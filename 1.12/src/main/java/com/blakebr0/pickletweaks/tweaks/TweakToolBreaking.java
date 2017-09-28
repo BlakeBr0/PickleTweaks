@@ -4,6 +4,7 @@ import java.util.ListIterator;
 
 import com.blakebr0.cucumber.lib.Colors;
 import com.blakebr0.cucumber.util.Utils;
+import com.blakebr0.pickletweaks.config.ModConfig;
 import com.blakebr0.pickletweaks.tweaks.tools.ToolTweaks;
 
 import net.minecraft.item.ItemHoe;
@@ -23,6 +24,7 @@ public class TweakToolBreaking {
 	
 	@SubscribeEvent
 	public void onBreakingBlock(PlayerEvent.BreakSpeed event) {
+		if (!ModConfig.confBrokenTools) { return; }
 		if (event.getEntityPlayer() == null) { return; }
 
 		ItemStack stack = event.getEntityPlayer().getHeldItemMainhand();
@@ -41,6 +43,7 @@ public class TweakToolBreaking {
 	@SideOnly(Side.CLIENT)
 	@SubscribeEvent
 	public void onItemTooltip(ItemTooltipEvent event) {
+		if (!ModConfig.confBrokenTools) { return; }
 		if (event.getEntityPlayer() == null) { return; }
 		
 		ItemStack stack = event.getItemStack();
