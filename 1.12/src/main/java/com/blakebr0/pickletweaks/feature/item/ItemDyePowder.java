@@ -1,21 +1,13 @@
 package com.blakebr0.pickletweaks.feature.item;
 
-import java.util.Locale;
-
 import com.blakebr0.cucumber.iface.IEnableable;
 import com.blakebr0.cucumber.item.ItemMeta;
-import com.blakebr0.cucumber.registry.ModRegistry;
 import com.blakebr0.pickletweaks.PickleTweaks;
 import com.blakebr0.pickletweaks.config.ModConfig;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.client.renderer.color.IItemColor;
 import net.minecraft.item.EnumDyeColor;
-import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemDyePowder extends ItemMeta implements IEnableable {
 
@@ -61,13 +53,5 @@ public class ItemDyePowder extends ItemMeta implements IEnableable {
 	@Override
 	public boolean isEnabled(){
 		return ModConfig.confDyePowder;
-	}
-	
-	public static class ColorHandler implements IItemColor { // TODO: cucumber
-
-		@Override
-		public int getColorFromItemstack(ItemStack stack, int tintIndex) {
-			return EnumDyeColor.byMetadata(stack.getMetadata()).getColorValue();
-		}
 	}
 }
