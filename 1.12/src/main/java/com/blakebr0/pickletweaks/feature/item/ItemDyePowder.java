@@ -11,13 +11,13 @@ import net.minecraftforge.client.model.ModelLoader;
 
 public class ItemDyePowder extends ItemMeta implements IEnableable {
 
-	public ItemDyePowder(){
+	public ItemDyePowder() {
 		super("pt.dye_powder", PickleTweaks.REGISTRY);
 		this.setCreativeTab(PickleTweaks.tab);
 	}
 
 	@Override
-	public void init(){
+	public void init() {
         String[] dyes = {
             "Black",
             "Red",
@@ -37,21 +37,21 @@ public class ItemDyePowder extends ItemMeta implements IEnableable {
             "White"
         };
         
-		for(EnumDyeColor color : EnumDyeColor.values()){
+		for (EnumDyeColor color : EnumDyeColor.values()) {
 			String name = color.getUnlocalizedName();
 			addItem(color.getMetadata(), name, "dye" + dyes[color.getDyeDamage()]);
 		}
 	}
 	
 	@Override
-	public void initModels(){
-		for(int i = 0; i < 16; i++){
+	public void initModels() {
+		for (int i = 0; i < 16; i++) {
 			ModelLoader.setCustomModelResourceLocation(this, i, new ModelResourceLocation("pickletweaks:dye_powder", "inventory"));
 		}
 	}
 
 	@Override
-	public boolean isEnabled(){
+	public boolean isEnabled() {
 		return ModConfig.confDyePowder;
 	}
 }

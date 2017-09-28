@@ -19,7 +19,7 @@ import net.minecraft.world.World;
 
 public class ItemDiamondApple extends ItemFood implements IEnableable {
 
-	public ItemDiamondApple(){
+	public ItemDiamondApple() {
 		super(6, 1.5F, false);
 		this.setUnlocalizedName("pt.diamond_apple");
 		this.setCreativeTab(PickleTweaks.tab);
@@ -37,25 +37,25 @@ public class ItemDiamondApple extends ItemFood implements IEnableable {
 		int duration = 0;
 		
 		potion = player.getActivePotionEffect(MobEffects.REGENERATION);
-        if(potion != null && potion.getAmplifier() >= 1){
+        if (potion != null && potion.getAmplifier() >= 1) {
         	duration = potion.getDuration();
         }
     	player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, duration + 400, 1));
 
 		potion = player.getActivePotionEffect(MobEffects.ABSORPTION);
-        if(potion != null && potion.getAmplifier() >= 2){
+        if (potion != null && potion.getAmplifier() >= 2) {
         	duration = potion.getDuration();
         }
     	player.addPotionEffect(new PotionEffect(MobEffects.ABSORPTION, duration + 5000, 2));
     	
 		potion = player.getActivePotionEffect(MobEffects.FIRE_RESISTANCE);
-        if(potion != null && potion.getAmplifier() >= 0){
+        if (potion != null && potion.getAmplifier() >= 0) {
         	duration = potion.getDuration();
         }
     	player.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, duration + 5000, 0));
 
 		potion = player.getActivePotionEffect(MobEffects.RESISTANCE);
-        if(potion != null && potion.getAmplifier() >= 0){
+        if (potion != null && potion.getAmplifier() >= 0) {
         	duration = potion.getDuration();
         }
         player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, duration + 5000, 0));
@@ -63,7 +63,7 @@ public class ItemDiamondApple extends ItemFood implements IEnableable {
 	
 	@Override
 	public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag flag){
-		if(Utils.isShiftKeyDown()){
+		if (Utils.isShiftKeyDown()) {
 			tooltip.add(Utils.localize("tooltip.pt.gives_buffs"));
 			tooltip.add(" - " + Colors.WHITE + Utils.localize(MobEffects.REGENERATION.getName()) + " II");
 			tooltip.add(" - " + Colors.WHITE + Utils.localize(MobEffects.ABSORPTION.getName()) + " III");
@@ -75,7 +75,7 @@ public class ItemDiamondApple extends ItemFood implements IEnableable {
 	}
 
 	@Override
-	public boolean isEnabled(){
+	public boolean isEnabled() {
 		return ModConfig.confApples;
 	}
 }
