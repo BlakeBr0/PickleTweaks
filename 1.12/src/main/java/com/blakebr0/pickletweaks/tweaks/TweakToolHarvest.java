@@ -12,23 +12,24 @@ public class TweakToolHarvest {
 		ConfigCategory category = config.getCategory("tweaks");
 		String[] values = config.get(category.getName(), "mining_level", new String[0]).getStringList();
 		category.get("mining_level").setComment("Here you can override the mining level of tools."
-				+ "\n- Syntax: modid:itemid;harvestlevel;toolclass"
-				+ "\n- Example: minecraft:stone_pickaxe;3;pickaxe"
+				+ "\n- Syntax: modid:itemid=harvestlevel-toolclass"
+				+ "\n- Example: minecraft:stone_pickaxe=3-pickaxe"
 				+ "\n- 'toolclass' can be 'pickaxe', 'axe', 'shovel', or 'null'.");
 		
 		for(String value : values){
-			String[] parts = value.split(";");
+			String[] parts = value.split("=");
 			
-			if(parts.length != 3){
+			if(parts.length != 2){
 				continue;
 			}
 			
 			String itemName = parts[0];
+			String[] part = parts[1].split("-");
 			int level;
-			String tool = parts[2];
+			String tool = part[1];
 			
 			try {
-				level = Integer.valueOf(parts[1]);
+				level = Integer.valueOf(part[0]);
 			} catch(NumberFormatException e){
 				continue;
 			}

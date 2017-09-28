@@ -17,17 +17,17 @@ public class TweakBlockHarvest {
 		ConfigCategory category = config.getCategory("tweaks");
 		String[] values = config.get(category.getName(), "harvest_level", new String[0]).getStringList();
 		category.get("harvest_level").setComment("Here you can override the mining level of blocks."
-				+ "\n- Syntax: modid:blockid;meta;harvestlevel"
-				+ "\n- Example: minecraft:stone;0;3"
+				+ "\n- Syntax: modid:blockid:meta=harvestlevel"
+				+ "\n- Example: minecraft:stone:0=3"
 				+ "\n- 'meta' can be set to -1 to apply to all metas."
 				+ "\nYou can also override using OreDictionary entries."
-				+ "\n- Syntax: ore:orevalue;harvestlevel"
-				+ "\n- Example: ore:oreCopper;2");
+				+ "\n- Syntax: ore:orevalue=harvestlevel"
+				+ "\n- Example: ore:oreCopper=2");
 		
 		for(String value : values){
-			String[] parts = value.split(";");
+			String[] parts = value.split("=");
 					
-			String blockName = parts[0];			
+			String blockName = parts[0];
 			int meta;
 			int level;
 			
@@ -53,13 +53,16 @@ public class TweakBlockHarvest {
 				continue;
 			}
 					
-			if(parts.length != 3){
+			if(parts.length != 2){
 				continue;
 			}
 			
+			String[] part = parts[0].split(":");
+			blockName = part[0] + ":" + part[1];
+			
 			try {
-				meta = Integer.valueOf(parts[1]);
-				level = Integer.valueOf(parts[2]);
+				meta = Integer.valueOf(part[2]);
+				level = Integer.valueOf(parts[1]);
 			} catch(NumberFormatException e){
 				continue;
 			}
