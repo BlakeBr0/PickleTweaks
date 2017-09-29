@@ -16,12 +16,12 @@ import net.minecraft.item.ItemStack;
 public class FeatureWailaTooltips implements IWailaDataProvider {
 
 	public static void callbackRegister(IWailaRegistrar registrar) {
-		if (!ModConfig.confWailaHarvestLevel) { return; }
 		registrar.registerBodyProvider(new FeatureWailaTooltips(), Block.class);
 	}
 
 	@Override
 	public List<String> getWailaBody(ItemStack arg0, List<String> arg1, IWailaDataAccessor arg2, IWailaConfigHandler arg3) {
+		if (!ModConfig.confWailaHarvestLevel) { return arg1; }
 		Block block = arg2.getBlock();
 		IBlockState state = arg2.getBlockState();
 		if (block != null && state != null) {
