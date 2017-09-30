@@ -15,11 +15,12 @@ import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
 public class GridRepairOverride {
 	
+	public static final String[] DEFAULT_VALUES = new String[] { "minecraft:wooden_hoe=ore:plankWood", "minecraft:stone_hoe=minecraft:cobblestone", "minecraft:iron_hoe=minecraft:iron_ingot", "minecraft:golden_hoe=minecraft:gold_ingot", "minecraft:diamond_hoe=minecraft:diamond" };
 	public static Map<ItemStack, ItemStack> overrides = new HashMap<>();
 	
 	public static void configure(Configuration config) {
 		ConfigCategory category = config.getCategory("grid_repair");
-		String[] values = config.get(category.getName(), "_repair_materials", new String[0]).getStringList();
+		String[] values = config.get(category.getName(), "_repair_materials", DEFAULT_VALUES).getStringList();
 		category.get("_repair_materials").setComment("Here you can add your own repair materials to tools."
 				+ "\n- Syntax: (tool=material) modid:itemid=modid:itemid:meta"
 				+ "\n- Example: minecraft:stone_pickaxe=minecraft:apple:0"
