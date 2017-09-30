@@ -72,11 +72,15 @@ public class GridRepairRecipe extends Impl<IRecipe> implements IRecipe {
 			return ItemStack.EMPTY;
 		}
 		
+		if (tool.getItem().hasContainerItem(tool)) {
+			return ItemStack.EMPTY;
+		}
+		
 		int matCount = 0;
 		boolean repairKit = false;
 		for (ItemStack mat : inputs) {
 			if (!repairKit && mat.getItem() instanceof ItemRepairKit) {
-				if (matCount > 0 ) {
+				if (matCount > 0) {
 					return ItemStack.EMPTY;
 				}
 				ItemRepairKit kit = (ItemRepairKit) mat.getItem();
@@ -84,7 +88,7 @@ public class GridRepairRecipe extends Impl<IRecipe> implements IRecipe {
 					repairKit = true;
 				}
 				continue;
-			} else if (!repairKit && (tool.getItem().getIsRepairable(tool, mat) || GridRepairOverride.hasOverride(tool, mat))) {
+			} else if (!repairKit && !mat.getItem().hasContainerItem(mat) && (tool.getItem().getIsRepairable(tool, mat) || GridRepairOverride.hasOverride(tool, mat))) { 
 				matCount++;
 			} else {
 				return ItemStack.EMPTY;
@@ -101,7 +105,7 @@ public class GridRepairRecipe extends Impl<IRecipe> implements IRecipe {
 		} else {
 			tool.setItemDamage(tool.getItemDamage() - (damage * matCount));
 		}
-		
+
 		return tool;
 	}
 
