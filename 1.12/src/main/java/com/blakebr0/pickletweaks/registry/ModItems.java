@@ -15,6 +15,7 @@ import com.blakebr0.pickletweaks.feature.item.ItemMesh;
 import com.blakebr0.pickletweaks.feature.item.ItemMortarAndPestle;
 import com.blakebr0.pickletweaks.feature.item.ItemNightvisionGoggles;
 import com.blakebr0.pickletweaks.feature.item.ItemPaxel;
+import com.blakebr0.pickletweaks.feature.item.ItemRepairKit;
 import com.blakebr0.pickletweaks.feature.item.ItemWateringCan;
 import com.blakebr0.pickletweaks.feature.item.flint.ItemModAxe;
 import com.blakebr0.pickletweaks.feature.item.flint.ItemModHoe;
@@ -26,6 +27,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraftforge.common.util.EnumHelper;
+import net.minecraftforge.oredict.OreDictionary;
 
 public class ModItems {
 	
@@ -41,6 +43,7 @@ public class ModItems {
 	public static ItemCoin itemCoin = new ItemCoin();
 	public static ItemMortarAndPestle itemMortarAndPestle = new ItemMortarAndPestle();
 	public static ItemDyePowder itemDyePowder = new ItemDyePowder();
+	public static ItemRepairKit itemRepairKit = new ItemRepairKit();
 	
 	public static ItemPaxel itemWoodenPaxel = new ItemPaxel("wooden_paxel", ToolMaterial.WOOD);
 	public static ItemPaxel itemStonePaxel = new ItemPaxel("stone_paxel", ToolMaterial.STONE);
@@ -56,7 +59,7 @@ public class ModItems {
 	public static ItemModHoe itemFlintHoe = new ItemModHoe("flint_hoe", MATERIAL_FLINT);
 	public static ItemPaxel itemFlintPaxel = new ItemPaxel("flint_paxel", MATERIAL_FLINT);
 	
-	public static void init(){
+	public static void init() {
 		final ModRegistry registry = PickleTweaks.REGISTRY;
 		
 		registry.register(itemCoalPiece, "coal_piece");		
@@ -71,14 +74,15 @@ public class ModItems {
 		registry.register(itemCoin, "coin");
 		registry.register(itemMortarAndPestle, "mortar_and_pestle");
 		registry.register(itemDyePowder, "dye_powder");
+		registry.register(itemRepairKit, "repair_kit");
 		
-		registry.register(itemWoodenPaxel, "wooden_paxel", StackHelper.to(Blocks.PLANKS));
-		registry.register(itemStonePaxel, "stone_paxel", StackHelper.to(Blocks.STONE));
+		registry.register(itemWoodenPaxel, "wooden_paxel", StackHelper.to(Blocks.PLANKS, 1, OreDictionary.WILDCARD_VALUE));
+		registry.register(itemStonePaxel, "stone_paxel", StackHelper.to(Blocks.COBBLESTONE));
 		registry.register(itemIronPaxel, "iron_paxel", StackHelper.to(Items.IRON_INGOT));
 		registry.register(itemGoldenPaxel, "golden_paxel", StackHelper.to(Items.GOLD_INGOT));
 		registry.register(itemDiamondPaxel, "diamond_paxel", StackHelper.to(Items.DIAMOND));
 		
-		if(ModConfig.confFlintTools){
+		if (ModConfig.confFlintTools) {
 			registry.register(itemFlintSword, "flint_sword", StackHelper.to(Items.FLINT));
 			registry.register(itemFlintPickaxe, "flint_pickaxe", StackHelper.to(Items.FLINT));
 			registry.register(itemFlintShovel, "flint_shovel", StackHelper.to(Items.FLINT));

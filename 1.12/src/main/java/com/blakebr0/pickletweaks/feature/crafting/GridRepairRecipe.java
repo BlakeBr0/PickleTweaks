@@ -1,6 +1,7 @@
 package com.blakebr0.pickletweaks.feature.crafting;
 
 import com.blakebr0.pickletweaks.config.ModConfig;
+import com.blakebr0.pickletweaks.feature.item.ItemRepairKit;
 
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.Item;
@@ -43,15 +44,15 @@ public class GridRepairRecipe extends Impl<IRecipe> implements IRecipe {
 				continue;
 			}
 			
-			slotStack = slotStack.copy();
-			slotStack.setCount(1);
+			ItemStack newSlotStack = slotStack.copy();
+			newSlotStack.setCount(1);
 			
-			if (!foundTool && slotStack.isItemStackDamageable()) {
-				tool = slotStack;
+			if (!foundTool && newSlotStack.isItemStackDamageable()) {
+				tool = newSlotStack;
 				foundTool = true;
 				continue;
 			} else {
-				inputs.add(slotStack);
+				inputs.add(newSlotStack);
 			}
 		}
 		
@@ -72,8 +73,18 @@ public class GridRepairRecipe extends Impl<IRecipe> implements IRecipe {
 		}
 		
 		int matCount = 0;
+		boolean repairKit = false;
 		for (ItemStack mat : inputs) {
-			if (tool.getItem().getIsRepairable(tool, mat) || GridRepairOverride.hasOverride(tool, mat)) {
+			if (!repairKit && mat.getItem() instanceof ItemRepairKit) {
+				if (matCount > 0 ) {
+					return ItemStack.EMPTY;
+				}
+				ItemRepairKit kit = (ItemRepairKit) mat.getItem();
+				if (ItemRepairKit.isKitValid(tool, kit.getKit(mat))) {
+					repairKit = true;
+				}
+				continue;
+			} else if (!repairKit && (tool.getItem().getIsRepairable(tool, mat) || GridRepairOverride.hasOverride(tool, mat))) {
 				matCount++;
 			} else {
 				return ItemStack.EMPTY;
@@ -81,11 +92,15 @@ public class GridRepairRecipe extends Impl<IRecipe> implements IRecipe {
 		}
 		
 		int damage = tool.getMaxDamage() / ModConfig.confRepairCost;
-		if (damage * matCount > tool.getItemDamage() + damage) {
+		if (!repairKit && damage * matCount > tool.getItemDamage() + damage) {
 			return ItemStack.EMPTY;
 		}
 		
-		tool.setItemDamage(tool.getItemDamage() - (damage * matCount));
+		if (repairKit) {
+			tool.setItemDamage(0);
+		} else {
+			tool.setItemDamage(tool.getItemDamage() - (damage * matCount));
+		}
 		
 		return tool;
 	}
