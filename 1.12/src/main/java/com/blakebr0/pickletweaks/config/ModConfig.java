@@ -21,6 +21,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 public class ModConfig {
 
 	public static Configuration config;
+	public static ModConfig instance;
 
 	public static boolean confCoalPiece;
 	public static boolean confApples;
@@ -33,6 +34,7 @@ public class ModConfig {
 	public static boolean confMortarAndPestle;
 	public static boolean confPaxels;
 	public static boolean confFlintTools;
+	public static boolean confRepairKits;
 
 	public static boolean confToolInfoTooltip;
 	public static boolean confSwordInfoTooltip;
@@ -121,6 +123,10 @@ public class ModConfig {
 		confRepairCost = config.getInt("repair_cost", category, 4, 1, 8, "How much material should be required to fully repair a tool.");
 		confRequires3x3 = config.getBoolean("requires_3x3", category, false, "Should the player need atleast a 3x3 table to repair?");
 		confAllowArmor = config.getBoolean("allow_armor", category, false, "Should you be able to repair armor as well?");
+		
+		category = "repair_kit";
+		config.setCategoryComment(category, "Add and remove repair kits");
+		confRepairKits = config.getBoolean("_enable_repair_kits", category, true, "Should repair kits be enabled?");
 		
 		category = "paxels";
 		config.setCategoryComment(category, "Paxel settings.");

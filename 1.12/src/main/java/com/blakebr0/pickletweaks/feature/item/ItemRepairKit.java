@@ -6,9 +6,11 @@ import java.util.Map;
 import org.apache.commons.lang3.text.WordUtils;
 
 import com.blakebr0.cucumber.helper.StackHelper;
+import com.blakebr0.cucumber.iface.IEnableable;
 import com.blakebr0.cucumber.item.ItemMeta;
 import com.blakebr0.cucumber.util.Utils;
 import com.blakebr0.pickletweaks.PickleTweaks;
+import com.blakebr0.pickletweaks.config.ModConfig;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.init.Blocks;
@@ -16,11 +18,13 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.oredict.OreDictionary;
 
-public class ItemRepairKit extends ItemMeta {
+public class ItemRepairKit extends ItemMeta implements IEnableable {
 	
 	public static Map<Integer, Kit> kits = new HashMap<>();
+	private Configuration config = ModConfig.instance.config;
 
 	public ItemRepairKit() {
 		super("pt.repair_kit", PickleTweaks.REGISTRY);
@@ -40,6 +44,7 @@ public class ItemRepairKit extends ItemMeta {
 		addKit(new Kit(2, "iron", 0xC1C1C1, "ingotIron"));
 		addKit(new Kit(3, "gold", 0xBCBF4D, "ingotGold"));
 		addKit(new Kit(4, "diamond", 0x27B29A, "gemDiamond"));
+		addKit(new Kit(5, "flint", 0x333333, StackHelper.to(Items.FLINT)));
 	}
 	
 	@Override
@@ -50,12 +55,24 @@ public class ItemRepairKit extends ItemMeta {
 	}
 	
 	public ItemStack addKit(Kit kit) {
-		kits.put(kit.meta, kit);
+		return addKit(kit, true);
+	}
+	
+	public ItemStack addKit(Kit kit, boolean also) {
+		boolean enabled = config.get("repair_kit", kit.name, true).getBoolean() && also;
+		if (enabled) {
+			kits.put(kit.meta, kit);
+		}
 		return addItem(kit.meta, kit.name);
 	}
 	
 	public Kit getKit(ItemStack stack) {
 		return kits.get(stack.getMetadata());
+	}
+	
+	@Override
+	public boolean isEnabled() {
+		return ModConfig.confRepairKits;
 	}
 	
 	public static boolean isKitValid(ItemStack tool, Kit kit) {
