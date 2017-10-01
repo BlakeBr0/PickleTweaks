@@ -12,6 +12,7 @@ import net.minecraft.item.ItemSword;
 import net.minecraft.item.ItemTool;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.event.entity.player.UseHoeEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -24,9 +25,9 @@ public class TweakToolBreaking {
 		if (event.getEntityPlayer() == null) { return; }
 
 		ItemStack stack = event.getEntityPlayer().getHeldItemMainhand();
-		if (stack == null) { return; }
+		if (stack.isEmpty()) { return; }
         if (!(stack.getItem() instanceof ItemTool) 
-        		&& !(stack.getItem() instanceof ItemSword) 
+        		//&& !(stack.getItem() instanceof ItemSword) 
         		&& !(stack.getItem() instanceof ItemHoe)) { return; }
 
         if (stack.isItemStackDamageable()) {
@@ -34,6 +35,22 @@ public class TweakToolBreaking {
         		event.setNewSpeed(0.0F);
         	}
         }
+	}
+	
+	@SubscribeEvent
+	public void onUseHoe(UseHoeEvent event) {
+		if (!ModConfig.confBrokenTools) { return; }
+		if (event.getEntityPlayer() == null) { return; }
+		
+		ItemStack stack = event.getEntityPlayer().getHeldItemMainhand();
+		if (stack.isEmpty()) { return; }
+		if (!(stack.getItem() instanceof ItemHoe)) { return; }
+		
+		if (stack.isItemStackDamageable()) {
+			if (stack.getItemDamage() >= stack.getMaxDamage()) {
+				event.setCanceled(true);
+			}
+		}
 	}
 	
 	@SideOnly(Side.CLIENT)
@@ -44,7 +61,7 @@ public class TweakToolBreaking {
 		
 		ItemStack stack = event.getItemStack();
 		if (!(stack.getItem() instanceof ItemTool) 
-        		&& !(stack.getItem() instanceof ItemSword) 
+        		//&& !(stack.getItem() instanceof ItemSword) 
         		&& !(stack.getItem() instanceof ItemHoe)) { return; }
 
 		ListIterator<String> itr = event.getToolTip().listIterator();
