@@ -8,7 +8,7 @@ import com.blakebr0.pickletweaks.config.ModConfig;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.IFuelHandler;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-// TODO: Item.getBurnTime()
+
 public class ItemCoalPiece extends ItemMeta implements IEnableable {
 	
 	public static ItemStack itemCoalPiece;
@@ -24,23 +24,15 @@ public class ItemCoalPiece extends ItemMeta implements IEnableable {
 	public void init() {
 		itemCoalPiece = addItem(0, "coal");
 		itemCharcoalPiece = addItem(1, "charcoal");
-		
-		GameRegistry.registerFuelHandler(new FuelHandler());
+	}
+	
+	@Override
+	public int getItemBurnTime(ItemStack stack) {
+		return 200;
 	}
 	
 	@Override
 	public boolean isEnabled() {
 		return ModConfig.confCoalPiece;
-	}
-	
-	public class FuelHandler implements IFuelHandler {
-
-		@Override
-		public int getBurnTime(ItemStack fuel) {
-			if(fuel.getItem() instanceof ItemCoalPiece){
-				return 200;
-			}
-			return 0;
-		}
 	}
 }

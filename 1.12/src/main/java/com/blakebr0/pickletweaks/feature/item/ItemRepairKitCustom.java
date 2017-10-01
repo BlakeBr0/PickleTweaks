@@ -51,7 +51,7 @@ public class ItemRepairKitCustom extends ItemMeta implements IEnableable {
 						+ "\n- 'meta' must be different for each, and should not be changed."
 						+ "\n- 'name' should be lower case with underscores for spaces. Repair Kit is added automatically."
 						+ "\n- Example: 'lots_of_spaghetti' would show 'Lots Of Spaghetti Repair Kit'."
-						+ "\n- 'color' the color of the singularity as a hex value. http://htmlcolorcodes.com/"
+						+ "\n- 'color' the color of the Repair Kit as a hex value. http://htmlcolorcodes.com/"
 						+ "\n- Example: 123456 would color it as whatever that color is."
 						+ "\n- 'representativeitem' is an item id or ore dictionary entry. This is the material the Repair Kit represents, and what it will require to craft."
 						+ "\n- Examples: 'minecraft:stone' for stone, 'ore:ingotIron' for the ore dictionary entry 'ingotIron'."
