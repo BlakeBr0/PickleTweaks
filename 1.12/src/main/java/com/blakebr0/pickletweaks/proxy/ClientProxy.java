@@ -2,6 +2,7 @@ package com.blakebr0.pickletweaks.proxy;
 
 import com.blakebr0.cucumber.item.color.ItemDyeColorHandler;
 import com.blakebr0.pickletweaks.feature.item.ItemRepairKit;
+import com.blakebr0.pickletweaks.feature.item.ItemRepairKitCustom;
 import com.blakebr0.pickletweaks.registry.ModItems;
 
 import net.minecraft.client.Minecraft;
@@ -23,6 +24,9 @@ public class ClientProxy extends CommonProxy {
 		Minecraft.getMinecraft().getItemColors().registerItemColorHandler((stack, tintIndex) -> {
 			return ItemRepairKit.kits.get(stack.getMetadata()).color;
 		}, ModItems.itemRepairKit);
+		Minecraft.getMinecraft().getItemColors().registerItemColorHandler((stack, tintIndex) -> {
+			return ItemRepairKitCustom.kits.get(stack.getMetadata()).color;
+		}, ModItems.itemRepairKitCustom);
 	}
 		
 	@Override

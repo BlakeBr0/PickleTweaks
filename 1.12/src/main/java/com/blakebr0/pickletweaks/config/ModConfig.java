@@ -8,6 +8,7 @@ import java.util.Set;
 import com.blakebr0.pickletweaks.PickleTweaks;
 import com.blakebr0.pickletweaks.feature.FeatureToolInfo;
 import com.blakebr0.pickletweaks.feature.crafting.GridRepairOverride;
+import com.blakebr0.pickletweaks.feature.item.ItemRepairKitCustom;
 import com.blakebr0.pickletweaks.tweaks.TweakBlockHardness;
 import com.blakebr0.pickletweaks.tweaks.TweakBlockHarvest;
 import com.blakebr0.pickletweaks.tweaks.TweakFlintDrop;
@@ -127,7 +128,8 @@ public class ModConfig {
 		category = "repair_kit";
 		config.setCategoryComment(category, "Add and remove repair kits");
 		confRepairKits = config.getBoolean("_enable_repair_kits", category, true, "Should repair kits be enabled?");
-		
+		ItemRepairKitCustom.configure(config);
+
 		category = "paxels";
 		config.setCategoryComment(category, "Paxel settings.");
 		confPaxels = config.getBoolean("paxels", category, true, "Should the paxels be enabled?");
