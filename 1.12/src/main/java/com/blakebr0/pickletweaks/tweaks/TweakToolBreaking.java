@@ -28,7 +28,7 @@ public class TweakToolBreaking {
 		if (stack.isEmpty()) { return; }
         if (!(stack.getItem() instanceof ItemTool) 
         		//&& !(stack.getItem() instanceof ItemSword) 
-        		&& !(stack.getItem() instanceof ItemHoe)) { return; }
+        		) { return; }
 
         if (stack.isItemStackDamageable()) {
         	if (stack.getItemDamage() >= stack.getMaxDamage()) {
