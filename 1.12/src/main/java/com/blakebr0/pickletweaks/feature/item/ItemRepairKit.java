@@ -5,12 +5,14 @@ import java.util.Map;
 
 import org.apache.commons.lang3.text.WordUtils;
 
+import com.blakebr0.cucumber.helper.RecipeHelper;
 import com.blakebr0.cucumber.helper.StackHelper;
 import com.blakebr0.cucumber.iface.IEnableable;
 import com.blakebr0.cucumber.item.ItemMeta;
 import com.blakebr0.cucumber.util.Utils;
 import com.blakebr0.pickletweaks.PickleTweaks;
 import com.blakebr0.pickletweaks.config.ModConfig;
+import com.blakebr0.pickletweaks.registry.ModItems;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.init.Blocks;
@@ -19,6 +21,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.config.Configuration;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.oredict.OreDictionary;
 
 public class ItemRepairKit extends ItemMeta implements IEnableable {
@@ -45,12 +48,44 @@ public class ItemRepairKit extends ItemMeta implements IEnableable {
 		addKit(new Kit(3, "gold", 0xBCBF4D, "ingotGold"));
 		addKit(new Kit(4, "diamond", 0x27B29A, "gemDiamond"));
 		addKit(new Kit(5, "flint", 0x333333, StackHelper.to(Items.FLINT)));
+		
+		addKit(new Kit(12, "aluminum", 0xCECED9, "ingotAluminum"));
+		addKit(new Kit(13, "copper", 0xF9A24E, "ingotCopper"));
+		addKit(new Kit(14, "tin", 0xA3C0D8, "ingotTin"));
+		addKit(new Kit(15, "bronze", 0xE9A662, "ingotBronze"));
+		addKit(new Kit(16, "lead", 0xB0BAD8, "ingotLead"));
+		addKit(new Kit(17, "silver", 0xA3C2CA, "ingotSilver"));
+		addKit(new Kit(18, "nickel", 0xC8BD83, "ingotNickel"));
+		addKit(new Kit(19, "invar", 0xB4C0BD, "ingotInvar"));
+		addKit(new Kit(20, "constantan", 0xE3B36C, "ingotConstantan"));
+		addKit(new Kit(21, "electrum", 0xD7BF53, "ingotElectrum"));
+		addKit(new Kit(22, "steel", 0x858585, "ingotSteel"));
+		addKit(new Kit(23, "platinum", 0x6CD5FC, "ingotPlatinum"));
 	}
 	
 	@Override
 	public void initModels() {
 		for (Map.Entry<Integer, MetaItem> item : items.entrySet()) {
 			ModelLoader.setCustomModelResourceLocation(this, item.getKey(), new ModelResourceLocation(PickleTweaks.MOD_ID + ":repair_kit", "inventory"));
+		}
+	}
+	
+	public static void initRecipes() {
+		if (!ModConfig.confRepairKits || !ModConfig.confHammer) { return; }
+		for (Map.Entry<Integer, Kit> kit : kits.entrySet()) {
+			Kit kitten = kit.getValue();
+			Object rep = kitten.representative;
+			if (rep instanceof ItemStack) {
+				ItemStack stack = (ItemStack) rep;
+				if (!stack.isEmpty()) {
+					RecipeHelper.addShapedRecipe(StackHelper.to(ModItems.itemRepairKit, 2, kit.getKey()), "SMS", "MHM", "SMS", 'S', "stickWood", 'M', stack, 'H', StackHelper.to(ModItems.itemHammer, 1, OreDictionary.WILDCARD_VALUE));
+				}
+			} else if (rep instanceof String) {
+				String ore = (String) rep;
+				if (OreDictionary.doesOreNameExist(ore)) {
+					RecipeHelper.addShapedRecipe(StackHelper.to(ModItems.itemRepairKit, 2, kit.getKey()), "SMS", "MHM", "SMS", 'S', "stickWood", 'M', ore, 'H', StackHelper.to(ModItems.itemHammer, 1, OreDictionary.WILDCARD_VALUE));
+				}
+			}
 		}
 	}
 	

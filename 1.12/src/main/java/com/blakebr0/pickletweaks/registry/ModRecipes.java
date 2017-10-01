@@ -4,6 +4,7 @@ import com.blakebr0.cucumber.helper.RecipeHelper;
 import com.blakebr0.cucumber.helper.StackHelper;
 import com.blakebr0.pickletweaks.config.ModConfig;
 import com.blakebr0.pickletweaks.feature.crafting.GridRepairRecipe;
+import com.blakebr0.pickletweaks.feature.item.ItemRepairKit;
 
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
@@ -18,6 +19,7 @@ public class ModRecipes {
 		if (ModConfig.confGridRepair) {
 			ForgeRegistries.RECIPES.register(new GridRepairRecipe()); // TODO: Cucumber registration
 		}
+		ItemRepairKit.initRecipes();
 	}
 	
 	public static void post(){
