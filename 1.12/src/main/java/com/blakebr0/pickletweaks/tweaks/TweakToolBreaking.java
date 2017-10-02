@@ -6,10 +6,13 @@ import com.blakebr0.cucumber.lib.Colors;
 import com.blakebr0.cucumber.util.Utils;
 import com.blakebr0.pickletweaks.config.ModConfig;
 
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemHoe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.item.ItemTool;
+import net.minecraft.util.text.translation.I18n;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.UseHoeEvent;
@@ -30,7 +33,7 @@ public class TweakToolBreaking {
         if (!(stack.getItem() instanceof ItemTool) && !(stack.getItem() instanceof ItemSword)) { return; }
 
         if (stack.isItemStackDamageable()) {
-        	if (stack.getItemDamage() >= stack.getMaxDamage()) {
+        	if (stack.getItemDamage() >= stack.getMaxDamage() - (stack.getItem() instanceof ItemSword ? 1 : 0)) {
         		event.setNewSpeed(0.0F);
         	}
         }
@@ -52,6 +55,30 @@ public class TweakToolBreaking {
 		}
 	}
 	
+	@SubscribeEvent
+	public void onHitEntity(LivingHurtEvent event) {
+		if (!ModConfig.confBrokenTools) { return; }
+		if (!event.getSource().getDamageType().equals("player")) { return; }
+		if (!(event.getSource().getTrueSource() instanceof EntityPlayer)) { return; }
+		
+		EntityPlayer player = (EntityPlayer) event.getSource().getTrueSource();
+		ItemStack stack = player.getHeldItemMainhand();
+		
+		if (stack.isEmpty()) { return; }
+		if (!(stack.getItem() instanceof ItemTool) 
+        		&& !(stack.getItem() instanceof ItemSword)
+        		&& !(stack.getItem() instanceof ItemHoe)) { return; }
+		
+		if (stack.isItemStackDamageable()) {
+			if (stack.getItemDamage() >= stack.getMaxDamage()) {
+				if (!(stack.getItem() instanceof ItemHoe)) {
+					stack.damageItem(-1, player);
+				}
+				event.setAmount(0.0F);
+			}
+		}
+	}
+	
 	@SideOnly(Side.CLIENT)
 	@SubscribeEvent
 	public void onItemTooltip(ItemTooltipEvent event) {
@@ -65,12 +92,18 @@ public class TweakToolBreaking {
 
 		ListIterator<String> itr = event.getToolTip().listIterator();
 		if (stack.isItemStackDamageable()) {
-			if (stack.getItemDamage() >= stack.getMaxDamage()) {
+			if (stack.getItemDamage() >= stack.getMaxDamage() - (stack.getItem() instanceof ItemSword ? 1 : 0)) {
             	while (itr.hasNext()) {
             		itr.next();
             		itr.add(Colors.RED + Utils.localize("tooltip.pt.broken"));
                 	break;
             	}
+            	
+                while (itr.hasNext()) {
+                    if (itr.next().contains(I18n.translateToLocal("attribute.name.generic.attackDamage"))) {
+                	    itr.set(" 0 " + Utils.localize("attribute.name.generic.attackDamage"));
+                    }
+                }
 			}
 		}
 	}

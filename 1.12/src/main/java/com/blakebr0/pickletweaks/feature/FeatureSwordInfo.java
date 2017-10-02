@@ -56,7 +56,7 @@ public class FeatureSwordInfo {
             if(!StackHelper.isNull(stack) && stack.getItem() != null){
 	            if(stack.getItem() instanceof ItemSword){
 					NBTTagCompound tag = stack.getOrCreateSubCompound(PickleTweaks.MOD_ID);
-					if(!((tag.getInteger("DamageDealt") + event.getAmount()) >= Integer.MAX_VALUE)){
+					if(!((tag.getInteger("DamageDealt") + event.getAmount()) >= Integer.MAX_VALUE) && stack.getItemDamage() < stack.getMaxDamage()) {
 						EntityLivingBase living = event.getEntityLiving();
 						if (living.getHealth() < event.getAmount()) {
 							tag.setInteger("DamageDealt", tag.getInteger("DamageDealt") + (int)living.getHealth());
