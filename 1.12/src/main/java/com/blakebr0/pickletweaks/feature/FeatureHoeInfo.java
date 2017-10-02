@@ -9,26 +9,32 @@ import com.blakebr0.cucumber.util.Utils;
 import com.blakebr0.pickletweaks.PickleTweaks;
 import com.blakebr0.pickletweaks.config.ModConfig;
 
+import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemHoe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.entity.player.UseHoeEvent;
+import net.minecraftforge.fml.common.eventhandler.Event.Result;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class FeatureHoeInfo {
 	
-    //@SubscribeEvent
+    @SubscribeEvent
     public void onRightClickBlock(UseHoeEvent event){
 		if (!ModConfig.confHoeInfoTooltip) { return; }
 		if (event.getEntityPlayer() == null) { return; }
     	
     	ItemStack stack = event.getEntityPlayer().getHeldItemMainhand();
-    	if (stack == null){ return; }
+    	if (stack == null) { return; }
+    	
+    	Block block = event.getWorld().getBlockState(event.getPos()).getBlock();
     	    	
-    	if (stack.getItem() instanceof ItemHoe) {
+    	if (event.getResult() == Result.ALLOW || block == Blocks.DIRT || block == Blocks.GRASS || block == Blocks.GRASS_PATH) {
     		NBTTagCompound tag = stack.getOrCreateSubCompound(PickleTweaks.MOD_ID);
     		if (!((tag.getInteger("BlocksTilled") + 1) >= Integer.MAX_VALUE)) {
     			tag.setInteger("BlocksTilled", tag.getInteger("BlocksTilled") + 1);
@@ -55,7 +61,7 @@ public class FeatureHoeInfo {
             	tooltip.next();
             	if (shift) {
             		tooltip.add(Utils.localize("tooltip.pt.durability") + " " + getDurability(stack));
-            		//tooltip.add(Utils.localize("tooltip.pt.blocks_tilled") + " " + getBlocksTilled(stack));
+            		tooltip.add(Utils.localize("tooltip.pt.blocks_tilled") + " " + getBlocksTilled(stack));
             	} else {
             		tooltip.add(Utils.localize("tooltip.pt.hold_shift_for_info"));
             	}

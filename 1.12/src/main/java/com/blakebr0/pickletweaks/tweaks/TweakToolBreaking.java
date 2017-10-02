@@ -13,13 +13,14 @@ import net.minecraft.item.ItemTool;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.UseHoeEvent;
+import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class TweakToolBreaking {
 	
-	@SubscribeEvent
+	@SubscribeEvent(priority = EventPriority.HIGH)
 	public void onBreakingBlock(PlayerEvent.BreakSpeed event) {
 		if (!ModConfig.confBrokenTools) { return; }
 		if (event.getEntityPlayer() == null) { return; }
@@ -37,7 +38,7 @@ public class TweakToolBreaking {
         }
 	}
 	
-	@SubscribeEvent
+	@SubscribeEvent(priority = EventPriority.HIGH)
 	public void onUseHoe(UseHoeEvent event) {
 		if (!ModConfig.confBrokenTools) { return; }
 		if (event.getEntityPlayer() == null) { return; }
