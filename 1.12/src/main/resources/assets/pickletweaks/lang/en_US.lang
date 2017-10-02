@@ -1,10 +1,6 @@
 # CREATIVE TAB
 itemGroup.tab.pickletweaks=Pickle Tweaks
 
-# BLOCKS
-tile.pt.conveyor_belt.name=Conveyor Belt
-tile.pt.obsidian_pressure_plate.name=Obsidian Pressure Plate
-
 # ITEMS
 item.pt.coal_piece_coal.name=Coal Piece
 item.pt.coal_piece_charcoal.name=Charcoal Piece
@@ -86,7 +82,7 @@ tooltip.pt.blocks_tilled=Blocks Tilled:
 
 tooltip.pt.gives_buffs=Gives Buffs:
 
-tooltip.pt.broken=Broken
+tooltip.pt.broken=BROKEN
 
 tooltip.useless_tool_1=This tool cannot mine anything.
 tooltip.useless_hoe_1=This hoe cannot till anything.
@@ -106,14 +102,6 @@ tooltip.pt.enabled=Enabled
 tooltip.pt.unbreakable=Unbreakable
 
 tooltip.pt.harvest_level=Harvest Level:
-
-# JEI CATEGORY
-jei.pt.advanced_crafting=Advanced Crafting
-
-# JEI DESCRIPTIONS
-desc.tile.pt.conveyor_belt=A simple Conveyor Belt. \n\nUsed to move entities around.
-desc.tile.pt.obsidian_pressure_plate=Can only be activated by players. It is also as tough as Obsidian.
-desc.tile.pt.advanced_crafting_table=A 5x5 crafting grid used to create items with more advanced crafting recipes.
 
 desc.item.pt.coal_piece=Cooks a single item. Allows for more efficient fuel use when cooking anything in a Furnace.
 desc.item.pt.charcoal_piece=Cooks a single item. Allows for more efficient fuel use when cooking anything in a Furnace.

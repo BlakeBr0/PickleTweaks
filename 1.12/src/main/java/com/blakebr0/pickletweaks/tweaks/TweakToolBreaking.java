@@ -27,9 +27,7 @@ public class TweakToolBreaking {
 
 		ItemStack stack = event.getEntityPlayer().getHeldItemMainhand();
 		if (stack.isEmpty()) { return; }
-        if (!(stack.getItem() instanceof ItemTool) 
-        		//&& !(stack.getItem() instanceof ItemSword) 
-        		) { return; }
+        if (!(stack.getItem() instanceof ItemTool) && !(stack.getItem() instanceof ItemSword)) { return; }
 
         if (stack.isItemStackDamageable()) {
         	if (stack.getItemDamage() >= stack.getMaxDamage()) {
@@ -62,7 +60,7 @@ public class TweakToolBreaking {
 		
 		ItemStack stack = event.getItemStack();
 		if (!(stack.getItem() instanceof ItemTool) 
-        		//&& !(stack.getItem() instanceof ItemSword) 
+        		&& !(stack.getItem() instanceof ItemSword) 
         		&& !(stack.getItem() instanceof ItemHoe)) { return; }
 
 		ListIterator<String> itr = event.getToolTip().listIterator();
@@ -70,7 +68,7 @@ public class TweakToolBreaking {
 			if (stack.getItemDamage() >= stack.getMaxDamage()) {
             	while (itr.hasNext()) {
             		itr.next();
-            		itr.add(Colors.RED + Colors.ITALICS + Utils.localize("tooltip.pt.broken"));
+            		itr.add(Colors.RED + Utils.localize("tooltip.pt.broken"));
                 	break;
             	}
 			}
