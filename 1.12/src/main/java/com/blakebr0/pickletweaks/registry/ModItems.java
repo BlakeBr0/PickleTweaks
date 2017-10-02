@@ -53,6 +53,34 @@ public class ModItems {
 	public static ItemPaxel itemGoldenPaxel = new ItemPaxel("golden_paxel", ToolMaterial.GOLD);
 	public static ItemPaxel itemDiamondPaxel = new ItemPaxel("diamond_paxel", ToolMaterial.DIAMOND);
 	
+	// Thermal Foundation tool material stats
+	// https://github.com/CoFH/ThermalFoundation/blob/master/src/main/java/cofh/thermalfoundation/init/TFEquipment.java
+	public static final ToolMaterial MATERIAL_ALUMINUM = EnumHelper.addToolMaterial("PT:ALUMINUM", 1, 225, 10.0F, 1.0F, 14);
+	public static final ToolMaterial MATERIAL_COPPER = EnumHelper.addToolMaterial("PT:COPPER", 1, 175, 4.0F, 0.75F, 6);
+	public static final ToolMaterial MATERIAL_TIN = EnumHelper.addToolMaterial("PT:TIN", 1, 200, 4.5F, 1.0F, 7);
+	public static final ToolMaterial MATERIAL_BRONZE = EnumHelper.addToolMaterial("PT:BRONZE", 2, 500, 6.0F, 2.0F, 15);
+	public static final ToolMaterial MATERIAL_LEAD = EnumHelper.addToolMaterial("PT:LEAD", 1, 150, 5.0F, 1.0F, 9);
+	public static final ToolMaterial MATERIAL_SILVER = EnumHelper.addToolMaterial("PT:SILVER", 2, 200, 6.0F, 1.5F, 20);
+	public static final ToolMaterial MATERIAL_NICKEL = EnumHelper.addToolMaterial("PT:NICKEL", 2, 300, 6.5F, 2.5F, 18);
+	public static final ToolMaterial MATERIAL_INVAR = EnumHelper.addToolMaterial("PT:INVAR", 2, 450, 7.0F, 3.0F, 16);
+	public static final ToolMaterial MATERIAL_CONSTANTAN = EnumHelper.addToolMaterial("PT:CONSTANTAN", 2, 275, 6.0F, 1.5F, 20);
+	public static final ToolMaterial MATERIAL_ELECTRUM = EnumHelper.addToolMaterial("PT:ELECTRUM", 0, 100, 14.0F, 0.5F, 30);
+	public static final ToolMaterial MATERIAL_STEEL = EnumHelper.addToolMaterial("PT:STEEL", 2, 500, 6.5F, 2.5F, 10);
+	public static final ToolMaterial MATERIAL_PLATINUM = EnumHelper.addToolMaterial("PT:PLATINUM", 4, 1700, 9.0F, 4.0F, 9);
+	
+	public static ItemPaxel itemAluminumPaxel = new ItemPaxel("aluminum_paxel", MATERIAL_ALUMINUM);
+	public static ItemPaxel itemCopperPaxel = new ItemPaxel("copper_paxel", MATERIAL_COPPER);
+	public static ItemPaxel itemTinPaxel = new ItemPaxel("tin_paxel", MATERIAL_TIN);
+	public static ItemPaxel itemBronzePaxel = new ItemPaxel("bronze_paxel", MATERIAL_BRONZE);
+	public static ItemPaxel itemLeadPaxel = new ItemPaxel("lead_paxel", MATERIAL_LEAD);
+	public static ItemPaxel itemSilverPaxel = new ItemPaxel("silver_paxel", MATERIAL_SILVER);
+	public static ItemPaxel itemNickelPaxel = new ItemPaxel("nickel_paxel", MATERIAL_NICKEL);
+	public static ItemPaxel itemInvarPaxel = new ItemPaxel("invar_paxel", MATERIAL_INVAR);
+	public static ItemPaxel itemConstantanPaxel = new ItemPaxel("constantan_paxel", MATERIAL_CONSTANTAN);
+	public static ItemPaxel itemElectrumPaxel = new ItemPaxel("electrum_paxel", MATERIAL_ELECTRUM);
+	public static ItemPaxel itemSteelPaxel = new ItemPaxel("steel_paxel", MATERIAL_STEEL);
+	public static ItemPaxel itemPlatinumPaxel = new ItemPaxel("platinum_paxel", MATERIAL_PLATINUM);
+
 	public static final ToolMaterial MATERIAL_FLINT = EnumHelper.addToolMaterial("PT:FLINT", 1, 157, 3.8F, 1.0F, 10); 
 	public static ItemModSword itemFlintSword = new ItemModSword("flint_sword", MATERIAL_FLINT);
 	public static ItemModPickaxe itemFlintPickaxe = new ItemModPickaxe("flint_pickaxe", MATERIAL_FLINT);
@@ -84,6 +112,21 @@ public class ModItems {
 		registry.register(itemIronPaxel, "iron_paxel", StackHelper.to(Items.IRON_INGOT));
 		registry.register(itemGoldenPaxel, "golden_paxel", StackHelper.to(Items.GOLD_INGOT));
 		registry.register(itemDiamondPaxel, "diamond_paxel", StackHelper.to(Items.DIAMOND));
+		
+		// TODO: mod support configs
+		// TODO: repair materials
+		registry.register(itemAluminumPaxel, "aluminum_paxel");
+		registry.register(itemCopperPaxel, "copper_paxel");
+		registry.register(itemTinPaxel, "tin_paxel");
+		registry.register(itemBronzePaxel, "bronze_paxel");
+		registry.register(itemLeadPaxel, "lead_paxel");
+		registry.register(itemSilverPaxel, "silver_paxel");
+		registry.register(itemNickelPaxel, "nickel_paxel");
+		registry.register(itemInvarPaxel, "invar_paxel");
+		registry.register(itemConstantanPaxel, "constantan_paxel");
+		registry.register(itemElectrumPaxel, "electrum_paxel");
+		registry.register(itemSteelPaxel, "steel_paxel");
+		registry.register(itemPlatinumPaxel, "platinum_paxel");
 		
 		if (ModConfig.confFlintTools) {
 			registry.register(itemFlintSword, "flint_sword", StackHelper.to(Items.FLINT));
