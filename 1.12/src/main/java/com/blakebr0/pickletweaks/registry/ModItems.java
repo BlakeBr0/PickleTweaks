@@ -18,11 +18,12 @@ import com.blakebr0.pickletweaks.feature.item.ItemPaxel;
 import com.blakebr0.pickletweaks.feature.item.ItemRepairKit;
 import com.blakebr0.pickletweaks.feature.item.ItemRepairKitCustom;
 import com.blakebr0.pickletweaks.feature.item.ItemWateringCan;
-import com.blakebr0.pickletweaks.feature.item.flint.ItemModAxe;
-import com.blakebr0.pickletweaks.feature.item.flint.ItemModHoe;
-import com.blakebr0.pickletweaks.feature.item.flint.ItemModPickaxe;
-import com.blakebr0.pickletweaks.feature.item.flint.ItemModShovel;
-import com.blakebr0.pickletweaks.feature.item.flint.ItemModSword;
+import com.blakebr0.pickletweaks.feature.item.tool.ItemModAxe;
+import com.blakebr0.pickletweaks.feature.item.tool.ItemModHoe;
+import com.blakebr0.pickletweaks.feature.item.tool.ItemModPickaxe;
+import com.blakebr0.pickletweaks.feature.item.tool.ItemModShears;
+import com.blakebr0.pickletweaks.feature.item.tool.ItemModShovel;
+import com.blakebr0.pickletweaks.feature.item.tool.ItemModSword;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -87,6 +88,7 @@ public class ModItems {
 	public static ItemModShovel itemFlintShovel = new ItemModShovel("flint_shovel", MATERIAL_FLINT);
 	public static ItemModAxe itemFlintAxe = new ItemModAxe("flint_axe", MATERIAL_FLINT);
 	public static ItemModHoe itemFlintHoe = new ItemModHoe("flint_hoe", MATERIAL_FLINT);
+	public static ItemModShears itemFlintShears = new ItemModShears("flint_shears", MATERIAL_FLINT);
 	public static ItemPaxel itemFlintPaxel = new ItemPaxel("flint_paxel", MATERIAL_FLINT);
 	
 	public static void init() {
@@ -134,6 +136,7 @@ public class ModItems {
 			registry.register(itemFlintShovel, "flint_shovel", StackHelper.to(Items.FLINT));
 			registry.register(itemFlintAxe, "flint_axe", StackHelper.to(Items.FLINT));
 			registry.register(itemFlintHoe, "flint_hoe", StackHelper.to(Items.FLINT));
+			registry.register(itemFlintShears, "flint_shears", StackHelper.to(Items.FLINT));
 			registry.register(itemFlintPaxel, "flint_paxel", StackHelper.to(Items.FLINT));
 		}
 	}

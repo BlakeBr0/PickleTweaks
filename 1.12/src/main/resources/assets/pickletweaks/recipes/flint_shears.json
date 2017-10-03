@@ -1,0 +1,23 @@
+{
+  "conditions": [
+     {
+	    "type": "minecraft:item_exists",
+		"item": "pickletweaks:flint_shears"
+	 }
+  ],
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "F ",
+    " F"
+  ],
+  "key": {
+    "F": {
+      "item": "minecraft:flint",
+	  "data": 0
+    }
+  },
+  "result": {
+    "item": "pickletweaks:flint_shears",
+	"data": 0
+  }
+}
