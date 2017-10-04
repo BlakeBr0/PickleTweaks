@@ -18,6 +18,7 @@ import net.minecraftforge.oredict.OreDictionary;
 public class ItemPaxel extends ItemTool implements IRepairMaterial, IEnableable {
 	
 	private ItemStack repairMaterial;
+	private String oreRepairMaterial = null;
 
 	public ItemPaxel(String name, ToolMaterial material) {
 		super(4, -3.2F, material, new HashSet<>());
@@ -27,6 +28,11 @@ public class ItemPaxel extends ItemTool implements IRepairMaterial, IEnableable 
 		this.setHarvestLevel("shovel", material.getHarvestLevel());
 		this.setHarvestLevel("axe", material.getHarvestLevel());
 		this.setMaxDamage((int) (material.getMaxUses() * 1.5));
+	}
+	
+	public ItemPaxel(String name, ToolMaterial material, String repairMaterial) {
+		this(name, material);
+		this.oreRepairMaterial = repairMaterial;
 	}
 	
 	@Override
@@ -81,7 +87,8 @@ public class ItemPaxel extends ItemTool implements IRepairMaterial, IEnableable 
 	
 	@Override
     public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        return OreDictionary.itemMatches(getRepairMaterial(), repair, false);
+        return oreRepairMaterial != null ? OreDictionary.getOres(oreRepairMaterial).stream().anyMatch(stack -> stack.isItemEqual(repair))
+        		: OreDictionary.itemMatches(getRepairMaterial(), repair, false);
     }
 
 	@Override

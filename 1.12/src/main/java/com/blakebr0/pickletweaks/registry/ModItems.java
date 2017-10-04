@@ -69,18 +69,18 @@ public class ModItems {
 	public static final ToolMaterial MATERIAL_STEEL = EnumHelper.addToolMaterial("PT:STEEL", 2, 500, 6.5F, 2.5F, 10);
 	public static final ToolMaterial MATERIAL_PLATINUM = EnumHelper.addToolMaterial("PT:PLATINUM", 4, 1700, 9.0F, 4.0F, 9);
 	
-	public static ItemPaxel itemAluminumPaxel = new ItemPaxel("aluminum_paxel", MATERIAL_ALUMINUM);
-	public static ItemPaxel itemCopperPaxel = new ItemPaxel("copper_paxel", MATERIAL_COPPER);
-	public static ItemPaxel itemTinPaxel = new ItemPaxel("tin_paxel", MATERIAL_TIN);
-	public static ItemPaxel itemBronzePaxel = new ItemPaxel("bronze_paxel", MATERIAL_BRONZE);
-	public static ItemPaxel itemLeadPaxel = new ItemPaxel("lead_paxel", MATERIAL_LEAD);
-	public static ItemPaxel itemSilverPaxel = new ItemPaxel("silver_paxel", MATERIAL_SILVER);
-	public static ItemPaxel itemNickelPaxel = new ItemPaxel("nickel_paxel", MATERIAL_NICKEL);
-	public static ItemPaxel itemInvarPaxel = new ItemPaxel("invar_paxel", MATERIAL_INVAR);
-	public static ItemPaxel itemConstantanPaxel = new ItemPaxel("constantan_paxel", MATERIAL_CONSTANTAN);
-	public static ItemPaxel itemElectrumPaxel = new ItemPaxel("electrum_paxel", MATERIAL_ELECTRUM);
-	public static ItemPaxel itemSteelPaxel = new ItemPaxel("steel_paxel", MATERIAL_STEEL);
-	public static ItemPaxel itemPlatinumPaxel = new ItemPaxel("platinum_paxel", MATERIAL_PLATINUM);
+	public static ItemPaxel itemAluminumPaxel = new ItemPaxel("aluminum_paxel", MATERIAL_ALUMINUM, "ingotAluminum");
+	public static ItemPaxel itemCopperPaxel = new ItemPaxel("copper_paxel", MATERIAL_COPPER, "ingotCopper");
+	public static ItemPaxel itemTinPaxel = new ItemPaxel("tin_paxel", MATERIAL_TIN, "ingotTin");
+	public static ItemPaxel itemBronzePaxel = new ItemPaxel("bronze_paxel", MATERIAL_BRONZE, "ingotBronze");
+	public static ItemPaxel itemLeadPaxel = new ItemPaxel("lead_paxel", MATERIAL_LEAD, "ingotLead");
+	public static ItemPaxel itemSilverPaxel = new ItemPaxel("silver_paxel", MATERIAL_SILVER, "ingotSilver");
+	public static ItemPaxel itemNickelPaxel = new ItemPaxel("nickel_paxel", MATERIAL_NICKEL, "ingotNickel");
+	public static ItemPaxel itemInvarPaxel = new ItemPaxel("invar_paxel", MATERIAL_INVAR, "ingotInvar");
+	public static ItemPaxel itemConstantanPaxel = new ItemPaxel("constantan_paxel", MATERIAL_CONSTANTAN, "ingotConstantan");
+	public static ItemPaxel itemElectrumPaxel = new ItemPaxel("electrum_paxel", MATERIAL_ELECTRUM, "ingotElectrum");
+	public static ItemPaxel itemSteelPaxel = new ItemPaxel("steel_paxel", MATERIAL_STEEL, "ingotSteel");
+	public static ItemPaxel itemPlatinumPaxel = new ItemPaxel("platinum_paxel", MATERIAL_PLATINUM, "ingotPlatinum");
 
 	public static final ToolMaterial MATERIAL_FLINT = EnumHelper.addToolMaterial("PT:FLINT", 1, 157, 3.8F, 1.0F, 10); 
 	public static ItemModSword itemFlintSword = new ItemModSword("flint_sword", MATERIAL_FLINT);
