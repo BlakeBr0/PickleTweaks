@@ -115,20 +115,20 @@ public class ModItems {
 		registry.register(itemGoldenPaxel, "golden_paxel", StackHelper.to(Items.GOLD_INGOT));
 		registry.register(itemDiamondPaxel, "diamond_paxel", StackHelper.to(Items.DIAMOND));
 		
-		// TODO: mod support configs
-		// TODO: repair materials
-		registry.register(itemAluminumPaxel, "aluminum_paxel");
-		registry.register(itemCopperPaxel, "copper_paxel");
-		registry.register(itemTinPaxel, "tin_paxel");
-		registry.register(itemBronzePaxel, "bronze_paxel");
-		registry.register(itemLeadPaxel, "lead_paxel");
-		registry.register(itemSilverPaxel, "silver_paxel");
-		registry.register(itemNickelPaxel, "nickel_paxel");
-		registry.register(itemInvarPaxel, "invar_paxel");
-		registry.register(itemConstantanPaxel, "constantan_paxel");
-		registry.register(itemElectrumPaxel, "electrum_paxel");
-		registry.register(itemSteelPaxel, "steel_paxel");
-		registry.register(itemPlatinumPaxel, "platinum_paxel");
+		if (ModConfig.confModSupportPaxels) {
+			registry.register(itemAluminumPaxel, "aluminum_paxel");
+			registry.register(itemCopperPaxel, "copper_paxel");
+			registry.register(itemTinPaxel, "tin_paxel");
+			registry.register(itemBronzePaxel, "bronze_paxel");
+			registry.register(itemLeadPaxel, "lead_paxel");
+			registry.register(itemSilverPaxel, "silver_paxel");
+			registry.register(itemNickelPaxel, "nickel_paxel");
+			registry.register(itemInvarPaxel, "invar_paxel");
+			registry.register(itemConstantanPaxel, "constantan_paxel");
+			registry.register(itemElectrumPaxel, "electrum_paxel");
+			registry.register(itemSteelPaxel, "steel_paxel");
+			registry.register(itemPlatinumPaxel, "platinum_paxel");
+		}
 		
 		if (ModConfig.confFlintTools) {
 			registry.register(itemFlintSword, "flint_sword", StackHelper.to(Items.FLINT));

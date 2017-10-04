@@ -34,6 +34,7 @@ public class ModConfig {
 	public static boolean confDyePowder;
 	public static boolean confMortarAndPestle;
 	public static boolean confPaxels;
+	public static boolean confModSupportPaxels;
 	public static boolean confFlintTools;
 	public static boolean confRepairKits;
 
@@ -133,6 +134,7 @@ public class ModConfig {
 		category = "paxels";
 		config.setCategoryComment(category, "Paxel settings.");
 		confPaxels = config.getBoolean("paxels", category, true, "Should the paxels be enabled?");
+		confModSupportPaxels = config.getBoolean("mod_support_paxels", category, true, "Should the mod support paxels be enabled? Requires 'paxels' to be enabled.");
 
 		category = "zebras";
 		config.setCategoryComment(category, "Random stuff that is disabled by default.");

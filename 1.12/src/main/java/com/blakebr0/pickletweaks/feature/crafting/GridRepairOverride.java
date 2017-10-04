@@ -27,7 +27,8 @@ public class GridRepairOverride {
 				+ "\n- Example: minecraft:stone_pickaxe=minecraft:apple:0"
 				+ "\n- Note: the tool doesn't have a meta. If no meta is put for the material it will automatically become 0."
 				+ "\n- You can also use the OreDictionary for repair materials."
-				+ "\n- Example: ore:ingotIron would make all items in ingotIron a valid material.");
+				+ "\n- Example: ore:ingotIron would make all items in ingotIron a valid material."
+				+ "\n- Note: additions using OreDictionary seem to require a restart.");
 		
 		for (String value : values) {
 			String[] parts = value.split("=");
