@@ -6,7 +6,9 @@ import com.blakebr0.cucumber.lib.Colors;
 import com.blakebr0.cucumber.util.Utils;
 import com.blakebr0.pickletweaks.config.ModConfig;
 
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Enchantments;
 import net.minecraft.item.ItemHoe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
@@ -70,9 +72,10 @@ public class TweakToolBreaking {
         		&& !(stack.getItem() instanceof ItemHoe)) { return; }
 		
 		if (stack.isItemStackDamageable()) {
-			if (stack.getItemDamage() >= stack.getMaxDamage()) {
+			int unbreaking = EnchantmentHelper.getEnchantmentLevel(Enchantments.UNBREAKING, stack);
+			if (stack.getItemDamage() >= stack.getMaxDamage() - (unbreaking > 0 ? 1 : 0)) {
 				if (!(stack.getItem() instanceof ItemHoe)) {
-					stack.damageItem(-1, player);
+					stack.setItemDamage(stack.getMaxDamage() - 1);
 				}
 				event.setAmount(0.0F);
 			}

@@ -37,7 +37,7 @@ public class TweakHoeUselessifier {
     @SubscribeEvent
     public void onHurt(LivingHurtEvent event) {
         if (!(event.getSource().getDamageType().equals("player"))) { return; }
-        if(!(event.getSource().getTrueSource() instanceof EntityPlayer)){ return; }
+        if (!(event.getSource().getTrueSource() instanceof EntityPlayer)) { return; }
         
         EntityPlayer player = (EntityPlayer) event.getSource().getTrueSource();
         ItemStack stack = player.getHeldItemMainhand();
