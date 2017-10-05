@@ -1,0 +1,48 @@
+{
+  "conditions": [
+     {
+	    "type": "minecraft:item_exists",
+		"item": "pickletweaks:nickel_paxel"
+	 },
+	 {
+        "type": "minecraft:item_exists",
+        "item": "thermalfoundation:tool.axe_nickel"
+     },
+     {
+        "type": "minecraft:item_exists",
+        "item": "thermalfoundation:tool.pickaxe_nickel"
+     },
+     {
+        "type": "minecraft:item_exists",
+        "item": "thermalfoundation:tool.shovel_nickel"
+     }
+  ],
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "ABC",
+    " S ",
+    " S "
+  ],
+  "key": {
+    "A": {
+      "item": "thermalfoundation:tool.axe_nickel",
+      "data": 0
+    },
+    "B": {
+      "item": "thermalfoundation:tool.pickaxe_nickel",
+      "data": 0
+    },
+    "C": {
+      "item": "thermalfoundation:tool.shovel_nickel",
+      "data": 0
+    },
+	"S": {
+      "type": "forge:ore_dict",
+      "ore": "stickWood"
+    }
+  },
+  "result": {
+    "item": "pickletweaks:nickel_paxel",
+	"data": 0
+  }
+}

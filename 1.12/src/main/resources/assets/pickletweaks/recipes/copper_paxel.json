@@ -1,0 +1,48 @@
+{
+  "conditions": [
+     {
+	    "type": "minecraft:item_exists",
+		"item": "pickletweaks:copper_paxel"
+	 },
+	 {
+        "type": "minecraft:item_exists",
+        "item": "thermalfoundation:tool.axe_copper"
+     },
+     {
+        "type": "minecraft:item_exists",
+        "item": "thermalfoundation:tool.pickaxe_copper"
+     },
+     {
+        "type": "minecraft:item_exists",
+        "item": "thermalfoundation:tool.shovel_copper"
+     }
+  ],
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "ABC",
+    " S ",
+    " S "
+  ],
+  "key": {
+    "A": {
+      "item": "thermalfoundation:tool.axe_copper",
+      "data": 0
+    },
+    "B": {
+      "item": "thermalfoundation:tool.pickaxe_copper",
+      "data": 0
+    },
+    "C": {
+      "item": "thermalfoundation:tool.shovel_copper",
+      "data": 0
+    },
+	"S": {
+      "type": "forge:ore_dict",
+      "ore": "stickWood"
+    }
+  },
+  "result": {
+    "item": "pickletweaks:copper_paxel",
+	"data": 0
+  }
+}
