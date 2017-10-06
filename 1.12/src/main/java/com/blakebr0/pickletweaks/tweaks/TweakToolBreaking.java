@@ -18,6 +18,7 @@ import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.UseHoeEvent;
+import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
@@ -37,6 +38,22 @@ public class TweakToolBreaking {
         if (stack.isItemStackDamageable()) {
         	if (stack.getItemDamage() >= stack.getMaxDamage() - (stack.getItem() instanceof ItemSword ? 1 : 0)) {
         		event.setNewSpeed(0.0F);
+        	}
+        }
+	}
+	
+	@SubscribeEvent(priority = EventPriority.HIGH)
+	public void onBreakBlock(BlockEvent.BreakEvent event) {
+		if (!ModConfig.confBrokenTools) { return; }
+		if (event.getPlayer() == null) { return; }
+
+		ItemStack stack = event.getPlayer().getHeldItemMainhand();
+		if (stack.isEmpty()) { return; }
+        if (!(stack.getItem() instanceof ItemTool) && !(stack.getItem() instanceof ItemSword)) { return; }
+
+        if (stack.isItemStackDamageable()) {
+        	if (stack.getItemDamage() >= stack.getMaxDamage() - (stack.getItem() instanceof ItemSword ? 1 : 0)) {
+        		event.setCanceled(true);
         	}
         }
 	}
