@@ -25,80 +25,81 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class FeatureSwordInfo {
-	
+
 	@SubscribeEvent
-	public void onEntityKilled(LivingDeathEvent event){
+	public void onEntityKilled(LivingDeathEvent event) {
 		if (!ModConfig.confSwordInfoTooltip) { return; }
-        DamageSource source = event.getSource();
-        Entity entity = source.getTrueSource();
-        if(entity != null && entity instanceof EntityPlayer){
-        	EntityPlayer player = (EntityPlayer)entity;
-            ItemStack stack = player.getHeldItemMainhand();
-            if(!StackHelper.isNull(stack) && stack.getItem() != null){
-	            if(stack.getItem() instanceof ItemSword){
+		DamageSource source = event.getSource();
+		Entity entity = source.getTrueSource();
+		if (entity != null && entity instanceof EntityPlayer) {
+			EntityPlayer player = (EntityPlayer) entity;
+			ItemStack stack = player.getHeldItemMainhand();
+			if (!StackHelper.isNull(stack) && stack.getItem() != null) {
+				if (stack.getItem() instanceof ItemSword) {
 					NBTTagCompound tag = stack.getOrCreateSubCompound(PickleTweaks.MOD_ID);
-					if(!((tag.getInteger("EnemiesKilled") + 1) >= Integer.MAX_VALUE)){
+					if (!((tag.getInteger("EnemiesKilled") + 1) >= Integer.MAX_VALUE)) {
 						tag.setInteger("EnemiesKilled", tag.getInteger("EnemiesKilled") + 1);
 					}
-	            }
-            }
-        }
+				}
+			}
+		}
 	}
-	
+
 	@SubscribeEvent
-	public void onEntityDamaged(LivingHurtEvent event){
+	public void onEntityDamaged(LivingHurtEvent event) {
 		if (!ModConfig.confSwordInfoTooltip) { return; }
-        DamageSource source = event.getSource();
-        Entity entity = source.getTrueSource();
-        if(entity != null && entity instanceof EntityPlayer){
-        	EntityPlayer player = (EntityPlayer)entity;
-            ItemStack stack = player.getHeldItemMainhand();
-            if(!StackHelper.isNull(stack) && stack.getItem() != null){
-	            if(stack.getItem() instanceof ItemSword){
+		DamageSource source = event.getSource();
+		Entity entity = source.getTrueSource();
+		if (entity != null && entity instanceof EntityPlayer) {
+			EntityPlayer player = (EntityPlayer) entity;
+			ItemStack stack = player.getHeldItemMainhand();
+			if (!StackHelper.isNull(stack) && stack.getItem() != null) {
+				if (stack.getItem() instanceof ItemSword) {
 					NBTTagCompound tag = stack.getOrCreateSubCompound(PickleTweaks.MOD_ID);
-					if(!((tag.getInteger("DamageDealt") + event.getAmount()) >= Integer.MAX_VALUE) && stack.getItemDamage() < stack.getMaxDamage() - 1) {
+					if (!((tag.getInteger("DamageDealt") + event.getAmount()) >= Integer.MAX_VALUE)
+							&& stack.getItemDamage() < stack.getMaxDamage() - 1) {
 						EntityLivingBase living = event.getEntityLiving();
 						if (living.getHealth() < event.getAmount()) {
-							tag.setInteger("DamageDealt", tag.getInteger("DamageDealt") + (int)living.getHealth());
+							tag.setInteger("DamageDealt", tag.getInteger("DamageDealt") + (int) living.getHealth());
 						} else {
-							tag.setInteger("DamageDealt", tag.getInteger("DamageDealt") + (int)event.getAmount());
+							tag.setInteger("DamageDealt", tag.getInteger("DamageDealt") + (int) event.getAmount());
 						}
 					}
-	            }
-            }
-        }
+				}
+			}
+		}
 	}
 
 	@SideOnly(Side.CLIENT)
 	@SubscribeEvent
-	public void addSwordInfoTooltip(ItemTooltipEvent event){
+	public void addSwordInfoTooltip(ItemTooltipEvent event) {
 		if (!ModConfig.confSwordInfoTooltip) { return; }
-        if (event.getEntityPlayer() == null){ return; }
-            
-        ItemStack stack = event.getItemStack();
-        ListIterator<String> tooltip = event.getToolTip().listIterator();
-        
-        if(stack.getItem() instanceof ItemSword){
-        	ItemSword sword = (ItemSword)stack.getItem();
-            boolean shift = false;
-            if(Keyboard.isCreated()){
-                shift = Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT);
-            }
-        	
-            while(tooltip.hasNext()){
-            	tooltip.next();
-            	if(shift){
-            		tooltip.add(Utils.localize("tooltip.pt.durability") + " " + getDurability(stack));
-            		tooltip.add(Utils.localize("tooltip.pt.enemies_killed") + " " + getEnemiesKilled(stack));
-            		tooltip.add(Utils.localize("tooltip.pt.damage_dealt") + " " + getDamageDealt(stack));
-            	} else {
-            		tooltip.add(Utils.localize("tooltip.pt.hold_shift_for_info"));
-            	}
-            	break;
-            }
-        }
+		if (event.getEntityPlayer() == null) { return; }
+
+		ItemStack stack = event.getItemStack();
+		ListIterator<String> tooltip = event.getToolTip().listIterator();
+
+		if (stack.getItem() instanceof ItemSword) {
+			ItemSword sword = (ItemSword) stack.getItem();
+			boolean shift = false;
+			if (Keyboard.isCreated()) {
+				shift = Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT);
+			}
+
+			while (tooltip.hasNext()) {
+				tooltip.next();
+				if (shift) {
+					tooltip.add(Utils.localize("tooltip.pt.durability") + " " + getDurability(stack));
+					tooltip.add(Utils.localize("tooltip.pt.enemies_killed") + " " + getEnemiesKilled(stack));
+					tooltip.add(Utils.localize("tooltip.pt.damage_dealt") + " " + getDamageDealt(stack));
+				} else {
+					tooltip.add(Utils.localize("tooltip.pt.hold_shift_for_info"));
+				}
+				break;
+			}
+		}
 	}
-	
+
 	public String getDurability(ItemStack stack) {
 		if (stack.getMaxDamage() == -1) {
 			return Utils.localize("tooltip.pt.unbreakable");
@@ -106,22 +107,22 @@ public class FeatureSwordInfo {
 		int durability = stack.getMaxDamage() - stack.getItemDamage();
 		return durability + Colors.GRAY + "/" + Colors.WHITE + stack.getMaxDamage();
 	}
-	
-	public int getEnemiesKilled(ItemStack stack){
+
+	public int getEnemiesKilled(ItemStack stack) {
 		NBTTagCompound tag = stack.getOrCreateSubCompound(PickleTweaks.MOD_ID);
-		if(tag.hasKey("EnemiesKilled")){
-			if((tag.getInteger("EnemiesKilled") + 1) >= Integer.MAX_VALUE){
+		if (tag.hasKey("EnemiesKilled")) {
+			if ((tag.getInteger("EnemiesKilled") + 1) >= Integer.MAX_VALUE) {
 				return Integer.MAX_VALUE;
 			}
 			return tag.getInteger("EnemiesKilled");
 		}
 		return 0;
 	}
-	
-	public int getDamageDealt(ItemStack stack){
+
+	public int getDamageDealt(ItemStack stack) {
 		NBTTagCompound tag = stack.getOrCreateSubCompound(PickleTweaks.MOD_ID);
-		if(tag.hasKey("DamageDealt")){
-			if((tag.getInteger("DamageDealt") + 1) >= Integer.MAX_VALUE){
+		if (tag.hasKey("DamageDealt")) {
+			if ((tag.getInteger("DamageDealt") + 1) >= Integer.MAX_VALUE) {
 				return Integer.MAX_VALUE;
 			}
 			return tag.getInteger("DamageDealt");
