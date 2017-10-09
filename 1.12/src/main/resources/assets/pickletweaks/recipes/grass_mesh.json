@@ -6,7 +6,7 @@
 	 },
      {
         "type": "minecraft:item_exists",
-        "item": "pickletweaks:grass_fibre"
+        "item": "pickletweaks:grass_fiber"
      }
   ],
   "type": "forge:ore_shaped",
@@ -21,7 +21,7 @@
       "ore": "stickWood"
     },
 	"S": {
-      "item": "pickletweaks:grass_fibre",
+      "item": "pickletweaks:grass_fiber",
       "data": 0
     }
   },

@@ -6,10 +6,10 @@ import com.blakebr0.cucumber.item.ItemBase;
 import com.blakebr0.pickletweaks.PickleTweaks;
 import com.blakebr0.pickletweaks.config.ModConfig;
 
-public class ItemGrassFibre extends ItemBase implements IEnableable {
+public class ItemGrassFiber extends ItemBase implements IEnableable {
 	
-	public ItemGrassFibre() {
-		super("pt.grass_fibre");
+	public ItemGrassFiber() {
+		super("pt.grass_fiber");
 		this.setCreativeTab(PickleTweaks.tab);
 	}
 
