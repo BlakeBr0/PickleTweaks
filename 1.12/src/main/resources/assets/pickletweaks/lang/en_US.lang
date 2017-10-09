@@ -80,7 +80,7 @@ tooltip.pt.mining_level=Mining Level:
 tooltip.pt.mining_speed=Mining Speed:
 tooltip.pt.durability=Durability:
 tooltip.pt.blocks_broken=Blocks Broken:
-
+tooltip.pt.ammo=Ammo:
 tooltip.pt.attack_damage=Attack Damage:
 tooltip.pt.enemies_killed=Enemies Killed:
 tooltip.pt.damage_dealt=Damage Dealt:
