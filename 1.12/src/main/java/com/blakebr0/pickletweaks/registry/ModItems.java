@@ -1,7 +1,6 @@
 package com.blakebr0.pickletweaks.registry;
 
 import com.blakebr0.cucumber.helper.StackHelper;
-import com.blakebr0.cucumber.item.ItemBase;
 import com.blakebr0.cucumber.registry.ModRegistry;
 import com.blakebr0.pickletweaks.PickleTweaks;
 import com.blakebr0.pickletweaks.config.ModConfig;
