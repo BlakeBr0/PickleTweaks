@@ -106,7 +106,7 @@ public class ModConfig {
 		config.addCustomCategoryComment(category, "All the different things this mod tweaks.");
 
 		confFlintDrop = config.getBoolean("flint_drop", category, true, "Should Flint dropped from Gravel be replaced with the item defined in 'flint_drop_item'?");
-		confBrokenTools = config.getBoolean("tools_dont_break", category, false, "EXPERIMENTAL: Once tools have 1 use left, they become ineffective.");
+		confBrokenTools = config.getBoolean("tools_dont_break", category, true, "Once tools have 1 use left, they become ineffective.");
 		String[] tools = config.getStringList("useless_tools", category, new String[0], 
 				"All tools listed will not be able to mine blocks." + "\n- Syntax: modid:itemid"
 						+ "\n- Example: minecraft:stone_pickaxe");
