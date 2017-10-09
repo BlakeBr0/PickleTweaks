@@ -2,6 +2,7 @@ package com.blakebr0.pickletweaks.feature.crafting;
 
 import com.blakebr0.pickletweaks.config.ModConfig;
 import com.blakebr0.pickletweaks.feature.item.ItemRepairKit;
+import com.blakebr0.pickletweaks.feature.item.ItemRepairKitCustom;
 
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.Item;
@@ -85,6 +86,15 @@ public class GridRepairRecipe extends Impl<IRecipe> implements IRecipe {
 				}
 				ItemRepairKit kit = (ItemRepairKit) mat.getItem();
 				if (ItemRepairKit.isKitValid(tool, kit.getKit(mat))) {
+					repairKit = true;
+				}
+				continue;
+			} else if (!repairKit && mat.getItem() instanceof ItemRepairKitCustom) {
+				if (matCount > 0) {
+					return ItemStack.EMPTY;
+				}
+				ItemRepairKitCustom kit = (ItemRepairKitCustom) mat.getItem();
+				if (ItemRepairKitCustom.isKitValid(tool, kit.getKit(mat))) {
 					repairKit = true;
 				}
 				continue;
