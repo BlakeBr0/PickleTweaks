@@ -8,19 +8,14 @@ item.pt.diamond_apple.name=Diamond Apple
 item.pt.emerald_apple.name=Emerald Apple
 item.pt.watering_can.name=Watering Can
 item.pt.hammer.name=Hammer
+item.pt.grass_fibre.name=Grass Fibre
+item.pt.grass_fibre_mesh.name=Grass Fibre Mesh
 item.pt.mesh.name=Mesh
 item.pt.reinforced_mesh.name=Reinforced Mesh
 item.pt.magnet.name=Magnet
 item.pt.nightvision_goggles.name=Night Vision Goggles
 item.pt.mortar_and_pestle.name=Mortar and Pestle
 item.pt.repair_kit.name=Repair Kit
-
-item.pt.coin_wooden.name=Wooden Coin
-item.pt.coin_stone.name=Stone Coin
-item.pt.coin_iron.name=Iron Coin
-item.pt.coin_gold.name=Gold Coin
-item.pt.coin_diamond.name=Diamond Coin
-item.pt.coin_emerald.name=Emerald Coin
 
 item.pt.dye_powder_white.name=White Dye Powder
 item.pt.dye_powder_orange.name=Orange Dye Powder
@@ -63,8 +58,18 @@ item.pt.flint_pickaxe.name=Flint Pickaxe
 item.pt.flint_shovel.name=Flint Shovel
 item.pt.flint_axe.name=Flint Axe
 item.pt.flint_hoe.name=Flint Hoe
-item.pt.flint_shears.name=Flint Shears
 item.pt.flint_paxel.name=Flint Paxel
+item.pt.flint_shears.name=Flint Shears
+
+item.pt.coin_wooden.name=Wooden Coin
+item.pt.coin_stone.name=Stone Coin
+item.pt.coin_iron.name=Iron Coin
+item.pt.coin_gold.name=Gold Coin
+item.pt.coin_diamond.name=Diamond Coin
+item.pt.coin_emerald.name=Emerald Coin
+
+item.pt.ppm4_info.name=Information
+item.pt.ppm4_monkas.name=monkaS
 
 # TOOLTIPS
 tooltip.pt.uses_left=Uses Left:

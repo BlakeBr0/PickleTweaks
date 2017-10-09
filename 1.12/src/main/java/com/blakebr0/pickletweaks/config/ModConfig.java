@@ -59,6 +59,7 @@ public class ModConfig {
 	public static boolean confAllowArmor;
 
 	public static boolean confCoin;
+	public static boolean confPPM4;
 
 	@SubscribeEvent
 	public void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent event) {
@@ -140,7 +141,8 @@ public class ModConfig {
 		config.setCategoryComment(category, "Random stuff that is disabled by default.");
 
 		confCoin = config.getBoolean("coins", category, false, "Should the Coins be enabled?");
-
+		confPPM4 = config.getBoolean("ppm4", category, false, "Random items for ppm4 that are useless to anyone else.");
+		
 		if (config.hasChanged()) {
 			config.save();
 		}

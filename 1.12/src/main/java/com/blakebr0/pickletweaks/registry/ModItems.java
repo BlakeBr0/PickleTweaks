@@ -1,6 +1,7 @@
 package com.blakebr0.pickletweaks.registry;
 
 import com.blakebr0.cucumber.helper.StackHelper;
+import com.blakebr0.cucumber.item.ItemBase;
 import com.blakebr0.cucumber.registry.ModRegistry;
 import com.blakebr0.pickletweaks.PickleTweaks;
 import com.blakebr0.pickletweaks.config.ModConfig;
@@ -9,11 +10,13 @@ import com.blakebr0.pickletweaks.feature.item.ItemCoin;
 import com.blakebr0.pickletweaks.feature.item.ItemDiamondApple;
 import com.blakebr0.pickletweaks.feature.item.ItemDyePowder;
 import com.blakebr0.pickletweaks.feature.item.ItemEmeraldApple;
+import com.blakebr0.pickletweaks.feature.item.ItemGrassFibre;
 import com.blakebr0.pickletweaks.feature.item.ItemHammer;
 import com.blakebr0.pickletweaks.feature.item.ItemMagnet;
 import com.blakebr0.pickletweaks.feature.item.ItemMesh;
 import com.blakebr0.pickletweaks.feature.item.ItemMortarAndPestle;
 import com.blakebr0.pickletweaks.feature.item.ItemNightvisionGoggles;
+import com.blakebr0.pickletweaks.feature.item.ItemPPM4;
 import com.blakebr0.pickletweaks.feature.item.ItemPaxel;
 import com.blakebr0.pickletweaks.feature.item.ItemRepairKit;
 import com.blakebr0.pickletweaks.feature.item.ItemRepairKitCustom;
@@ -38,11 +41,12 @@ public class ModItems {
 	public static ItemEmeraldApple itemEmeraldApple = new ItemEmeraldApple();
 	public static ItemWateringCan itemWateringCan = new ItemWateringCan();
 	public static ItemHammer itemHammer = new ItemHammer();
+	public static ItemGrassFibre itemGrassFibre = new ItemGrassFibre();
+	public static ItemMesh itemGrassFibreMesh = new ItemMesh("grass_fibre_mesh", 19);
 	public static ItemMesh itemMesh = new ItemMesh("mesh", 63);
 	public static ItemMesh itemReinforcedMesh = new ItemMesh("reinforced_mesh", 511);
 	public static ItemMagnet itemMagnet = new ItemMagnet();
 	public static ItemNightvisionGoggles itemNightvisionGoggles = new ItemNightvisionGoggles();
-	public static ItemCoin itemCoin = new ItemCoin();
 	public static ItemMortarAndPestle itemMortarAndPestle = new ItemMortarAndPestle();
 	public static ItemDyePowder itemDyePowder = new ItemDyePowder();
 	public static ItemRepairKit itemRepairKit = new ItemRepairKit();
@@ -91,24 +95,28 @@ public class ModItems {
 	public static ItemModShears itemFlintShears = new ItemModShears("flint_shears", MATERIAL_FLINT);
 	public static ItemPaxel itemFlintPaxel = new ItemPaxel("flint_paxel", MATERIAL_FLINT);
 	
+	public static ItemCoin itemCoin = new ItemCoin();
+	public static ItemPPM4 itemPPM4 = new ItemPPM4();
+	
 	public static void init() {
 		final ModRegistry registry = PickleTweaks.REGISTRY;
 		
 		registry.register(itemCoalPiece, "coal_piece");		
 		registry.register(itemDiamondApple, "diamond_apple");
 		registry.register(itemEmeraldApple, "emerald_apple");		
-		registry.register(itemWateringCan, "watering_can");		
-		registry.register(itemHammer, "hammer");		
+		registry.register(itemWateringCan, "watering_can");
+		registry.register(itemHammer, "hammer");
+		registry.register(itemGrassFibre, "grass_fibre");
+		registry.register(itemGrassFibreMesh, "grass_mesh");
 		registry.register(itemMesh, "mesh");
 		registry.register(itemReinforcedMesh, "reinforced_mesh");		
 		registry.register(itemMagnet, "magnet");
 		registry.register(itemNightvisionGoggles, "nightvision_goggles");		
-		registry.register(itemCoin, "coin");
 		registry.register(itemMortarAndPestle, "mortar_and_pestle");
 		registry.register(itemDyePowder, "dye_powder");
 		registry.register(itemRepairKit, "repair_kit");
 		registry.register(itemRepairKitCustom, "repair_kit_custom");
-		
+
 		registry.register(itemWoodenPaxel, "wooden_paxel", StackHelper.to(Blocks.PLANKS, 1, OreDictionary.WILDCARD_VALUE));
 		registry.register(itemStonePaxel, "stone_paxel", StackHelper.to(Blocks.COBBLESTONE));
 		registry.register(itemIronPaxel, "iron_paxel", StackHelper.to(Items.IRON_INGOT));
@@ -136,8 +144,11 @@ public class ModItems {
 			registry.register(itemFlintShovel, "flint_shovel", StackHelper.to(Items.FLINT));
 			registry.register(itemFlintAxe, "flint_axe", StackHelper.to(Items.FLINT));
 			registry.register(itemFlintHoe, "flint_hoe", StackHelper.to(Items.FLINT));
-			registry.register(itemFlintShears, "flint_shears", StackHelper.to(Items.FLINT));
 			registry.register(itemFlintPaxel, "flint_paxel", StackHelper.to(Items.FLINT));
+			registry.register(itemFlintShears, "flint_shears", StackHelper.to(Items.FLINT));
 		}
+		
+		registry.register(itemCoin, "coin");
+		registry.register(itemPPM4, "ppm4");
 	}
 }

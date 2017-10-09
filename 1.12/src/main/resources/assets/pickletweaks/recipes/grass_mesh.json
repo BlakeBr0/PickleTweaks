@@ -1,0 +1,32 @@
+{
+  "conditions": [
+     {
+	    "type": "minecraft:item_exists",
+		"item": "pickletweaks:grass_mesh"
+	 },
+     {
+        "type": "minecraft:item_exists",
+        "item": "pickletweaks:grass_fibre"
+     }
+  ],
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "ISI",
+    "SSS",
+    "ISI"
+  ],
+  "key": {
+    "I": {
+      "type": "forge:ore_dict",
+      "ore": "stickWood"
+    },
+	"S": {
+      "item": "pickletweaks:grass_fibre",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "pickletweaks:grass_mesh",
+	"data": 0
+  }
+}

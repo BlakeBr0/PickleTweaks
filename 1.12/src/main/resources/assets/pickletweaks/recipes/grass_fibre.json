@@ -1,0 +1,28 @@
+{
+  "type": "forge:ore_shapeless",
+  "conditions": [
+     {
+	    "type": "minecraft:item_exists",
+		"item": "pickletweaks:grass_fibre"
+	 }
+  ],
+  "ingredients": [
+    {
+      "item": "minecraft:tallgrass",
+      "data": 1
+    },
+    {
+      "item": "minecraft:tallgrass",
+      "data": 1
+    },
+    {
+      "item": "minecraft:tallgrass",
+      "data": 1
+    }
+  ],
+  "result": {
+    "item": "pickletweaks:grass_fibre",
+	"count": 1,
+    "data": 0
+  }
+}
