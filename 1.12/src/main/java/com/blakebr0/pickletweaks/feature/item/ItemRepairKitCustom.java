@@ -12,7 +12,6 @@ import com.blakebr0.cucumber.item.ItemMeta;
 import com.blakebr0.cucumber.util.Utils;
 import com.blakebr0.pickletweaks.PickleTweaks;
 import com.blakebr0.pickletweaks.config.ModConfig;
-import com.blakebr0.pickletweaks.feature.crafting.GridRepairOverride;
 import com.blakebr0.pickletweaks.registry.ModItems;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -162,13 +161,13 @@ public class ItemRepairKitCustom extends ItemMeta implements IEnableable {
 		Object rep = kit.representative;
 		Item item = tool.getItem();
 		if (rep instanceof String) {
-			String ore = ((String) rep).substring(4);
+			String ore = (String) rep;
 			if (OreDictionary.doesOreNameExist(ore)) {
-				return OreDictionary.getOres(ore).stream().anyMatch(repair -> item.getIsRepairable(tool, repair) || GridRepairOverride.hasOverride(tool, repair));
+				return OreDictionary.getOres(ore).stream().anyMatch(repair -> item.getIsRepairable(tool, repair));
 			}
 		} else if (rep instanceof ItemStack) {
 			ItemStack stack = (ItemStack) rep;
-			return item.getIsRepairable(tool, stack) || GridRepairOverride.hasOverride(tool, stack);
+			return item.getIsRepairable(tool, stack);
 		}
 		return false;
 	}
