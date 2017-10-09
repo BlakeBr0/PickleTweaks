@@ -9,6 +9,7 @@ import com.blakebr0.pickletweaks.config.ModConfig;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Enchantments;
+import net.minecraft.item.ItemBow;
 import net.minecraft.item.ItemHoe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
@@ -17,6 +18,7 @@ import net.minecraft.util.text.translation.I18n;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickItem;
 import net.minecraftforge.event.entity.player.UseHoeEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
@@ -99,6 +101,22 @@ public class TweakToolBreaking {
 		}
 	}
 	
+	@SubscribeEvent
+	public void onUseBow(RightClickItem event) {
+		if (!ModConfig.confBrokenTools) { return; }
+		if (event.getEntityPlayer() == null) { return; }
+		
+		ItemStack stack = event.getItemStack();
+		if (stack.isEmpty()) { return; }
+		if (!(stack.getItem() instanceof ItemBow)) { return; }
+		
+		if (stack.isItemStackDamageable()) {
+			if (stack.getItemDamage() >= stack.getMaxDamage()) {
+				event.setCanceled(true);
+			}
+		}
+	}
+	
 	@SideOnly(Side.CLIENT)
 	@SubscribeEvent
 	public void onItemTooltip(ItemTooltipEvent event) {
@@ -108,7 +126,8 @@ public class TweakToolBreaking {
 		ItemStack stack = event.getItemStack();
 		if (!(stack.getItem() instanceof ItemTool) 
         		&& !(stack.getItem() instanceof ItemSword) 
-        		&& !(stack.getItem() instanceof ItemHoe)) { return; }
+        		&& !(stack.getItem() instanceof ItemHoe)
+        		&& !(stack.getItem() instanceof ItemBow)) { return; }
 
 		ListIterator<String> itr = event.getToolTip().listIterator();
 		if (stack.isItemStackDamageable()) {
