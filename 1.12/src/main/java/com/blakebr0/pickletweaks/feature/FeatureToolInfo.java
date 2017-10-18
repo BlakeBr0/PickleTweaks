@@ -62,6 +62,7 @@ public class FeatureToolInfo {
 	@SubscribeEvent
 	public void onBlockBroken(BreakEvent event) {
 		if (!ModConfig.confToolInfoTooltip) { return; }
+		if (!((event.getState().getBlockHardness(event.getWorld(), event.getPos())) > 0)) { return; }
 		ItemStack stack = event.getPlayer().getHeldItemMainhand();
 		if (!StackHelper.isNull(stack) && stack.getItem() != null) {
 			if (stack.getItem() instanceof ItemTool) {
