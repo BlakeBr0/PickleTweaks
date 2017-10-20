@@ -61,6 +61,7 @@ public class ModConfig {
 
 	public static boolean confCoin;
 	public static boolean confPPM4;
+	public static boolean confSharpeningKits;
 
 	@SubscribeEvent
 	public void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent event) {
@@ -144,6 +145,7 @@ public class ModConfig {
 
 		confCoin = config.getBoolean("coins", category, false, "Should the Coins be enabled?");
 		confPPM4 = config.getBoolean("ppm4", category, false, "Random items for ppm4 that are useless to anyone else.");
+		confSharpeningKits = config.getBoolean("sharpening_kits", category, false, "Disable the ability to use sharpening kits as modifiers in tinkers.");
 		
 		if (config.hasChanged()) {
 			config.save();

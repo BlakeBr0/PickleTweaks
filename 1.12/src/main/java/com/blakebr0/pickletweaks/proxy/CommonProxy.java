@@ -15,12 +15,14 @@ import com.blakebr0.pickletweaks.registry.ModItems;
 import com.blakebr0.pickletweaks.registry.ModRecipes;
 import com.blakebr0.pickletweaks.tweaks.TweakFlintDrop;
 import com.blakebr0.pickletweaks.tweaks.TweakHoeUselessifier;
+import com.blakebr0.pickletweaks.tweaks.TweakSharpeningKit;
 import com.blakebr0.pickletweaks.tweaks.TweakToolBreaking;
 import com.blakebr0.pickletweaks.tweaks.TweakToolUselessifier;
 import com.blakebr0.pickletweaks.tweaks.TweakWeaponUselessifier;
 import com.blakebr0.pickletweaks.tweaks.tools.ToolTweaks;
 
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLInterModComms;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -54,7 +56,9 @@ public class CommonProxy {
 		ModRecipes.init();
 		FMLInterModComms.sendMessage("waila", "register", "com.blakebr0.pickletweaks.feature.FeatureWailaTooltips.callbackRegister");
 		NetworkRegistry.INSTANCE.registerGuiHandler(PickleTweaks.instance, new GuiHandler());
-
+		if (ModConfig.confSharpeningKits && Loader.isModLoaded("tconstruct")) {
+			MinecraftForge.EVENT_BUS.register(new TweakSharpeningKit());
+		}
 	}
 
 	public void postInit(FMLPostInitializationEvent e){
