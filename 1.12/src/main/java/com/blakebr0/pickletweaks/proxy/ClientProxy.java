@@ -1,6 +1,7 @@
 package com.blakebr0.pickletweaks.proxy;
 
 import com.blakebr0.cucumber.item.color.ItemDyeColorHandler;
+import com.blakebr0.pickletweaks.config.ModConfig;
 import com.blakebr0.pickletweaks.feature.item.ItemRepairKit;
 import com.blakebr0.pickletweaks.feature.item.ItemRepairKitCustom;
 import com.blakebr0.pickletweaks.registry.ModItems;
@@ -21,12 +22,16 @@ public class ClientProxy extends CommonProxy {
 	public void init(FMLInitializationEvent e){
 		super.init(e);
 		Minecraft.getMinecraft().getItemColors().registerItemColorHandler(new ItemDyeColorHandler(), ModItems.itemDyePowder);
-		Minecraft.getMinecraft().getItemColors().registerItemColorHandler((stack, tintIndex) -> {
-			return ItemRepairKit.kits.get(stack.getMetadata()).color;
-		}, ModItems.itemRepairKit);
-		Minecraft.getMinecraft().getItemColors().registerItemColorHandler((stack, tintIndex) -> {
-			return ItemRepairKitCustom.kits.get(stack.getMetadata()).color;
-		}, ModItems.itemRepairKitCustom);
+		if (ModConfig.confRepairKits) {
+			Minecraft.getMinecraft().getItemColors().registerItemColorHandler((stack, tintIndex) -> {
+				com.blakebr0.pickletweaks.feature.item.ItemRepairKit.Kit kit = ItemRepairKit.kits.get(stack.getMetadata());
+				return kit != null ? kit.color : 0xFFFFFF;
+			}, ModItems.itemRepairKit);
+			Minecraft.getMinecraft().getItemColors().registerItemColorHandler((stack, tintIndex) -> {
+				com.blakebr0.pickletweaks.feature.item.ItemRepairKitCustom.Kit kit = ItemRepairKitCustom.kits.get(stack.getMetadata());
+				return kit != null ? kit.color : 0xFFFFFF;
+			}, ModItems.itemRepairKitCustom);
+		}
 	}
 		
 	@Override
