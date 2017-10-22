@@ -1,9 +1,12 @@
 package com.blakebr0.pickletweaks.tweaks;
 
+import com.blakebr0.pickletweaks.lib.TFToolHelper;
+
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.config.ConfigCategory;
 import net.minecraftforge.common.config.Configuration;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
 public class TweakToolHarvest {
@@ -40,7 +43,11 @@ public class TweakToolHarvest {
 			
 			Item item = ForgeRegistries.ITEMS.getValue(new ResourceLocation(itemName));
 			
-			item.setHarvestLevel(tool, level);
+			if (itemName.startsWith("thermalfoundation") && Loader.isModLoaded("thermalfoundation")) {
+				TFToolHelper.setHarvestLevel(item, level);
+			} else {
+				item.setHarvestLevel(tool, level);
+			}
 		}
 	}
 }
