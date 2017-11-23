@@ -139,7 +139,9 @@ public class TweakToolBreaking {
 		if (stack.isItemStackDamageable()) {
 			int unbreaking = EnchantmentHelper.getEnchantmentLevel(Enchantments.UNBREAKING, stack);
 			if (isBroken(stack, (unbreaking > 0 ? 1 : 0))) {
-				if (!(stack.getItem() instanceof ItemHoe)) {
+				if (overrides.containsKey(stack.getItem())) {
+					stack.setItemDamage(stack.getMaxDamage() - overrides.get(stack.getItem()));
+				} else {
 					stack.setItemDamage(stack.getMaxDamage() - 1);
 				}
 				event.setAmount(0.0F);
