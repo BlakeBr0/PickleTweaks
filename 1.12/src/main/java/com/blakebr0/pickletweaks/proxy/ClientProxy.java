@@ -21,7 +21,9 @@ public class ClientProxy extends CommonProxy {
 	@Override
 	public void init(FMLInitializationEvent e){
 		super.init(e);
-		Minecraft.getMinecraft().getItemColors().registerItemColorHandler(new ItemDyeColorHandler(), ModItems.itemDyePowder);
+		if (ModConfig.confDyePowder) {
+			Minecraft.getMinecraft().getItemColors().registerItemColorHandler(new ItemDyeColorHandler(), ModItems.itemDyePowder);
+		}
 		if (ModConfig.confRepairKits) {
 			Minecraft.getMinecraft().getItemColors().registerItemColorHandler((stack, tintIndex) -> {
 				com.blakebr0.pickletweaks.feature.item.ItemRepairKit.Kit kit = ItemRepairKit.kits.get(stack.getMetadata());
