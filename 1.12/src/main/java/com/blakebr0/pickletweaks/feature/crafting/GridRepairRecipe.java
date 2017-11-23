@@ -105,8 +105,12 @@ public class GridRepairRecipe extends Impl<IRecipe> implements IRecipe {
 			}
 		}
 		
+		if (!repairKit && matCount == 0) {
+			return ItemStack.EMPTY;
+		}
+		
 		int damage = tool.getMaxDamage() / ModConfig.confRepairCost;
-		if (!repairKit && damage * matCount > tool.getItemDamage() + damage) {
+		if (damage * matCount > tool.getItemDamage() + damage) {
 			return ItemStack.EMPTY;
 		}
 		
