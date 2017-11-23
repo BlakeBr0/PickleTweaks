@@ -23,6 +23,7 @@ public class ItemMesh extends ItemBase implements IEnableable {
 		this.setCreativeTab(PickleTweaks.tab);
 		this.setMaxDamage(uses);
 		this.setMaxStackSize(1);
+		this.setNoRepair();
 	}
 
     @Override
