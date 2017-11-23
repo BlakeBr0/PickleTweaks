@@ -13,6 +13,7 @@ import com.blakebr0.pickletweaks.tweaks.TweakBlockHardness;
 import com.blakebr0.pickletweaks.tweaks.TweakBlockHarvest;
 import com.blakebr0.pickletweaks.tweaks.TweakFlintDrop;
 import com.blakebr0.pickletweaks.tweaks.TweakStackSize;
+import com.blakebr0.pickletweaks.tweaks.TweakToolBreaking;
 import com.blakebr0.pickletweaks.tweaks.TweakToolHarvest;
 
 import net.minecraftforge.common.config.Configuration;
@@ -162,6 +163,7 @@ public class ModConfig {
 		TweakStackSize.configure(config);
 		TweakBlockHardness.configure(config);
 		TweakBlockHarvest.configure(config);
+		TweakToolBreaking.configure(config);
 		TweakToolHarvest.configure(config);
 
 		if (config.hasChanged()) {

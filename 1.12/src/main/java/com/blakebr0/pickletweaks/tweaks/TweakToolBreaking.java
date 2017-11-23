@@ -1,20 +1,27 @@
 package com.blakebr0.pickletweaks.tweaks;
 
+import java.util.HashMap;
 import java.util.ListIterator;
+import java.util.Map;
 
 import com.blakebr0.cucumber.lib.Colors;
 import com.blakebr0.cucumber.util.Utils;
+import com.blakebr0.pickletweaks.PickleTweaks;
 import com.blakebr0.pickletweaks.config.ModConfig;
 
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Enchantments;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemBow;
 import net.minecraft.item.ItemHoe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.item.ItemTool;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.translation.I18n;
+import net.minecraftforge.common.config.ConfigCategory;
+import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
@@ -23,10 +30,49 @@ import net.minecraftforge.event.entity.player.UseHoeEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class TweakToolBreaking {
+	
+	public static Map<Item, Integer> overrides = new HashMap<>();
+	
+	public static void configure(Configuration config) {
+		ConfigCategory category = config.getCategory("tweaks");
+		String[] values = config.get(category.getName(), "tool_breaking_thresholds", new String[0]).getStringList();
+		category.get("tool_breaking_thresholds").setComment("Here you can define custom tool breaking thresholds for tools." 
+						+ "\n- Syntax: modid:itemid=threshold"
+						+ "\n- Example: minecraft:iron_pickaxe=20"
+						+ "\n- This makes it so Iron Pickaxes become useless with 20 uses left."
+						+ "\n- This config is mostly meant for things like TF hammers that use more than 1 durability at a time.");
+
+		for (String value : values) {
+			String[] parts = value.split("=");
+
+			if (parts.length != 2) {
+				PickleTweaks.LOGGER.error("Invalid tool breaking threshold syntax length: " + value);
+				continue;
+			}
+			
+			String[] name = parts[0].split(":");
+			int threshold;
+
+			try {
+				threshold = Integer.valueOf(parts[1]);
+			} catch (NumberFormatException e) {
+				PickleTweaks.LOGGER.error("Invalid tool breaking threshold value: " + value);
+				continue;
+			}
+			
+			Item item = ForgeRegistries.ITEMS.getValue(new ResourceLocation(name[0], name[1]));
+			if (item == null) {
+				continue;
+			}
+			
+			overrides.put(item, threshold);
+		}
+	}
 	
 	@SubscribeEvent(priority = EventPriority.HIGH)
 	public void onBreakingBlock(PlayerEvent.BreakSpeed event) {
@@ -38,7 +84,7 @@ public class TweakToolBreaking {
         if (!(stack.getItem() instanceof ItemTool) && !(stack.getItem() instanceof ItemSword)) { return; }
 
         if (stack.isItemStackDamageable()) {
-        	if (stack.getItemDamage() >= stack.getMaxDamage() - (stack.getItem() instanceof ItemSword ? 1 : 0)) {
+        	if (isBroken(stack, (stack.getItem() instanceof ItemSword ? 1 : 0))) {
         		event.setNewSpeed(0.0F);
         	}
         }
@@ -54,7 +100,7 @@ public class TweakToolBreaking {
         if (!(stack.getItem() instanceof ItemTool) && !(stack.getItem() instanceof ItemSword)) { return; }
 
         if (stack.isItemStackDamageable()) {
-        	if (stack.getItemDamage() >= stack.getMaxDamage() - (stack.getItem() instanceof ItemSword ? 1 : 0)) {
+        	if (isBroken(stack, (stack.getItem() instanceof ItemSword ? 1 : 0))) {
         		event.setCanceled(true);
         	}
         }
@@ -70,7 +116,7 @@ public class TweakToolBreaking {
 		if (!(stack.getItem() instanceof ItemHoe)) { return; }
 		
 		if (stack.isItemStackDamageable()) {
-			if (stack.getItemDamage() >= stack.getMaxDamage()) {
+			if (isBroken(stack, 0)) {
 				event.setCanceled(true);
 			}
 		}
@@ -92,7 +138,7 @@ public class TweakToolBreaking {
 		
 		if (stack.isItemStackDamageable()) {
 			int unbreaking = EnchantmentHelper.getEnchantmentLevel(Enchantments.UNBREAKING, stack);
-			if (stack.getItemDamage() >= stack.getMaxDamage() - (unbreaking > 0 ? 1 : 0)) {
+			if (isBroken(stack, (unbreaking > 0 ? 1 : 0))) {
 				if (!(stack.getItem() instanceof ItemHoe)) {
 					stack.setItemDamage(stack.getMaxDamage() - 1);
 				}
@@ -111,7 +157,7 @@ public class TweakToolBreaking {
 		if (!(stack.getItem() instanceof ItemBow)) { return; }
 		
 		if (stack.isItemStackDamageable()) {
-			if (stack.getItemDamage() >= stack.getMaxDamage()) {
+			if (isBroken(stack, 0)) {
 				event.setCanceled(true);
 			}
 		}
@@ -131,7 +177,7 @@ public class TweakToolBreaking {
 
 		ListIterator<String> itr = event.getToolTip().listIterator();
 		if (stack.isItemStackDamageable()) {
-			if (stack.getItemDamage() >= stack.getMaxDamage() - (stack.getItem() instanceof ItemSword ? 1 : 0)) {
+			if (isBroken(stack, (stack.getItem() instanceof ItemSword ? 1 : 0))) {
             	while (itr.hasNext()) {
             		itr.next();
             		itr.add(Colors.RED + Utils.localize("tooltip.pt.broken"));
@@ -145,5 +191,12 @@ public class TweakToolBreaking {
                 }
 			}
 		}
+	}
+	
+	public static boolean isBroken(ItemStack stack, int offset) {
+		if (overrides.containsKey(stack.getItem())) {
+			offset += overrides.get(stack.getItem());
+		}
+		return stack.getItemDamage() >= (stack.getMaxDamage() - offset);
 	}
 }
