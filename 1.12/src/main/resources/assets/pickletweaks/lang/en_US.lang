@@ -70,6 +70,7 @@ item.pt.coin_emerald.name=Emerald Coin
 
 item.pt.ppm4_info.name=Information
 item.pt.ppm4_monkas.name=monkaS
+item.pt.ppm4_paperclip.name=Paper Clip
 
 # TOOLTIPS
 tooltip.pt.uses_left=Uses Left:

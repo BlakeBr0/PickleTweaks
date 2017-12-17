@@ -17,6 +17,7 @@ public class ItemPPM4 extends ItemMeta implements IEnableable {
 	public void init() {
 		addItem(0, "info");
 		addItem(1, "monkas");
+		addItem(2, "paperclip", "paperclip");
 	}
 
 	@Override
