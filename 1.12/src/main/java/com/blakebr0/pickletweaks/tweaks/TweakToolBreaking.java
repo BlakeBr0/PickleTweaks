@@ -45,7 +45,7 @@ public class TweakToolBreaking {
 						+ "\n- Syntax: modid:itemid=threshold"
 						+ "\n- Example: minecraft:iron_pickaxe=20"
 						+ "\n- This makes it so Iron Pickaxes become useless with 20 uses left."
-						+ "\n- This config is mostly meant for things like TF hammers that use more than 1 durability at a time.");
+						+ "\n- This config is mostly meant for things like TF hammers that use more than 1 durability at a time, if they don't already work fine.");
 
 		for (String value : values) {
 			String[] parts = value.split("=");
@@ -86,10 +86,26 @@ public class TweakToolBreaking {
         if (stack.isItemStackDamageable()) {
         	if (isBroken(stack, (stack.getItem() instanceof ItemSword ? 1 : 0))) {
         		event.setNewSpeed(0.0F);
+        		//event.setNewSpeed(0.5F);
         	}
         }
 	}
 	
+	// TODO: interesting
+//	@SubscribeEvent(priority = EventPriority.LOWEST)
+	public void onBlockDrops(BlockEvent.HarvestDropsEvent event) {
+		if (!ModConfig.confBrokenTools) { return; }
+		if (event.getHarvester() == null) { return; }
+		
+		ItemStack stack = event.getHarvester().getHeldItemMainhand();
+		if (stack.isEmpty()) { return; }
+		if (stack.isItemStackDamageable()) {
+			if (isBroken(stack, (stack.getItem() instanceof ItemSword ? 1 : 0))) {
+				event.getDrops().clear();
+			}
+		}
+	}
+	// TODO: figure out how to make this work somehow
 	@SubscribeEvent(priority = EventPriority.HIGH)
 	public void onBreakBlock(BlockEvent.BreakEvent event) {
 		if (!ModConfig.confBrokenTools) { return; }
@@ -144,7 +160,7 @@ public class TweakToolBreaking {
 				} else {
 					stack.setItemDamage(stack.getMaxDamage() - 1);
 				}
-				event.setAmount(0.0F);
+				event.setAmount(0.5F);
 			}
 		}
 	}
@@ -188,7 +204,7 @@ public class TweakToolBreaking {
             	
                 while (itr.hasNext()) {
                     if (itr.next().contains(I18n.translateToLocal("attribute.name.generic.attackDamage"))) {
-                	    itr.set(" 0 " + Utils.localize("attribute.name.generic.attackDamage"));
+                	    itr.set(" 0.5 " + Utils.localize("attribute.name.generic.attackDamage"));
                     }
                 }
 			}
