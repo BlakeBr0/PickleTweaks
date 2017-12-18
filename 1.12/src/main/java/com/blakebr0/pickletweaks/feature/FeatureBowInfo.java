@@ -4,7 +4,6 @@ import java.util.ListIterator;
 
 import org.lwjgl.input.Keyboard;
 
-import com.blakebr0.cucumber.helper.StackHelper;
 import com.blakebr0.cucumber.lib.Colors;
 import com.blakebr0.cucumber.util.Utils;
 import com.blakebr0.pickletweaks.PickleTweaks;
@@ -30,18 +29,16 @@ public class FeatureBowInfo {
 	@SubscribeEvent
 	public void onEntityKilled(LivingDeathEvent event) {
 		if (!ModConfig.confBowInfoTooltip) { return; }
+		
 		DamageSource source = event.getSource();
 		Entity entity = source.getTrueSource();
+		
 		if (entity != null && entity instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) entity;
 			ItemStack stack = player.getHeldItemMainhand();
-			if (!StackHelper.isNull(stack) && stack.getItem() != null) {
-				if (stack.getItem() instanceof ItemBow) {
-					NBTTagCompound tag = stack.getOrCreateSubCompound(PickleTweaks.MOD_ID);
-					if (!((tag.getInteger("EnemiesKilled") + 1) >= Integer.MAX_VALUE)) {
-						tag.setInteger("EnemiesKilled", tag.getInteger("EnemiesKilled") + 1);
-					}
-				}
+			if (!stack.isEmpty() && stack.getItem() instanceof ItemBow) {
+				NBTTagCompound tag = stack.getOrCreateSubCompound(PickleTweaks.MOD_ID);
+				tag.setInteger("EnemiesKilled", tag.getInteger("EnemiesKilled") + 1);
 			}
 		}
 	}
@@ -49,22 +46,20 @@ public class FeatureBowInfo {
 	@SubscribeEvent
 	public void onEntityDamaged(LivingHurtEvent event) {
 		if (!ModConfig.confBowInfoTooltip) { return; }
+		
 		DamageSource source = event.getSource();
 		Entity entity = source.getTrueSource();
+		
 		if (entity != null && entity instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) entity;
 			ItemStack stack = player.getHeldItemMainhand();
-			if (!StackHelper.isNull(stack) && stack.getItem() != null) {
-				if (stack.getItem() instanceof ItemBow) {
-					NBTTagCompound tag = stack.getOrCreateSubCompound(PickleTweaks.MOD_ID);
-					if (!((tag.getInteger("DamageDealt") + event.getAmount()) >= Integer.MAX_VALUE)) {
-						EntityLivingBase living = event.getEntityLiving();
-						if (living.getHealth() < event.getAmount()) {
-							tag.setInteger("DamageDealt", tag.getInteger("DamageDealt") + (int) living.getHealth());
-						} else {
-							tag.setInteger("DamageDealt", tag.getInteger("DamageDealt") + (int) event.getAmount());
-						}
-					}
+			if (!stack.isEmpty() && stack.getItem() instanceof ItemBow) {
+				NBTTagCompound tag = stack.getOrCreateSubCompound(PickleTweaks.MOD_ID);
+				EntityLivingBase living = event.getEntityLiving();
+				if (living.getHealth() < event.getAmount()) {
+					tag.setInteger("DamageDealt", tag.getInteger("DamageDealt") + (int) living.getHealth());
+				} else {
+					tag.setInteger("DamageDealt", tag.getInteger("DamageDealt") + (int) event.getAmount());
 				}
 			}
 		}
@@ -123,22 +118,16 @@ public class FeatureBowInfo {
 	}
 
 	public int getEnemiesKilled(ItemStack stack) {
-		NBTTagCompound tag = stack.getOrCreateSubCompound(PickleTweaks.MOD_ID);
-		if (tag.hasKey("EnemiesKilled")) {
-			if ((tag.getInteger("EnemiesKilled") + 1) >= Integer.MAX_VALUE) {
-				return Integer.MAX_VALUE;
-			}
+		NBTTagCompound tag = stack.getSubCompound(PickleTweaks.MOD_ID);
+		if (tag != null && tag.hasKey("EnemiesKilled")) {
 			return tag.getInteger("EnemiesKilled");
 		}
 		return 0;
 	}
 
 	public int getDamageDealt(ItemStack stack) {
-		NBTTagCompound tag = stack.getOrCreateSubCompound(PickleTweaks.MOD_ID);
-		if (tag.hasKey("DamageDealt")) {
-			if ((tag.getInteger("DamageDealt") + 1) >= Integer.MAX_VALUE) {
-				return Integer.MAX_VALUE;
-			}
+		NBTTagCompound tag = stack.getSubCompound(PickleTweaks.MOD_ID);
+		if (tag != null && tag.hasKey("DamageDealt")) {
 			return tag.getInteger("DamageDealt");
 		}
 		return 0;

@@ -28,16 +28,11 @@ public class FeatureHoeInfo {
 		if (!ModConfig.confHoeInfoTooltip) { return; }
 		if (event.getEntityPlayer() == null) { return; }
     	
-    	ItemStack stack = event.getEntityPlayer().getHeldItemMainhand();
-    	if (stack == null) { return; }
-    	
     	Block block = event.getWorld().getBlockState(event.getPos()).getBlock();
     	    	
     	if (event.getResult() == Result.ALLOW || block == Blocks.DIRT || block == Blocks.GRASS || block == Blocks.GRASS_PATH) {
-    		NBTTagCompound tag = stack.getOrCreateSubCompound(PickleTweaks.MOD_ID);
-    		if (!((tag.getInteger("BlocksTilled") + 1) >= Integer.MAX_VALUE)) {
-    			tag.setInteger("BlocksTilled", tag.getInteger("BlocksTilled") + 1);
-    		}
+    		NBTTagCompound tag = event.getCurrent().getOrCreateSubCompound(PickleTweaks.MOD_ID);
+    		tag.setInteger("BlocksTilled", tag.getInteger("BlocksTilled") + 1);
     	}
     }
 
@@ -78,11 +73,8 @@ public class FeatureHoeInfo {
 	}
 	
 	public int getBlocksTilled(ItemStack stack) {
-		NBTTagCompound tag = stack.getOrCreateSubCompound(PickleTweaks.MOD_ID);
-		if (tag.hasKey("BlocksTilled")) {
-			if ((tag.getInteger("BlocksTilled") + 1) >= Integer.MAX_VALUE) {
-				return Integer.MAX_VALUE;
-			}
+		NBTTagCompound tag = stack.getSubCompound(PickleTweaks.MOD_ID);
+		if (tag != null && tag.hasKey("BlocksTilled")) {
 			return tag.getInteger("BlocksTilled");
 		}
 		return 0;

@@ -6,7 +6,6 @@ import java.util.Map;
 
 import org.lwjgl.input.Keyboard;
 
-import com.blakebr0.cucumber.helper.StackHelper;
 import com.blakebr0.cucumber.lib.Colors;
 import com.blakebr0.cucumber.util.Utils;
 import com.blakebr0.pickletweaks.PickleTweaks;
@@ -63,14 +62,12 @@ public class FeatureToolInfo {
 	public void onBlockBroken(BreakEvent event) {
 		if (!ModConfig.confToolInfoTooltip) { return; }
 		if (!((event.getState().getBlockHardness(event.getWorld(), event.getPos())) > 0)) { return; }
+		
 		ItemStack stack = event.getPlayer().getHeldItemMainhand();
-		if (!StackHelper.isNull(stack) && stack.getItem() != null) {
-			if (stack.getItem() instanceof ItemTool) {
-				NBTTagCompound tag = stack.getOrCreateSubCompound(PickleTweaks.MOD_ID);
-				if (!((tag.getInteger("BlocksBroken") + 1) >= Integer.MAX_VALUE)) {
-					tag.setInteger("BlocksBroken", tag.getInteger("BlocksBroken") + 1);
-				}
-			}
+		
+		if (!stack.isEmpty() && stack.getItem() instanceof ItemTool) {
+			NBTTagCompound tag = stack.getOrCreateSubCompound(PickleTweaks.MOD_ID);
+			tag.setInteger("BlocksBroken", tag.getInteger("BlocksBroken") + 1);
 		}
 	}
 	
@@ -146,11 +143,8 @@ public class FeatureToolInfo {
 	}
 	
 	public int getBlocksBroken(ItemStack stack) {
-		NBTTagCompound tag = stack.getOrCreateSubCompound(PickleTweaks.MOD_ID);
-		if (tag.hasKey("BlocksBroken")) {
-			if ((tag.getInteger("BlocksBroken") + 1) >= Integer.MAX_VALUE) {
-				return Integer.MAX_VALUE;
-			}
+		NBTTagCompound tag = stack.getSubCompound(PickleTweaks.MOD_ID);
+		if (tag != null && tag.hasKey("BlocksBroken")) {
 			return tag.getInteger("BlocksBroken");
 		}
 		return 0;
