@@ -12,6 +12,7 @@ import com.blakebr0.cucumber.item.ItemMeta;
 import com.blakebr0.cucumber.util.Utils;
 import com.blakebr0.pickletweaks.PickleTweaks;
 import com.blakebr0.pickletweaks.config.ModConfig;
+import com.blakebr0.pickletweaks.feature.crafting.GridRepairHelper;
 import com.blakebr0.pickletweaks.feature.crafting.GridRepairOverride;
 import com.blakebr0.pickletweaks.registry.ModItems;
 
@@ -112,15 +113,14 @@ public class ItemRepairKit extends ItemMeta implements IEnableable {
 	
 	public static boolean isKitValid(ItemStack tool, Kit kit) {
 		Object rep = kit.representative;
-		Item item = tool.getItem();
 		if (rep instanceof String) {
 			String ore = (String) rep;
 			if (OreDictionary.doesOreNameExist(ore)) {
-				return OreDictionary.getOres(ore).stream().anyMatch(repair -> item.getIsRepairable(tool, repair) || GridRepairOverride.hasOverride(tool, repair));
+				return OreDictionary.getOres(ore).stream().anyMatch(repair -> GridRepairHelper.checkMaterial(tool, repair));
 			}
 		} else if (rep instanceof ItemStack) {
 			ItemStack stack = (ItemStack) rep;
-			return item.getIsRepairable(tool, stack) || GridRepairOverride.hasOverride(tool, stack);
+			return GridRepairHelper.checkMaterial(tool, stack);
 		}
 		return false;
 	}

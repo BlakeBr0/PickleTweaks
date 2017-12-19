@@ -98,7 +98,7 @@ public class GridRepairRecipe extends Impl<IRecipe> implements IRecipe {
 					repairKit = true;
 				}
 				continue;
-			} else if (!repairKit && !mat.getItem().hasContainerItem(mat) && (tool.getItem().getIsRepairable(tool, mat) || GridRepairOverride.hasOverride(tool, mat))) { 
+			} else if (!repairKit && !mat.getItem().hasContainerItem(mat) && GridRepairHelper.checkMaterial(tool, mat)) {
 				matCount++;
 			} else {
 				return ItemStack.EMPTY;

@@ -59,6 +59,7 @@ public class ModConfig {
 	public static int confRepairCost;
 	public static boolean confRequires3x3;
 	public static boolean confAllowArmor;
+	public static boolean confDisableDefaults;
 
 	public static boolean confCoin;
 	public static boolean confPPM4;
@@ -130,6 +131,7 @@ public class ModConfig {
 		confRepairCost = config.getInt("repair_cost", category, 4, 1, 8, "How much material should be required to fully repair a tool.");
 		confRequires3x3 = config.getBoolean("requires_3x3", category, false, "Should the player need atleast a 3x3 table to repair?");
 		confAllowArmor = config.getBoolean("allow_armor", category, false, "Should you be able to repair armor as well?");
+		confDisableDefaults = config.getBoolean("disable_defaults", category, false, "Should default repair materials be disabled? Doing this makes it so ONLY the custom materials work.");
 		
 		category = "repair_kit";
 		config.setCategoryComment(category, "Add and remove repair kits");
