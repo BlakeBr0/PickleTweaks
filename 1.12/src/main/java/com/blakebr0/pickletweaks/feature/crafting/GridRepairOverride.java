@@ -115,6 +115,10 @@ public class GridRepairOverride {
 		return false;
 	}
 	
+	public static boolean hasToolOverride(ItemStack tool) {
+		return overrides.stream().anyMatch(o -> o.tool.isItemEqualIgnoreDurability(tool));
+	}
+	
 	public static class Override {
 		
 		public ItemStack tool;
