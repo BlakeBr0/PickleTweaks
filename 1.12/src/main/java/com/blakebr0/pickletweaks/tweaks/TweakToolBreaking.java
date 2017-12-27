@@ -15,6 +15,7 @@ import net.minecraft.init.Enchantments;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBow;
 import net.minecraft.item.ItemHoe;
+import net.minecraft.item.ItemSpade;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.item.ItemTool;
@@ -25,6 +26,7 @@ import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickBlock;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickItem;
 import net.minecraftforge.event.entity.player.UseHoeEvent;
 import net.minecraftforge.event.world.BlockEvent;
@@ -173,6 +175,22 @@ public class TweakToolBreaking {
 		ItemStack stack = event.getItemStack();
 		if (stack.isEmpty()) { return; }
 		if (!(stack.getItem() instanceof ItemBow)) { return; }
+		
+		if (stack.isItemStackDamageable()) {
+			if (isBroken(stack, 0)) {
+				event.setCanceled(true);
+			}
+		}
+	}
+	
+	@SubscribeEvent
+	public void onUseShovel(RightClickBlock event) {
+		if (!ModConfig.confBrokenTools) { return; }
+		if (event.getEntityPlayer() == null) { return; }
+		
+		ItemStack stack = event.getItemStack();
+		if (stack.isEmpty()) { return; }
+		if (!(stack.getItem() instanceof ItemSpade)) { return; }
 		
 		if (stack.isItemStackDamageable()) {
 			if (isBroken(stack, 0)) {
