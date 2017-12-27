@@ -77,6 +77,10 @@ public class GridRepairRecipe extends Impl<IRecipe> implements IRecipe {
 			return ItemStack.EMPTY;
 		}
 		
+		if (GridRepairBlacklist.blacklist.contains(tool.getItem())) {
+			return ItemStack.EMPTY;
+		}
+		
 		int matCount = 0;
 		boolean repairKit = false;
 		for (ItemStack mat : inputs) {
