@@ -11,6 +11,7 @@ import com.blakebr0.pickletweaks.feature.crafting.GridRepairOverride;
 import com.blakebr0.pickletweaks.feature.item.ItemRepairKitCustom;
 import com.blakebr0.pickletweaks.tweaks.TweakBlockHardness;
 import com.blakebr0.pickletweaks.tweaks.TweakBlockHarvest;
+import com.blakebr0.pickletweaks.tweaks.TweakBlockResistance;
 import com.blakebr0.pickletweaks.tweaks.TweakFlintDrop;
 import com.blakebr0.pickletweaks.tweaks.TweakStackSize;
 import com.blakebr0.pickletweaks.tweaks.TweakToolBreaking;
@@ -167,6 +168,7 @@ public class ModConfig {
 		TweakStackSize.configure(config);
 		TweakBlockHardness.configure(config);
 		TweakBlockHarvest.configure(config);
+		TweakBlockResistance.configure(config);
 		TweakToolBreaking.configure(config);
 		TweakToolHarvest.configure(config);
 
