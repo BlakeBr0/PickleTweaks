@@ -21,7 +21,11 @@ public class TweakBlockHarvest {
 				+ "\n- 'meta' can be set to -1 to apply to all metas."
 				+ "\nYou can also override using OreDictionary entries."
 				+ "\n- Syntax: ore:orevalue=harvestlevel"
-				+ "\n- Example: ore:oreCopper=2");
+				+ "\n- Example: ore:oreCopper=2"
+				+ "\nYou can also set the harvest tool (if required)."
+				+ "\nTools are 'pickaxe' 'axe' 'shovel'."
+				+ "\n- Syntax: modid:blockid:meta=harvestlevel-tool"
+				+ "\n- Syntax ore:orevalue=harvestlevel-tool");
 		
 		for(String value : values){
 			String[] parts = value.split("=");
@@ -30,9 +34,19 @@ public class TweakBlockHarvest {
 			int meta;
 			int level;
 			
+			String parts2[] = parts[1].split("-");
+			String lvl, tool = null;
+			
+			if (parts2.length == 2) {
+				lvl = parts2[0];
+				tool = parts2[1];
+			} else {
+				lvl = parts2[0];
+			}
+			
 			if(blockName.startsWith("ore:") && parts.length == 2){
 				try {
-					level = Integer.valueOf(parts[1]);
+					level = Integer.valueOf(lvl);
 				} catch(NumberFormatException e){
 					continue;
 				}
@@ -45,14 +59,17 @@ public class TweakBlockHarvest {
 					Block oreBlock = Block.getBlockFromItem(stack.getItem());
 					for(int metar : metadata){
 						if(oreBlock != Blocks.AIR){
-							oreBlock.setHarvestLevel(oreBlock.getHarvestTool(oreBlock.getStateFromMeta(metar)), level, oreBlock.getStateFromMeta(metar));
+							if (tool == null) {
+								tool = oreBlock.getHarvestTool(oreBlock.getStateFromMeta(metar));
+							}
+							oreBlock.setHarvestLevel(tool, level, oreBlock.getStateFromMeta(metar));
 						}
 					}
 				}
 				continue;
 			}
 					
-			if(parts.length != 2){
+			if (parts.length != 2){
 				continue;
 			}
 			
@@ -61,7 +78,7 @@ public class TweakBlockHarvest {
 			
 			try {
 				meta = Integer.valueOf(part[2]);
-				level = Integer.valueOf(parts[1]);
+				level = Integer.valueOf(lvl);
 			} catch(NumberFormatException e){
 				continue;
 			}
@@ -73,9 +90,15 @@ public class TweakBlockHarvest {
 			Block block = ForgeRegistries.BLOCKS.getValue(new ResourceLocation(blockName));
 			
 			if(meta == -1){
-				block.setHarvestLevel(block.getHarvestTool(block.getDefaultState()), level);
+				if (tool == null) {
+					tool = block.getHarvestTool(block.getDefaultState());
+				}
+				block.setHarvestLevel(tool, level);
 			} else {
-				block.setHarvestLevel(block.getHarvestTool(block.getStateFromMeta(meta)), level, block.getStateFromMeta(meta));
+				if (tool == null) {
+					tool = block.getHarvestTool(block.getStateFromMeta(meta));
+				}
+				block.setHarvestLevel(tool, level, block.getStateFromMeta(meta));
 			}
 		}
 	}
