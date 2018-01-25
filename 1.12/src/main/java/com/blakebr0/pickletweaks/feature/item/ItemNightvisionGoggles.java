@@ -51,7 +51,7 @@ public class ItemNightvisionGoggles extends ItemArmor implements IEnableable {
 		public static boolean playerHasGoggles(EntityPlayer entity) {
 			ItemStack head = entity.getItemStackFromSlot(EntityEquipmentSlot.HEAD);
 
-			return !head.isEmpty() && head.getItem() instanceof ItemNightvisionGoggles;
+			return !head.isEmpty() && (head.getItem() instanceof ItemNightvisionGoggles || head.getItem() instanceof ItemNightvisionGogglesC);
 		}
 
 		@SubscribeEvent

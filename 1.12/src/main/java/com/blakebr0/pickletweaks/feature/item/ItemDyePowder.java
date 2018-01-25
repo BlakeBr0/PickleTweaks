@@ -22,21 +22,21 @@ public class ItemDyePowder extends ItemMeta implements IEnableable {
 	}
 	
 	@Override
-    public boolean itemInteractionForEntity(ItemStack stack, EntityPlayer player, EntityLivingBase target, EnumHand hand) {
-        if (target instanceof EntitySheep) {
-            EntitySheep sheep = (EntitySheep) target;
+	public boolean itemInteractionForEntity(ItemStack stack, EntityPlayer player, EntityLivingBase target, EnumHand hand) {
+		if (target instanceof EntitySheep) {
+			EntitySheep sheep = (EntitySheep) target;
             EnumDyeColor color = EnumDyeColor.byMetadata(stack.getMetadata());
-
+            	
             if (!sheep.getSheared() && sheep.getFleeceColor() != color) {
-                sheep.setFleeceColor(color);
-                stack.shrink(1);
+            	sheep.setFleeceColor(color);
+            	stack.shrink(1);
             }
 
             return true;
-        } else {
-            return false;
-        }
-    }
+		} else {
+			return false;
+		}
+	}
 
 	@Override
 	public void init() {

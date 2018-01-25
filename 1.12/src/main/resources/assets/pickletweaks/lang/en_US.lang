@@ -14,6 +14,7 @@ item.pt.mesh.name=Mesh
 item.pt.reinforced_mesh.name=Reinforced Mesh
 item.pt.magnet.name=Magnet
 item.pt.nightvision_goggles.name=Night Vision Goggles
+item.pt.nightvision_goggles_c.name=Compressed Night Vision Goggles
 item.pt.mortar_and_pestle.name=Mortar and Pestle
 item.pt.repair_kit.name=Repair Kit
 

@@ -15,6 +15,7 @@ import com.blakebr0.pickletweaks.feature.item.ItemMagnet;
 import com.blakebr0.pickletweaks.feature.item.ItemMesh;
 import com.blakebr0.pickletweaks.feature.item.ItemMortarAndPestle;
 import com.blakebr0.pickletweaks.feature.item.ItemNightvisionGoggles;
+import com.blakebr0.pickletweaks.feature.item.ItemNightvisionGogglesC;
 import com.blakebr0.pickletweaks.feature.item.ItemPPM4;
 import com.blakebr0.pickletweaks.feature.item.ItemPaxel;
 import com.blakebr0.pickletweaks.feature.item.ItemRepairKit;
@@ -46,6 +47,7 @@ public class ModItems {
 	public static ItemMesh itemReinforcedMesh = new ItemMesh("reinforced_mesh", 511);
 	public static ItemMagnet itemMagnet = new ItemMagnet();
 	public static ItemNightvisionGoggles itemNightvisionGoggles = new ItemNightvisionGoggles();
+	public static ItemNightvisionGogglesC itemNightVisionGogglesC = new ItemNightvisionGogglesC();
 	public static ItemMortarAndPestle itemMortarAndPestle = new ItemMortarAndPestle();
 	public static ItemDyePowder itemDyePowder = new ItemDyePowder();
 	public static ItemRepairKit itemRepairKit = new ItemRepairKit();
@@ -110,7 +112,8 @@ public class ModItems {
 		registry.register(itemMesh, "mesh");
 		registry.register(itemReinforcedMesh, "reinforced_mesh");		
 		registry.register(itemMagnet, "magnet");
-		registry.register(itemNightvisionGoggles, "nightvision_goggles");		
+		registry.register(itemNightvisionGoggles, "nightvision_goggles");
+		registry.register(itemNightVisionGogglesC, "nightvision_goggles_c");
 		registry.register(itemMortarAndPestle, "mortar_and_pestle");
 		registry.register(itemDyePowder, "dye_powder");
 		registry.register(itemRepairKit, "repair_kit");
