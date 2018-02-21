@@ -85,7 +85,7 @@ public class ItemMagnet extends ItemBase {
 			if (world.isRemote)
 				return;
 
-			if (player != null) {
+			if (player != null && !player.isSpectator()) {
 				InventoryPlayer inv = player.inventory;
 				for (int i = 0; i < inv.getSizeInventory(); i++) {
 					ItemStack stack = inv.getStackInSlot(i);
@@ -107,6 +107,7 @@ public class ItemMagnet extends ItemBase {
 							item.setPickupDelay(0);
 							item.setPosition(player.posX, player.posY, player.posZ);
 						}
+						
 						List<EntityXPOrb> xporb = world.getEntitiesWithinAABB(EntityXPOrb.class, player.getEntityBoundingBox().grow(range, range, range));
 						for (EntityXPOrb orb : xporb) {
 							orb.setPosition(player.posX, player.posY, player.posZ);
