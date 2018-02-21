@@ -24,11 +24,11 @@ public class ItemModShovel extends ItemSpade implements IRepairMaterial {
 
 	@Override
 	public ItemStack getRepairMaterial() {
-		return repairMaterial;
+		return this.repairMaterial;
 	}
 
 	@Override
 	public void setRepairMaterial(ItemStack stack) {
-		repairMaterial = stack;
+		this.repairMaterial = stack;
 	}
 }

@@ -16,11 +16,11 @@ public class TweakBlockResistance {
 		ConfigCategory category = config.getCategory("tweaks");
 		String[] values = config.get(category.getName(), "block_resistance", new String[0]).getStringList();
 		category.get("block_resistance").setComment("Here you can override the blast resistance of blocks."
-				+ "\n- Syntax: modid:blockid=resistance" 
-				+ "\n- Example: minecraft:stone=100"
-				+ "\nYou can also override using OreDictionary entries." 
-				+ "\n- Syntax: ore:orevalue=resistance"
-				+ "\n- Example: ore:oreCopper=25");
+						+ "\n- Syntax: modid:blockid=resistance" 
+						+ "\n- Example: minecraft:stone=100"
+						+ "\nYou can also override using OreDictionary entries." 
+						+ "\n- Syntax: ore:orevalue=resistance"
+						+ "\n- Example: ore:oreCopper=25");
 
 		for (String value : values) {
 			String[] parts = value.split("=");

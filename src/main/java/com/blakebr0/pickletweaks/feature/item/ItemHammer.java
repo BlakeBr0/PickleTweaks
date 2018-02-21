@@ -15,8 +15,8 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemHammer extends ItemBase implements IEnableable {
-	
-	public ItemHammer(){
+
+	public ItemHammer() {
 		super("pt.hammer");
 		this.setCreativeTab(PickleTweaks.tab);
 		this.setMaxDamage(191);
@@ -25,29 +25,29 @@ public class ItemHammer extends ItemBase implements IEnableable {
 	}
 
 	@Override
-	public boolean hasContainerItem(ItemStack stack){
+	public boolean hasContainerItem(ItemStack stack) {
 		return true;
 	}
-	
-	@Override
-	public ItemStack getContainerItem(ItemStack stack){
-		ItemStack newStack = stack.copy();
-		
-		newStack.setCount(1);
-		newStack.setItemDamage(newStack.getItemDamage() + 1);
-		
-		return newStack;
-	}
-	
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag advanced){
-    	int damage = stack.getMaxDamage() - stack.getItemDamage() + 1;
-    	tooltip.add(Utils.localize("tooltip.pt.uses_left") + " " + damage);
-    }
 
 	@Override
-	public boolean isEnabled(){
+	public ItemStack getContainerItem(ItemStack stack) {
+		ItemStack newStack = stack.copy();
+
+		newStack.setCount(1);
+		newStack.setItemDamage(newStack.getItemDamage() + 1);
+
+		return newStack;
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag advanced) {
+		int damage = stack.getMaxDamage() - stack.getItemDamage() + 1;
+		tooltip.add(Utils.localize("tooltip.pt.uses_left") + " " + damage);
+	}
+
+	@Override
+	public boolean isEnabled() {
 		return ModConfig.confHammer;
 	}
 }

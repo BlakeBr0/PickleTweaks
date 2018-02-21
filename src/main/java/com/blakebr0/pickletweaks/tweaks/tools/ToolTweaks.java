@@ -28,6 +28,6 @@ public class ToolTweaks {
     	for (String identifier : ModConfig.confUselessWeapons) {
             Item item = Item.getByNameOrId(identifier);
             uselessWeapons.add((Item) item);
-    	}
-    }
+		}
+	}
 }

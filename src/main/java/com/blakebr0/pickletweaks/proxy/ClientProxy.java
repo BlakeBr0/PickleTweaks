@@ -14,12 +14,12 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 public class ClientProxy extends CommonProxy {
 
 	@Override
-	public void preInit(FMLPreInitializationEvent e){
+	public void preInit(FMLPreInitializationEvent e) {
 		super.preInit(e);
 	}
 
 	@Override
-	public void init(FMLInitializationEvent e){
+	public void init(FMLInitializationEvent e) {
 		super.init(e);
 		if (ModConfig.confDyePowder) {
 			Minecraft.getMinecraft().getItemColors().registerItemColorHandler(new ItemDyeColorHandler(), ModItems.itemDyePowder);
@@ -35,9 +35,9 @@ public class ClientProxy extends CommonProxy {
 			}, ModItems.itemRepairKitCustom);
 		}
 	}
-		
+
 	@Override
-	public void postInit(FMLPostInitializationEvent e){
+	public void postInit(FMLPostInitializationEvent e) {
 		super.postInit(e);
 	}
 }

@@ -21,40 +21,49 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
 
 public class FeatureRightClickHarvest {
-	
+
 	private static final Method GET_SEED;
-	
+
 	static {
 		GET_SEED = ReflectionHelper.findMethod(BlockCrops.class, "getSeed", "func_149866_i");
 	}
-	
+
 	@SubscribeEvent
-	public void onRightClickCrop(RightClickBlock event){
-		if(!ModConfig.confRightClickHarvest){ return; }
-		if(event.getEntityPlayer() == null){ return; }
-		if(event.getHand() != EnumHand.MAIN_HAND){ return; }
+	public void onRightClickCrop(RightClickBlock event) {
+		if (!ModConfig.confRightClickHarvest) {
+			return;
+		}
 		
+		if (event.getEntityPlayer() == null) {
+			return;
+		}
+		
+		if (event.getHand() != EnumHand.MAIN_HAND) {
+			return;
+		}
+
 		IBlockState state = event.getWorld().getBlockState(event.getPos());
-		
-		if(state.getBlock() instanceof BlockCrops){
-			BlockCrops crop = (BlockCrops)state.getBlock();
-			if(crop.isMaxAge(state) && getSeed(crop) != null){
+
+		if (state.getBlock() instanceof BlockCrops) {
+			BlockCrops crop = (BlockCrops) state.getBlock();
+			if (crop.isMaxAge(state) && getSeed(crop) != null) {
 				int fortune = EnchantmentHelper.getEnchantmentLevel(Enchantments.FORTUNE, event.getItemStack());
 				NonNullList<ItemStack> drops = NonNullList.create();
 				crop.getDrops(drops, event.getWorld(), event.getPos(), state, fortune);
 				ListIterator<ItemStack> itr = drops.listIterator();
-				while(itr.hasNext()){
+				while (itr.hasNext()) {
 					ItemStack drop = itr.next();
 					Item seed = drop.getItem();
-					if(!drop.isEmpty() && seed != null && seed == getSeed(crop)){
+					if (!drop.isEmpty() && seed != null && seed == getSeed(crop)) {
 						drop.shrink(1);
 						break;
 					}
 				}
 				event.getEntityPlayer().swingArm(EnumHand.MAIN_HAND);
-				if(!event.getWorld().isRemote){
-					for(ItemStack drop : drops){
-						if(!drop.isEmpty()){
+				
+				if (!event.getWorld().isRemote) {
+					for (ItemStack drop : drops) {
+						if (!drop.isEmpty()) {
 							crop.spawnAsEntity(event.getWorld(), event.getPos(), drop);
 						}
 					}
@@ -64,11 +73,11 @@ public class FeatureRightClickHarvest {
 			}
 		}
 	}
-	
-	public Item getSeed(Block block){
+
+	public Item getSeed(Block block) {
 		try {
-			return (Item)GET_SEED.invoke(block);
-		} catch(Exception e){
+			return (Item) GET_SEED.invoke(block);
+		} catch (Exception e) {
 			PickleTweaks.LOGGER.error("Unable to load seed from crop {}", e.getLocalizedMessage());
 		}
 		return null;

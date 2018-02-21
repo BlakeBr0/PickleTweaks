@@ -28,11 +28,13 @@ public class FeatureBowInfo {
 
 	@SubscribeEvent
 	public void onEntityKilled(LivingDeathEvent event) {
-		if (!ModConfig.confBowInfoTooltip) { return; }
-		
+		if (!ModConfig.confBowInfoTooltip) {
+			return;
+		}
+
 		DamageSource source = event.getSource();
 		Entity entity = source.getTrueSource();
-		
+
 		if (entity != null && entity instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) entity;
 			ItemStack stack = player.getHeldItemMainhand();
@@ -45,11 +47,13 @@ public class FeatureBowInfo {
 
 	@SubscribeEvent
 	public void onEntityDamaged(LivingHurtEvent event) {
-		if (!ModConfig.confBowInfoTooltip) { return; }
-		
+		if (!ModConfig.confBowInfoTooltip) {
+			return;
+		}
+
 		DamageSource source = event.getSource();
 		Entity entity = source.getTrueSource();
-		
+
 		if (entity != null && entity instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) entity;
 			ItemStack stack = player.getHeldItemMainhand();
@@ -68,8 +72,13 @@ public class FeatureBowInfo {
 	@SideOnly(Side.CLIENT)
 	@SubscribeEvent
 	public void addSwordInfoTooltip(ItemTooltipEvent event) {
-		if (!ModConfig.confBowInfoTooltip) { return; }
-		if (event.getEntityPlayer() == null) { return; }
+		if (!ModConfig.confBowInfoTooltip) {
+			return;
+		}
+		
+		if (event.getEntityPlayer() == null) {
+			return;
+		}
 
 		ItemStack stack = event.getItemStack();
 		ListIterator<String> tooltip = event.getToolTip().listIterator();
@@ -99,21 +108,24 @@ public class FeatureBowInfo {
 		if (stack.getMaxDamage() == -1) {
 			return Utils.localize("tooltip.pt.unbreakable");
 		}
+		
 		int durability = stack.getMaxDamage() - stack.getItemDamage();
 		return durability + Colors.GRAY + "/" + Colors.WHITE + stack.getMaxDamage();
 	}
-	
+
 	public int getAmmo(EntityPlayer player) {
 		int ammo = 0;
 		ItemStack offHand = player.inventory.offHandInventory.get(0);
 		if (offHand.getItem() instanceof ItemArrow) {
-			ammo += offHand.getCount(); 
+			ammo += offHand.getCount();
 		}
+		
 		for (ItemStack stack : player.inventory.mainInventory) {
 			if (stack.getItem() instanceof ItemArrow) {
 				ammo += stack.getCount();
 			}
 		}
+		
 		return ammo;
 	}
 
@@ -122,6 +134,7 @@ public class FeatureBowInfo {
 		if (tag != null && tag.hasKey("EnemiesKilled")) {
 			return tag.getInteger("EnemiesKilled");
 		}
+		
 		return 0;
 	}
 
@@ -130,6 +143,7 @@ public class FeatureBowInfo {
 		if (tag != null && tag.hasKey("DamageDealt")) {
 			return tag.getInteger("DamageDealt");
 		}
+		
 		return 0;
 	}
 }

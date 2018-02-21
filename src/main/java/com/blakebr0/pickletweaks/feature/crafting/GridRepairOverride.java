@@ -103,8 +103,7 @@ public class GridRepairOverride {
 				} else if (entry.mat instanceof String) {
 					String ore = (String) entry.mat;
 					if (OreDictionary.doesOreNameExist(ore)) {
-						if (!OreDictionary.getOres(ore).stream().anyMatch(
-								is -> is.getMetadata() == OreDictionary.WILDCARD_VALUE && is.getItem() == mat.getItem() || is.isItemEqual(mat))) {
+						if (!OreDictionary.getOres(ore).stream().anyMatch(is -> is.getMetadata() == OreDictionary.WILDCARD_VALUE && is.getItem() == mat.getItem() || is.isItemEqual(mat))) {
 							continue;
 						}
 						return true;

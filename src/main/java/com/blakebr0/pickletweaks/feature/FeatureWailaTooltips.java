@@ -21,7 +21,10 @@ public class FeatureWailaTooltips implements IWailaDataProvider {
 
 	@Override
 	public List<String> getWailaBody(ItemStack arg0, List<String> arg1, IWailaDataAccessor arg2, IWailaConfigHandler arg3) {
-		if (!ModConfig.confWailaHarvestLevel) { return arg1; }
+		if (!ModConfig.confWailaHarvestLevel) {
+			return arg1;
+		}
+		
 		Block block = arg2.getBlock();
 		IBlockState state = arg2.getBlockState();
 		if (block != null && state != null) {
@@ -29,14 +32,16 @@ public class FeatureWailaTooltips implements IWailaDataProvider {
 				arg1.add(Utils.localize("tooltip.pt.harvest_level") + " " + getHarvestLevelName(block, state));
 			}
 		}
+		
 		return arg1;
 	}
-	
+
 	public String getHarvestLevelName(Block block, IBlockState state) {
 		int level = block.getHarvestLevel(state);
 		if (FeatureToolInfo.names.containsKey(level)) {
 			return FeatureToolInfo.names.get(level);
 		}
+		
 		return level + "";
 	}
 }

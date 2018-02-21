@@ -29,7 +29,7 @@ public class ItemNightvisionGoggles extends ItemArmor implements IEnableable {
 		this.setCreativeTab(PickleTweaks.tab);
 		this.setMaxStackSize(1);
 	}
-	
+
 	@Override
 	public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
 		return repair.getItem() == Items.IRON_INGOT;

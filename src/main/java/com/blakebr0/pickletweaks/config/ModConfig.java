@@ -71,8 +71,8 @@ public class ModConfig {
 	@SubscribeEvent
 	public void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent event) {
 		if (event.getModID().equals(PickleTweaks.MOD_ID)) {
-			ModConfig.pre();
-			ModConfig.post();
+			ModConfig.preInit();
+			ModConfig.postInit();
 		}
 	}
 
@@ -80,10 +80,10 @@ public class ModConfig {
 		config = new Configuration(file);
 		config.load();
 
-		pre();
+		preInit();
 	}
 
-	public static void pre() {
+	public static void preInit() {
 
 		String category;
 
@@ -159,7 +159,7 @@ public class ModConfig {
 		}
 	}
 
-	public static void post() {
+	public static void postInit() {
 
 		FeatureToolInfo.configure(config);
 

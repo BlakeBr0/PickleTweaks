@@ -25,8 +25,8 @@ public class ItemMortarAndPestle extends ItemBase implements IEnableable {
 	public ItemStack getContainerItem(ItemStack itemstack) {
         ItemStack stack = itemstack.copy();
 
-        stack.setCount(1);
-        
+		stack.setCount(1);
+
 		return stack;
 	}
 

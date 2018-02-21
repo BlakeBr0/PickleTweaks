@@ -30,48 +30,44 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 
 public class CommonProxy {
-	
-	public void preInit(FMLPreInitializationEvent e){
+
+	public void preInit(FMLPreInitializationEvent e) {
 		ModConfig.init(e.getSuggestedConfigurationFile());
 		MinecraftForge.EVENT_BUS.register(new ModConfig());
 		MinecraftForge.EVENT_BUS.register(PickleTweaks.REGISTRY);
-		
+
 		ModBlocks.init();
 		ModItems.init();
-		
+
 		MinecraftForge.EVENT_BUS.register(new ItemMagnet.Handler());
 		MinecraftForge.EVENT_BUS.register(new ItemNightvisionGoggles.Handler());
-		
+
 		MinecraftForge.EVENT_BUS.register(new FeatureToolInfo());
 		MinecraftForge.EVENT_BUS.register(new FeatureSwordInfo());
 		MinecraftForge.EVENT_BUS.register(new FeatureHoeInfo());
 		MinecraftForge.EVENT_BUS.register(new FeatureBowInfo());
-		
+
 		MinecraftForge.EVENT_BUS.register(new FeatureRightClickHarvest());
-		
+
 		MinecraftForge.EVENT_BUS.register(new TweakToolBreaking());
 	}
-	
-	public void init(FMLInitializationEvent e){
+
+	public void init(FMLInitializationEvent e) {
 		ModRecipes.init();
 		FMLInterModComms.sendMessage("waila", "register", "com.blakebr0.pickletweaks.feature.FeatureWailaTooltips.callbackRegister");
 		NetworkRegistry.INSTANCE.registerGuiHandler(PickleTweaks.instance, new GuiHandler());
+		
 		if (ModConfig.confSharpeningKits && Loader.isModLoaded("tconstruct")) {
 			MinecraftForge.EVENT_BUS.register(new TweakSharpeningKit());
 		}
 	}
 
-	public void postInit(FMLPostInitializationEvent e){
-		ModConfig.post();
-		ModRecipes.post();
-		
+	public void postInit(FMLPostInitializationEvent e) {
+		ModConfig.postInit();
+		ModRecipes.postInit();
+
 		ToolTweaks.findToolsFromConfig();
-		
-//		if(ModConfig.COUNTER_TOOLTIPS){
-//			MinecraftForge.EVENT_BUS.register(new FeatureKillCounter());
-//			MinecraftForge.EVENT_BUS.register(new FeatureBlockHoedCounter());
-//		}
-		
+
 		MinecraftForge.EVENT_BUS.register(new TweakFlintDrop());
 		MinecraftForge.EVENT_BUS.register(new TweakToolUselessifier());
 		MinecraftForge.EVENT_BUS.register(new TweakHoeUselessifier());

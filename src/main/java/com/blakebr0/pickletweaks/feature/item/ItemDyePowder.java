@@ -68,7 +68,8 @@ public class ItemDyePowder extends ItemMeta implements IEnableable {
 	@Override
 	public void initModels() {
 		for (int i = 0; i < 16; i++) {
-			ModelLoader.setCustomModelResourceLocation(this, i, new ModelResourceLocation("pickletweaks:dye_powder", "inventory"));
+			ModelLoader.setCustomModelResourceLocation(this, i,
+					new ModelResourceLocation("pickletweaks:dye_powder", "inventory"));
 		}
 	}
 

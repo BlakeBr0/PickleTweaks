@@ -17,8 +17,8 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemMesh extends ItemBase implements IEnableable {
-	
-	public ItemMesh(String name, int uses){
+
+	public ItemMesh(String name, int uses) {
 		super("pt." + name);
 		this.setCreativeTab(PickleTweaks.tab);
 		this.setMaxDamage(uses);
@@ -26,30 +26,30 @@ public class ItemMesh extends ItemBase implements IEnableable {
 		this.setNoRepair();
 	}
 
-    @Override
-    public ItemStack getContainerItem(ItemStack itemstack){
-        ItemStack stack = itemstack.copy();
+	@Override
+	public ItemStack getContainerItem(ItemStack itemstack) {
+		ItemStack stack = itemstack.copy();
 
-        stack.setItemDamage(stack.getItemDamage() + 1);
-        stack.setCount(1);
+		stack.setItemDamage(stack.getItemDamage() + 1);
+		stack.setCount(1);
 
-        return stack;
-    }
-
-    @Override
-    public boolean hasContainerItem(ItemStack stack){
-        return true;
-    }
-    
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag advanced){
-    	int damage = stack.getMaxDamage() - stack.getItemDamage() + 1;
-    	tooltip.add(Utils.localize("tooltip.pt.uses_left") + " " + damage);
-    }
+		return stack;
+	}
 
 	@Override
-	public boolean isEnabled(){
+	public boolean hasContainerItem(ItemStack stack) {
+		return true;
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag advanced) {
+		int damage = stack.getMaxDamage() - stack.getItemDamage() + 1;
+		tooltip.add(Utils.localize("tooltip.pt.uses_left") + " " + damage);
+	}
+
+	@Override
+	public boolean isEnabled() {
 		return ModConfig.confMesh;
 	}
 }

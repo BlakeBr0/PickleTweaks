@@ -27,7 +27,9 @@ public class FeatureSwordInfo {
 
 	@SubscribeEvent
 	public void onEntityKilled(LivingDeathEvent event) {
-		if (!ModConfig.confSwordInfoTooltip) { return; }
+		if (!ModConfig.confSwordInfoTooltip) {
+			return;
+		}
 
 		DamageSource source = event.getSource();
 		Entity entity = source.getTrueSource();
@@ -44,7 +46,9 @@ public class FeatureSwordInfo {
 
 	@SubscribeEvent
 	public void onEntityDamaged(LivingHurtEvent event) {
-		if (!ModConfig.confSwordInfoTooltip) { return; }
+		if (!ModConfig.confSwordInfoTooltip) {
+			return;
+		}
 
 		DamageSource source = event.getSource();
 		Entity entity = source.getTrueSource();
@@ -69,8 +73,13 @@ public class FeatureSwordInfo {
 	@SideOnly(Side.CLIENT)
 	@SubscribeEvent
 	public void addSwordInfoTooltip(ItemTooltipEvent event) {
-		if (!ModConfig.confSwordInfoTooltip) { return; }
-		if (event.getEntityPlayer() == null) { return; }
+		if (!ModConfig.confSwordInfoTooltip) {
+			return;
+		}
+		
+		if (event.getEntityPlayer() == null) {
+			return;
+		}
 
 		ItemStack stack = event.getItemStack();
 		ListIterator<String> tooltip = event.getToolTip().listIterator();
@@ -100,6 +109,7 @@ public class FeatureSwordInfo {
 		if (stack.getMaxDamage() == -1) {
 			return Utils.localize("tooltip.pt.unbreakable");
 		}
+		
 		int durability = stack.getMaxDamage() - stack.getItemDamage();
 		return durability + Colors.GRAY + "/" + Colors.WHITE + stack.getMaxDamage();
 	}
@@ -109,6 +119,7 @@ public class FeatureSwordInfo {
 		if (tag != null && tag.hasKey("EnemiesKilled")) {
 			return tag.getInteger("EnemiesKilled");
 		}
+		
 		return 0;
 	}
 
@@ -117,6 +128,7 @@ public class FeatureSwordInfo {
 		if (tag != null && tag.hasKey("DamageDealt")) {
 			return tag.getInteger("DamageDealt");
 		}
+		
 		return 0;
 	}
 }

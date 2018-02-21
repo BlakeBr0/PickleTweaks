@@ -43,12 +43,12 @@ public class ItemRepairKit extends ItemMeta implements IEnableable {
 
 	@Override
 	public void init() {
-		addKit(new Kit(0, "wood", 0x6B511F, StackHelper.to(Blocks.PLANKS, 1, OreDictionary.WILDCARD_VALUE)));
-		addKit(new Kit(1, "stone", 0x7F7F7F, StackHelper.to(Blocks.COBBLESTONE)));
+		addKit(new Kit(0, "wood", 0x6B511F, new ItemStack(Blocks.PLANKS, 1, OreDictionary.WILDCARD_VALUE)));
+		addKit(new Kit(1, "stone", 0x7F7F7F, new ItemStack(Blocks.COBBLESTONE)));
 		addKit(new Kit(2, "iron", 0xC1C1C1, "ingotIron"));
 		addKit(new Kit(3, "gold", 0xBCBF4D, "ingotGold"));
 		addKit(new Kit(4, "diamond", 0x27B29A, "gemDiamond"));
-		addKit(new Kit(5, "flint", 0x333333, StackHelper.to(Items.FLINT)));
+		addKit(new Kit(5, "flint", 0x333333, new ItemStack(Items.FLINT)));
 		
 		addKit(new Kit(12, "aluminum", 0xCECED9, "ingotAluminum"));
 		addKit(new Kit(13, "copper", 0xF9A24E, "ingotCopper"));
