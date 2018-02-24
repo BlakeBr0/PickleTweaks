@@ -3,6 +3,7 @@ package com.blakebr0.pickletweaks.feature.item;
 import java.util.List;
 
 import com.blakebr0.cucumber.helper.StackHelper;
+import com.blakebr0.cucumber.iface.IEnableable;
 import com.blakebr0.cucumber.item.ItemBase;
 import com.blakebr0.cucumber.util.Utils;
 import com.blakebr0.pickletweaks.PickleTweaks;
@@ -21,7 +22,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 
-public class ItemMagnet extends ItemBase {
+public class ItemMagnet extends ItemBase implements IEnableable {
 
 	public ItemMagnet() {
 		super("pt.magnet");
@@ -70,6 +71,11 @@ public class ItemMagnet extends ItemBase {
 			tooltip.add(Utils.localize("tooltip.pt.disabled"));
 		}
 	}
+	
+	@Override
+	public boolean isEnabled() {
+		return ModConfig.confMagnet;
+	}
 
 	public static class Handler {
 
@@ -79,6 +85,9 @@ public class ItemMagnet extends ItemBase {
 
 		@SubscribeEvent
 		public void onPlayerTick(PlayerTickEvent event) {
+			if (!ModConfig.confMagnet)
+				return;
+			
 			EntityPlayer player = event.player;
 			World world = player.getEntityWorld();
 
