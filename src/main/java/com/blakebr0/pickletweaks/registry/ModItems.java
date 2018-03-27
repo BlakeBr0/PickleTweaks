@@ -98,6 +98,17 @@ public class ModItems {
 
 	public static ItemCoin itemCoin = new ItemCoin();
 	public static ItemPPM4 itemPPM4 = new ItemPPM4();
+	
+	public static ItemModSword itemCopperSword = new ItemModSword("copper_sword", MATERIAL_COPPER);
+	public static ItemModPickaxe itemCopperPickaxe = new ItemModPickaxe("copper_pickaxe", MATERIAL_COPPER);
+	public static ItemModShovel itemCopperShovel = new ItemModShovel("copper_shovel", MATERIAL_COPPER);
+	public static ItemModAxe itemCopperAxe = new ItemModAxe("copper_axe", MATERIAL_COPPER);
+	public static ItemModHoe itemCopperHoe = new ItemModHoe("copper_hoe", MATERIAL_COPPER);
+	public static ItemModSword itemBronzeSword = new ItemModSword("bronze_sword", MATERIAL_BRONZE);
+	public static ItemModPickaxe itemBronzePickaxe = new ItemModPickaxe("bronze_pickaxe", MATERIAL_BRONZE);
+	public static ItemModShovel itemBronzeShovel = new ItemModShovel("bronze_shovel", MATERIAL_BRONZE);
+	public static ItemModAxe itemBronzeAxe = new ItemModAxe("bronze_axe", MATERIAL_BRONZE);
+	public static ItemModHoe itemBronzeHoe = new ItemModHoe("bronze_hoe", MATERIAL_BRONZE);
 
 	public static void init() {
 		final ModRegistry registry = PickleTweaks.REGISTRY;
@@ -152,5 +163,18 @@ public class ModItems {
 
 		registry.register(itemCoin, "coin");
 		registry.register(itemPPM4, "ppm4");
+		
+		if (ModConfig.confPPM4) {
+			registry.register(itemCopperSword, "copper_sword");
+			registry.register(itemCopperPickaxe, "copper_pickaxe");
+			registry.register(itemCopperShovel, "copper_shovel");
+			registry.register(itemCopperAxe, "copper_axe");
+			registry.register(itemCopperHoe, "copper_hoe");
+			registry.register(itemBronzeSword, "bronze_sword");
+			registry.register(itemBronzePickaxe, "bronze_pickaxe");
+			registry.register(itemBronzeShovel, "bronze_shovel");
+			registry.register(itemBronzeAxe, "bronze_axe");
+			registry.register(itemBronzeHoe, "bronze_hoe");
+		}
 	}
 }
