@@ -7,6 +7,7 @@ import com.blakebr0.pickletweaks.feature.item.ItemRepairKitCustom;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
+import net.minecraft.item.ItemSpade;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.NonNullList;
@@ -113,7 +114,14 @@ public class GridRepairRecipe extends Impl<IRecipe> implements IRecipe {
 			return ItemStack.EMPTY;
 		}
 		
-		int damage = tool.getMaxDamage() / ModConfig.confRepairCost;
+		int repairCost = ModConfig.confRepairCost;
+		
+		if (ModConfig.confCheaperShovel && tool.getItem() instanceof ItemSpade) {
+			repairCost = (int) Math.max(1, repairCost / 2);
+		}
+		
+		int damage = tool.getMaxDamage() / repairCost;
+		
 		if (damage * matCount > tool.getItemDamage() + damage) {
 			return ItemStack.EMPTY;
 		}

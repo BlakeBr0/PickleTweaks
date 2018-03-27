@@ -63,6 +63,7 @@ public class ModConfig {
 	public static boolean confAllowArmor;
 	public static boolean confDisableDefaults;
 	public static boolean confOverrideMode;
+	public static boolean confCheaperShovel;
 
 	public static boolean confCoin;
 	public static boolean confPPM4;
@@ -136,6 +137,7 @@ public class ModConfig {
 		confAllowArmor = config.getBoolean("allow_armor", category, false, "Should you be able to repair armor as well?");
 		confDisableDefaults = config.getBoolean("disable_defaults", category, false, "Should default repair materials be disabled? Doing this makes it so ONLY the custom materials work.");
 		confOverrideMode = config.getBoolean("override_mode", category, false, "Enabling this makes it so custom repair materials override the default ones for the tools specified.");
+		confCheaperShovel = config.getBoolean("cheaper_shovel", category, true, "Makes it so shovels need 50% less material to repair.");
 		
 		category = "repair_kit";
 		config.setCategoryComment(category, "Add and remove repair kits");
