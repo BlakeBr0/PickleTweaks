@@ -5,11 +5,13 @@ import com.blakebr0.pickletweaks.PickleTweaks;
 
 import net.minecraft.item.ItemShears;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Item.ToolMaterial;
 import net.minecraftforge.oredict.OreDictionary;
 
 public class ItemModShears extends ItemShears implements IRepairMaterial {
 	
 	private ItemStack repairMaterial;
+	private String oreRepairMaterial;
 	
 	public ItemModShears(String name, ToolMaterial material) {
 		this.setCreativeTab(PickleTweaks.tab);
@@ -17,9 +19,16 @@ public class ItemModShears extends ItemShears implements IRepairMaterial {
 		this.setMaxDamage(material.getMaxUses());
 	}
 	
+	public ItemModShears(String name, ToolMaterial material, String ore) {
+		this(name, material);
+		this.oreRepairMaterial = ore;
+	}
+	
 	@Override
-	public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-		return OreDictionary.itemMatches(getRepairMaterial(), repair, false);
+    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
+		return oreRepairMaterial != null
+				? OreDictionary.getOres(oreRepairMaterial).stream().anyMatch(stack -> stack.isItemEqual(repair))
+				: OreDictionary.itemMatches(getRepairMaterial(), repair, false);    
 	}
 
 	@Override

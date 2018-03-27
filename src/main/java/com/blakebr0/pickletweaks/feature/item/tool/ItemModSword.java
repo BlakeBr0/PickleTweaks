@@ -10,6 +10,7 @@ import net.minecraftforge.oredict.OreDictionary;
 public class ItemModSword extends ItemSword implements IRepairMaterial {
 
 	private ItemStack repairMaterial;
+	private String oreRepairMaterial;
 	
 	public ItemModSword(String name, ToolMaterial material) {
 		super(material);
@@ -17,10 +18,17 @@ public class ItemModSword extends ItemSword implements IRepairMaterial {
 		this.setCreativeTab(PickleTweaks.tab);
 	}
 	
+	public ItemModSword(String name, ToolMaterial material, String ore) {
+		this(name, material);
+		this.oreRepairMaterial = ore;
+	}
+	
 	@Override
     public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        return OreDictionary.itemMatches(getRepairMaterial(), repair, false);
-    }
+		return oreRepairMaterial != null
+				? OreDictionary.getOres(oreRepairMaterial).stream().anyMatch(stack -> stack.isItemEqual(repair))
+				: OreDictionary.itemMatches(getRepairMaterial(), repair, false);    
+	}
 
 	@Override
 	public ItemStack getRepairMaterial() {
