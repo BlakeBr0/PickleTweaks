@@ -6,19 +6,15 @@ import java.util.Map;
 import org.apache.commons.lang3.text.WordUtils;
 
 import com.blakebr0.cucumber.helper.RecipeHelper;
-import com.blakebr0.cucumber.helper.StackHelper;
 import com.blakebr0.cucumber.iface.IEnableable;
 import com.blakebr0.cucumber.item.ItemMeta;
 import com.blakebr0.cucumber.util.Utils;
 import com.blakebr0.pickletweaks.PickleTweaks;
 import com.blakebr0.pickletweaks.config.ModConfig;
 import com.blakebr0.pickletweaks.feature.crafting.GridRepairHelper;
-import com.blakebr0.pickletweaks.feature.crafting.GridRepairOverride;
 import com.blakebr0.pickletweaks.registry.ModItems;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -98,7 +94,7 @@ public class ItemRepairKitCustom extends ItemMeta implements IEnableable {
 						continue;
 					}
 				}
-				kits.put(meta, new Kit(meta, name, color, StackHelper.to(item, 1, matMeta)));
+				kits.put(meta, new Kit(meta, name, color, new ItemStack(item, 1, matMeta)));
 			} else {
 				kits.put(meta, new Kit(meta, name, color, representative));
 			}
@@ -114,8 +110,12 @@ public class ItemRepairKitCustom extends ItemMeta implements IEnableable {
 	
 	@Override
 	public void initModels() {
-		for (Map.Entry<Integer, MetaItem> item : items.entrySet()) {
-			ModelLoader.setCustomModelResourceLocation(this, item.getKey(), new ModelResourceLocation(PickleTweaks.MOD_ID + ":repair_kit", "inventory"));
+		if (kits.isEmpty()) {
+			ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(PickleTweaks.MOD_ID + ":repair_kit", "inventory"));
+		} else {
+			for (Map.Entry<Integer, MetaItem> item : items.entrySet()) {
+				ModelLoader.setCustomModelResourceLocation(this, item.getKey(), new ModelResourceLocation(PickleTweaks.MOD_ID + ":repair_kit", "inventory"));
+			}
 		}
 	}
 	
@@ -127,14 +127,14 @@ public class ItemRepairKitCustom extends ItemMeta implements IEnableable {
 			if (rep instanceof ItemStack) {
 				ItemStack stack = (ItemStack) rep;
 				if (!stack.isEmpty()) {
-					RecipeHelper.addShapedRecipe(StackHelper.to(ModItems.itemRepairKitCustom, 2, kit.getKey()), "SMS", "MHM", "SMS", 'S', "stickWood", 'M', stack, 'H', StackHelper.to(ModItems.itemHammer, 1, OreDictionary.WILDCARD_VALUE));
+					RecipeHelper.addShapedRecipe(new ItemStack(ModItems.itemRepairKitCustom, 2, kit.getKey()), "SMS", "MHM", "SMS", 'S', "stickWood", 'M', stack, 'H', new ItemStack(ModItems.itemHammer, 1, OreDictionary.WILDCARD_VALUE));
 				}
 			} else if (rep instanceof String) {
 				String ore = (String) rep;
 				if (ore.startsWith("ore:")) {
 					ore = ore.substring(4);
 					if (OreDictionary.doesOreNameExist(ore)) {
-						RecipeHelper.addShapedRecipe(StackHelper.to(ModItems.itemRepairKitCustom, 2, kit.getKey()), "SMS", "MHM", "SMS", 'S', "stickWood", 'M', ore, 'H', StackHelper.to(ModItems.itemHammer, 1, OreDictionary.WILDCARD_VALUE));
+						RecipeHelper.addShapedRecipe(new ItemStack(ModItems.itemRepairKitCustom, 2, kit.getKey()), "SMS", "MHM", "SMS", 'S', "stickWood", 'M', ore, 'H', new ItemStack(ModItems.itemHammer, 1, OreDictionary.WILDCARD_VALUE));
 					}
 				}
 			}
