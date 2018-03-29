@@ -1,0 +1,131 @@
+# CREATIVE TAB
+itemGroup.tab.pickletweaks=Pickle Tweaks
+
+# ITEMS
+item.pt.coal_piece_coal.name=Кусок угля
+item.pt.coal_piece_charcoal.name=Кусок древесного угля
+item.pt.diamond_apple.name=Алмазное яблоко
+item.pt.emerald_apple.name=Изумрудное яблоко
+item.pt.watering_can.name=Лейка
+item.pt.hammer.name=Молоток
+item.pt.grass_fiber.name=Травяное волокно
+item.pt.grass_fiber_mesh.name=Травяная сетка
+item.pt.mesh.name=Сетка
+item.pt.reinforced_mesh.name=Усиленная сетка
+item.pt.magnet.name=Магнит
+item.pt.nightvision_goggles.name=Очки ночного видения
+item.pt.nightvision_goggles_c.name=Сжатые очки ночного видения
+item.pt.mortar_and_pestle.name=Ступка и пестик
+item.pt.repair_kit.name=ремонтный комплект
+
+item.pt.dye_powder_white.name=Порошок белой краски
+item.pt.dye_powder_orange.name=Порошок оранжевой краски
+item.pt.dye_powder_magenta.name=Порошок фиолетовой краски
+item.pt.dye_powder_lightBlue.name=Порошок светло-синей краски
+item.pt.dye_powder_yellow.name=Порошок желтой краски
+item.pt.dye_powder_lime.name=Порошок лаймовой краски
+item.pt.dye_powder_pink.name=Порошок розовой краски
+item.pt.dye_powder_gray.name=Порошок серой краски
+item.pt.dye_powder_silver.name=Порошок светло-серой краски
+item.pt.dye_powder_cyan.name=Порошок голубой краски
+item.pt.dye_powder_purple.name=Порошок пурпурной краски
+item.pt.dye_powder_blue.name=Порошок синей краски
+item.pt.dye_powder_brown.name=Порошок коричневой краски
+item.pt.dye_powder_green.name=Порошок зеленой краски
+item.pt.dye_powder_red.name=Порошок красной краски
+item.pt.dye_powder_black.name=Порошок черной краски
+
+item.pt.wooden_paxel.name=Деревянный паксел
+item.pt.stone_paxel.name=Каменный паксел
+item.pt.iron_paxel.name=Железный паксел
+item.pt.golden_paxel.name=Золотой паксел
+item.pt.diamond_paxel.name=Алмазный паксел
+
+item.pt.aluminum_paxel.name=Алюминиевый паксел
+item.pt.copper_paxel.name=Медный паксел
+item.pt.tin_paxel.name=Оловянный паксел
+item.pt.bronze_paxel.name=Бронзовый паксел
+item.pt.lead_paxel.name=Свинцовый паксел
+item.pt.silver_paxel.name=Серебряный паксел
+item.pt.nickel_paxel.name=Никелевый паксел
+item.pt.invar_paxel.name=Инваровый паксел
+item.pt.constantan_paxel.name=Константановый паксел
+item.pt.electrum_paxel.name=Электрумовый паксел
+item.pt.steel_paxel.name=Стальной паксел
+item.pt.platinum_paxel.name=Платиновый паксел
+
+item.pt.flint_sword.name=Кремниевый меч
+item.pt.flint_pickaxe.name=Кремниевая кирка
+item.pt.flint_shovel.name=Кремниевая лопата
+item.pt.flint_axe.name=Кремниевый топор
+item.pt.flint_hoe.name=Кремниевая мотыга
+item.pt.flint_paxel.name=Кремниевый паксел
+item.pt.flint_shears.name=Кремниевые ножницы
+
+item.pt.coin_wooden.name=Деревянная монета
+item.pt.coin_stone.name=Каменная монета
+item.pt.coin_iron.name=Железная монета
+item.pt.coin_gold.name=Золотая монета
+item.pt.coin_diamond.name=Алмазная монета
+item.pt.coin_emerald.name=Изумрудная монета
+
+item.pt.ppm4_info.name=Информация
+item.pt.ppm4_monkas.name=monkaS
+item.pt.ppm4_paperclip.name=Скрепка
+
+item.pt.copper_sword.name=Медный меч
+item.pt.copper_pickaxe.name=Медная кирка
+item.pt.copper_shovel.name=Медная лопата
+item.pt.copper_axe.name=Медный топор
+item.pt.copper_hoe.name=Медная мотыга
+item.pt.bronze_sword.name=Бронзовый меч
+item.pt.bronze_pickaxe.name=Бронзовая кирка
+item.pt.bronze_shovel.name=Бронзовая лопата
+item.pt.bronze_axe.name=Бронзовый топор
+item.pt.bronze_hoe.name=Бронзовая мотыга
+
+# TOOLTIPS
+tooltip.pt.uses_left=Осталось использований:
+
+tooltip.pt.hold_shift_for_info=Зажмите §e§oSHIFT §r§7для инфо.
+
+tooltip.pt.mining_level=Уровень добычи:
+tooltip.pt.mining_speed=Скорость добычи:
+tooltip.pt.durability=Прочность:
+tooltip.pt.blocks_broken=Разбито блоков:
+tooltip.pt.ammo=Снаряд:
+tooltip.pt.attack_damage=Урон от атаки:
+tooltip.pt.enemies_killed=Убито врагов:
+tooltip.pt.damage_dealt=Нанесённый урон:
+tooltip.pt.blocks_tilled=Вспахано блоков:
+
+tooltip.pt.gives_buffs=Даёт чары:
+
+tooltip.pt.broken=СЛОМАНО
+
+tooltip.useless_tool_1=Этот инструмент не может ничего добывать.
+tooltip.useless_hoe_1=Эта мотыга ничего не может вспахивать.
+tooltip.useless_weapon_1=Это оружие ничего не может повреждать.
+tooltip.useless_tool_2=Это может использоваться только для создания.
+
+tooltip.blocks_broken=Разбито блоков:
+tooltip.kills=Убито
+tooltip.blocks_tilled=Вспахано блоков
+
+tooltip.pt.empty=Пусто
+tooltip.pt.filled=Заполнено
+
+tooltip.pt.disabled=Отключено
+tooltip.pt.enabled=Включено
+
+tooltip.pt.unbreakable=Небьющийся
+
+tooltip.pt.harvest_level=Уровень добычи:
+
+desc.item.pt.coal_piece=Готовит один предмет. Позволяет более эффективно использовать топливо при приготовлении пищи в печи.
+desc.item.pt.charcoal_piece=Готовит один предмет. Позволяет более эффективно использовать топливо при приготовлении пищи в печи.
+desc.item.pt.diamond_apple=Дает те же эффекты, что и золотое яблоко второго уровня. \n\nРазличия в том, что он дает больше поглощения, а эффекты имеют меньшую продолжительность. \n\nВ качестве дополнительного бонуса вы можете съесть несколько из них и иметь стек продолжительности баффа.
+desc.item.pt.emerald_apple=Дает те же эффекты, что и алмазное яблоко. \n\nРазличия в том, что статистика - это более высокий уровень, последний дольше, и вы также получаете силу. \n\nВ качестве дополнительного бонуса вы можете съесть несколько из них и иметь стек продолжительности баффа.
+desc.item.pt.watering_can=Увеличивает скорость роста растений в зоне 3х3. \n\nМожет также использоваться для увлажнения сельскохозяйственных угодий и распространения травы/мицелий.
+desc.item.pt.magnet=Всасывает предметы и опыт в определенном радиусе.
+desc.item.pt.nightvision_goggles=Позволяет владельцу ясно видеть в темноте.
