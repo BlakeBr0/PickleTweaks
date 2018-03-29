@@ -6,14 +6,21 @@ import com.blakebr0.pickletweaks.PickleTweaks;
 import com.blakebr0.pickletweaks.config.ModConfig;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.passive.EntitySheep;
+import net.minecraft.entity.passive.EntityWolf;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent.EntityInteract;
+import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
+@EventBusSubscriber(modid = PickleTweaks.MOD_ID)
 public class ItemDyePowder extends ItemMeta implements IEnableable {
 
 	public ItemDyePowder() {
@@ -29,7 +36,10 @@ public class ItemDyePowder extends ItemMeta implements IEnableable {
             	
             if (!sheep.getSheared() && sheep.getFleeceColor() != color) {
             	sheep.setFleeceColor(color);
-            	stack.shrink(1);
+            	
+            	if (!player.capabilities.isCreativeMode) {
+                	stack.shrink(1);
+            	}
             }
 
             return true;
@@ -68,13 +78,38 @@ public class ItemDyePowder extends ItemMeta implements IEnableable {
 	@Override
 	public void initModels() {
 		for (int i = 0; i < 16; i++) {
-			ModelLoader.setCustomModelResourceLocation(this, i,
-					new ModelResourceLocation("pickletweaks:dye_powder", "inventory"));
+			ModelLoader.setCustomModelResourceLocation(this, i, new ModelResourceLocation("pickletweaks:dye_powder", "inventory"));
 		}
 	}
 
 	@Override
 	public boolean isEnabled() {
 		return ModConfig.confDyePowder;
+	}
+	
+	@SubscribeEvent
+	public static void onEntityInteract(EntityInteract event) {
+		EntityPlayer player = event.getEntityPlayer();
+		Entity target = event.getTarget();
+		ItemStack stack = player.getHeldItem(event.getHand());
+		
+		if (target instanceof EntityWolf) {
+			EntityWolf wolf = (EntityWolf) target;
+
+			if (wolf.isTamed() && !stack.isEmpty() && stack.getItem() instanceof ItemDyePowder) {
+				EnumDyeColor color = EnumDyeColor.byMetadata(stack.getMetadata());
+		
+				if (wolf.getCollarColor() != color) {
+					wolf.setCollarColor(color);
+					
+					if (!player.capabilities.isCreativeMode) {
+						stack.shrink(1);
+					}
+					
+					event.setCancellationResult(EnumActionResult.SUCCESS);
+					event.setCanceled(true);
+				}
+			}
+		}
 	}
 }
