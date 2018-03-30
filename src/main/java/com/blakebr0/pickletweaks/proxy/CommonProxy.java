@@ -8,6 +8,7 @@ import com.blakebr0.pickletweaks.feature.FeatureHoeInfo;
 import com.blakebr0.pickletweaks.feature.FeatureRightClickHarvest;
 import com.blakebr0.pickletweaks.feature.FeatureSwordInfo;
 import com.blakebr0.pickletweaks.feature.FeatureToolInfo;
+import com.blakebr0.pickletweaks.feature.item.ItemDyePowder;
 import com.blakebr0.pickletweaks.feature.item.ItemMagnet;
 import com.blakebr0.pickletweaks.feature.item.ItemNightvisionGoggles;
 import com.blakebr0.pickletweaks.registry.ModBlocks;
@@ -41,6 +42,7 @@ public class CommonProxy {
 
 		MinecraftForge.EVENT_BUS.register(new ItemMagnet.Handler());
 		MinecraftForge.EVENT_BUS.register(new ItemNightvisionGoggles.Handler());
+		MinecraftForge.EVENT_BUS.register(new ItemDyePowder.Handler());
 
 		MinecraftForge.EVENT_BUS.register(new FeatureToolInfo());
 		MinecraftForge.EVENT_BUS.register(new FeatureSwordInfo());
