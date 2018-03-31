@@ -64,8 +64,8 @@ public class FeatureHoeInfo {
 			while (tooltip.hasNext()) {
 				tooltip.next();
 				if (shift) {
-					tooltip.add(Utils.localize("tooltip.pt.durability") + " " + getDurability(stack));
-					tooltip.add(Utils.localize("tooltip.pt.blocks_tilled") + " " + getBlocksTilled(stack));
+					tooltip.add(Utils.localize("tooltip.pt.durability") + " " + Colors.WHITE + getDurability(stack));
+					tooltip.add(Utils.localize("tooltip.pt.blocks_tilled") + " " + Colors.WHITE + getBlocksTilled(stack));
 				} else {
 					tooltip.add(Utils.localize("tooltip.pt.hold_shift_for_info"));
 				}

@@ -102,11 +102,11 @@ public class FeatureToolInfo {
 					String toolClass = tool.getToolClasses(stack).toArray().length > 0
 							? tool.getToolClasses(stack).toArray()[0].toString()
 							: "";
-					tooltip.add(Utils.localize("tooltip.pt.mining_level") + " "
+					tooltip.add(Utils.localize("tooltip.pt.mining_level") + " " + Colors.WHITE
 							+ getMiningLevelName(stack, toolClass, event.getEntityPlayer()));
-					tooltip.add(Utils.localize("tooltip.pt.mining_speed") + " " + getMiningSpeed(tool));
-					tooltip.add(Utils.localize("tooltip.pt.durability") + " " + getDurability(stack));
-					tooltip.add(Utils.localize("tooltip.pt.blocks_broken") + " " + getBlocksBroken(stack));
+					tooltip.add(Utils.localize("tooltip.pt.mining_speed") + " " + Colors.WHITE + getMiningSpeed(tool));
+					tooltip.add(Utils.localize("tooltip.pt.durability") + " " + Colors.WHITE + getDurability(stack));
+					tooltip.add(Utils.localize("tooltip.pt.blocks_broken") + " " + Colors.WHITE + getBlocksBroken(stack));
 				} else {
 					tooltip.add(Utils.localize("tooltip.pt.hold_shift_for_info"));
 				}

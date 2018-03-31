@@ -94,9 +94,9 @@ public class FeatureSwordInfo {
 			while (tooltip.hasNext()) {
 				tooltip.next();
 				if (shift) {
-					tooltip.add(Utils.localize("tooltip.pt.durability") + " " + getDurability(stack));
-					tooltip.add(Utils.localize("tooltip.pt.enemies_killed") + " " + getEnemiesKilled(stack));
-					tooltip.add(Utils.localize("tooltip.pt.damage_dealt") + " " + getDamageDealt(stack));
+					tooltip.add(Utils.localize("tooltip.pt.durability") + " " + Colors.WHITE + getDurability(stack));
+					tooltip.add(Utils.localize("tooltip.pt.enemies_killed") + " " + Colors.WHITE + getEnemiesKilled(stack));
+					tooltip.add(Utils.localize("tooltip.pt.damage_dealt") + " " + Colors.WHITE + getDamageDealt(stack));
 				} else {
 					tooltip.add(Utils.localize("tooltip.pt.hold_shift_for_info"));
 				}

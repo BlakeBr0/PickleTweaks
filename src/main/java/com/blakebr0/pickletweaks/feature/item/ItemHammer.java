@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.blakebr0.cucumber.iface.IEnableable;
 import com.blakebr0.cucumber.item.ItemBase;
+import com.blakebr0.cucumber.lib.Colors;
 import com.blakebr0.cucumber.util.Utils;
 import com.blakebr0.pickletweaks.PickleTweaks;
 import com.blakebr0.pickletweaks.config.ModConfig;
@@ -43,7 +44,7 @@ public class ItemHammer extends ItemBase implements IEnableable {
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag advanced) {
 		int damage = stack.getMaxDamage() - stack.getItemDamage() + 1;
-		tooltip.add(Utils.localize("tooltip.pt.uses_left") + " " + damage);
+		tooltip.add(Utils.localize("tooltip.pt.uses_left") + " " + Colors.WHITE + damage);
 	}
 
 	@Override
