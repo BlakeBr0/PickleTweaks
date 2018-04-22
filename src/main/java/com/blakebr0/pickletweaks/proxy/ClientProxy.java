@@ -24,14 +24,16 @@ public class ClientProxy extends CommonProxy {
 		if (ModConfig.confDyePowder) {
 			Minecraft.getMinecraft().getItemColors().registerItemColorHandler(new ItemDyeColorHandler(), ModItems.itemDyePowder);
 		}
+		
 		if (ModConfig.confRepairKits) {
 			Minecraft.getMinecraft().getItemColors().registerItemColorHandler((stack, tintIndex) -> {
 				com.blakebr0.pickletweaks.feature.item.ItemRepairKit.Kit kit = ItemRepairKit.kits.get(stack.getMetadata());
-				return kit != null ? kit.color : 0xFFFFFF;
+				return kit != null && tintIndex == 0 ? kit.color : -1;
 			}, ModItems.itemRepairKit);
+			
 			Minecraft.getMinecraft().getItemColors().registerItemColorHandler((stack, tintIndex) -> {
 				com.blakebr0.pickletweaks.feature.item.ItemRepairKitCustom.Kit kit = ItemRepairKitCustom.kits.get(stack.getMetadata());
-				return kit != null ? kit.color : 0xFFFFFF;
+				return kit != null && tintIndex == 0 ? kit.color : -1;
 			}, ModItems.itemRepairKitCustom);
 		}
 	}
