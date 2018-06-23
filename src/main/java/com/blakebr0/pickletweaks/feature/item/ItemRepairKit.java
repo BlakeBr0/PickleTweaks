@@ -48,7 +48,7 @@ public class ItemRepairKit extends ItemMeta implements IEnableable {
 		addKit(new Kit(2, "iron", 0xC1C1C1, "ingotIron"));
 		addKit(new Kit(3, "gold", 0xBCBF4D, "ingotGold"));
 		addKit(new Kit(4, "diamond", 0x27B29A, "gemDiamond"));
-		addKit(new Kit(5, "flint", 0x333333, new ItemStack(Items.FLINT)));
+		addKit(new Kit(5, "flint", 0x565656, new ItemStack(Items.FLINT)));
 		
 		addKit(new Kit(12, "aluminum", 0xCECED9, "ingotAluminum"));
 		addKit(new Kit(13, "copper", 0xF9A24E, "ingotCopper"));
@@ -79,12 +79,12 @@ public class ItemRepairKit extends ItemMeta implements IEnableable {
 			if (rep instanceof ItemStack) {
 				ItemStack stack = (ItemStack) rep;
 				if (!stack.isEmpty()) {
-					RecipeHelper.addShapedRecipe(StackHelper.to(ModItems.itemRepairKit, 2, kit.getKey()), "SMS", "MHM", "SMS", 'S', "stickWood", 'M', stack, 'H', StackHelper.to(ModItems.itemHammer, 1, OreDictionary.WILDCARD_VALUE));
+					RecipeHelper.addShapedRecipe(new ItemStack(ModItems.itemRepairKit, 2, kit.getKey()), "SMS", "MHM", "SMS", 'S', "stickWood", 'M', stack, 'H', StackHelper.to(ModItems.itemHammer, 1, OreDictionary.WILDCARD_VALUE));
 				}
 			} else if (rep instanceof String) {
 				String ore = (String) rep;
 				if (OreDictionary.doesOreNameExist(ore)) {
-					RecipeHelper.addShapedRecipe(StackHelper.to(ModItems.itemRepairKit, 2, kit.getKey()), "SMS", "MHM", "SMS", 'S', "stickWood", 'M', ore, 'H', StackHelper.to(ModItems.itemHammer, 1, OreDictionary.WILDCARD_VALUE));
+					RecipeHelper.addShapedRecipe(new ItemStack(ModItems.itemRepairKit, 2, kit.getKey()), "SMS", "MHM", "SMS", 'S', "stickWood", 'M', ore, 'H', StackHelper.to(ModItems.itemHammer, 1, OreDictionary.WILDCARD_VALUE));
 				}
 			}
 		}
@@ -99,7 +99,7 @@ public class ItemRepairKit extends ItemMeta implements IEnableable {
 		if (enabled) {
 			kits.put(kit.meta, kit);
 		}
-		return addItem(kit.meta, kit.name);
+		return addItem(kit.meta, kit.name, enabled);
 	}
 	
 	public Kit getKit(ItemStack stack) {
