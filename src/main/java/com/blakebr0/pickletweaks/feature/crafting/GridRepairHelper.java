@@ -7,14 +7,19 @@ import net.minecraft.item.ItemStack;
 public class GridRepairHelper {
 
 	public static boolean checkMaterial(ItemStack tool, ItemStack mat) {
-		boolean override = GridRepairOverride.hasOverride(tool, mat);
-		if (checkDefault(tool, mat) || override) {
-			if (ModConfig.confOverrideMode && !override && GridRepairOverride.hasToolOverride(tool)) {
-				return false;
+		return getMaterialValue(tool, mat) > 0;
+	}
+	
+	public static double getMaterialValue(ItemStack tool, ItemStack mat) {
+		GridRepairOverride.Override override = GridRepairOverride.getOverride(tool, mat);
+		boolean hasOverride = override != null;
+		if (checkDefault(tool, mat) || hasOverride) {
+			if (ModConfig.confOverrideMode && !hasOverride && GridRepairOverride.hasToolOverride(tool)) {
+				return 0;
 			}
-			return true;
+			return hasOverride ? override.multi : 1.0;
 		}
-		return false;
+		return 0;
 	}
 	
 	public static boolean checkDefault(ItemStack tool, ItemStack mat) {

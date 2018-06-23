@@ -42,6 +42,7 @@ public class GridRepairRecipe extends Impl<IRecipe> implements IRecipe {
 		NonNullList<ItemStack> inputs = NonNullList.<ItemStack>create();
 		for (int i = 0; i < inv.getSizeInventory(); i++) {
 			ItemStack slotStack = inv.getStackInSlot(i);
+			
 			if (slotStack.isEmpty()) {
 				continue;
 			}
@@ -82,29 +83,44 @@ public class GridRepairRecipe extends Impl<IRecipe> implements IRecipe {
 			return ItemStack.EMPTY;
 		}
 		
-		int matCount = 0;
-		boolean repairKit = false;
+		int repairCost = ModConfig.confRepairCost;
+		
+		if (ModConfig.confCheaperShovel && tool.getItem() instanceof ItemSpade) {
+			repairCost = (int) Math.max(1, repairCost / 2);
+		}
+		
+		int damage = tool.getMaxDamage() / repairCost;
+		
+		double matCount = 0;
+		boolean repairKit = false, maxed = false;
+		
 		for (ItemStack mat : inputs) {
+			if (maxed) return ItemStack.EMPTY;
+			
 			if (!repairKit && mat.getItem() instanceof ItemRepairKit) {
 				if (matCount > 0) {
 					return ItemStack.EMPTY;
 				}
+				
 				ItemRepairKit kit = (ItemRepairKit) mat.getItem();
 				if (ItemRepairKit.isKitValid(tool, kit.getKit(mat))) {
 					repairKit = true;
 				}
-				continue;
 			} else if (!repairKit && mat.getItem() instanceof ItemRepairKitCustom) {
 				if (matCount > 0) {
 					return ItemStack.EMPTY;
 				}
+				
 				ItemRepairKitCustom kit = (ItemRepairKitCustom) mat.getItem();
 				if (ItemRepairKitCustom.isKitValid(tool, kit.getKit(mat))) {
 					repairKit = true;
 				}
-				continue;
-			} else if (!repairKit && !mat.getItem().hasContainerItem(mat) && GridRepairHelper.checkMaterial(tool, mat)) {
-				matCount++;
+			} else if (!repairKit && !mat.getItem().hasContainerItem(mat)) {
+				matCount += GridRepairHelper.getMaterialValue(tool, mat);
+				
+				if (tool.getItemDamage() - (damage * matCount) <= 0) {
+					maxed = true;
+				}
 			} else {
 				return ItemStack.EMPTY;
 			}
@@ -114,22 +130,10 @@ public class GridRepairRecipe extends Impl<IRecipe> implements IRecipe {
 			return ItemStack.EMPTY;
 		}
 		
-		int repairCost = ModConfig.confRepairCost;
-		
-		if (ModConfig.confCheaperShovel && tool.getItem() instanceof ItemSpade) {
-			repairCost = (int) Math.max(1, repairCost / 2);
-		}
-		
-		int damage = tool.getMaxDamage() / repairCost;
-		
-		if (damage * matCount > tool.getItemDamage() + damage) {
-			return ItemStack.EMPTY;
-		}
-		
 		if (repairKit) {
 			tool.setItemDamage(0);
 		} else {
-			tool.setItemDamage(tool.getItemDamage() - (damage * matCount));
+			tool.setItemDamage(tool.getItemDamage() - (int) (damage * matCount));
 		}
 
 		return tool;

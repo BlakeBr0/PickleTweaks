@@ -28,7 +28,9 @@ public class GridRepairOverride {
 				+ "\n- Note: the tool doesn't have a meta. If no meta is put for the material it will automatically become 0."
 				+ "\n- You can also use the OreDictionary for repair materials."
 				+ "\n- Example: ore:ingotIron would make all items in ingotIron a valid material."
-				+ "\n- Note: additions using OreDictionary seem to require a restart.");
+				+ "\n- Note: additions using OreDictionary seem to require a restart."
+				+ "\n- You can also specify an effectiveness multiplier by adding @<multiplier> to the repair material."
+				+ "\n- Example: adding @0.5 after the repair material would make that material only 50 percent effective.");
 		
 		for (String value : values) {
 			String[] parts = value.split("=");
@@ -41,6 +43,7 @@ public class GridRepairOverride {
 			ItemStack tool;
 			ItemStack mat;
 			String ore;
+			double multi = 1.0;
 			
 			String[] toolName = parts[0].split(":");
 			if (toolName.length != 2) {
@@ -52,27 +55,49 @@ public class GridRepairOverride {
 					PickleTweaks.LOGGER.error("Invalid repair material syntax, tool item is null: {}", value);
 					continue;
 				}
-				tool = StackHelper.to(toolItem);
+				tool = new ItemStack(toolItem);
 			}
 			
 			String[] matName = parts[1].split(":");
 			if (matName.length == 3) {
 				int meta;
-				try {
-					meta = Integer.valueOf(matName[2]);
-				} catch (NumberFormatException e) {
-					PickleTweaks.LOGGER.error("Invalid repair material syntax metadata: {}", value);
-					continue;
+				if (matName[2].contains("@")) {
+					String metaThings[] = matName[2].split("@");
+					try {
+						meta = Integer.valueOf(metaThings[0]);
+						multi = Double.valueOf(metaThings[1]);
+					} catch (NumberFormatException e) {
+						PickleTweaks.LOGGER.error("Invalid repair material syntax metadata and mutliplier: {}", value);
+						continue;
+					}
+				} else {
+					try {
+						meta = Integer.valueOf(matName[2]);
+					} catch (NumberFormatException e) {
+						PickleTweaks.LOGGER.error("Invalid repair material syntax metadata: {}", value);
+						continue;
+					}
 				}
 				Item matItem = ForgeRegistries.ITEMS.getValue(new ResourceLocation(matName[0], matName[1]));
 				if (matItem == null) {
 					PickleTweaks.LOGGER.error("Invalid repair material syntax, material item is null: {}", value);
 					continue;
 				}
-				mat = StackHelper.to(matItem, 1, meta);
+				mat = new ItemStack(matItem, 1, meta);
 			} else if (matName.length == 2) {
 				if (parts[1].startsWith("ore:")) {
 					ore = parts[1].substring(4);
+					if (ore.contains("@")) {
+						String metaParts[] = ore.split("@");
+						try {
+							multi = Double.valueOf(metaParts[1]);
+						} catch (NumberFormatException e) {
+							PickleTweaks.LOGGER.error("Invalid repair material syntax mutliplier: {}", value);
+							continue;
+						}
+						overrides.add(new Override(tool, metaParts[0], multi));
+						continue;
+					}
 					overrides.add(new Override(tool, ore));
 					continue;
 				}
@@ -81,17 +106,17 @@ public class GridRepairOverride {
 					PickleTweaks.LOGGER.error("Invalid repair material syntax, material item is null: {}", value);
 					continue;
 				}
-				mat = StackHelper.to(matItem);
+				mat = new ItemStack(matItem);
 			} else {
 				PickleTweaks.LOGGER.error("Invalid repair material syntax, material item is invalid: {}", value);
 				continue;
 			}
 			
-			overrides.add(new Override(tool, mat));
+			overrides.add(new Override(tool, mat, multi));
 		}
 	}
 	
-	public static boolean hasOverride(ItemStack tool, ItemStack mat) {
+	public static Override getOverride(ItemStack tool, ItemStack mat) {
 		for (Override entry : overrides) {
 			if (entry.tool.isItemEqualIgnoreDurability(tool)) {
 				if (entry.mat instanceof ItemStack) {
@@ -99,19 +124,19 @@ public class GridRepairOverride {
 					if (!stack.isItemEqual(mat)) {
 						continue;
 					}
-					return true;
+					return entry;
 				} else if (entry.mat instanceof String) {
 					String ore = (String) entry.mat;
 					if (OreDictionary.doesOreNameExist(ore)) {
 						if (!OreDictionary.getOres(ore).stream().anyMatch(is -> is.getMetadata() == OreDictionary.WILDCARD_VALUE && is.getItem() == mat.getItem() || is.isItemEqual(mat))) {
 							continue;
 						}
-						return true;
+						return entry;
 					}
 				}
 			}
 		}
-		return false;
+		return null;
 	}
 	
 	public static boolean hasToolOverride(ItemStack tool) {
@@ -122,10 +147,16 @@ public class GridRepairOverride {
 		
 		public ItemStack tool;
 		public Object mat;
+		public double multi;
 		
 		public Override(ItemStack tool, Object mat) {
+			this(tool, mat, 1.0);
+		}
+		
+		public Override(ItemStack tool, Object mat, double multi) {
 			this.tool = tool;
 			this.mat = mat;
+			this.multi = multi;
 		}
 	}
 }
