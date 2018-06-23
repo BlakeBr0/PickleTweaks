@@ -37,8 +37,8 @@ public class ItemRepairKit extends ItemMeta implements IEnableable {
 	
 	@Override
 	public String getItemStackDisplayName(ItemStack stack) {
-		String name = items.containsKey(stack.getMetadata()) ? items.get(stack.getMetadata()).getName().replace("_", " ") : "Dummy";
-		return WordUtils.capitalize(name) + " " + Utils.localize("item.pt.repair_kit.name");
+		String name = items.containsKey(stack.getMetadata()) ? items.get(stack.getMetadata()).getName() : "dummy";
+		return Utils.localize("kit.pt." + name) + " " + Utils.localize("item.pt.repair_kit.name");
 	}
 
 	@Override
