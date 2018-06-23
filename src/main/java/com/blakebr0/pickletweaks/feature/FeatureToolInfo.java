@@ -26,7 +26,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class FeatureToolInfo {
 
-	public static final String[] DEFAULT_VALUES = new String[] { "0=Wood", "1=Stone", "2=Iron", "3=Diamond" };
+	public static final String[] DEFAULT_VALUES = new String[] { "0=Stone", "1=Iron", "2=Diamond", "3=Obsidian" };
 	public static Map<Integer, String> names = new HashMap<Integer, String>();
 
 	public static void configure(Configuration config) {
