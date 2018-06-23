@@ -3,7 +3,6 @@ package com.blakebr0.pickletweaks.feature.item;
 import java.util.List;
 import java.util.Random;
 
-import com.blakebr0.cucumber.helper.StackHelper;
 import com.blakebr0.cucumber.iface.IEnableable;
 import com.blakebr0.cucumber.item.ItemBase;
 import com.blakebr0.cucumber.util.Utils;
@@ -13,7 +12,6 @@ import com.blakebr0.pickletweaks.config.ModConfig;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFarmland;
 import net.minecraft.block.BlockLiquid;
-import net.minecraft.block.BlockLog.EnumAxis;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;

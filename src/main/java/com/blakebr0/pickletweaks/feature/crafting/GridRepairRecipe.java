@@ -5,7 +5,6 @@ import com.blakebr0.pickletweaks.feature.item.ItemRepairKit;
 import com.blakebr0.pickletweaks.feature.item.ItemRepairKitCustom;
 
 import net.minecraft.inventory.InventoryCrafting;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemSpade;
 import net.minecraft.item.ItemStack;

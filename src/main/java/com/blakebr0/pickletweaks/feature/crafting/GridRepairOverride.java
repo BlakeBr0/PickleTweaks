@@ -3,7 +3,6 @@ package com.blakebr0.pickletweaks.feature.crafting;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.blakebr0.cucumber.helper.StackHelper;
 import com.blakebr0.pickletweaks.PickleTweaks;
 
 import net.minecraft.item.Item;

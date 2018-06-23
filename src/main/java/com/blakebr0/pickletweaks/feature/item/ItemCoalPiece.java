@@ -6,8 +6,6 @@ import com.blakebr0.pickletweaks.PickleTweaks;
 import com.blakebr0.pickletweaks.config.ModConfig;
 
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.fml.common.IFuelHandler;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ItemCoalPiece extends ItemMeta implements IEnableable {
 	

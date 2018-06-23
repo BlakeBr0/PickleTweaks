@@ -3,8 +3,6 @@ package com.blakebr0.pickletweaks.feature.item;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.commons.lang3.text.WordUtils;
-
 import com.blakebr0.cucumber.helper.RecipeHelper;
 import com.blakebr0.cucumber.helper.StackHelper;
 import com.blakebr0.cucumber.iface.IEnableable;
@@ -13,13 +11,11 @@ import com.blakebr0.cucumber.util.Utils;
 import com.blakebr0.pickletweaks.PickleTweaks;
 import com.blakebr0.pickletweaks.config.ModConfig;
 import com.blakebr0.pickletweaks.feature.crafting.GridRepairHelper;
-import com.blakebr0.pickletweaks.feature.crafting.GridRepairOverride;
 import com.blakebr0.pickletweaks.registry.ModItems;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.config.Configuration;

@@ -5,7 +5,6 @@ import com.blakebr0.pickletweaks.PickleTweaks;
 
 import net.minecraft.item.ItemHoe;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Item.ToolMaterial;
 import net.minecraftforge.oredict.OreDictionary;
 
 public class ItemModHoe extends ItemHoe implements IRepairMaterial {

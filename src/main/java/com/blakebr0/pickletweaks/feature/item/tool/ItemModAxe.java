@@ -5,7 +5,6 @@ import com.blakebr0.pickletweaks.PickleTweaks;
 
 import net.minecraft.item.ItemAxe;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Item.ToolMaterial;
 import net.minecraftforge.oredict.OreDictionary;
 
 public class ItemModAxe extends ItemAxe implements IRepairMaterial {

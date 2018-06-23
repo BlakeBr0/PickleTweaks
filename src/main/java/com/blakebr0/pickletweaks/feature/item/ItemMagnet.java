@@ -2,7 +2,6 @@ package com.blakebr0.pickletweaks.feature.item;
 
 import java.util.List;
 
-import com.blakebr0.cucumber.helper.StackHelper;
 import com.blakebr0.cucumber.iface.IEnableable;
 import com.blakebr0.cucumber.item.ItemBase;
 import com.blakebr0.cucumber.util.Utils;
