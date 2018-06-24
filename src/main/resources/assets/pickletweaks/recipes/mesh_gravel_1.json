@@ -14,10 +14,6 @@
     {
       "type": "forge:ore_dict",
       "ore": "gravel"
-    },
-    {
-      "type": "forge:ore_dict",
-      "ore": "gravel"
     }
   ],
   "result": {
