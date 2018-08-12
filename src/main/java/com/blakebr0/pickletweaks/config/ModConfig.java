@@ -9,7 +9,10 @@ import com.blakebr0.pickletweaks.PickleTweaks;
 import com.blakebr0.pickletweaks.feature.FeatureToolInfo;
 import com.blakebr0.pickletweaks.feature.crafting.GridRepairBlacklist;
 import com.blakebr0.pickletweaks.feature.crafting.GridRepairOverride;
+import com.blakebr0.pickletweaks.feature.item.ItemReinforcement;
 import com.blakebr0.pickletweaks.feature.item.ItemRepairKitCustom;
+import com.blakebr0.pickletweaks.feature.reinforcement.ReinforcementBlacklist;
+import com.blakebr0.pickletweaks.feature.reinforcement.ReinforcementOverride;
 import com.blakebr0.pickletweaks.tweaks.TweakBlockHardness;
 import com.blakebr0.pickletweaks.tweaks.TweakBlockHarvest;
 import com.blakebr0.pickletweaks.tweaks.TweakBlockResistance;
@@ -39,7 +42,6 @@ public class ModConfig {
 	public static boolean confPaxels;
 	public static boolean confModSupportPaxels;
 	public static boolean confFlintTools;
-	public static boolean confRepairKits;
 
 	public static boolean confToolInfoTooltip;
 	public static boolean confSwordInfoTooltip;
@@ -64,7 +66,14 @@ public class ModConfig {
 	public static boolean confDisableDefaults;
 	public static boolean confOverrideMode;
 	public static boolean confCheaperShovel;
+	
+	public static boolean confReinforcement = false;
+	public static int confMaxReinforcement = 1;
 
+	public static boolean confRepairKits;
+
+	public static boolean confReinforcements = false;
+	
 	public static boolean confCoin;
 	public static boolean confPPM4;
 	public static boolean confSharpeningKits;
@@ -85,12 +94,10 @@ public class ModConfig {
 	}
 
 	public static void preInit() {
-
 		String category;
 
 		category = "features";
 		config.addCustomCategoryComment(category, "All the different features this mod adds.");
-
 		confCoalPiece = config.getBoolean("coal_piece", category, true, "Should Coal and Charcoal Pieces be enabled?");
 		confApples = config.getBoolean("apples", category, true, "Should Diamond and Emerald Apples be enabled?");
 		confWateringCan = config.getBoolean("watering_can", category, true, "Should the Watering Can be enabled?");
@@ -113,19 +120,18 @@ public class ModConfig {
 
 		category = "tweaks";
 		config.addCustomCategoryComment(category, "All the different things this mod tweaks.");
-
 		confFlintDrop = config.getBoolean("flint_drop", category, true, "Should Flint dropped from Gravel be replaced with the item defined in 'flint_drop_item'?");
 		confBrokenTools = config.getBoolean("tools_dont_break", category, true, "Once tools have 1 use left, they become ineffective.");
-		String[] tools = config.getStringList("useless_tools", category, new String[0], 
-				"All tools listed will not be able to mine blocks." + "\n- Syntax: modid:itemid"
+		String[] tools = config.getStringList("useless_tools", category, new String[0], "All tools listed will not be able to mine blocks." 
+						+ "\n- Syntax: modid:itemid"
 						+ "\n- Example: minecraft:stone_pickaxe");
 		confUselessTools.addAll(Arrays.asList(tools));
-		String[] hoes = config.getStringList("useless_hoes", category, new String[0],
-				"All hoes listed will not be able to till blocks." + "\n- Syntax: modid:itemid"
+		String[] hoes = config.getStringList("useless_hoes", category, new String[0], "All hoes listed will not be able to till blocks." 
+						+ "\n- Syntax: modid:itemid"
 						+ "\n- Example: minecraft:stone_hoe");
 		confUselessHoes.addAll(Arrays.asList(hoes));
-		String[] weapons = config.getStringList("useless_weapons", category, new String[0],
-				"All weapons listed will not be able to deal damage." + "\n- Syntax: modid:itemid"
+		String[] weapons = config.getStringList("useless_weapons", category, new String[0], "All weapons listed will not be able to deal damage." 
+						+ "\n- Syntax: modid:itemid"
 						+ "\n- Example: minecraft:stone_sword");
 		confUselessWeapons.addAll(Arrays.asList(weapons));
 
@@ -139,11 +145,21 @@ public class ModConfig {
 		confOverrideMode = config.getBoolean("override_mode", category, false, "Enabling this makes it so custom repair materials override the default ones for the tools specified.");
 		confCheaperShovel = config.getBoolean("cheaper_shovel", category, true, "Makes it so shovels need 50% less material to repair.");
 		
+		//category = "tool_reinforcement";
+		//config.setCategoryComment(category, "Tool Reinforcement settings.");
+		//confReinforcement = config.getBoolean("tool_reinforcement", category, true, "Should Tool Reinforcement be enabled?");
+		//confMaxReinforcement = config.getInt("max_reinforcement", category, 500, 1, Integer.MAX_VALUE, "The maximum reinforcement value a tool can have.");
+		
 		category = "repair_kit";
-		config.setCategoryComment(category, "Add and remove repair kits");
+		config.setCategoryComment(category, "Add and remove repair kits.");
 		confRepairKits = config.getBoolean("_enable_repair_kits", category, true, "Should repair kits be enabled?");
 		ItemRepairKitCustom.configure(config);
 
+		//category = "reinforcements";
+		//config.setCategoryComment(category, "Add and remove reinforcements.");
+		//confReinforcements = config.getBoolean("reinforcement", category, true, "Should reinforcements be enabled?");
+		//ItemReinforcement.configure(config);
+		
 		category = "paxels";
 		config.setCategoryComment(category, "Paxel settings.");
 		confPaxels = config.getBoolean("paxels", category, true, "Should the paxels be enabled?");
@@ -162,11 +178,13 @@ public class ModConfig {
 	}
 
 	public static void postInit() {
-
 		FeatureToolInfo.configure(config);
 
 		GridRepairOverride.configure(config);
 		GridRepairBlacklist.configure(config);
+		
+		//ReinforcementOverride.configure(config);
+		//ReinforcementBlacklist.configure(config);
 
 		TweakFlintDrop.configure(config);
 		TweakStackSize.configure(config);

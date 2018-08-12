@@ -5,6 +5,7 @@ import com.blakebr0.pickletweaks.config.ModConfig;
 import com.blakebr0.pickletweaks.feature.crafting.GridRepairRecipe;
 import com.blakebr0.pickletweaks.feature.item.ItemRepairKit;
 import com.blakebr0.pickletweaks.feature.item.ItemRepairKitCustom;
+import com.blakebr0.pickletweaks.feature.reinforcement.ReinforcementRecipe;
 
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
@@ -19,6 +20,10 @@ public class ModRecipes {
 	public static void init() {
 		if (ModConfig.confGridRepair) {
 			ForgeRegistries.RECIPES.register(new GridRepairRecipe());
+		}
+		
+		if (ModConfig.confReinforcement) {
+			//ForgeRegistries.RECIPES.register(new ReinforcementRecipe());
 		}
 		
 		ItemRepairKit.initRecipes();

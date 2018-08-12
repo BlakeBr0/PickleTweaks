@@ -17,6 +17,7 @@ import com.blakebr0.pickletweaks.feature.item.ItemNightvisionGoggles;
 import com.blakebr0.pickletweaks.feature.item.ItemNightvisionGogglesC;
 import com.blakebr0.pickletweaks.feature.item.ItemPPM4;
 import com.blakebr0.pickletweaks.feature.item.ItemPaxel;
+import com.blakebr0.pickletweaks.feature.item.ItemReinforcement;
 import com.blakebr0.pickletweaks.feature.item.ItemRepairKit;
 import com.blakebr0.pickletweaks.feature.item.ItemRepairKitCustom;
 import com.blakebr0.pickletweaks.feature.item.ItemWateringCan;
@@ -52,6 +53,7 @@ public class ModItems {
 	public static ItemDyePowder itemDyePowder = new ItemDyePowder();
 	public static ItemRepairKit itemRepairKit = new ItemRepairKit();
 	public static ItemRepairKitCustom itemRepairKitCustom = new ItemRepairKitCustom();
+	public static ItemReinforcement itemReinforcement = new ItemReinforcement();
 
 	public static ItemPaxel itemWoodenPaxel = new ItemPaxel("wooden_paxel", ToolMaterial.WOOD);
 	public static ItemPaxel itemStonePaxel = new ItemPaxel("stone_paxel", ToolMaterial.STONE);
@@ -129,6 +131,7 @@ public class ModItems {
 		registry.register(itemDyePowder, "dye_powder");
 		registry.register(itemRepairKit, "repair_kit");
 		registry.register(itemRepairKitCustom, "repair_kit_custom");
+		//registry.register(itemReinforcement, "reinforcement");
 
 		registry.register(itemWoodenPaxel, "wooden_paxel", new ItemStack(Blocks.PLANKS, 1, OreDictionary.WILDCARD_VALUE));
 		registry.register(itemStonePaxel, "stone_paxel", new ItemStack(Blocks.COBBLESTONE));

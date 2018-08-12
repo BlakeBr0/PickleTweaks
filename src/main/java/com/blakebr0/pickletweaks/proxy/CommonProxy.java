@@ -11,6 +11,7 @@ import com.blakebr0.pickletweaks.feature.FeatureToolInfo;
 import com.blakebr0.pickletweaks.feature.item.ItemDyePowder;
 import com.blakebr0.pickletweaks.feature.item.ItemMagnet;
 import com.blakebr0.pickletweaks.feature.item.ItemNightvisionGoggles;
+import com.blakebr0.pickletweaks.feature.reinforcement.ReinforcementHandler;
 import com.blakebr0.pickletweaks.registry.ModBlocks;
 import com.blakebr0.pickletweaks.registry.ModItems;
 import com.blakebr0.pickletweaks.registry.ModRecipes;
@@ -52,6 +53,7 @@ public class CommonProxy {
 		MinecraftForge.EVENT_BUS.register(new FeatureRightClickHarvest());
 
 		MinecraftForge.EVENT_BUS.register(new TweakToolBreaking());
+		//if (ModConfig.confReinforcement) MinecraftForge.EVENT_BUS.register(new ReinforcementHandler());
 	}
 
 	public void init(FMLInitializationEvent e) {
