@@ -1,5 +1,6 @@
 package com.blakebr0.pickletweaks.feature.crafting;
 
+import com.blakebr0.pickletweaks.PickleTweaks;
 import com.blakebr0.pickletweaks.config.ModConfig;
 import com.blakebr0.pickletweaks.feature.item.ItemRepairKit;
 import com.blakebr0.pickletweaks.feature.item.ItemRepairKitCustom;
@@ -16,7 +17,7 @@ import net.minecraftforge.registries.IForgeRegistryEntry.Impl;
 public class GridRepairRecipe extends Impl<IRecipe> implements IRecipe {
 	
 	public GridRepairRecipe() {
-		this.setRegistryName("grid_repair");
+		this.setRegistryName(PickleTweaks.MOD_ID, "grid_repair");
 	}
 
 	@Override
@@ -78,7 +79,7 @@ public class GridRepairRecipe extends Impl<IRecipe> implements IRecipe {
 			return ItemStack.EMPTY;
 		}
 		
-		if (GridRepairBlacklist.blacklist.contains(tool.getItem())) {
+		if (GridRepairBlacklist.isBlacklisted(tool.getItem())) {
 			return ItemStack.EMPTY;
 		}
 		

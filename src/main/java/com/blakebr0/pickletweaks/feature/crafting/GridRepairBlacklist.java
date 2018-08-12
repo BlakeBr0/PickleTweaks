@@ -29,4 +29,8 @@ public class GridRepairBlacklist {
 			blacklist.add(item);
 		}
 	}
+	
+	public static boolean isBlacklisted(Item tool) {
+		return blacklist.contains(tool);
+	}
 }

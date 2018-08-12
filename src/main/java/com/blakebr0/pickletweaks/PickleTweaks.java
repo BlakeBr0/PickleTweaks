@@ -3,6 +3,8 @@ package com.blakebr0.pickletweaks;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.blakebr0.cucumber.helper.CompoundTagHelper;
+import com.blakebr0.cucumber.helper.NBTHelper;
 import com.blakebr0.cucumber.registry.ModRegistry;
 import com.blakebr0.pickletweaks.proxy.CommonProxy;
 
@@ -21,12 +23,13 @@ public class PickleTweaks {
 	public static final String MOD_ID = "pickletweaks";
 	public static final String NAME = "PickleTweaks";
 	public static final String VERSION = "${version}";
-	public static final String DEPENDENCIES = "required-after:cucumber@[1.0.2,)";
+	public static final String DEPENDENCIES = "required-after:cucumber@[1.1.1,)";
 	public static final String GUI_FACTORY = "com.blakebr0.pickletweaks.config.GuiFactory";
 
-	public static final ModRegistry REGISTRY = new ModRegistry(MOD_ID);
+	public static final ModRegistry REGISTRY = ModRegistry.create(MOD_ID);
 	public static final Logger LOGGER = LogManager.getLogger(MOD_ID);
-
+	public static final CompoundTagHelper TAG_HELPER = NBTHelper.newCompoundTagHelper(MOD_ID);
+	
 	@Instance(MOD_ID)
 	public static PickleTweaks instance = new PickleTweaks();
 
