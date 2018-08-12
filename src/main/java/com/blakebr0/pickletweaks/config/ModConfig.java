@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import com.blakebr0.pickletweaks.PickleTweaks;
+import com.blakebr0.pickletweaks.feature.FeatureRightClickHarvest;
 import com.blakebr0.pickletweaks.feature.FeatureToolInfo;
 import com.blakebr0.pickletweaks.feature.crafting.GridRepairBlacklist;
 import com.blakebr0.pickletweaks.feature.crafting.GridRepairOverride;
@@ -179,6 +180,7 @@ public class ModConfig {
 
 	public static void postInit() {
 		FeatureToolInfo.configure(config);
+		FeatureRightClickHarvest.configure(config);
 
 		GridRepairOverride.configure(config);
 		GridRepairBlacklist.configure(config);
