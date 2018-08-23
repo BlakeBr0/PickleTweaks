@@ -112,6 +112,9 @@ public class ItemMagnet extends ItemBase implements IEnableable {
 						double range = getRange();
 						List<EntityItem> items = world.getEntitiesWithinAABB(EntityItem.class, player.getEntityBoundingBox().grow(range, range, range));
 						for (EntityItem item : items) {
+							if (item.getEntityData().getBoolean("PreventRemoteMovement")) {
+								continue;
+							}
 							item.setPickupDelay(0);
 							item.setPosition(player.posX, player.posY, player.posZ);
 						}
