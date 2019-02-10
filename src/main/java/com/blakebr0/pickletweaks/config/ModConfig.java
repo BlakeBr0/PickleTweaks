@@ -30,6 +30,8 @@ public class ModConfig {
 
 	public static Configuration config;
 	public static ModConfig instance;
+	
+	public static boolean confColoredCobblestone;
 
 	public static boolean confCoalPiece;
 	public static boolean confApples;
@@ -99,6 +101,8 @@ public class ModConfig {
 
 		category = "features";
 		config.addCustomCategoryComment(category, "All the different features this mod adds.");
+		confColoredCobblestone = config.getBoolean("colored_cobblestone", category, true, "Should Colored Cobblestone be enabled?");
+		
 		confCoalPiece = config.getBoolean("coal_piece", category, true, "Should Coal and Charcoal Pieces be enabled?");
 		confApples = config.getBoolean("apples", category, true, "Should Diamond and Emerald Apples be enabled?");
 		confWateringCan = config.getBoolean("watering_can", category, true, "Should the Watering Can be enabled?");

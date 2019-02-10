@@ -1,0 +1,29 @@
+{
+  "conditions": [
+     {
+	    "type": "minecraft:item_exists",
+		"item": "pickletweaks:colored_cobblestone"
+	 }
+  ],
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "CCC",
+    "CDC",
+    "CCC"
+  ],
+  "key": {
+    "C": {
+      "type": "forge:ore_dict",
+      "ore": "cobblestone"
+    },
+	"D": {
+      "type": "forge:ore_dict",
+      "ore": "dyePink"
+    }
+  },
+  "result": {
+    "item": "pickletweaks:colored_cobblestone",
+    "count": 8,
+	"data": 6
+  }
+}

@@ -8,6 +8,7 @@ import com.blakebr0.pickletweaks.feature.FeatureHoeInfo;
 import com.blakebr0.pickletweaks.feature.FeatureRightClickHarvest;
 import com.blakebr0.pickletweaks.feature.FeatureSwordInfo;
 import com.blakebr0.pickletweaks.feature.FeatureToolInfo;
+import com.blakebr0.pickletweaks.feature.block.BlockColoredCobblestone;
 import com.blakebr0.pickletweaks.feature.item.ItemDyePowder;
 import com.blakebr0.pickletweaks.feature.item.ItemMagnet;
 import com.blakebr0.pickletweaks.feature.item.ItemNightvisionGoggles;
@@ -64,6 +65,8 @@ public class CommonProxy {
 		if (ModConfig.confSharpeningKits && Loader.isModLoaded("tconstruct")) {
 			MinecraftForge.EVENT_BUS.register(new TweakSharpeningKit());
 		}
+		
+		BlockColoredCobblestone.addToChisel();
 	}
 
 	public void postInit(FMLPostInitializationEvent e) {
