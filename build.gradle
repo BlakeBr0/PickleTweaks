@@ -21,29 +21,28 @@ compileJava {
 }
 
 repositories {	
-	maven {
-		url = "http://dvs1.progwml6.com/files/maven"
-	}
-	
     maven {
-        url "http://tehnut.info/maven"
+        url = "http://dvs1.progwml6.com/files/maven"
+    }
+    maven {
+        url = "http://tehnut.info/maven"
     }
 }
 
 
 minecraft {
-    version = "1.12-14.21.1.2443"
+    version = "1.12.2-14.23.4.2705"
     runDir = "run"
     replace '${version}', project.version
     
     mappings = "snapshot_20170624"
-    makeObfSourceJar = false
+    makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
 }
 
 dependencies {
-	deobfCompile "mezz.jei:jei_1.12:4.7.1.74:api"
-	runtime "mezz.jei:jei_1.12:4.7.1.74"
-	deobfCompile "mcp.mobius.waila:Hwyla:1.8.19-B33_1.12"
+    deobfCompile "mezz.jei:jei_1.12.2:4.10.0.198:api"
+    runtime "mezz.jei:jei_1.12.2:4.10.0.198"
+    deobfCompile "mcp.mobius.waila:Hwyla:1.8.26-B41_1.12.2"
 }
 
 processResources {
