@@ -15,7 +15,7 @@ public class ItemModAxe extends ItemAxe implements IRepairMaterial {
 	public ItemModAxe(String name, ToolMaterial material) {
 		super(material, material.getDamageVsEntity(), -3.2F);
 		this.setUnlocalizedName("pt." + name);
-		this.setCreativeTab(PickleTweaks.tab);
+		this.setCreativeTab(PickleTweaks.CREATIVE_TAB);
 	}
 	
 	public ItemModAxe(String name, ToolMaterial material, String ore) {

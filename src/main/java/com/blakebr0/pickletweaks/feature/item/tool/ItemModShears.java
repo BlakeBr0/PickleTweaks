@@ -13,7 +13,7 @@ public class ItemModShears extends ItemShears implements IRepairMaterial {
 	private String oreRepairMaterial;
 	
 	public ItemModShears(String name, ToolMaterial material) {
-		this.setCreativeTab(PickleTweaks.tab);
+		this.setCreativeTab(PickleTweaks.CREATIVE_TAB);
 		this.setUnlocalizedName("pt." + name);
 		this.setMaxDamage(material.getMaxUses());
 	}

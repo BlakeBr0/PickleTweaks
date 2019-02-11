@@ -18,7 +18,7 @@ public class ItemCoin extends ItemMeta implements IEnableable {
 	
 	public ItemCoin() {
 		super("pt.coin", PickleTweaks.REGISTRY);
-		this.setCreativeTab(PickleTweaks.tab);
+		this.setCreativeTab(PickleTweaks.CREATIVE_TAB);
 		this.setHasSubtypes(true);
 	}
 

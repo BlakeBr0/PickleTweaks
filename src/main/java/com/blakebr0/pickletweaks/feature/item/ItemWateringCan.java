@@ -43,7 +43,7 @@ public class ItemWateringCan extends ItemBase implements IEnableable {
 
 	public ItemWateringCan() {
 		super("pt.watering_can");
-		this.setCreativeTab(PickleTweaks.tab);
+		this.setCreativeTab(PickleTweaks.CREATIVE_TAB);
 		this.setMaxStackSize(1);
 	}
 

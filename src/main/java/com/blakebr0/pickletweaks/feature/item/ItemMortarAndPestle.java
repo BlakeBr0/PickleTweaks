@@ -11,7 +11,7 @@ public class ItemMortarAndPestle extends ItemBase implements IEnableable {
 
 	public ItemMortarAndPestle() {
 		super("pt.mortar_and_pestle");
-		this.setCreativeTab(PickleTweaks.tab);
+		this.setCreativeTab(PickleTweaks.CREATIVE_TAB);
 		this.setMaxStackSize(1);
 		this.setNoRepair();
 	}

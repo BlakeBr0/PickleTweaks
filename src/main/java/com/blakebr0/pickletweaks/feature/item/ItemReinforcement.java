@@ -26,7 +26,7 @@ public class ItemReinforcement extends ItemMeta implements IEnableable {
 	
 	public ItemReinforcement() {
 		super("pt.reinforcement", PickleTweaks.REGISTRY);
-		this.setCreativeTab(PickleTweaks.tab);
+		this.setCreativeTab(PickleTweaks.CREATIVE_TAB);
 	}
 	
 	@Override

@@ -19,7 +19,7 @@ public class ItemHammer extends ItemBase implements IEnableable {
 
 	public ItemHammer() {
 		super("pt.hammer");
-		this.setCreativeTab(PickleTweaks.tab);
+		this.setCreativeTab(PickleTweaks.CREATIVE_TAB);
 		this.setMaxDamage(191);
 		this.setMaxStackSize(1);
 		this.setNoRepair();

@@ -25,7 +25,7 @@ public class ItemMagnet extends ItemBase implements IEnableable {
 
 	public ItemMagnet() {
 		super("pt.magnet");
-		this.setCreativeTab(PickleTweaks.tab);
+		this.setCreativeTab(PickleTweaks.CREATIVE_TAB);
 		this.setMaxStackSize(1);
 	}
 

@@ -9,7 +9,7 @@ public class ItemPPM4 extends ItemMeta implements IEnableable {
 
 	public ItemPPM4() {
 		super("pt.ppm4", PickleTweaks.REGISTRY);
-		this.setCreativeTab(PickleTweaks.tab);
+		this.setCreativeTab(PickleTweaks.CREATIVE_TAB);
 	}
 
 	@Override

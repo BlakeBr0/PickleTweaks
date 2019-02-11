@@ -26,7 +26,7 @@ public class ItemNightvisionGoggles extends ItemArmor implements IEnableable {
 	public ItemNightvisionGoggles() {
 		super(MATERIAL, 0, EntityEquipmentSlot.HEAD);
 		this.setUnlocalizedName("pt.nightvision_goggles");
-		this.setCreativeTab(PickleTweaks.tab);
+		this.setCreativeTab(PickleTweaks.CREATIVE_TAB);
 		this.setMaxStackSize(1);
 	}
 

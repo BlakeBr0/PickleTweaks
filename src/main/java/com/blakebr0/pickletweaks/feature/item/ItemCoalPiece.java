@@ -14,7 +14,7 @@ public class ItemCoalPiece extends ItemMeta implements IEnableable {
 	
 	public ItemCoalPiece() {
 		super("pt.coal_piece", PickleTweaks.REGISTRY);
-		this.setCreativeTab(PickleTweaks.tab);
+		this.setCreativeTab(PickleTweaks.CREATIVE_TAB);
 		this.setHasSubtypes(true);
 	}
 	

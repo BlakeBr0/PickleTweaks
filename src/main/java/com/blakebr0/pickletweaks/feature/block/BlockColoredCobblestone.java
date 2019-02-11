@@ -26,7 +26,7 @@ public class BlockColoredCobblestone extends BlockColored implements IEnableable
 	public BlockColoredCobblestone() {
 		super(Material.ROCK);
 		this.setUnlocalizedName("pt.colored_cobblestone");
-		this.setCreativeTab(PickleTweaks.tab);
+		this.setCreativeTab(PickleTweaks.CREATIVE_TAB);
 		this.setSoundType(SoundType.STONE);
 		this.setHardness(2.0F);
 		this.setResistance(10.0F);

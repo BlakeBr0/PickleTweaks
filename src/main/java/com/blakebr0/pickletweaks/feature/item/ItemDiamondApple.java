@@ -22,7 +22,7 @@ public class ItemDiamondApple extends ItemFood implements IEnableable {
 	public ItemDiamondApple() {
 		super(6, 1.5F, false);
 		this.setUnlocalizedName("pt.diamond_apple");
-		this.setCreativeTab(PickleTweaks.tab);
+		this.setCreativeTab(PickleTweaks.CREATIVE_TAB);
 		this.setAlwaysEdible();
 	}
 

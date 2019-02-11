@@ -23,7 +23,7 @@ public class ItemDyePowder extends ItemMeta implements IEnableable {
 
 	public ItemDyePowder() {
 		super("pt.dye_powder", PickleTweaks.REGISTRY);
-		this.setCreativeTab(PickleTweaks.tab);
+		this.setCreativeTab(PickleTweaks.CREATIVE_TAB);
 	}
 	
 	@Override

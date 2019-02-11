@@ -26,6 +26,7 @@ public class PickleTweaks {
 	public static final String DEPENDENCIES = "required-after:cucumber@[1.1.1,)";
 	public static final String GUI_FACTORY = "com.blakebr0.pickletweaks.config.GuiFactory";
 
+	public static final CreativeTabs CREATIVE_TAB = new PTCreativeTab(MOD_ID);
 	public static final ModRegistry REGISTRY = ModRegistry.create(MOD_ID);
 	public static final Logger LOGGER = LogManager.getLogger(MOD_ID);
 	public static final CompoundTagHelper TAG_HELPER = NBTHelper.newCompoundTagHelper(MOD_ID);
@@ -35,10 +36,8 @@ public class PickleTweaks {
 
 	@SidedProxy(clientSide = "com.blakebr0.pickletweaks.proxy.ClientProxy", 
 			    serverSide = "com.blakebr0.pickletweaks.proxy.ServerProxy")
-
 	public static CommonProxy proxy;
 
-	public static CreativeTabs tab = new CreativeTab("tab.pickletweaks");
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent e) {

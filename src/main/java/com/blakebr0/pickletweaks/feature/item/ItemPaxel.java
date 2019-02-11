@@ -23,7 +23,7 @@ public class ItemPaxel extends ItemTool implements IRepairMaterial, IEnableable 
 	public ItemPaxel(String name, ToolMaterial material) {
 		super(4, -3.2F, material, new HashSet<>());
 		this.setUnlocalizedName("pt." + name);
-		this.setCreativeTab(PickleTweaks.tab);
+		this.setCreativeTab(PickleTweaks.CREATIVE_TAB);
 		this.setHarvestLevel("pickaxe", material.getHarvestLevel());
 		this.setHarvestLevel("shovel", material.getHarvestLevel());
 		this.setHarvestLevel("axe", material.getHarvestLevel());

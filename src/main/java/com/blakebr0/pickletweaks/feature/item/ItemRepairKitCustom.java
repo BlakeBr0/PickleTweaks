@@ -31,7 +31,7 @@ public class ItemRepairKitCustom extends ItemMeta implements IEnableable {
 
 	public ItemRepairKitCustom() {
 		super("pt.repair_kit_custom", PickleTweaks.REGISTRY);
-		this.setCreativeTab(PickleTweaks.tab);
+		this.setCreativeTab(PickleTweaks.CREATIVE_TAB);
 	}
 	
 	@Override

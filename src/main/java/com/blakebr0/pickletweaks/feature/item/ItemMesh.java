@@ -19,7 +19,7 @@ public class ItemMesh extends ItemBase implements IEnableable {
 
 	public ItemMesh(String name, int uses) {
 		super("pt." + name);
-		this.setCreativeTab(PickleTweaks.tab);
+		this.setCreativeTab(PickleTweaks.CREATIVE_TAB);
 		this.setMaxDamage(uses);
 		this.setMaxStackSize(1);
 		this.setNoRepair();

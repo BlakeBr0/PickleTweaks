@@ -6,9 +6,9 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
-public class CreativeTab extends CreativeTabs {
+public class PTCreativeTab extends CreativeTabs {
 
-	public CreativeTab(String label) {
+	public PTCreativeTab(String label) {
 		super(label);
 	}
 
@@ -17,6 +17,7 @@ public class CreativeTab extends CreativeTabs {
 		if (ModItems.itemWateringCan.isEnabled()) {
 			return new ItemStack(ModItems.itemWateringCan);
 		}
+		
 		return new ItemStack(Items.DIAMOND);
 	}
 }

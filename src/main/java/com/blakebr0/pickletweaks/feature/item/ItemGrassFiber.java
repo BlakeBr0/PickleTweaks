@@ -9,7 +9,7 @@ public class ItemGrassFiber extends ItemBase implements IEnableable {
 
 	public ItemGrassFiber() {
 		super("pt.grass_fiber");
-		this.setCreativeTab(PickleTweaks.tab);
+		this.setCreativeTab(PickleTweaks.CREATIVE_TAB);
 	}
 
 	@Override
