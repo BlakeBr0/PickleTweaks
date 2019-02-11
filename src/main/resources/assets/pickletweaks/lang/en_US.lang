@@ -19,6 +19,8 @@ tile.pt.colored_cobblestone_green.name=Green Cobblestone
 tile.pt.colored_cobblestone_red.name=Red Cobblestone
 tile.pt.colored_cobblestone_black.name=Black Cobblestone
 
+tile.pt.dark_glass.name=Dark Glass
+
 # ITEMS
 item.pt.coal_piece_coal.name=Coal Piece
 item.pt.coal_piece_charcoal.name=Charcoal Piece

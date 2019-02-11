@@ -32,6 +32,7 @@ public class ModConfig {
 	public static ModConfig instance;
 	
 	public static boolean confColoredCobblestone;
+	public static boolean confDarkGlass;
 
 	public static boolean confCoalPiece;
 	public static boolean confApples;
@@ -102,6 +103,7 @@ public class ModConfig {
 		category = "features";
 		config.addCustomCategoryComment(category, "All the different features this mod adds.");
 		confColoredCobblestone = config.getBoolean("colored_cobblestone", category, true, "Should Colored Cobblestone be enabled?");
+		confDarkGlass = config.getBoolean("dark_glass", category, true, "Should Dark Glass be enabled?");
 		
 		confCoalPiece = config.getBoolean("coal_piece", category, true, "Should Coal and Charcoal Pieces be enabled?");
 		confApples = config.getBoolean("apples", category, true, "Should Diamond and Emerald Apples be enabled?");
