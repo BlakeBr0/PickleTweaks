@@ -7,6 +7,7 @@ import com.blakebr0.pickletweaks.feature.*;
 import com.blakebr0.pickletweaks.feature.block.BlockColoredCobblestone;
 import com.blakebr0.pickletweaks.feature.item.ItemDyePowder;
 import com.blakebr0.pickletweaks.feature.item.ItemNightvisionGoggles;
+import com.blakebr0.pickletweaks.network.NetworkHandler;
 import com.blakebr0.pickletweaks.registry.ModBlocks;
 import com.blakebr0.pickletweaks.registry.ModItems;
 import com.blakebr0.pickletweaks.registry.ModRecipes;
@@ -48,7 +49,8 @@ public class CommonProxy {
 		ModRecipes.init();
 		FMLInterModComms.sendMessage("waila", "register", "com.blakebr0.pickletweaks.feature.FeatureWailaTooltips.callbackRegister");
 		NetworkRegistry.INSTANCE.registerGuiHandler(PickleTweaks.instance, new GuiHandler());
-		
+		NetworkHandler.init();
+
 		if (ModConfig.confSharpeningKits && Loader.isModLoaded("tconstruct")) {
 			MinecraftForge.EVENT_BUS.register(new TweakSharpeningKit());
 		}
