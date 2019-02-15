@@ -2,6 +2,7 @@ package com.blakebr0.pickletweaks.tweaks;
 
 import java.util.ListIterator;
 
+import com.blakebr0.pickletweaks.config.ModConfig;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -19,7 +20,6 @@ public class TweakFlintDrop {
 	public static int replacementMeta = 0;
 
 	public static void configure(Configuration config) {
-
 		ConfigCategory category = config.getCategory("tweaks");
 		String value = config.get(category.getName(), "flint_drop_item", "minecraft:gravel:0").getString();
 		category.get("flint_drop_item").setComment("Define the item that should replace Flint from Gravel. \n- Syntax: modid:itemid:meta");
@@ -51,7 +51,7 @@ public class TweakFlintDrop {
 
 	@SubscribeEvent
 	public void onBlockHarvested(HarvestDropsEvent event) {
-		if (event.getState() != null && event.getState().getBlock() == Blocks.GRAVEL) {
+		if (ModConfig.confFlintDrop && event.getState() != null && event.getState().getBlock() == Blocks.GRAVEL) {
 			int itemsToAdd = 0;
 			ListIterator<ItemStack> drops = event.getDrops().listIterator();
 			boolean gravel = false;
