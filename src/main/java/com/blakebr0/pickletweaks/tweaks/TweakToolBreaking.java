@@ -290,9 +290,11 @@ public class TweakToolBreaking {
 	}
 
 	public static boolean isBroken(ItemStack stack, int offset) {
+		int baseOffset = offset;
 		if (overrides.containsKey(stack.getItem())) {
 			offset += overrides.get(stack.getItem());
 		}
-		return stack.getItemDamage() >= (stack.getMaxDamage() - offset);
+
+		return stack.getMaxDamage() > (1 + baseOffset) && stack.getItemDamage() >= (stack.getMaxDamage() - offset);
 	}
 }

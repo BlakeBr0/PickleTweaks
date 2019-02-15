@@ -30,7 +30,6 @@ public class ToggleMagnetInInventory {
             if (under != null && held.isEmpty() && under.inventory == mc.player.inventory) {
                 ItemStack stack = under.getStack();
                 if (stack.getItem() instanceof ItemMagnet) {
-                    System.out.println("hello");
                     NetworkHandler.INSTANCE.sendToServer(new MessageToggleMagnet(under.slotNumber));
                     event.setCanceled(true);
                 }
