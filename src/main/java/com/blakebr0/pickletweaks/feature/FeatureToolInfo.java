@@ -78,13 +78,7 @@ public class FeatureToolInfo {
 	@SideOnly(Side.CLIENT)
 	@SubscribeEvent
 	public void addToolInfoTooltip(ItemTooltipEvent event) {
-		if (!ModConfig.confToolInfoTooltip) {
-			return;
-		}
-		
-		if (event.getEntityPlayer() == null) {
-			return;
-		}
+		if (!ModConfig.confToolInfoTooltip) return;
 
 		ItemStack stack = event.getItemStack();
 		ListIterator<String> tooltip = event.getToolTip().listIterator();
@@ -103,7 +97,7 @@ public class FeatureToolInfo {
 							? tool.getToolClasses(stack).toArray()[0].toString()
 							: "";
 					tooltip.add(Utils.localize("tooltip.pt.mining_level") + " " + Colors.WHITE
-							+ getMiningLevelName(stack, toolClass, event.getEntityPlayer()));
+							+ getMiningLevelName(stack, toolClass));
 					tooltip.add(Utils.localize("tooltip.pt.mining_speed") + " " + Colors.WHITE + getMiningSpeed(tool));
 					tooltip.add(Utils.localize("tooltip.pt.durability") + " " + Colors.WHITE + getDurability(stack));
 					tooltip.add(Utils.localize("tooltip.pt.blocks_broken") + " " + Colors.WHITE + getBlocksBroken(stack));
@@ -115,7 +109,7 @@ public class FeatureToolInfo {
 		}
 	}
 
-	public String getMiningLevelName(ItemStack stack, String toolClass, EntityPlayer player) {
+	public String getMiningLevelName(ItemStack stack, String toolClass) {
 		ItemTool tool = (ItemTool) stack.getItem();
 		int level;
 		if (toolClass.equals("")) {
@@ -125,13 +119,15 @@ public class FeatureToolInfo {
 					return names.get(level);
 				}
 			}
+
 			return "?";
 		}
 		
-		level = tool.getHarvestLevel(stack, toolClass, player, null);
+		level = tool.getHarvestLevel(stack, toolClass, null, null);
 		if (names.containsKey(level)) {
 			return names.get(level);
 		}
+
 		return level + "";
 	}
 

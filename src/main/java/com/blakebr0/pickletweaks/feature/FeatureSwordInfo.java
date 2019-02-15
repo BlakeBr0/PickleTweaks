@@ -73,13 +73,7 @@ public class FeatureSwordInfo {
 	@SideOnly(Side.CLIENT)
 	@SubscribeEvent
 	public void addSwordInfoTooltip(ItemTooltipEvent event) {
-		if (!ModConfig.confSwordInfoTooltip) {
-			return;
-		}
-		
-		if (event.getEntityPlayer() == null) {
-			return;
-		}
+		if (!ModConfig.confSwordInfoTooltip) return;
 
 		ItemStack stack = event.getItemStack();
 		ListIterator<String> tooltip = event.getToolTip().listIterator();

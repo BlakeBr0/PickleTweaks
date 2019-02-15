@@ -44,13 +44,7 @@ public class FeatureHoeInfo {
 	@SideOnly(Side.CLIENT)
 	@SubscribeEvent
 	public void addHoeInfoTooltip(ItemTooltipEvent event) {
-		if (!ModConfig.confHoeInfoTooltip) {
-			return;
-		}
-		
-		if (event.getEntityPlayer() == null) {
-			return;
-		}
+		if (!ModConfig.confHoeInfoTooltip) return;
 
 		ItemStack stack = event.getItemStack();
 		ListIterator<String> tooltip = event.getToolTip().listIterator();

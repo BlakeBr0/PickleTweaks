@@ -72,13 +72,7 @@ public class FeatureBowInfo {
 	@SideOnly(Side.CLIENT)
 	@SubscribeEvent
 	public void addSwordInfoTooltip(ItemTooltipEvent event) {
-		if (!ModConfig.confBowInfoTooltip) {
-			return;
-		}
-		
-		if (event.getEntityPlayer() == null) {
-			return;
-		}
+		if (!ModConfig.confBowInfoTooltip) return;
 
 		ItemStack stack = event.getItemStack();
 		ListIterator<String> tooltip = event.getToolTip().listIterator();
@@ -115,6 +109,9 @@ public class FeatureBowInfo {
 
 	public int getAmmo(EntityPlayer player) {
 		int ammo = 0;
+
+		if (player == null) return ammo;
+
 		ItemStack offHand = player.inventory.offHandInventory.get(0);
 		if (offHand.getItem() instanceof ItemArrow) {
 			ammo += offHand.getCount();
