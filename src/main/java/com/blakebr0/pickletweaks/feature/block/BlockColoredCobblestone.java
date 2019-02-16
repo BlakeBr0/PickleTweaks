@@ -1,6 +1,5 @@
 package com.blakebr0.pickletweaks.feature.block;
 
-import com.blakebr0.cucumber.block.BlockBase;
 import com.blakebr0.cucumber.helper.ResourceHelper;
 import com.blakebr0.cucumber.iface.IEnableable;
 import com.blakebr0.cucumber.iface.IModelHelper;
@@ -17,6 +16,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.event.FMLInterModComms;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -51,13 +51,15 @@ public class BlockColoredCobblestone extends BlockColored implements IEnableable
 	}
 
 	public static void addToChisel() {
-		COLOR.getAllowedValues().forEach(color -> {			
-			NBTTagCompound tag = new NBTTagCompound();
-			tag.setString("group", "cobblestone");
-			tag.setTag("stack", new ItemStack(ModBlocks.COLORED_COBBLESTONE, 1, color.getMetadata()).serializeNBT());
-			tag.setString("block", ModBlocks.COLORED_COBBLESTONE.getRegistryName().toString());
-			tag.setInteger("meta", color.getMetadata());
-			FMLInterModComms.sendMessage("chisel", "add_variation", tag);
-		});
+		if (Loader.isModLoaded("chisel") && ModBlocks.COLORED_COBBLESTONE.isEnabled()) {
+			COLOR.getAllowedValues().forEach(color -> {
+				NBTTagCompound tag = new NBTTagCompound();
+				tag.setString("group", "cobblestone");
+				tag.setTag("stack", new ItemStack(ModBlocks.COLORED_COBBLESTONE, 1, color.getMetadata()).serializeNBT());
+				tag.setString("block", ModBlocks.COLORED_COBBLESTONE.getRegistryName().toString());
+				tag.setInteger("meta", color.getMetadata());
+				FMLInterModComms.sendMessage("chisel", "add_variation", tag);
+			});
+		}
 	}
 }
