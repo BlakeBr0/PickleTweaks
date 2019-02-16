@@ -1,6 +1,26 @@
 # CREATIVE TAB
 itemGroup.pickletweaks=Pickle Tweaks
 
+# BLOCKS
+tile.pt.colored_cobblestone_white.name=Белый булыжник
+tile.pt.colored_cobblestone_orange.name=Оранжевый булыжник
+tile.pt.colored_cobblestone_magenta.name=Сиреневый булыжник
+tile.pt.colored_cobblestone_lightBlue.name=Светло-синий булыжник
+tile.pt.colored_cobblestone_yellow.name=Желтый булыжник
+tile.pt.colored_cobblestone_lime.name=Лаймовый булыжник
+tile.pt.colored_cobblestone_pink.name=Розовый булыжник
+tile.pt.colored_cobblestone_gray.name=Серый булыжник
+tile.pt.colored_cobblestone_silver.name=Светло-серый булыжник
+tile.pt.colored_cobblestone_cyan.name=Бирюзовый булыжник
+tile.pt.colored_cobblestone_purple.name=Фиолетовый булыжник
+tile.pt.colored_cobblestone_blue.name=Синий булыжник
+tile.pt.colored_cobblestone_brown.name=Коричневый булыжник
+tile.pt.colored_cobblestone_green.name=Зеленый булыжник
+tile.pt.colored_cobblestone_red.name=Красный булыжник
+tile.pt.colored_cobblestone_black.name=Черный булыжник
+
+tile.pt.dark_glass.name=Dark Glass
+
 # ITEMS
 item.pt.coal_piece_coal.name=Кусок угля
 item.pt.coal_piece_charcoal.name=Кусок древесного угля
@@ -17,18 +37,19 @@ item.pt.nightvision_goggles.name=Очки ночного видения
 item.pt.nightvision_goggles_c.name=Сжатые очки ночного видения
 item.pt.mortar_and_pestle.name=Ступка и пестик
 item.pt.repair_kit.name=ремонтный комплект
+item.pt.reinforcement.name=Арматура
 
 item.pt.dye_powder_white.name=Порошок белой краски
 item.pt.dye_powder_orange.name=Порошок оранжевой краски
-item.pt.dye_powder_magenta.name=Порошок фиолетовой краски
+item.pt.dye_powder_magenta.name=Порошок сиреневой краски
 item.pt.dye_powder_lightBlue.name=Порошок светло-синей краски
 item.pt.dye_powder_yellow.name=Порошок желтой краски
 item.pt.dye_powder_lime.name=Порошок лаймовой краски
 item.pt.dye_powder_pink.name=Порошок розовой краски
 item.pt.dye_powder_gray.name=Порошок серой краски
 item.pt.dye_powder_silver.name=Порошок светло-серой краски
-item.pt.dye_powder_cyan.name=Порошок голубой краски
-item.pt.dye_powder_purple.name=Порошок пурпурной краски
+item.pt.dye_powder_cyan.name=Порошок бирюзовой краски
+item.pt.dye_powder_purple.name=Порошок фиолетовой краски
 item.pt.dye_powder_blue.name=Порошок синей краски
 item.pt.dye_powder_brown.name=Порошок коричневой краски
 item.pt.dye_powder_green.name=Порошок зеленой краски
@@ -84,22 +105,44 @@ item.pt.bronze_shovel.name=Бронзовая лопата
 item.pt.bronze_axe.name=Бронзовый топор
 item.pt.bronze_hoe.name=Бронзовая мотыга
 
+# Repair Kits
+kit.pt.dummy=Пустышка
+kit.pt.wood=Деревянный
+kit.pt.stone=Каменный
+kit.pt.iron=Железный
+kit.pt.gold=Золотой
+kit.pt.diamond=Алмазный
+kit.pt.flint=Кремниевый
+
+kit.pt.aluminum=Алюминиевый
+kit.pt.copper=Медный
+kit.pt.tin=Оловянный
+kit.pt.bronze=Бронзовый
+kit.pt.lead=Свинцовый
+kit.pt.silver=Серебряный
+kit.pt.nickel=Никелевый
+kit.pt.invar=Инваровый
+kit.pt.constantan=Константановый
+kit.pt.electrum=Электрумовый
+kit.pt.steel=Стальной
+kit.pt.platinum=Платиновый
+
 # TOOLTIPS
-tooltip.pt.uses_left=Осталось использований:
+tooltip.pt.uses_left=Осталось использований : 
 
 tooltip.pt.hold_shift_for_info=Зажмите §e§oSHIFT §r§7для инфо.
 
-tooltip.pt.mining_level=Уровень добычи:
-tooltip.pt.mining_speed=Скорость добычи:
-tooltip.pt.durability=Прочность:
-tooltip.pt.blocks_broken=Разбито блоков:
-tooltip.pt.ammo=Снаряд:
-tooltip.pt.attack_damage=Урон от атаки:
-tooltip.pt.enemies_killed=Убито врагов:
-tooltip.pt.damage_dealt=Нанесённый урон:
-tooltip.pt.blocks_tilled=Вспахано блоков:
-
-tooltip.pt.gives_buffs=Даёт чары:
+tooltip.pt.mining_level=Уровень добычи : 
+tooltip.pt.mining_speed=Скорость добычи : 
+tooltip.pt.durability=Прочность : 
+tooltip.pt.blocks_broken=Разбито блоков : 
+tooltip.pt.ammo=Снаряд : 
+tooltip.pt.attack_damage=Урон от атаки : 
+tooltip.pt.enemies_killed=Убито врагов : 
+tooltip.pt.damage_dealt=Нанесённый урон : 
+tooltip.pt.blocks_tilled=Вспахано блоков : 
+tooltip.pt.harvest_level=Уровень добычи : 
+tooltip.pt.gives_buffs=Даёт чары : 
 
 tooltip.pt.broken=СЛОМАНО
 
@@ -108,7 +151,7 @@ tooltip.useless_hoe_1=Эта мотыга ничего не может вспа�
 tooltip.useless_weapon_1=Это оружие ничего не может повреждать.
 tooltip.useless_tool_2=Это может использоваться только для создания.
 
-tooltip.blocks_broken=Разбито блоков:
+tooltip.blocks_broken=Разбито блоков : 
 tooltip.kills=Убито
 tooltip.blocks_tilled=Вспахано блоков
 
@@ -120,7 +163,8 @@ tooltip.pt.enabled=Включено
 
 tooltip.pt.unbreakable=Небьющийся
 
-tooltip.pt.harvest_level=Уровень добычи:
+tooltip.pt.reinforce=Значение укрепления: %s
+tooltip.pt.reinforced=Укреплено (%s/%s)
 
 desc.item.pt.coal_piece=Готовит один предмет. Позволяет более эффективно использовать топливо при приготовлении пищи в печи.
 desc.item.pt.charcoal_piece=Готовит один предмет. Позволяет более эффективно использовать топливо при приготовлении пищи в печи.
