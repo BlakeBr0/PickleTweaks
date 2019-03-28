@@ -6,7 +6,6 @@ import com.blakebr0.cucumber.iface.IModelHelper;
 import com.blakebr0.pickletweaks.PickleTweaks;
 import com.blakebr0.pickletweaks.config.ModConfig;
 import com.blakebr0.pickletweaks.registry.ModBlocks;
-
 import net.minecraft.block.BlockColored;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -14,12 +13,9 @@ import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.BlockRenderLayer;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.event.FMLInterModComms;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockColoredCobblestone extends BlockColored implements IEnableable, IModelHelper {
 
@@ -30,12 +26,6 @@ public class BlockColoredCobblestone extends BlockColored implements IEnableable
 		this.setSoundType(SoundType.STONE);
 		this.setHardness(2.0F);
 		this.setResistance(10.0F);
-	}
-
-	@SideOnly(Side.CLIENT)
-	@Override
-	public BlockRenderLayer getBlockLayer() {
-		return BlockRenderLayer.TRANSLUCENT;
 	}
 
 	@Override
