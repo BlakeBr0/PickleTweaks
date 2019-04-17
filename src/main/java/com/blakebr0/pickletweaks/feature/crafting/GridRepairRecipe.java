@@ -116,7 +116,10 @@ public class GridRepairRecipe extends Impl<IRecipe> implements IRecipe {
 					repairKit = true;
 				}
 			} else if (!repairKit && !mat.getItem().hasContainerItem(mat)) {
-				matCount += GridRepairHelper.getMaterialValue(tool, mat);
+				double matValue = GridRepairHelper.getMaterialValue(tool, mat);
+				if (matValue == 0) return ItemStack.EMPTY;
+
+				matCount += matValue;
 				
 				if (tool.getItemDamage() - (damage * matCount) <= 0) {
 					maxed = true;
