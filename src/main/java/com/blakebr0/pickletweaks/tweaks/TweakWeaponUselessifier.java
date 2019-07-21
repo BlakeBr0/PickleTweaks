@@ -6,6 +6,7 @@ import com.blakebr0.cucumber.util.Utils;
 import com.blakebr0.pickletweaks.tweaks.tools.ToolTweaks;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextFormatting;
@@ -14,6 +15,7 @@ import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickBlock;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -42,11 +44,11 @@ public class TweakWeaponUselessifier {
 			return;
 		}
 		
-		if (!(event.getSource().getTrueSource() instanceof EntityPlayer)) {
+		if (!(event.getSource().getTrueSource() instanceof PlayerEntity)) {
 			return;
 		}
 
-		EntityPlayer player = (EntityPlayer) event.getSource().getTrueSource();
+		PlayerEntity player = (PlayerEntity) event.getSource().getTrueSource();
 		ItemStack stack = player.getHeldItemMainhand();
 
 		if (stack.isEmpty()) {

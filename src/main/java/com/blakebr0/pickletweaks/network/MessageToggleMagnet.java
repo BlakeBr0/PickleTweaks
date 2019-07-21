@@ -1,7 +1,7 @@
 package com.blakebr0.pickletweaks.network;
 
 import com.blakebr0.cucumber.helper.NBTHelper;
-import com.blakebr0.pickletweaks.feature.item.ItemMagnet;
+import com.blakebr0.pickletweaks.feature.item.MagnetItem;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
@@ -39,7 +39,7 @@ public class MessageToggleMagnet implements IMessage {
         private void handle(MessageToggleMagnet message, MessageContext ctx) {
             if (ctx.side.isServer()) {
                 ItemStack stack = ctx.getServerHandler().player.openContainer.inventorySlots.get(message.slot).getStack();
-                if (stack.getItem() instanceof ItemMagnet) {
+                if (stack.getItem() instanceof MagnetItem) {
                     NBTHelper.flipBoolean(stack, "Enabled");
                 }
             }

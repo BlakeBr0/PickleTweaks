@@ -2,12 +2,12 @@ package com.blakebr0.pickletweaks.feature;
 
 import java.util.ListIterator;
 
+import com.blakebr0.pickletweaks.config.ModConfigold;
 import org.lwjgl.input.Keyboard;
 
 import com.blakebr0.cucumber.lib.Colors;
 import com.blakebr0.cucumber.util.Utils;
 import com.blakebr0.pickletweaks.PickleTweaks;
-import com.blakebr0.pickletweaks.config.ModConfig;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -28,7 +28,7 @@ public class FeatureBowInfo {
 
 	@SubscribeEvent
 	public void onEntityKilled(LivingDeathEvent event) {
-		if (!ModConfig.confBowInfoTooltip) {
+		if (!ModConfigold.confBowInfoTooltip) {
 			return;
 		}
 
@@ -47,7 +47,7 @@ public class FeatureBowInfo {
 
 	@SubscribeEvent
 	public void onEntityDamaged(LivingHurtEvent event) {
-		if (!ModConfig.confBowInfoTooltip) {
+		if (!ModConfigold.confBowInfoTooltip) {
 			return;
 		}
 
@@ -72,7 +72,7 @@ public class FeatureBowInfo {
 	@SideOnly(Side.CLIENT)
 	@SubscribeEvent
 	public void addSwordInfoTooltip(ItemTooltipEvent event) {
-		if (!ModConfig.confBowInfoTooltip) return;
+		if (!ModConfigold.confBowInfoTooltip) return;
 
 		ItemStack stack = event.getItemStack();
 		ListIterator<String> tooltip = event.getToolTip().listIterator();

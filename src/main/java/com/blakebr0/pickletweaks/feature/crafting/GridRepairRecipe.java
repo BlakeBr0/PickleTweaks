@@ -1,7 +1,7 @@
 package com.blakebr0.pickletweaks.feature.crafting;
 
 import com.blakebr0.pickletweaks.PickleTweaks;
-import com.blakebr0.pickletweaks.config.ModConfig;
+import com.blakebr0.pickletweaks.config.ModConfigold;
 import com.blakebr0.pickletweaks.feature.item.ItemRepairKit;
 import com.blakebr0.pickletweaks.feature.item.ItemRepairKitCustom;
 
@@ -31,7 +31,7 @@ public class GridRepairRecipe extends Impl<IRecipe> implements IRecipe {
 	}
 	
 	public ItemStack getRepairOutput(InventoryCrafting inv) {
-		if (ModConfig.confRequires3x3) {
+		if (ModConfigold.confRequires3x3) {
 			if (inv.getWidth() < 3 || inv.getHeight() < 3) {
 				return ItemStack.EMPTY;
 			}
@@ -63,7 +63,7 @@ public class GridRepairRecipe extends Impl<IRecipe> implements IRecipe {
 			return ItemStack.EMPTY;
 		}
 		
-		if (!ModConfig.confAllowArmor && tool.getItem() instanceof ItemArmor) {
+		if (!ModConfigold.confAllowArmor && tool.getItem() instanceof ItemArmor) {
 			return ItemStack.EMPTY;
 		}
 		
@@ -83,9 +83,9 @@ public class GridRepairRecipe extends Impl<IRecipe> implements IRecipe {
 			return ItemStack.EMPTY;
 		}
 		
-		int repairCost = ModConfig.confRepairCost;
+		int repairCost = ModConfigold.confRepairCost;
 		
-		if (ModConfig.confCheaperShovel && tool.getItem() instanceof ItemSpade) {
+		if (ModConfigold.confCheaperShovel && tool.getItem() instanceof ItemSpade) {
 			repairCost = (int) Math.max(1, repairCost / 2);
 		}
 		
@@ -144,7 +144,7 @@ public class GridRepairRecipe extends Impl<IRecipe> implements IRecipe {
 
 	@Override
 	public boolean canFit(int width, int height) {
-		return ModConfig.confRequires3x3 ? (width >= 3 && height >= 3) : true;
+		return ModConfigold.confRequires3x3 ? (width >= 3 && height >= 3) : true;
 	}
 
 	@Override

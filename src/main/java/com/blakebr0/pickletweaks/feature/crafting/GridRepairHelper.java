@@ -1,28 +1,30 @@
 package com.blakebr0.pickletweaks.feature.crafting;
 
-import com.blakebr0.pickletweaks.config.ModConfig;
-
+import com.blakebr0.pickletweaks.config.ModConfigs;
 import net.minecraft.item.ItemStack;
 
 public class GridRepairHelper {
-
-	public static boolean checkMaterial(ItemStack tool, ItemStack mat) {
-		return getMaterialValue(tool, mat) > 0;
-	}
-	
 	public static double getMaterialValue(ItemStack tool, ItemStack mat) {
 		GridRepairOverride.Override override = GridRepairOverride.getOverride(tool, mat);
 		boolean hasOverride = override != null;
 		if (checkDefault(tool, mat) || hasOverride) {
-			if (ModConfig.confOverrideMode && !hasOverride && GridRepairOverride.hasToolOverride(tool)) {
+			boolean overrideMode = ModConfigs.GRID_REPAIR_OVERRIDE_MODE.get();
+			if (overrideMode && !hasOverride && GridRepairOverride.hasToolOverride(tool)) {
 				return 0;
 			}
+
 			return hasOverride ? override.multi : 1.0;
 		}
+
 		return 0;
 	}
-	
+
+	public static boolean checkMaterial(ItemStack tool, ItemStack mat) {
+		return getMaterialValue(tool, mat) > 0;
+	}
+
 	public static boolean checkDefault(ItemStack tool, ItemStack mat) {
-		return !ModConfig.confDisableDefaults && tool.getItem().getIsRepairable(tool, mat);
+		boolean enabled = ModConfigs.GRID_REPAIR_DISABLE_DEFAULTS.get();
+		return !enabled && tool.getItem().getIsRepairable(tool, mat);
 	}
 }

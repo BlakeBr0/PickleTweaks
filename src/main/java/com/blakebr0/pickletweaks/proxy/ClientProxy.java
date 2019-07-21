@@ -1,7 +1,7 @@
 package com.blakebr0.pickletweaks.proxy;
 
 import com.blakebr0.cucumber.item.color.ItemDyeColorHandler;
-import com.blakebr0.pickletweaks.config.ModConfig;
+import com.blakebr0.pickletweaks.config.ModConfigold;
 import com.blakebr0.pickletweaks.feature.item.ItemReinforcement;
 import com.blakebr0.pickletweaks.feature.item.ItemRepairKit;
 import com.blakebr0.pickletweaks.feature.item.ItemRepairKitCustom;
@@ -28,11 +28,11 @@ public class ClientProxy extends CommonProxy {
 		ItemColors colors = Minecraft.getMinecraft().getItemColors();
 		BlockColors blockColors = Minecraft.getMinecraft().getBlockColors();
 		
-		if (ModConfig.confDyePowder) {
+		if (ModConfigold.confDyePowder) {
 			colors.registerItemColorHandler(new ItemDyeColorHandler(), ModItems.itemDyePowder);
 		}
 		
-		if (ModConfig.confRepairKits) {
+		if (ModConfigold.confRepairKits) {
 			colors.registerItemColorHandler((stack, tintIndex) -> {
 				com.blakebr0.pickletweaks.feature.item.ItemRepairKit.Kit kit = ItemRepairKit.kits.get(stack.getMetadata());
 				return kit != null && tintIndex == 0 ? kit.color : -1;
@@ -44,13 +44,13 @@ public class ClientProxy extends CommonProxy {
 			}, ModItems.itemRepairKitCustom);
 		}
 		
-		if (ModConfig.confReinforcements) {
+		if (ModConfigold.confReinforcements) {
 			colors.registerItemColorHandler((stack, tintIndex) -> {
 				return tintIndex == 0 ? ItemReinforcement.TYPES.get(stack.getMetadata()).color : -1;
 			}, ModItems.itemReinforcement);
 		}
 		
-		if (ModConfig.confColoredCobblestone) {			
+		if (ModConfigold.confColoredCobblestone) {
 			blockColors.registerBlockColorHandler((state, world, pos, tintIndex) -> {
 				return EnumDyeColor.byMetadata(state.getBlock().getMetaFromState(state)).getColorValue();
 			}, ModBlocks.COLORED_COBBLESTONE);

@@ -1,57 +1,57 @@
 package com.blakebr0.pickletweaks;
 
+import com.blakebr0.cucumber.helper.CompoundTagHelper;
+import com.blakebr0.cucumber.helper.NBTHelper;
+import com.blakebr0.pickletweaks.config.ModConfigs;
+import com.blakebr0.pickletweaks.feature.handler.NightVisionGogglesHandler;
+import com.blakebr0.pickletweaks.registry.ModBlocks;
+import com.blakebr0.pickletweaks.registry.ModItems;
+import net.minecraft.item.ItemGroup;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModLoadingContext;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
+import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.blakebr0.cucumber.helper.CompoundTagHelper;
-import com.blakebr0.cucumber.helper.NBTHelper;
-import com.blakebr0.cucumber.registry.ModRegistry;
-import com.blakebr0.pickletweaks.proxy.CommonProxy;
-
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.Mod.EventHandler;
-import net.minecraftforge.fml.common.Mod.Instance;
-import net.minecraftforge.fml.common.SidedProxy;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-
-@Mod(modid = PickleTweaks.MOD_ID, name = PickleTweaks.NAME, version = PickleTweaks.VERSION, dependencies = PickleTweaks.DEPENDENCIES, guiFactory = PickleTweaks.GUI_FACTORY)
+@Mod(PickleTweaks.MOD_ID)
 public class PickleTweaks {
-
 	public static final String MOD_ID = "pickletweaks";
-	public static final String NAME = "PickleTweaks";
-	public static final String VERSION = "${version}";
-	public static final String DEPENDENCIES = "required-after:cucumber@[1.1.1,)";
-	public static final String GUI_FACTORY = "com.blakebr0.pickletweaks.config.GuiFactory";
+	public static final String NAME = "Pickle Tweaks";
 
-	public static final CreativeTabs CREATIVE_TAB = new PTCreativeTab(MOD_ID);
-	public static final ModRegistry REGISTRY = ModRegistry.create(MOD_ID);
+	public static final ItemGroup ITEM_GROUP = new PTItemGroup();
 	public static final Logger LOGGER = LogManager.getLogger(MOD_ID);
 	public static final CompoundTagHelper TAG_HELPER = NBTHelper.newCompoundTagHelper(MOD_ID);
-	
-	@Instance(MOD_ID)
-	public static PickleTweaks instance = new PickleTweaks();
 
-	@SidedProxy(clientSide = "com.blakebr0.pickletweaks.proxy.ClientProxy", 
-			    serverSide = "com.blakebr0.pickletweaks.proxy.ServerProxy")
-	public static CommonProxy proxy;
+	public PickleTweaks() {
+		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 
+		bus.register(this);
+		bus.register(new ModBlocks());
+		bus.register(new ModItems());
 
-	@EventHandler
-	public void preInit(FMLPreInitializationEvent e) {
-		proxy.preInit(e);
+		ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, ModConfigs.CLIENT);
+		ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, ModConfigs.COMMON);
 	}
 
-	@EventHandler
-	public void init(FMLInitializationEvent e) {
-		proxy.init(e);
+	@SubscribeEvent
+	public void onCommonSetup(FMLCommonSetupEvent event) {
+		MinecraftForge.EVENT_BUS.register(new NightVisionGogglesHandler());
 	}
 
-	@EventHandler
-	public void postInit(FMLPostInitializationEvent e) {
-		proxy.postInit(e);
+	@SubscribeEvent
+	public void onInterModEnqueue(InterModEnqueueEvent event) {
+
 	}
 
+	@SubscribeEvent
+	public void onInterModProcess(InterModProcessEvent event) {
+
+	}
 }

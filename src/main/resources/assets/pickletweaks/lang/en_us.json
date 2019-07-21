@@ -1,0 +1,12 @@
+{
+  "itemGroup.pickletweaks": "Pickle Tweaks",
+
+  "block.pickletweaks.white_cobblestone": "White Cobblestone",
+
+  "tooltip.pickletweaks.gives_buffs": "Gives Buffs",
+  "tooltip.pickletweaks.buff_list_item": " - %s%s %s",
+  "tooltip.pickletweaks.empty": "Empty",
+  "tooltip.pickletweaks.filled": "Filled",
+  "tooltip.pickletweaks.disabled": "Disabled",
+  "tooltip.pickletweaks.enabled": "Enabled"
+}

@@ -7,7 +7,7 @@ import java.util.Map;
 import com.blakebr0.cucumber.lib.Colors;
 import com.blakebr0.cucumber.util.Utils;
 import com.blakebr0.pickletweaks.PickleTweaks;
-import com.blakebr0.pickletweaks.config.ModConfig;
+import com.blakebr0.pickletweaks.config.ModConfigold;
 
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
@@ -78,7 +78,7 @@ public class TweakToolBreaking {
 
 	@SubscribeEvent(priority = EventPriority.HIGH)
 	public void onBreakingBlock(PlayerEvent.BreakSpeed event) {
-		if (!ModConfig.confBrokenTools) {
+		if (!ModConfigold.confBrokenTools) {
 			return;
 		}
 		if (event.getEntityPlayer() == null) {
@@ -104,7 +104,7 @@ public class TweakToolBreaking {
 	// TODO: interesting
 	// @SubscribeEvent(priority = EventPriority.LOWEST)
 	public void onBlockDrops(BlockEvent.HarvestDropsEvent event) {
-		if (!ModConfig.confBrokenTools) {
+		if (!ModConfigold.confBrokenTools) {
 			return;
 		}
 		if (event.getHarvester() == null) {
@@ -125,7 +125,7 @@ public class TweakToolBreaking {
 	// TODO: figure out how to make this work somehow
 	@SubscribeEvent(priority = EventPriority.HIGH)
 	public void onBreakBlock(BlockEvent.BreakEvent event) {
-		if (!ModConfig.confBrokenTools) {
+		if (!ModConfigold.confBrokenTools) {
 			return;
 		}
 		if (event.getPlayer() == null) {
@@ -149,7 +149,7 @@ public class TweakToolBreaking {
 
 	@SubscribeEvent(priority = EventPriority.HIGH)
 	public void onUseHoe(UseHoeEvent event) {
-		if (!ModConfig.confBrokenTools) {
+		if (!ModConfigold.confBrokenTools) {
 			return;
 		}
 		if (event.getEntityPlayer() == null) {
@@ -173,7 +173,7 @@ public class TweakToolBreaking {
 
 	@SubscribeEvent
 	public void onHitEntity(LivingHurtEvent event) {
-		if (!ModConfig.confBrokenTools) {
+		if (!ModConfigold.confBrokenTools) {
 			return;
 		}
 		if (!event.getSource().getDamageType().equals("player")) {
@@ -209,7 +209,7 @@ public class TweakToolBreaking {
 
 	@SubscribeEvent
 	public void onUseBow(RightClickItem event) {
-		if (!ModConfig.confBrokenTools) {
+		if (!ModConfigold.confBrokenTools) {
 			return;
 		}
 		if (event.getEntityPlayer() == null) {
@@ -233,7 +233,7 @@ public class TweakToolBreaking {
 
 	@SubscribeEvent
 	public void onUseShovel(RightClickBlock event) {
-		if (!ModConfig.confBrokenTools) {
+		if (!ModConfigold.confBrokenTools) {
 			return;
 		}
 		if (event.getEntityPlayer() == null) {
@@ -258,7 +258,7 @@ public class TweakToolBreaking {
 	@SideOnly(Side.CLIENT)
 	@SubscribeEvent
 	public void onItemTooltip(ItemTooltipEvent event) {
-		if (!ModConfig.confBrokenTools) {
+		if (!ModConfigold.confBrokenTools) {
 			return;
 		}
 		if (event.getEntityPlayer() == null) {

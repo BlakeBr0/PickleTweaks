@@ -7,7 +7,7 @@ import org.lwjgl.input.Keyboard;
 import com.blakebr0.cucumber.lib.Colors;
 import com.blakebr0.cucumber.util.Utils;
 import com.blakebr0.pickletweaks.PickleTweaks;
-import com.blakebr0.pickletweaks.config.ModConfig;
+import com.blakebr0.pickletweaks.config.ModConfigold;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -27,7 +27,7 @@ public class FeatureSwordInfo {
 
 	@SubscribeEvent
 	public void onEntityKilled(LivingDeathEvent event) {
-		if (!ModConfig.confSwordInfoTooltip) {
+		if (!ModConfigold.confSwordInfoTooltip) {
 			return;
 		}
 
@@ -46,7 +46,7 @@ public class FeatureSwordInfo {
 
 	@SubscribeEvent
 	public void onEntityDamaged(LivingHurtEvent event) {
-		if (!ModConfig.confSwordInfoTooltip) {
+		if (!ModConfigold.confSwordInfoTooltip) {
 			return;
 		}
 
@@ -73,7 +73,7 @@ public class FeatureSwordInfo {
 	@SideOnly(Side.CLIENT)
 	@SubscribeEvent
 	public void addSwordInfoTooltip(ItemTooltipEvent event) {
-		if (!ModConfig.confSwordInfoTooltip) return;
+		if (!ModConfigold.confSwordInfoTooltip) return;
 
 		ItemStack stack = event.getItemStack();
 		ListIterator<String> tooltip = event.getToolTip().listIterator();

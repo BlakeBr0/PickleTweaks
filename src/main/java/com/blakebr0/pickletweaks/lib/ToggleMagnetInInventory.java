@@ -1,7 +1,7 @@
 package com.blakebr0.pickletweaks.lib;
 
 import com.blakebr0.pickletweaks.PickleTweaks;
-import com.blakebr0.pickletweaks.feature.item.ItemMagnet;
+import com.blakebr0.pickletweaks.feature.item.MagnetItem;
 import com.blakebr0.pickletweaks.network.MessageToggleMagnet;
 import com.blakebr0.pickletweaks.network.NetworkHandler;
 import net.minecraft.client.Minecraft;
@@ -29,7 +29,7 @@ public class ToggleMagnetInInventory {
 
             if (under != null && held.isEmpty() && under.inventory == mc.player.inventory) {
                 ItemStack stack = under.getStack();
-                if (stack.getItem() instanceof ItemMagnet) {
+                if (stack.getItem() instanceof MagnetItem) {
                     NetworkHandler.INSTANCE.sendToServer(new MessageToggleMagnet(under.slotNumber));
                     event.setCanceled(true);
                 }

@@ -2,12 +2,12 @@ package com.blakebr0.pickletweaks.feature;
 
 import java.util.ListIterator;
 
+import com.blakebr0.pickletweaks.config.ModConfigold;
 import org.lwjgl.input.Keyboard;
 
 import com.blakebr0.cucumber.lib.Colors;
 import com.blakebr0.cucumber.util.Utils;
 import com.blakebr0.pickletweaks.PickleTweaks;
-import com.blakebr0.pickletweaks.config.ModConfig;
 
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
@@ -25,7 +25,7 @@ public class FeatureHoeInfo {
 
 	@SubscribeEvent
 	public void onRightClickBlock(UseHoeEvent event) {
-		if (!ModConfig.confHoeInfoTooltip) {
+		if (!ModConfigold.confHoeInfoTooltip) {
 			return;
 		}
 		
@@ -44,7 +44,7 @@ public class FeatureHoeInfo {
 	@SideOnly(Side.CLIENT)
 	@SubscribeEvent
 	public void addHoeInfoTooltip(ItemTooltipEvent event) {
-		if (!ModConfig.confHoeInfoTooltip) return;
+		if (!ModConfigold.confHoeInfoTooltip) return;
 
 		ItemStack stack = event.getItemStack();
 		ListIterator<String> tooltip = event.getToolTip().listIterator();

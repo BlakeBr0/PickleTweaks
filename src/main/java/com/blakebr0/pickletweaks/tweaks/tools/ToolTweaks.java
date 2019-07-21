@@ -3,7 +3,7 @@ package com.blakebr0.pickletweaks.tweaks.tools;
 import java.util.HashSet;
 import java.util.Set;
 
-import com.blakebr0.pickletweaks.config.ModConfig;
+import com.blakebr0.pickletweaks.config.ModConfigold;
 
 import net.minecraft.item.Item;
 
@@ -15,17 +15,17 @@ public class ToolTweaks {
 	
     public static void findToolsFromConfig() {
     	
-    	for (String identifier : ModConfig.confUselessTools) {
+    	for (String identifier : ModConfigold.confUselessTools) {
             Item item = Item.getByNameOrId(identifier);
             uselessTools.add((Item) item);
     	}
     	
-    	for (String identifier : ModConfig.confUselessHoes) { 
+    	for (String identifier : ModConfigold.confUselessHoes) {
             Item item = Item.getByNameOrId(identifier);
             uselessHoes.add((Item) item);
     	}
     	
-    	for (String identifier : ModConfig.confUselessWeapons) {
+    	for (String identifier : ModConfigold.confUselessWeapons) {
             Item item = Item.getByNameOrId(identifier);
             uselessWeapons.add((Item) item);
 		}

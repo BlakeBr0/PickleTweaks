@@ -143,7 +143,6 @@ public class GridRepairOverride {
 	}
 	
 	public static class Override {
-		
 		public ItemStack tool;
 		public Object mat;
 		public double multi;

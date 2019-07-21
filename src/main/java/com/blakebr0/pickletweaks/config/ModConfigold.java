@@ -10,10 +10,7 @@ import com.blakebr0.pickletweaks.feature.FeatureRightClickHarvest;
 import com.blakebr0.pickletweaks.feature.FeatureToolInfo;
 import com.blakebr0.pickletweaks.feature.crafting.GridRepairBlacklist;
 import com.blakebr0.pickletweaks.feature.crafting.GridRepairOverride;
-import com.blakebr0.pickletweaks.feature.item.ItemReinforcement;
 import com.blakebr0.pickletweaks.feature.item.ItemRepairKitCustom;
-import com.blakebr0.pickletweaks.feature.reinforcement.ReinforcementBlacklist;
-import com.blakebr0.pickletweaks.feature.reinforcement.ReinforcementOverride;
 import com.blakebr0.pickletweaks.tweaks.TweakBlockHardness;
 import com.blakebr0.pickletweaks.tweaks.TweakBlockHarvest;
 import com.blakebr0.pickletweaks.tweaks.TweakBlockResistance;
@@ -26,28 +23,28 @@ import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-public class ModConfig {
+public class ModConfigold {
 
 	public static Configuration config;
-	public static ModConfig instance;
+	public static ModConfigold instance;
 	
-	public static boolean confColoredCobblestone;
-	public static boolean confDarkGlass;
+//	public static boolean confColoredCobblestone;
+//	public static boolean confDarkGlass;
 
-	public static boolean confCoalPiece;
-	public static boolean confApples;
-	public static boolean confWateringCan;
+//	public static boolean confCoalPiece;
+//	public static boolean confApples;
+//	public static boolean confWateringCan;
 	public static boolean confHammer;
-	public static boolean confMesh;
-	public static boolean confMagnet;
-	public static boolean confNightvisionGoggles;
+//	public static boolean confMesh;
+//	public static boolean confMagnet;
+//	public static boolean confNightvisionGoggles;
 	public static boolean confDyePowder;
 	public static boolean confMortarAndPestle;
-	public static boolean confPaxels;
-	public static boolean confModSupportPaxels;
-	public static boolean confFlintTools;
+//	public static boolean confPaxels;
+//	public static boolean confModSupportPaxels;
+//	public static boolean confFlintTools;
 
-	public static boolean confToolInfoTooltip;
+//	public static boolean confToolInfoTooltip;
 	public static boolean confSwordInfoTooltip;
 	public static boolean confHoeInfoTooltip;
 	public static boolean confBowInfoTooltip;
@@ -63,13 +60,13 @@ public class ModConfig {
 	public static Set<String> confUselessHoes = new HashSet<String>();
 	public static Set<String> confUselessWeapons = new HashSet<String>();
 
-	public static boolean confGridRepair;
-	public static int confRepairCost;
+//	public static boolean confGridRepair;
+//	public static int confRepairCost;
 	public static boolean confRequires3x3;
 	public static boolean confAllowArmor;
-	public static boolean confDisableDefaults;
-	public static boolean confOverrideMode;
-	public static boolean confCheaperShovel;
+//	public static boolean confDisableDefaults;
+//	public static boolean confOverrideMode;
+//	public static boolean confCheaperShovel;
 	
 	public static boolean confReinforcement = false;
 	public static int confMaxReinforcement = 1;
@@ -85,8 +82,8 @@ public class ModConfig {
 	@SubscribeEvent
 	public void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent event) {
 		if (event.getModID().equals(PickleTweaks.MOD_ID)) {
-			ModConfig.preInit();
-			ModConfig.postInit();
+			ModConfigold.preInit();
+			ModConfigold.postInit();
 		}
 	}
 

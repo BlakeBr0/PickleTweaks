@@ -2,7 +2,7 @@ package com.blakebr0.pickletweaks.lib;
 
 import java.util.function.BooleanSupplier;
 
-import com.blakebr0.pickletweaks.config.ModConfig;
+import com.blakebr0.pickletweaks.config.ModConfigold;
 import com.google.gson.JsonObject;
 
 import net.minecraft.util.JsonUtils;
@@ -15,6 +15,6 @@ public class ConfigCondition implements IConditionFactory {
 	public BooleanSupplier parse(JsonContext context, JsonObject json) {
 		String cat = JsonUtils.getString(json, "category");
 		String prop = JsonUtils.getString(json, "property");
-		return () -> ModConfig.config.getCategory(cat).get(prop).getBoolean();
+		return () -> ModConfigold.config.getCategory(cat).get(prop).getBoolean();
 	}
 }

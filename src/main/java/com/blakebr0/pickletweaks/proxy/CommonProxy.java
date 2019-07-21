@@ -2,11 +2,11 @@ package com.blakebr0.pickletweaks.proxy;
 
 import com.blakebr0.pickletweaks.GuiHandler;
 import com.blakebr0.pickletweaks.PickleTweaks;
-import com.blakebr0.pickletweaks.config.ModConfig;
+import com.blakebr0.pickletweaks.config.ModConfigold;
 import com.blakebr0.pickletweaks.feature.*;
-import com.blakebr0.pickletweaks.feature.block.BlockColoredCobblestone;
+import com.blakebr0.pickletweaks.feature.block.ColoredCobblestoneBlock;
 import com.blakebr0.pickletweaks.feature.item.ItemDyePowder;
-import com.blakebr0.pickletweaks.feature.item.ItemNightvisionGoggles;
+import com.blakebr0.pickletweaks.feature.item.NightVisionGogglesItem;
 import com.blakebr0.pickletweaks.network.NetworkHandler;
 import com.blakebr0.pickletweaks.registry.ModBlocks;
 import com.blakebr0.pickletweaks.registry.ModItems;
@@ -24,14 +24,14 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
 public class CommonProxy {
 
 	public void preInit(FMLPreInitializationEvent e) {
-		ModConfig.init(e.getSuggestedConfigurationFile());
-		MinecraftForge.EVENT_BUS.register(new ModConfig());
+		ModConfigold.init(e.getSuggestedConfigurationFile());
+		MinecraftForge.EVENT_BUS.register(new ModConfigold());
 		MinecraftForge.EVENT_BUS.register(PickleTweaks.REGISTRY);
 
 		ModBlocks.init();
 		ModItems.init();
 
-		MinecraftForge.EVENT_BUS.register(new ItemNightvisionGoggles.Handler());
+		MinecraftForge.EVENT_BUS.register(new NightVisionGogglesItem.Handler());
 		MinecraftForge.EVENT_BUS.register(new ItemDyePowder.Handler());
 
 		MinecraftForge.EVENT_BUS.register(new FeatureToolInfo());
@@ -42,7 +42,7 @@ public class CommonProxy {
 		MinecraftForge.EVENT_BUS.register(new FeatureRightClickHarvest());
 
 		MinecraftForge.EVENT_BUS.register(new TweakToolBreaking());
-		//if (ModConfig.confReinforcement) MinecraftForge.EVENT_BUS.register(new ReinforcementHandler());
+		//if (ModConfigold.confReinforcement) MinecraftForge.EVENT_BUS.register(new ReinforcementHandler());
 	}
 
 	public void init(FMLInitializationEvent e) {
@@ -51,15 +51,15 @@ public class CommonProxy {
 		NetworkRegistry.INSTANCE.registerGuiHandler(PickleTweaks.instance, new GuiHandler());
 		NetworkHandler.init();
 
-		if (ModConfig.confSharpeningKits && Loader.isModLoaded("tconstruct")) {
+		if (ModConfigold.confSharpeningKits && Loader.isModLoaded("tconstruct")) {
 			MinecraftForge.EVENT_BUS.register(new TweakSharpeningKit());
 		}
 		
-		BlockColoredCobblestone.addToChisel();
+		ColoredCobblestoneBlock.addToChisel();
 	}
 
 	public void postInit(FMLPostInitializationEvent e) {
-		ModConfig.postInit();
+		ModConfigold.postInit();
 		ModRecipes.postInit();
 
 		ToolTweaks.findToolsFromConfig();

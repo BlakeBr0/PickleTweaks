@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.ListIterator;
 
 import com.blakebr0.pickletweaks.PickleTweaks;
-import com.blakebr0.pickletweaks.config.ModConfig;
+import com.blakebr0.pickletweaks.config.ModConfigold;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockCrops;
@@ -46,7 +46,7 @@ public class FeatureRightClickHarvest {
 
 	@SubscribeEvent
 	public void onRightClickCrop(RightClickBlock event) {
-		if (!ModConfig.confRightClickHarvest) return;
+		if (!ModConfigold.confRightClickHarvest) return;
 		if (event.getEntityPlayer() == null) return;
 		if (event.getHand() != EnumHand.MAIN_HAND) return;
 

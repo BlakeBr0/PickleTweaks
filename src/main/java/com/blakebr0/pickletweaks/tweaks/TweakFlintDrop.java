@@ -2,7 +2,7 @@ package com.blakebr0.pickletweaks.tweaks;
 
 import java.util.ListIterator;
 
-import com.blakebr0.pickletweaks.config.ModConfig;
+import com.blakebr0.pickletweaks.config.ModConfigold;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -51,7 +51,7 @@ public class TweakFlintDrop {
 
 	@SubscribeEvent
 	public void onBlockHarvested(HarvestDropsEvent event) {
-		if (ModConfig.confFlintDrop && event.getState() != null && event.getState().getBlock() == Blocks.GRAVEL) {
+		if (ModConfigold.confFlintDrop && event.getState() != null && event.getState().getBlock() == Blocks.GRAVEL) {
 			int itemsToAdd = 0;
 			ListIterator<ItemStack> drops = event.getDrops().listIterator();
 			boolean gravel = false;
