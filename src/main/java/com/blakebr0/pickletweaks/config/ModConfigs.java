@@ -105,10 +105,9 @@ public class ModConfigs {
                 .comment("Enable Flint tools and armor?")
                 .translation("configGui.pickletweaks.enable_flint_gear")
                 .define("flintGear", true);
-
         common.pop();
 
-        common.push("Crafting grid tool repair configuration options.").push("Grid Repair");
+        common.comment("Crafting grid tool repair configuration options.").push("Grid Repair");
         GRID_REPAIR_ENABLED = common
                 .comment("Should Crafting Grid Tool Repairing be enabled?")
                 .translation("configGui.pickletweaks.grid_repair_enabled")
@@ -131,7 +130,7 @@ public class ModConfigs {
                 .define("cheapShovel", true);
         common.pop();
 
-        common.push("Disable and configure tweaks.").push("Tweaks");
+        common.comment("Disable and configure tweaks.").push("Tweaks");
         ENABLE_FLINT_DROP_TWEAK = common
                 .comment("Enable no Flint Dropping from gravel?")
                 .translation("configGui.pickletweaks.enable_flint_drop_tweak")
