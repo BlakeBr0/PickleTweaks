@@ -1,3 +1,4 @@
+/*
 package com.blakebr0.pickletweaks.feature;
 
 import java.util.ListIterator;
@@ -102,7 +103,7 @@ public class FeatureBowInfo {
 		if (stack.getMaxDamage() == -1) {
 			return Utils.localize("tooltip.pt.unbreakable");
 		}
-		
+
 		int durability = stack.getMaxDamage() - stack.getItemDamage();
 		return durability + Colors.GRAY + "/" + Colors.WHITE + stack.getMaxDamage();
 	}
@@ -116,13 +117,13 @@ public class FeatureBowInfo {
 		if (offHand.getItem() instanceof ItemArrow) {
 			ammo += offHand.getCount();
 		}
-		
+
 		for (ItemStack stack : player.inventory.mainInventory) {
 			if (stack.getItem() instanceof ItemArrow) {
 				ammo += stack.getCount();
 			}
 		}
-		
+
 		return ammo;
 	}
 
@@ -131,7 +132,7 @@ public class FeatureBowInfo {
 		if (tag != null && tag.hasKey("EnemiesKilled")) {
 			return tag.getInteger("EnemiesKilled");
 		}
-		
+
 		return 0;
 	}
 
@@ -140,7 +141,8 @@ public class FeatureBowInfo {
 		if (tag != null && tag.hasKey("DamageDealt")) {
 			return tag.getInteger("DamageDealt");
 		}
-		
+
 		return 0;
 	}
 }
+*/

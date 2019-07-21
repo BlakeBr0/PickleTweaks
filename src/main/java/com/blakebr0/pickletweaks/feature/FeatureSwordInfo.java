@@ -1,3 +1,4 @@
+/*
 package com.blakebr0.pickletweaks.feature;
 
 import java.util.ListIterator;
@@ -126,3 +127,4 @@ public class FeatureSwordInfo {
 		return 0;
 	}
 }
+*/

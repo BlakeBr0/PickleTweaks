@@ -1,3 +1,4 @@
+/*
 package com.blakebr0.pickletweaks.proxy;
 
 import com.blakebr0.pickletweaks.GuiHandler;
@@ -10,7 +11,7 @@ import com.blakebr0.pickletweaks.feature.item.NightVisionGogglesItem;
 import com.blakebr0.pickletweaks.network.NetworkHandler;
 import com.blakebr0.pickletweaks.registry.ModBlocks;
 import com.blakebr0.pickletweaks.registry.ModItems;
-import com.blakebr0.pickletweaks.registry.ModRecipes;
+import com.blakebr0.pickletweaks.registry.ModRecipeSerializers;
 import com.blakebr0.pickletweaks.tweaks.*;
 import com.blakebr0.pickletweaks.tweaks.tools.ToolTweaks;
 import net.minecraftforge.common.MinecraftForge;
@@ -46,7 +47,7 @@ public class CommonProxy {
 	}
 
 	public void init(FMLInitializationEvent e) {
-		ModRecipes.init();
+		ModRecipeSerializers.init();
 		FMLInterModComms.sendMessage("waila", "register", "com.blakebr0.pickletweaks.feature.FeatureWailaTooltips.callbackRegister");
 		NetworkRegistry.INSTANCE.registerGuiHandler(PickleTweaks.instance, new GuiHandler());
 		NetworkHandler.init();
@@ -60,7 +61,7 @@ public class CommonProxy {
 
 	public void postInit(FMLPostInitializationEvent e) {
 		ModConfigold.postInit();
-		ModRecipes.postInit();
+		ModRecipeSerializers.postInit();
 
 		ToolTweaks.findToolsFromConfig();
 
@@ -70,3 +71,4 @@ public class CommonProxy {
 		MinecraftForge.EVENT_BUS.register(new TweakWeaponUselessifier());
 	}
 }
+*/

@@ -1,3 +1,4 @@
+/*
 package com.blakebr0.pickletweaks.tweaks;
 
 import java.util.ListIterator;
@@ -113,3 +114,4 @@ public class TweakWeaponUselessifier {
 		return true;
 	}
 }
+*/

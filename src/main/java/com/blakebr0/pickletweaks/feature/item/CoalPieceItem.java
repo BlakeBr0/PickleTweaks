@@ -19,6 +19,7 @@ public class CoalPieceItem extends BaseItem implements IEnableable {
 
 	@Override
 	public boolean isEnabled() {
-		return ModConfigs.ENABLE_COAL_PIECES.get();
+		return true;
+//		return ModConfigs.ENABLE_COAL_PIECES.get();
 	}
 }

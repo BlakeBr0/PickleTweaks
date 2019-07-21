@@ -19,10 +19,6 @@ public class GridRepairHelper {
 		return 0;
 	}
 
-	public static boolean checkMaterial(ItemStack tool, ItemStack mat) {
-		return getMaterialValue(tool, mat) > 0;
-	}
-
 	public static boolean checkDefault(ItemStack tool, ItemStack mat) {
 		boolean enabled = ModConfigs.GRID_REPAIR_DISABLE_DEFAULTS.get();
 		return !enabled && tool.getItem().getIsRepairable(tool, mat);

@@ -1,3 +1,4 @@
+/*
 package com.blakebr0.pickletweaks.feature;
 
 import java.lang.reflect.Method;
@@ -10,6 +11,8 @@ import com.blakebr0.pickletweaks.config.ModConfigold;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockCrops;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.CropsBlock;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.init.Enchantments;
@@ -21,6 +24,7 @@ import net.minecraftforge.common.config.ConfigCategory;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickBlock;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
 
@@ -50,12 +54,12 @@ public class FeatureRightClickHarvest {
 		if (event.getEntityPlayer() == null) return;
 		if (event.getHand() != EnumHand.MAIN_HAND) return;
 
-		IBlockState state = event.getWorld().getBlockState(event.getPos());
+		BlockState state = event.getWorld().getBlockState(event.getPos());
 		if (BLACKLIST.contains(state.getBlock().getRegistryName().toString())) 
 			return;
 
-		if (state.getBlock() instanceof BlockCrops) {
-			BlockCrops crop = (BlockCrops) state.getBlock();
+		if (state.getBlock() instanceof CropsBlock) {
+			CropsBlock crop = (CropsBlock) state.getBlock();
 			if (crop.isMaxAge(state) && getSeed(crop) != null) {
 				int fortune = EnchantmentHelper.getEnchantmentLevel(Enchantments.FORTUNE, event.getItemStack());
 				NonNullList<ItemStack> drops = NonNullList.create();
@@ -64,7 +68,7 @@ public class FeatureRightClickHarvest {
 				while (itr.hasNext()) {
 					ItemStack drop = itr.next();
 					Item seed = drop.getItem();
-					if (!drop.isEmpty() && seed != null && seed == getSeed(crop)) {
+					if (!drop.isEmpty() && ) {
 						drop.shrink(1);
 						break;
 					}
@@ -95,3 +99,4 @@ public class FeatureRightClickHarvest {
 		return null;
 	}
 }
+*/

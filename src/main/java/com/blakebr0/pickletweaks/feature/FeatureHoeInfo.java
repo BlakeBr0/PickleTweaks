@@ -1,3 +1,4 @@
+/*
 package com.blakebr0.pickletweaks.feature;
 
 import java.util.ListIterator;
@@ -86,3 +87,4 @@ public class FeatureHoeInfo {
 		return 0;
 	}
 }
+*/

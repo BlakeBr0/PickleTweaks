@@ -1,3 +1,4 @@
+/*
 package com.blakebr0.pickletweaks.tweaks;
 
 import java.util.HashMap;
@@ -298,3 +299,4 @@ public class TweakToolBreaking {
 		return stack.getMaxDamage() > (1 + baseOffset) && stack.getItemDamage() >= (stack.getMaxDamage() - offset);
 	}
 }
+*/

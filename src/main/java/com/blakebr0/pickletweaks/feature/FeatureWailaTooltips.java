@@ -1,3 +1,4 @@
+/*
 package com.blakebr0.pickletweaks.feature;
 
 import java.util.List;
@@ -62,3 +63,4 @@ public class FeatureWailaTooltips implements IWailaPlugin {
 		});
 	}
 }
+*/

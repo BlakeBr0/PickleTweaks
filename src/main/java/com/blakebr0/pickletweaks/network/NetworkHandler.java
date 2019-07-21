@@ -1,15 +1,18 @@
 package com.blakebr0.pickletweaks.network;
 
-import com.blakebr0.pickletweaks.PickleTweaks;
-import net.minecraftforge.fml.common.network.NetworkRegistry;
-import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
-import net.minecraftforge.fml.relauncher.Side;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.network.NetworkRegistry;
+import net.minecraftforge.fml.network.simple.SimpleChannel;
 
 public class NetworkHandler {
+    public static final SimpleChannel INSTANCE = NetworkRegistry.newSimpleChannel(new ResourceLocation("pickletweaks", "pickletweaks"), () -> "1.0", (s) -> true, (s) -> true);
+    private static int id = 0;
 
-    public static final SimpleNetworkWrapper INSTANCE = NetworkRegistry.INSTANCE.newSimpleChannel(PickleTweaks.MOD_ID);
+    public static void onCommonSetup() {
+        INSTANCE.registerMessage(id(), MessageToggleMagnet.class, MessageToggleMagnet::write, MessageToggleMagnet::read, MessageToggleMagnet::onMessage);
+    }
 
-    public static void init() {
-        INSTANCE.registerMessage(MessageToggleMagnet.Handler.class, MessageToggleMagnet.class, 0, Side.SERVER);
+    private static int id() {
+        return id++;
     }
 }

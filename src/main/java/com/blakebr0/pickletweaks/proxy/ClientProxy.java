@@ -1,3 +1,4 @@
+/*
 package com.blakebr0.pickletweaks.proxy;
 
 import com.blakebr0.cucumber.item.color.ItemDyeColorHandler;
@@ -28,27 +29,27 @@ public class ClientProxy extends CommonProxy {
 		ItemColors colors = Minecraft.getMinecraft().getItemColors();
 		BlockColors blockColors = Minecraft.getMinecraft().getBlockColors();
 		
-		if (ModConfigold.confDyePowder) {
-			colors.registerItemColorHandler(new ItemDyeColorHandler(), ModItems.itemDyePowder);
-		}
-		
-		if (ModConfigold.confRepairKits) {
-			colors.registerItemColorHandler((stack, tintIndex) -> {
-				com.blakebr0.pickletweaks.feature.item.ItemRepairKit.Kit kit = ItemRepairKit.kits.get(stack.getMetadata());
-				return kit != null && tintIndex == 0 ? kit.color : -1;
-			}, ModItems.itemRepairKit);
-			
-			colors.registerItemColorHandler((stack, tintIndex) -> {
-				com.blakebr0.pickletweaks.feature.item.ItemRepairKitCustom.Kit kit = ItemRepairKitCustom.kits.get(stack.getMetadata());
-				return kit != null && tintIndex == 0 ? kit.color : -1;
-			}, ModItems.itemRepairKitCustom);
-		}
-		
-		if (ModConfigold.confReinforcements) {
-			colors.registerItemColorHandler((stack, tintIndex) -> {
-				return tintIndex == 0 ? ItemReinforcement.TYPES.get(stack.getMetadata()).color : -1;
-			}, ModItems.itemReinforcement);
-		}
+//		if (ModConfigold.confDyePowder) {
+//			colors.registerItemColorHandler(new ItemDyeColorHandler(), ModItems.itemDyePowder);
+//		}
+//
+//		if (ModConfigold.confRepairKits) {
+//			colors.registerItemColorHandler((stack, tintIndex) -> {
+//				com.blakebr0.pickletweaks.feature.item.ItemRepairKit.Kit kit = ItemRepairKit.kits.get(stack.getMetadata());
+//				return kit != null && tintIndex == 0 ? kit.color : -1;
+//			}, ModItems.itemRepairKit);
+//
+//			colors.registerItemColorHandler((stack, tintIndex) -> {
+//				com.blakebr0.pickletweaks.feature.item.ItemRepairKitCustom.Kit kit = ItemRepairKitCustom.kits.get(stack.getMetadata());
+//				return kit != null && tintIndex == 0 ? kit.color : -1;
+//			}, ModItems.itemRepairKitCustom);
+////		}
+//
+//		if (ModConfigold.confReinforcements) {
+//			colors.registerItemColorHandler((stack, tintIndex) -> {
+//				return tintIndex == 0 ? ItemReinforcement.TYPES.get(stack.getMetadata()).color : -1;
+//			}, ModItems.itemReinforcement);
+//		}
 		
 		if (ModConfigold.confColoredCobblestone) {
 			blockColors.registerBlockColorHandler((state, world, pos, tintIndex) -> {
@@ -64,3 +65,4 @@ public class ClientProxy extends CommonProxy {
 		super.postInit(e);
 	}
 }
+*/

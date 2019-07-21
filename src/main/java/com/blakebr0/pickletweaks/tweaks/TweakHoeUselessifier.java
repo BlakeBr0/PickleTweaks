@@ -1,3 +1,4 @@
+/*
 package com.blakebr0.pickletweaks.tweaks;
 
 import java.util.ListIterator;
@@ -15,6 +16,7 @@ import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.UseHoeEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -118,3 +120,4 @@ public class TweakHoeUselessifier {
 	}
 
 }
+*/

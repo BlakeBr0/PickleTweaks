@@ -50,9 +50,9 @@ A bunch of features and tweaks.
     versionRange="[1.14.4]"
     ordering="NONE"
     side="BOTH"
-[[dependencies.pickletweaks]]
-    modId="cucumber"
-    mandatory=true
-    versionRange="[2.0.0,)"
-    ordering="NONE"
-    side="BOTH"
+#[[dependencies.pickletweaks]]
+#    modId="cucumber"
+#    mandatory=true
+#    versionRange="[2.0.0,)"
+#    ordering="NONE"
+#    side="BOTH"

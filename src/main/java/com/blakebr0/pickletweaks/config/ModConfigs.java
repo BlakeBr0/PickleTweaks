@@ -50,6 +50,8 @@ public class ModConfigs {
     public static final ForgeConfigSpec.BooleanValue GRID_REPAIR_OVERRIDE_MODE;
     public static final ForgeConfigSpec.BooleanValue GRID_REPAIR_CHEAP_SHOVEL;
 
+    public static final ForgeConfigSpec.BooleanValue ENABLE_FLINT_DROP_TWEAK;
+
     // Common
     static {
         final ForgeConfigSpec.Builder common = new ForgeConfigSpec.Builder();
@@ -127,6 +129,13 @@ public class ModConfigs {
                 .comment("Makes it so shovels need 50% less material to repair.")
                 .translation("configGui.pickletweaks.grid_repair_cheap_shovel")
                 .define("cheapShovel", true);
+        common.pop();
+
+        common.push("Disable and configure tweaks.").push("Tweaks");
+        ENABLE_FLINT_DROP_TWEAK = common
+                .comment("Enable no Flint Dropping from gravel?")
+                .translation("configGui.pickletweaks.enable_flint_drop_tweak")
+                .define("noFlintDrop", false);
         common.pop();
 
         COMMON = common.build();

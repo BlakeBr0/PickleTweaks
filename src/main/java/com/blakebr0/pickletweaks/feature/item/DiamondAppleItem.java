@@ -70,6 +70,7 @@ public class DiamondAppleItem extends BaseItem implements IEnableable {
 
 	@Override
 	public boolean isEnabled() {
-		return ModConfigs.ENABLE_APPLES.get();
+		return true;
+//		return ModConfigs.ENABLE_APPLES.get();
 	}
 }

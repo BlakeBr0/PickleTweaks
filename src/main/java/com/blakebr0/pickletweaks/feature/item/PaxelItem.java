@@ -15,12 +15,13 @@ public class PaxelItem extends ToolItem implements IEnableable {
 				.defaultMaxDamage((int) (tier.getMaxUses() * 1.5))
 				.addToolType(ToolType.PICKAXE, tier.getHarvestLevel())
 				.addToolType(ToolType.SHOVEL, tier.getHarvestLevel())
-				.addToolType(ToolType.SHOVEL, tier.getHarvestLevel())
+				.addToolType(ToolType.AXE, tier.getHarvestLevel())
 		));
 	}
 
 	@Override
 	public boolean isEnabled() {
-		return ModConfigs.ENABLE_PAXELS.get();
+		return true;
+//		return ModConfigs.ENABLE_PAXELS.get();
 	}
 }
