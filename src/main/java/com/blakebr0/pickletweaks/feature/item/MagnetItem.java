@@ -76,7 +76,6 @@ public class MagnetItem extends BaseItem implements IEnableable {
 
 	@Override
 	public boolean isEnabled() {
-		return true;
-//		return ModConfigs.ENABLE_MAGNET.get();
+		return !ModConfigs.isLoaded() || ModConfigs.ENABLE_MAGNET.get();
 	}
 }

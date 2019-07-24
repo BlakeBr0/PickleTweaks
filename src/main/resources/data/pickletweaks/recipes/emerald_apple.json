@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "conditions": [
+	{
+	  "type": "cucumber:enabled",
+	  "item": "pickletweaks:emerald_apple"
+	}
+  ],
+  "pattern": [
+	"EEE",
+	"EAE",
+	"EEE"
+  ],
+  "key": {
+	"A": {
+	  "item": "pickletweaks:diamond_apple"
+	},
+	"E": {
+	  "tag": "forge:gems/emerald"
+	}
+  },
+  "result": {
+	"item": "pickletweaks:emerald_apple"
+  }
+}

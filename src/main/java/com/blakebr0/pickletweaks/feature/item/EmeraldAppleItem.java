@@ -76,7 +76,6 @@ public class EmeraldAppleItem extends BaseItem implements IEnableable {
 
 	@Override
 	public boolean isEnabled() {
-		return true;
-//		return ModConfigs.ENABLE_APPLES.get();
+		return !ModConfigs.isLoaded() || ModConfigs.ENABLE_APPLES.get();
 	}
 }

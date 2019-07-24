@@ -22,7 +22,10 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemTier;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.RegistryObject;
+import net.minecraftforge.registries.ForgeRegistryEntry;
 import net.minecraftforge.registries.IForgeRegistry;
+import net.minecraftforge.registries.IForgeRegistryEntry;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,32 +35,32 @@ import static com.blakebr0.pickletweaks.PickleTweaks.ITEM_GROUP;
 public class ModItems {
 	public static final List<BlockItem> BLOCK_ITEMS = new ArrayList<>();
 
-	public static final CoalPieceItem COAL_PIECE = new CoalPieceItem(p -> p.group(ITEM_GROUP));
-	public static final CoalPieceItem CHARCOAL_PIECE = new CoalPieceItem(p -> p.group(ITEM_GROUP));
-	public static final DiamondAppleItem DIAMOND_APPLE = new DiamondAppleItem(p -> p.group(ITEM_GROUP));
-	public static final EmeraldAppleItem EMERALD_APPLE = new EmeraldAppleItem(p -> p.group(ITEM_GROUP));
-	public static final WateringCanItem WATERING_CAN = new WateringCanItem(p -> p.group(ITEM_GROUP));
-	public static final GrassFiberItem GRASS_FIBER = new GrassFiberItem(p -> p.group(ITEM_GROUP));
-	public static final MeshItem GRASS_FIBER_MESH = new MeshItem(19, p -> p.group(ITEM_GROUP));
-	public static final MeshItem MESH = new MeshItem(63, p -> p.group(ITEM_GROUP));
-	public static final MeshItem REINFORCED_MESH = new MeshItem(511, p -> p.group(ITEM_GROUP));
-	public static final MagnetItem MAGNET = new MagnetItem(p -> p.group(ITEM_GROUP));
-	public static final NightVisionGogglesItem NIGHT_VISION_GOGGLES = new NightVisionGogglesItem(ModArmorMaterial.NIGHT_VISION_GOGGLES, p -> p.group(ITEM_GROUP));
-	public static final NightVisionGogglesItem REINFORCED_NIGHT_VISION_GOGGLES = new NightVisionGogglesItem(ModArmorMaterial.REINFORCED_NIGHT_VISION_GOGGLES, p -> p.group(ITEM_GROUP));
+	public static final RegistryObject<CoalPieceItem> COAL_PIECE = get("coal_piece");
+	public static final RegistryObject<CoalPieceItem> CHARCOAL_PIECE = get("charcoal_piece");
+	public static final RegistryObject<DiamondAppleItem> DIAMOND_APPLE = get("diamond_apple");
+	public static final RegistryObject<EmeraldAppleItem> EMERALD_APPLE = get("emerald_apple");
+	public static final RegistryObject<WateringCanItem> WATERING_CAN = get("watering_can");
+	public static final RegistryObject<GrassFiberItem> GRASS_FIBER = get("grass_fiber");
+	public static final RegistryObject<MeshItem> GRASS_FIBER_MESH = get("grass_fiber_mesh");
+	public static final RegistryObject<MeshItem> MESH = get("mesh");
+	public static final RegistryObject<MeshItem> REINFORCED_MESH = get("reinforced_mesh");
+	public static final RegistryObject<MagnetItem> MAGNET = get("magnet");
+	public static final RegistryObject<NightVisionGogglesItem> NIGHT_VISION_GOGGLES = get("night_vision_goggles");
+	public static final RegistryObject<NightVisionGogglesItem> REINFORCED_NIGHT_VISION_GOGGLES = get("reinforced_night_vision_goggles");
 
-	public static final BaseSwordItem FLINT_SWORD = new BaseSwordItem(ModItemTier.FLINT, p -> p.group(ITEM_GROUP));
-	public static final BasePickaxeItem FLINT_PICKAXE = new BasePickaxeItem(ModItemTier.FLINT, p -> p.group(ITEM_GROUP));
-	public static final BaseShovelItem FLINT_SHOVEL = new BaseShovelItem(ModItemTier.FLINT, p -> p.group(ITEM_GROUP));
-	public static final BaseAxeItem FLINT_AXE = new BaseAxeItem(ModItemTier.FLINT, p -> p.group(ITEM_GROUP));
-	public static final BaseHoeItem FLINT_HOE = new BaseHoeItem(ModItemTier.FLINT, p -> p.group(ITEM_GROUP));
-	public static final BaseShearsItem FLINT_SHEARS = new BaseShearsItem(p -> p.group(ITEM_GROUP).maxDamage(100));
+	public static final RegistryObject<BaseSwordItem> FLINT_SWORD = get("flint_sword");
+	public static final RegistryObject<BasePickaxeItem> FLINT_PICKAXE = get("flint_pickaxe");
+	public static final RegistryObject<BaseShovelItem> FLINT_SHOVEL = get("flint_shovel");
+	public static final RegistryObject<BaseAxeItem> FLINT_AXE = get("flint_axe");
+	public static final RegistryObject<BaseHoeItem> FLINT_HOE = get("flint_hoe");
+	public static final RegistryObject<BaseShearsItem> FLINT_SHEARS = get("flint_shears");
 
-	public static final PaxelItem WOODEN_PAXEL = new PaxelItem(ItemTier.WOOD, p -> p.group(ITEM_GROUP));
-	public static final PaxelItem STONE_PAXEL = new PaxelItem(ItemTier.STONE, p -> p.group(ITEM_GROUP));
-	public static final PaxelItem IRON_PAXEL = new PaxelItem(ItemTier.IRON, p -> p.group(ITEM_GROUP));
-	public static final PaxelItem GOLDEN_PAXEL = new PaxelItem(ItemTier.GOLD, p -> p.group(ITEM_GROUP));
-	public static final PaxelItem DIAMOND_PAXEL = new PaxelItem(ItemTier.DIAMOND, p -> p.group(ITEM_GROUP));
-	public static final PaxelItem FLINT_PAXEL = new PaxelItem(ModItemTier.FLINT, p -> p.group(ITEM_GROUP));
+	public static final RegistryObject<PaxelItem> WOODEN_PAXEL = get("wooden_paxel");
+	public static final RegistryObject<PaxelItem> STONE_PAXEL = get("stone_paxel");
+	public static final RegistryObject<PaxelItem> IRON_PAXEL = get("iron_paxel");
+	public static final RegistryObject<PaxelItem> GOLDEN_PAXEL = get("golden_paxel");
+	public static final RegistryObject<PaxelItem> DIAMOND_PAXEL = get("diamond_paxel");
+	public static final RegistryObject<PaxelItem> FLINT_PAXEL = get("flint_paxel");
 
 	// Thermal Foundation tool material stats
 	// https://github.com/CoFH/ThermalFoundation/blob/master/src/main/java/cofh/thermalfoundation/init/TFEquipment.java
@@ -91,32 +94,36 @@ public class ModItems {
 	public void onRegisterItems(RegistryEvent.Register<Item> event) {
 		IForgeRegistry<Item> registry = event.getRegistry();
 
-		registry.register(COAL_PIECE.setRegistryName("coal_piece"));
-		registry.register(CHARCOAL_PIECE.setRegistryName("charcoal_piece"));
-		registry.register(DIAMOND_APPLE.setRegistryName("diamond_apple"));
-		registry.register(EMERALD_APPLE.setRegistryName("emerald_apple"));
-		registry.register(WATERING_CAN.setRegistryName("watering_can"));
-		registry.register(GRASS_FIBER.setRegistryName("grass_fiber"));
-		registry.register(GRASS_FIBER_MESH.setRegistryName("grass_fiber_mesh"));
-		registry.register(MESH.setRegistryName("mesh"));
-		registry.register(REINFORCED_MESH.setRegistryName("reinforced_mesh"));
-		registry.register(MAGNET.setRegistryName("magnet"));
-		registry.register(NIGHT_VISION_GOGGLES.setRegistryName("night_vision_goggles"));
-		registry.register(REINFORCED_NIGHT_VISION_GOGGLES.setRegistryName("reinforced_night_vision_goggles"));
+		BLOCK_ITEMS.forEach(registry::register);
 
-		registry.register(FLINT_SWORD.setRegistryName("flint_sword"));
-		registry.register(FLINT_PICKAXE.setRegistryName("flint_pickaxe"));
-		registry.register(FLINT_SHOVEL.setRegistryName("flint_shovel"));
-		registry.register(FLINT_AXE.setRegistryName("flint_axe"));
-		registry.register(FLINT_HOE.setRegistryName("flint_hoe"));
-		registry.register(FLINT_SHEARS.setRegistryName("flint_shears"));
+		registry.registerAll(
+				new CoalPieceItem(p -> p.group(ITEM_GROUP)).setRegistryName("coal_piece"),
+				new CoalPieceItem(p -> p.group(ITEM_GROUP)).setRegistryName("charcoal_piece"),
+				new DiamondAppleItem(p -> p.group(ITEM_GROUP)).setRegistryName("diamond_apple"),
+				new EmeraldAppleItem(p -> p.group(ITEM_GROUP)).setRegistryName("emerald_apple"),
+				new WateringCanItem(p -> p.group(ITEM_GROUP)).setRegistryName("watering_can"),
+				new GrassFiberItem(p -> p.group(ITEM_GROUP)).setRegistryName("grass_fiber"),
+				new MeshItem(20, p -> p.group(ITEM_GROUP)).setRegistryName("grass_fiber_mesh"),
+				new MeshItem(64, p -> p.group(ITEM_GROUP)).setRegistryName("mesh"),
+				new MeshItem(512, p -> p.group(ITEM_GROUP)).setRegistryName("reinforced_mesh"),
+				new MagnetItem(p -> p.group(ITEM_GROUP)).setRegistryName("magnet"),
+				new NightVisionGogglesItem(ModArmorMaterial.NIGHT_VISION_GOGGLES, p -> p.group(ITEM_GROUP)).setRegistryName("night_vision_goggles"),
+				new NightVisionGogglesItem(ModArmorMaterial.REINFORCED_NIGHT_VISION_GOGGLES, p -> p.group(ITEM_GROUP)).setRegistryName("reinforced_night_vision_goggles"),
 
-		registry.register(WOODEN_PAXEL.setRegistryName("wooden_paxel"));
-		registry.register(STONE_PAXEL.setRegistryName("stone_paxel"));
-		registry.register(IRON_PAXEL.setRegistryName("iron_paxel"));
-		registry.register(GOLDEN_PAXEL.setRegistryName("golden_paxel"));
-		registry.register(DIAMOND_PAXEL.setRegistryName("diamond_paxel"));
-		registry.register(FLINT_PAXEL.setRegistryName("flint_paxel"));
+				new BaseSwordItem(ModItemTier.FLINT, p -> p.group(ITEM_GROUP)).setRegistryName("flint_sword"),
+				new BasePickaxeItem(ModItemTier.FLINT, p -> p.group(ITEM_GROUP)).setRegistryName("flint_pickaxe"),
+				new BaseShovelItem(ModItemTier.FLINT, p -> p.group(ITEM_GROUP)).setRegistryName("flint_shovel"),
+				new BaseAxeItem(ModItemTier.FLINT, p -> p.group(ITEM_GROUP)).setRegistryName("flint_axe"),
+				new BaseHoeItem(ModItemTier.FLINT, p -> p.group(ITEM_GROUP)).setRegistryName("flint_hoe"),
+				new BaseShearsItem(p -> p.group(ITEM_GROUP).maxDamage(100)).setRegistryName("flint_shears"),
+
+				new PaxelItem(ItemTier.WOOD, p -> p.group(ITEM_GROUP)).setRegistryName("wooden_paxel"),
+				new PaxelItem(ItemTier.STONE, p -> p.group(ITEM_GROUP)).setRegistryName("stone_paxel"),
+				new PaxelItem(ItemTier.IRON, p -> p.group(ITEM_GROUP)).setRegistryName("iron_paxel"),
+				new PaxelItem(ItemTier.GOLD, p -> p.group(ITEM_GROUP)).setRegistryName("golden_paxel"),
+				new PaxelItem(ItemTier.DIAMOND, p -> p.group(ITEM_GROUP)).setRegistryName("diamond_paxel"),
+				new PaxelItem(ModItemTier.FLINT, p -> p.group(ITEM_GROUP)).setRegistryName("flint_paxel")
+		);
 
 //			registry.register(itemAluminumPaxel, "aluminum_paxel");
 //			registry.register(itemCopperPaxel, "copper_paxel");
@@ -130,5 +137,9 @@ public class ModItems {
 //			registry.register(itemElectrumPaxel, "electrum_paxel");
 //			registry.register(itemSteelPaxel, "steel_paxel");
 //			registry.register(itemPlatinumPaxel, "platinum_paxel");
+	}
+
+	private static <T extends Item> RegistryObject<T> get(String name) {
+		return RegistryObject.of("pickletweaks:" + name, () -> Item.class);
 	}
 }

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "conditions": [
+	{
+	  "type": "cucumber:enabled",
+	  "item": "pickletweaks:reinforced_mesh"
+	}
+  ],
+  "ingredients": [
+	{
+	  "item": "pickletweaks:reinforced_mesh"
+	},
+	{
+	  "item": "minecraft:gravel"
+	}
+  ],
+  "result": {
+	"item": "minecraft:flint"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "conditions": [
+	{
+	  "type": "cucumber:enabled",
+	  "item": "pickletweaks:watering_can"
+	}
+  ],
+  "pattern": [
+	" BI",
+	"IWI",
+	" I "
+  ],
+  "key": {
+	"I": {
+	  "tag": "forge:ingots/iron"
+	},
+	"W": {
+	  "item": "minecraft:bowl"
+	},
+	"B": {
+	  "item": "minecraft:bone_meal"
+	}
+  },
+  "result": {
+	"item": "pickletweaks:watering_can"
+  }
+}

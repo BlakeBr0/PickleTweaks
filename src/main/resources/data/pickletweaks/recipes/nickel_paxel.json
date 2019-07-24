@@ -1,0 +1,43 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "conditions": [
+    {
+      "type": "cucumber:enabled",
+      "item": "pickletweaks:nickel_paxel"
+    },
+    {
+      "type": "forge:item_exists",
+      "item": "thermalfoundation:tool.axe_nickel"
+    },
+    {
+      "type": "forge:item_exists",
+      "item": "thermalfoundation:tool.pickaxe_nickel"
+    },
+    {
+      "type": "forge:item_exists",
+      "item": "thermalfoundation:tool.shovel_nickel"
+    }
+  ],
+  "pattern": [
+    "ABC",
+    " S ",
+    " S "
+  ],
+  "key": {
+    "A": {
+      "item": "thermalfoundation:tool.axe_nickel"
+    },
+    "B": {
+      "item": "thermalfoundation:tool.pickaxe_nickel"
+    },
+    "C": {
+      "item": "thermalfoundation:tool.shovel_nickel"
+    },
+    "S": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "result": {
+    "item": "pickletweaks:nickel_paxel"
+  }
+}

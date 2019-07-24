@@ -13,7 +13,6 @@ public class MeshItem extends ReusableItem implements IEnableable {
 
 	@Override
 	public boolean isEnabled() {
-		return true;
-//		return ModConfigs.ENABLE_MESHES.get();
+		return !ModConfigs.isLoaded() || ModConfigs.ENABLE_MESHES.get();
 	}
 }

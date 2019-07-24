@@ -1,0 +1,43 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "conditions": [
+    {
+      "type": "cucumber:enabled",
+      "item": "pickletweaks:constantan_paxel"
+    },
+    {
+      "type": "forge:item_exists",
+      "item": "thermalfoundation:tool.axe_constantan"
+    },
+    {
+      "type": "forge:item_exists",
+      "item": "thermalfoundation:tool.pickaxe_constantan"
+    },
+    {
+      "type": "forge:item_exists",
+      "item": "thermalfoundation:tool.shovel_constantan"
+    }
+  ],
+  "pattern": [
+    "ABC",
+    " S ",
+    " S "
+  ],
+  "key": {
+    "A": {
+      "item": "thermalfoundation:tool.axe_constantan"
+    },
+    "B": {
+      "item": "thermalfoundation:tool.pickaxe_constantan"
+    },
+    "C": {
+      "item": "thermalfoundation:tool.shovel_constantan"
+    },
+    "S": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "result": {
+    "item": "pickletweaks:constantan_paxel"
+  }
+}

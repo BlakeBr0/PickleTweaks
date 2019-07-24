@@ -1,10 +1,14 @@
 package com.blakebr0.pickletweaks.config;
 
 import net.minecraftforge.common.ForgeConfigSpec;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.config.ModConfig;
 
 public class ModConfigs {
     public static final ForgeConfigSpec CLIENT;
     public static final ForgeConfigSpec COMMON;
+
+    private static boolean loaded = false;
 
     public static final ForgeConfigSpec.BooleanValue ENABLE_TOOL_INFO_TOOLTIP;
 //    public static final ForgeConfigSpec.BooleanValue ENABLE_SWORD_INFO_TOOLTIP;
@@ -138,5 +142,14 @@ public class ModConfigs {
         common.pop();
 
         COMMON = common.build();
+    }
+
+    @SubscribeEvent
+    public void onLoad(ModConfig.Loading event) {
+        loaded = true;
+    }
+
+    public static boolean isLoaded() {
+        return loaded;
     }
 }

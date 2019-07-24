@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "conditions": [
+    {
+      "type": "cucumber:enabled",
+      "item": "pickletweaks:flint_paxel"
+    }
+  ],
+  "pattern": [
+    "ABC",
+    " S ",
+    " S "
+  ],
+  "key": {
+    "A": {
+      "item": "pickletweaks:flint_axe"
+    },
+    "B": {
+      "item": "pickletweaks:flint_pickaxe"
+    },
+    "C": {
+      "item": "pickletweaks:flint_shovel"
+    },
+    "S": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "result": {
+    "item": "pickletweaks:flint_paxel"
+  }
+}

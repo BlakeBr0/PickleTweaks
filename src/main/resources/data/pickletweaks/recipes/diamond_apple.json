@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "conditions": [
+	{
+	  "type": "cucumber:enabled",
+	  "item": "pickletweaks:diamond_apple"
+	}
+  ],
+  "pattern": [
+	"DDD",
+	"DAD",
+	"DDD"
+  ],
+  "key": {
+	"A": {
+	  "item": "minecraft:apple"
+	},
+	"D": {
+	  "tag": "forge:gems/diamond"
+	}
+  },
+  "result": {
+	"item": "pickletweaks:diamond_apple"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "conditions": [
+	{
+	   "type": "forge:item_exists",
+	   "item": "pickletweaks:flint_shovel"
+	 }
+  ],
+  "pattern": [
+    "F",
+    "S",
+    "S"
+  ],
+  "key": {
+    "F": {
+      "item": "minecraft:flint"
+    },
+	"S": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "result": {
+    "item": "pickletweaks:flint_shovel"
+  }
+}

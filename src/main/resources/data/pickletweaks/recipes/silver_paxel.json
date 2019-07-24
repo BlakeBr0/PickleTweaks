@@ -1,0 +1,43 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "conditions": [
+    {
+      "type": "cucumber:enabled",
+      "item": "pickletweaks:silver_paxel"
+    },
+    {
+      "type": "forge:item_exists",
+      "item": "thermalfoundation:tool.axe_silver"
+    },
+    {
+      "type": "forge:item_exists",
+      "item": "thermalfoundation:tool.pickaxe_silver"
+    },
+    {
+      "type": "forge:item_exists",
+      "item": "thermalfoundation:tool.shovel_silver"
+    }
+  ],
+  "pattern": [
+    "ABC",
+    " S ",
+    " S "
+  ],
+  "key": {
+    "A": {
+      "item": "thermalfoundation:tool.axe_silver"
+    },
+    "B": {
+      "item": "thermalfoundation:tool.pickaxe_silver"
+    },
+    "C": {
+      "item": "thermalfoundation:tool.shovel_silver"
+    },
+    "S": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "result": {
+    "item": "pickletweaks:silver_paxel"
+  }
+}
