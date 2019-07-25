@@ -9,4 +9,7 @@ public class ModTooltips {
     public static final Tooltip FILLED = new Tooltip("tooltip.pickletweaks.filled");
     public static final Tooltip DISABLED = new Tooltip("tooltip.pickletweaks.disabled");
     public static final Tooltip ENABLED = new Tooltip("tooltip.pickletweaks.enabled");
+    public static final Tooltip MINING_LEVEL = new Tooltip("tooltip.pickletweaks.mining_level");
+    public static final Tooltip MINING_SPEED = new Tooltip("tooltip.pickletweaks.mining_speed");
+    public static final Tooltip AMMO = new Tooltip("tooltip.pickletweaks.ammo");
 }

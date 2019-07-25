@@ -4,6 +4,8 @@ import com.blakebr0.cucumber.helper.CompoundTagHelper;
 import com.blakebr0.cucumber.helper.NBTHelper;
 import com.blakebr0.cucumber.iface.IColored;
 import com.blakebr0.pickletweaks.config.ModConfigs;
+import com.blakebr0.pickletweaks.feature.FeatureBowInfo;
+import com.blakebr0.pickletweaks.feature.FeatureToolInfo;
 import com.blakebr0.pickletweaks.feature.handler.NightVisionGogglesHandler;
 import com.blakebr0.pickletweaks.feature.handler.ToggleMagnetInInventoryHandler;
 import com.blakebr0.pickletweaks.network.NetworkHandler;
@@ -72,6 +74,8 @@ public class PickleTweaks {
 	@SubscribeEvent
 	public void onClientSetup(FMLClientSetupEvent event) {
 		MinecraftForge.EVENT_BUS.register(new ToggleMagnetInInventoryHandler());
+		MinecraftForge.EVENT_BUS.register(new FeatureToolInfo());
+		MinecraftForge.EVENT_BUS.register(new FeatureBowInfo());
 	}
 
 	@OnlyIn(Dist.CLIENT)

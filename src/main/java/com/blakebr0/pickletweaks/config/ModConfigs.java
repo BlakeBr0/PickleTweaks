@@ -11,7 +11,6 @@ public class ModConfigs {
     private static boolean loaded = false;
 
     public static final ForgeConfigSpec.BooleanValue ENABLE_TOOL_INFO_TOOLTIP;
-//    public static final ForgeConfigSpec.BooleanValue ENABLE_SWORD_INFO_TOOLTIP;
 
     // Client
     static {
@@ -25,10 +24,6 @@ public class ModConfigs {
                 .comment("Tool Information Tooltips enabled?")
                 .translation("configGui.pickletweaks.enable_tool_info_tooltip")
                 .define("toolInfoTooltip", true);
-//        ENABLE_SWORD_INFO_TOOLTIP = client
-//                .comment("Sword Information Tooltips enabled?")
-//                .translation("configGui.pickletweaks.enable_sword.info_tooltip")
-//                .define("swordInfoTooltip", true);
         client.pop();
 
         CLIENT = client.build();
