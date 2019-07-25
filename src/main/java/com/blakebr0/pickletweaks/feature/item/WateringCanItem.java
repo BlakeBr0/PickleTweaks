@@ -49,7 +49,7 @@ public class WateringCanItem extends BaseItem implements IEnableable {
 	public void fillItemGroup(ItemGroup group, NonNullList<ItemStack> items) {
 		if (this.isEnabled() && this.isInGroup(group)) {
 			ItemStack stack = new ItemStack(this);
-			NBTHelper.setBoolean(stack, "Water", true);
+			NBTHelper.setBoolean(stack, "Water", false);
 			items.add(stack);
 		}
 	}
@@ -125,7 +125,8 @@ public class WateringCanItem extends BaseItem implements IEnableable {
 				if (state.isSolid() || state.getBlock() instanceof FarmlandBlock) {
 					d1 += 0.3D;
 				}
-				world.addParticle(ParticleTypes.DRIPPING_WATER, d0, d1, d2, 0.0D, 0.0D, 0.0D);
+
+				world.addParticle(ParticleTypes.RAIN, d0, d1, d2, 0.0D, 0.0D, 0.0D);
 			}
 		}
 
@@ -133,6 +134,7 @@ public class WateringCanItem extends BaseItem implements IEnableable {
 			this.water = false;
 			int chance = Utils.randInt(1, 100);
 			if (chance <= 25) {
+				blocks = BlockPos.getAllInBox(pos.add(-1, -1, -1), pos.add(1, 1, 1));
 				blocks.forEach(aoePos -> {
 					BlockState plantState = world.getBlockState(aoePos);
 					Block plantBlock = world.getBlockState(aoePos).getBlock();
