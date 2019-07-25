@@ -1,6 +1,6 @@
 {
-  "parent":"item/handheld",
+  "parent": "item/handheld",
   "textures": {
-    "layer0":"pickletweaks:items/iron_paxel"
+    "layer0": "pickletweaks:item/iron_paxel"
   }
 }

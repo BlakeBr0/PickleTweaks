@@ -1,5 +1,5 @@
 {
 	"variants": {
-		"": { "model": "pickletweaks:dark_glass" }
+		"": { "model": "pickletweaks:block/dark_glass" }
 	}
 }

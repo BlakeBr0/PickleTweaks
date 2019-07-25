@@ -1,6 +1,6 @@
 {
-  "parent":"item/handheld",
+  "parent": "item/handheld",
   "textures": {
-    "layer0":"pickletweaks:items/flint_pickaxe"
+    "layer0": "pickletweaks:item/flint_pickaxe"
   }
 }

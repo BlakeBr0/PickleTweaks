@@ -1,6 +1,6 @@
 {
-  "parent":"item/generated",
+  "parent": "item/generated",
   "textures": {
-    "layer0":"pickletweaks:items/grass_mesh"
+    "layer0": "pickletweaks:item/grass_fiber_mesh"
   }
 }
