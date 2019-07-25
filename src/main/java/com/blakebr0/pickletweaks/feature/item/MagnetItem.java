@@ -60,6 +60,7 @@ public class MagnetItem extends BaseItem implements IEnableable {
 						continue;
 
 					if (!world.isRemote) {
+						item.setNoPickupDelay();
 						item.setPosition(entity.posX, entity.posY, entity.posZ);
 					}
 				}

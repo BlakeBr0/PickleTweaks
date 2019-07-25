@@ -26,7 +26,7 @@ import java.util.Map;
 import java.util.function.Function;
 
 public class PaxelItem extends ToolItem implements IEnableable {
-    protected static final Map<Block, BlockState> PATH_STATES = Maps.newHashMap(ImmutableMap.of(Blocks.GRASS_BLOCK, Blocks.GRASS_PATH.getDefaultState()));
+    private static final Map<Block, BlockState> PATH_STUFF = Maps.newHashMap(ImmutableMap.of(Blocks.GRASS_BLOCK, Blocks.GRASS_PATH.getDefaultState()));
 
     public PaxelItem(IItemTier tier, Function<Properties, Properties> properties) {
 		super(4.0F, -3.2F, tier, new HashSet<>(), properties.apply(new Properties()
@@ -58,29 +58,29 @@ public class PaxelItem extends ToolItem implements IEnableable {
 	}
 
 	@Override
-    public ActionResultType onItemUse(ItemUseContext context) {
-        World world = context.getWorld();
-        BlockPos pos = context.getPos();
-        if (context.getFace() != Direction.DOWN && world.getBlockState(pos.up()).isAir(world, pos.up())) {
-            BlockState state = PATH_STATES.get(world.getBlockState(pos).getBlock());
-            if (state != null) {
-                PlayerEntity player = context.getPlayer();
-                world.playSound(player, pos, SoundEvents.ITEM_SHOVEL_FLATTEN, SoundCategory.BLOCKS, 1.0F, 1.0F);
-                if (!world.isRemote) {
-                    world.setBlockState(pos, state, 11);
-                    if (player != null) {
-                        context.getItem().damageItem(1, player, entity -> {
-                            entity.sendBreakAnimation(context.getHand());
-                        });
-                    }
-                }
+	public ActionResultType onItemUse(ItemUseContext context) {
+		World world = context.getWorld();
+		BlockPos pos = context.getPos();
+		if (context.getFace() != Direction.DOWN && world.getBlockState(pos.up()).isAir(world, pos.up())) {
+			BlockState state = PATH_STUFF.get(world.getBlockState(pos).getBlock());
+			if (state != null) {
+				PlayerEntity player = context.getPlayer();
+				world.playSound(player, pos, SoundEvents.ITEM_SHOVEL_FLATTEN, SoundCategory.BLOCKS, 1.0F, 1.0F);
+				if (!world.isRemote) {
+					world.setBlockState(pos, state, 11);
+					if (player != null) {
+						context.getItem().damageItem(1, player, entity -> {
+							entity.sendBreakAnimation(context.getHand());
+						});
+					}
+				}
 
-                return ActionResultType.SUCCESS;
-            }
-        }
+				return ActionResultType.SUCCESS;
+			}
+		}
 
-        return ActionResultType.PASS;
-    }
+		return ActionResultType.PASS;
+	}
 
 	@Override
 	public boolean isEnabled() {
