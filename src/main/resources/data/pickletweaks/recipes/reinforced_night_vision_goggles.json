@@ -3,7 +3,7 @@
 	"conditions": [
 		{
 			"type": "cucumber:enabled",
-			"item": "pickletweaks:night_vision_goggles"
+			"item": "pickletweaks:reinforced_night_vision_goggles"
 		}
 	],
 	"pattern": [
@@ -12,7 +12,7 @@
 	],
 	"key": {
 		"I": {
-			"tag": "forge:ingots/iron"
+			"tag": "forge:gems/diamond"
 		},
 		"G": {
 			"item": "minecraft:green_stained_glass_pane"
@@ -22,6 +22,6 @@
 		}
 	},
 	"result": {
-		"item": "pickletweaks:night_vision_goggles"
+		"item": "pickletweaks:reinforced_night_vision_goggles"
 	}
 }
