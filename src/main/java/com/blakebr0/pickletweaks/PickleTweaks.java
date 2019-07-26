@@ -21,6 +21,7 @@ import net.minecraftforge.client.event.ColorHandlerEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.DeferredWorkQueue;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
@@ -58,7 +59,9 @@ public class PickleTweaks {
 	public void onCommonSetup(FMLCommonSetupEvent event) {
 		MinecraftForge.EVENT_BUS.register(new NightVisionGogglesHandler());
 
-		NetworkHandler.onCommonSetup();
+		DeferredWorkQueue.runLater(() -> {
+			NetworkHandler.onCommonSetup();
+		});
 	}
 
 	@SubscribeEvent
