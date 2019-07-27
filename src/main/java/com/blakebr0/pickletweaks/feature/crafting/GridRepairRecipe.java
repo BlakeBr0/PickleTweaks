@@ -23,6 +23,9 @@ public class GridRepairRecipe extends ShapelessRecipe {
 
 	@Override
 	public ItemStack getCraftingResult(CraftingInventory inv) {
+		if (!ModConfigs.GRID_REPAIR_ENABLED.get())
+			return ItemStack.EMPTY;
+
 		ItemStack tool = ItemStack.EMPTY;
 		boolean foundTool = false;
 		NonNullList<ItemStack> inputs = NonNullList.create();
