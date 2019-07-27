@@ -4,15 +4,16 @@ import net.minecraft.item.IItemTier;
 import net.minecraft.item.Items;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.LazyLoadBase;
+import net.minecraftforge.common.Tags;
 
 import java.util.function.Supplier;
 
 public enum ModItemTier implements IItemTier {
-    FLINT(1, 157, 3.8F, 1.0F, 10, () -> {
+    FLINT(1, 157, 4.5F, 1.75F, 7, () -> {
         return Ingredient.fromItems(Items.FLINT);
     }),
-    EMERALD(1, 157, 3.8F, 1.0F, 10, () -> {
-        return Ingredient.fromItems(Items.FLINT);
+    EMERALD(3, 1324, 9.0F, 4.0F, 12, () -> {
+        return Ingredient.fromTag(Tags.Items.GEMS_EMERALD);
     });
 
     private final int harvestLevel;

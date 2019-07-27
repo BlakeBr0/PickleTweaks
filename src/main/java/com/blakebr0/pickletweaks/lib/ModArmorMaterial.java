@@ -21,8 +21,8 @@ public enum ModArmorMaterial implements IArmorMaterial {
     FLINT("pickletweaks:flint", 15, new int[] { 1, 4, 5, 2 }, 12, SoundEvents.ITEM_ARMOR_EQUIP_CHAIN, 0.0F, () -> {
         return Ingredient.fromItems(Items.FLINT);
     }),
-    EMERALD("pickletweaks:emerald", 15, new int[] { 1, 4, 5, 2 }, 12, SoundEvents.ITEM_ARMOR_EQUIP_CHAIN, 0.0F, () -> {
-        return Ingredient.fromItems(Items.FLINT);
+    EMERALD("pickletweaks:emerald", 27, new int[] { 4, 6, 9, 4 }, 12, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0F, () -> {
+        return Ingredient.fromTag(Tags.Items.GEMS_EMERALD);
     });
 
     private static final int[] MAX_DAMAGE_ARRAY = new int[] { 13, 15, 16, 11 };
