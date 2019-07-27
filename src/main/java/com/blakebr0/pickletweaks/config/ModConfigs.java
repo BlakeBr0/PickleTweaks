@@ -52,9 +52,8 @@ public class ModConfigs {
     public static final ForgeConfigSpec.BooleanValue GRID_REPAIR_OVERRIDE_MODE;
     public static final ForgeConfigSpec.BooleanValue GRID_REPAIR_CHEAP_SHOVEL;
 
-    public static final ForgeConfigSpec.BooleanValue ENABLE_FLINT_DROP_TWEAK;
     public static final ForgeConfigSpec.BooleanValue ENABLE_TOOL_BREAKING_TWEAK;
-    public static final ForgeConfigSpec.ConfigValue<List<String>>  USELESS_TOOLS;
+//    public static final ForgeConfigSpec.ConfigValue<List<String>> USELESS_TOOLS;
 
     // Common
     static {
@@ -135,19 +134,15 @@ public class ModConfigs {
         common.pop();
 
         common.comment("Disable and configure tweaks.").push("Tweaks");
-        ENABLE_FLINT_DROP_TWEAK = common
-                .comment("Enable no Flint Dropping from gravel?")
-                .translation("configGui.pickletweaks.enable_flint_drop_tweak")
-                .define("noFlintDrop", false);
         ENABLE_TOOL_BREAKING_TWEAK = common
                 .comment("Enabled tools not breaking?")
                 .translation("configGui.pickletweaks.enable_tool_breaking_tweak")
                 .define("toolBreaking", true);
-        USELESS_TOOLS = common
-                .comment("Tools that should be ineffective.")
-                .comment("Ex: [\"minecraft:stone_pickaxe\", \"minecraft:stone_sword\"]")
-                .translation("configGui.pickletweaks.useless_tools")
-                .define("uselessTools", new ArrayList<>());
+//        USELESS_TOOLS = common
+//                .comment("Tools that should be ineffective.")
+//                .comment("Ex: [\"minecraft:stone_pickaxe\", \"minecraft:stone_sword\"]")
+//                .translation("configGui.pickletweaks.useless_tools")
+//                .define("uselessTools", new ArrayList<>());
         common.pop();
 
         COMMON = common.build();

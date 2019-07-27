@@ -9,14 +9,23 @@ import com.blakebr0.cucumber.item.tool.BaseSwordItem;
 import com.blakebr0.pickletweaks.feature.item.CoalPieceItem;
 import com.blakebr0.pickletweaks.feature.item.DiamondAppleItem;
 import com.blakebr0.pickletweaks.feature.item.EmeraldAppleItem;
+import com.blakebr0.pickletweaks.feature.item.FlintArmorItem;
 import com.blakebr0.pickletweaks.feature.item.GrassFiberItem;
 import com.blakebr0.pickletweaks.feature.item.MagnetItem;
 import com.blakebr0.pickletweaks.feature.item.MeshItem;
 import com.blakebr0.pickletweaks.feature.item.NightVisionGogglesItem;
 import com.blakebr0.pickletweaks.feature.item.PaxelItem;
 import com.blakebr0.pickletweaks.feature.item.WateringCanItem;
+import com.blakebr0.pickletweaks.feature.item.tool.FlintAxeItem;
+import com.blakebr0.pickletweaks.feature.item.tool.FlintHoeItem;
+import com.blakebr0.pickletweaks.feature.item.tool.FlintPaxelItem;
+import com.blakebr0.pickletweaks.feature.item.tool.FlintPickaxeItem;
+import com.blakebr0.pickletweaks.feature.item.tool.FlintShearsItem;
+import com.blakebr0.pickletweaks.feature.item.tool.FlintShovelItem;
+import com.blakebr0.pickletweaks.feature.item.tool.FlintSwordItem;
 import com.blakebr0.pickletweaks.lib.ModArmorMaterial;
 import com.blakebr0.pickletweaks.lib.ModItemTier;
+import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemTier;
@@ -48,12 +57,17 @@ public class ModItems {
 	public static final RegistryObject<NightVisionGogglesItem> NIGHT_VISION_GOGGLES = get("night_vision_goggles");
 	public static final RegistryObject<NightVisionGogglesItem> REINFORCED_NIGHT_VISION_GOGGLES = get("reinforced_night_vision_goggles");
 
-	public static final RegistryObject<BaseSwordItem> FLINT_SWORD = get("flint_sword");
-	public static final RegistryObject<BasePickaxeItem> FLINT_PICKAXE = get("flint_pickaxe");
-	public static final RegistryObject<BaseShovelItem> FLINT_SHOVEL = get("flint_shovel");
-	public static final RegistryObject<BaseAxeItem> FLINT_AXE = get("flint_axe");
-	public static final RegistryObject<BaseHoeItem> FLINT_HOE = get("flint_hoe");
-	public static final RegistryObject<BaseShearsItem> FLINT_SHEARS = get("flint_shears");
+	public static final RegistryObject<FlintSwordItem> FLINT_SWORD = get("flint_sword");
+	public static final RegistryObject<FlintPickaxeItem> FLINT_PICKAXE = get("flint_pickaxe");
+	public static final RegistryObject<FlintShovelItem> FLINT_SHOVEL = get("flint_shovel");
+	public static final RegistryObject<FlintAxeItem> FLINT_AXE = get("flint_axe");
+	public static final RegistryObject<FlintHoeItem> FLINT_HOE = get("flint_hoe");
+	public static final RegistryObject<FlintShearsItem> FLINT_SHEARS = get("flint_shears");
+
+	public static final RegistryObject<FlintArmorItem> FLINT_HELMET = get("flint_helmet");
+	public static final RegistryObject<FlintArmorItem> FLINT_CHESTPLATE = get("flint_chestplate");
+	public static final RegistryObject<FlintArmorItem> FLINT_LEGGINGS = get("flint_leggings");
+	public static final RegistryObject<FlintArmorItem> FLINT_BOOTS = get("flint_boots");
 
 	public static final RegistryObject<PaxelItem> WOODEN_PAXEL = get("wooden_paxel");
 	public static final RegistryObject<PaxelItem> STONE_PAXEL = get("stone_paxel");
@@ -110,19 +124,24 @@ public class ModItems {
 				new NightVisionGogglesItem(ModArmorMaterial.NIGHT_VISION_GOGGLES, p -> p.group(ITEM_GROUP)).setRegistryName("night_vision_goggles"),
 				new NightVisionGogglesItem(ModArmorMaterial.REINFORCED_NIGHT_VISION_GOGGLES, p -> p.group(ITEM_GROUP)).setRegistryName("reinforced_night_vision_goggles"),
 
-				new BaseSwordItem(ModItemTier.FLINT, p -> p.group(ITEM_GROUP)).setRegistryName("flint_sword"),
-				new BasePickaxeItem(ModItemTier.FLINT, p -> p.group(ITEM_GROUP)).setRegistryName("flint_pickaxe"),
-				new BaseShovelItem(ModItemTier.FLINT, p -> p.group(ITEM_GROUP)).setRegistryName("flint_shovel"),
-				new BaseAxeItem(ModItemTier.FLINT, p -> p.group(ITEM_GROUP)).setRegistryName("flint_axe"),
-				new BaseHoeItem(ModItemTier.FLINT, p -> p.group(ITEM_GROUP)).setRegistryName("flint_hoe"),
-				new BaseShearsItem(p -> p.group(ITEM_GROUP).maxDamage(100)).setRegistryName("flint_shears"),
+				new FlintSwordItem(p -> p.group(ITEM_GROUP)).setRegistryName("flint_sword"),
+				new FlintPickaxeItem(p -> p.group(ITEM_GROUP)).setRegistryName("flint_pickaxe"),
+				new FlintShovelItem(p -> p.group(ITEM_GROUP)).setRegistryName("flint_shovel"),
+				new FlintAxeItem(p -> p.group(ITEM_GROUP)).setRegistryName("flint_axe"),
+				new FlintHoeItem(p -> p.group(ITEM_GROUP)).setRegistryName("flint_hoe"),
+				new FlintShearsItem(p -> p.group(ITEM_GROUP).maxDamage(100)).setRegistryName("flint_shears"),
+
+				new FlintArmorItem(EquipmentSlotType.HEAD, p -> p.group(ITEM_GROUP)).setRegistryName("flint_helmet"),
+				new FlintArmorItem(EquipmentSlotType.CHEST, p -> p.group(ITEM_GROUP)).setRegistryName("flint_chestplate"),
+				new FlintArmorItem(EquipmentSlotType.LEGS, p -> p.group(ITEM_GROUP)).setRegistryName("flint_leggings"),
+				new FlintArmorItem(EquipmentSlotType.FEET, p -> p.group(ITEM_GROUP)).setRegistryName("flint_boots"),
 
 				new PaxelItem(ItemTier.WOOD, p -> p.group(ITEM_GROUP)).setRegistryName("wooden_paxel"),
 				new PaxelItem(ItemTier.STONE, p -> p.group(ITEM_GROUP)).setRegistryName("stone_paxel"),
 				new PaxelItem(ItemTier.IRON, p -> p.group(ITEM_GROUP)).setRegistryName("iron_paxel"),
 				new PaxelItem(ItemTier.GOLD, p -> p.group(ITEM_GROUP)).setRegistryName("golden_paxel"),
 				new PaxelItem(ItemTier.DIAMOND, p -> p.group(ITEM_GROUP)).setRegistryName("diamond_paxel"),
-				new PaxelItem(ModItemTier.FLINT, p -> p.group(ITEM_GROUP)).setRegistryName("flint_paxel")
+				new FlintPaxelItem(p -> p.group(ITEM_GROUP)).setRegistryName("flint_paxel")
 		);
 
 //			registry.register(itemAluminumPaxel, "aluminum_paxel");

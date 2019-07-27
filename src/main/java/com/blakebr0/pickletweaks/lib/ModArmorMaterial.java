@@ -2,6 +2,7 @@ package com.blakebr0.pickletweaks.lib;
 
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.IArmorMaterial;
+import net.minecraft.item.Items;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.LazyLoadBase;
 import net.minecraft.util.SoundEvent;
@@ -16,6 +17,9 @@ public enum ModArmorMaterial implements IArmorMaterial {
     }),
     REINFORCED_NIGHT_VISION_GOGGLES("pickletweaks:reinforced_night_vision_goggles", 30, new int[] { 4, 5, 6, 2 }, 9, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.5F, () -> {
         return Ingredient.fromTag(Tags.Items.GEMS_DIAMOND);
+    }),
+    FLINT("pickletweaks:flint", 15, new int[] { 1, 4, 5, 2 }, 12, SoundEvents.ITEM_ARMOR_EQUIP_CHAIN, 0.0F, () -> {
+        return Ingredient.fromItems(Items.FLINT);
     });
 
     private static final int[] MAX_DAMAGE_ARRAY = new int[] { 13, 15, 16, 11 };
