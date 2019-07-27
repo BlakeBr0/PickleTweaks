@@ -33,7 +33,7 @@ public class FeatureToolInfo {
 	}
 
 	private String getMiningLevel(ToolItem item) {
-	    int lvl = item.getTier().getHarvestLevel();
+		int lvl = item.getTier().getHarvestLevel();
 		return lvl < MINING_LEVEL_NAMES.length ? MINING_LEVEL_NAMES[lvl] : String.valueOf(lvl);
 	}
 

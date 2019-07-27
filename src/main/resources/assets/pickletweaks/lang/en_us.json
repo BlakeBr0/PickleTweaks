@@ -55,5 +55,6 @@
   "tooltip.pickletweaks.enabled": "Enabled",
   "tooltip.pickletweaks.mining_level": "Mining Level: %s",
   "tooltip.pickletweaks.mining_speed": "Mining Speed: %s",
-  "tooltip.pickletweaks.ammo": "Ammo: %s"
+  "tooltip.pickletweaks.ammo": "Ammo: %s",
+  "tooltip.pickletweaks.broken": "BROKEN"
 }

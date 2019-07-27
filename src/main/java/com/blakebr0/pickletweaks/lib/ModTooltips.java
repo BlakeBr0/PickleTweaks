@@ -12,4 +12,5 @@ public class ModTooltips {
     public static final Tooltip MINING_LEVEL = new Tooltip("tooltip.pickletweaks.mining_level");
     public static final Tooltip MINING_SPEED = new Tooltip("tooltip.pickletweaks.mining_speed");
     public static final Tooltip AMMO = new Tooltip("tooltip.pickletweaks.ammo");
+    public static final Tooltip BROKEN = new Tooltip("tooltip.pickletweaks.broken");
 }

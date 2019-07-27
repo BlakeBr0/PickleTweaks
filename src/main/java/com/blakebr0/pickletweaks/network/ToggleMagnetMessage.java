@@ -9,22 +9,22 @@ import net.minecraftforge.fml.network.NetworkEvent;
 
 import java.util.function.Supplier;
 
-public class MessageToggleMagnet {
+public class ToggleMagnetMessage {
     private int slot;
 
-    public MessageToggleMagnet(int slot) {
+    public ToggleMagnetMessage(int slot) {
         this.slot = slot;
     }
 
-    public static MessageToggleMagnet read(PacketBuffer buffer) {
-        return new MessageToggleMagnet(buffer.readInt());
+    public static ToggleMagnetMessage read(PacketBuffer buffer) {
+        return new ToggleMagnetMessage(buffer.readInt());
     }
 
-    public static void write(MessageToggleMagnet message, PacketBuffer buffer) {
+    public static void write(ToggleMagnetMessage message, PacketBuffer buffer) {
         buffer.writeInt(message.slot);
     }
 
-    public static void onMessage(MessageToggleMagnet message, Supplier<NetworkEvent.Context> context) {
+    public static void onMessage(ToggleMagnetMessage message, Supplier<NetworkEvent.Context> context) {
         context.get().enqueueWork(() -> {
             PlayerEntity player = context.get().getSender();
             if (player != null) {

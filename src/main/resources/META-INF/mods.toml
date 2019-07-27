@@ -22,9 +22,9 @@ displayName="Pickle Tweaks" #mandatory
 # A URL for the "homepage" for this mod, displayed in the mod UI
 displayURL="https://minecraft.curseforge.com/projects/pickletweaks" #optional
 # A file name (in the root of the mod JAR) containing a logo for display
-logoFile="examplemod.png" #optional
+# logoFile="examplemod.png" #optional
 # A text field displayed in the mod UI
-# credits="" #optional
+credits="Cavemanrockx" #optional
 # A text field displayed in the mod UI
 authors="BlakeBr0" #optional
 # The description text for the mod (multi line!) (#mandatory)

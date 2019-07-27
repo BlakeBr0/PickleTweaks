@@ -12,6 +12,7 @@ import com.blakebr0.pickletweaks.network.NetworkHandler;
 import com.blakebr0.pickletweaks.registry.ModBlocks;
 import com.blakebr0.pickletweaks.registry.ModItems;
 import com.blakebr0.pickletweaks.registry.ModRecipeSerializers;
+import com.blakebr0.pickletweaks.tweaks.TweakToolBreaking;
 import net.minecraft.client.renderer.color.BlockColors;
 import net.minecraft.client.renderer.color.ItemColors;
 import net.minecraft.item.ItemGroup;
@@ -58,6 +59,7 @@ public class PickleTweaks {
 	@SubscribeEvent
 	public void onCommonSetup(FMLCommonSetupEvent event) {
 		MinecraftForge.EVENT_BUS.register(new NightVisionGogglesHandler());
+		MinecraftForge.EVENT_BUS.register(new TweakToolBreaking());
 
 		DeferredWorkQueue.runLater(() -> {
 			NetworkHandler.onCommonSetup();

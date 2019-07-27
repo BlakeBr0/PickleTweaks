@@ -9,7 +9,7 @@ public class NetworkHandler {
     private static int id = 0;
 
     public static void onCommonSetup() {
-        INSTANCE.registerMessage(id(), MessageToggleMagnet.class, MessageToggleMagnet::write, MessageToggleMagnet::read, MessageToggleMagnet::onMessage);
+        INSTANCE.registerMessage(id(), ToggleMagnetMessage.class, ToggleMagnetMessage::write, ToggleMagnetMessage::read, ToggleMagnetMessage::onMessage);
     }
 
     private static int id() {
