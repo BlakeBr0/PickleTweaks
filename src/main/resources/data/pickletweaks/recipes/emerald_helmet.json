@@ -1,0 +1,21 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"conditions": [
+		{
+			"type": "cucumber:enabled",
+			"item": "pickletweaks:emerald_helmet"
+		}
+	],
+	"pattern": [
+		"FFF",
+		"F F"
+	],
+	"key": {
+		"F": {
+			"tag": "forge:gems/emerald"
+		}
+	},
+	"result": {
+		"item": "pickletweaks:emerald_helmet"
+	}
+}

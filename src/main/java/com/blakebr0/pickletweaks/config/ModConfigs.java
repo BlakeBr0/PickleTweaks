@@ -45,6 +45,7 @@ public class ModConfigs {
     public static final ForgeConfigSpec.BooleanValue ENABLE_NIGHT_VISION_GOGGLES;
     public static final ForgeConfigSpec.BooleanValue ENABLE_PAXELS;
     public static final ForgeConfigSpec.BooleanValue ENABLE_FLINT_GEAR;
+    public static final ForgeConfigSpec.BooleanValue ENABLE_EMERALD_GEAR;
 
     public static final ForgeConfigSpec.BooleanValue GRID_REPAIR_ENABLED;
     public static final ForgeConfigSpec.IntValue GRID_REPAIR_COST;
@@ -108,6 +109,10 @@ public class ModConfigs {
                 .comment("Enable Flint tools and armor?")
                 .translation("configGui.pickletweaks.enable_flint_gear")
                 .define("flintGear", true);
+        ENABLE_EMERALD_GEAR = common
+                .comment("Enable Emerald tools and armor?")
+                .translation("configGui.pickletweaks.enable_emerald_gear")
+                .define("emeraldGear", true);
         common.pop();
 
         common.comment("Crafting grid tool repair configuration options.").push("Grid Repair");

@@ -39,11 +39,20 @@
   "item.pickletweaks.flint_axe": "Flint Axe",
   "item.pickletweaks.flint_hoe": "Flint Hoe",
   "item.pickletweaks.flint_shears": "Flint Shears",
+  "item.pickletweaks.emerald_sword": "Emerald Sword",
+  "item.pickletweaks.emerald_pickaxe": "Emerald Pickaxe",
+  "item.pickletweaks.emerald_shovel": "Emerald Shovel",
+  "item.pickletweaks.emerald_axe": "Emerald Axe",
+  "item.pickletweaks.emerald_hoe": "Emerald Hoe",
 
   "item.pickletweaks.flint_helmet": "Flint Helmet",
   "item.pickletweaks.flint_chestplate": "Flint Chestplate",
   "item.pickletweaks.flint_leggings": "Flint Leggings",
   "item.pickletweaks.flint_boots": "Flint Boots",
+  "item.pickletweaks.emerald_helmet": "Emerald Helmet",
+  "item.pickletweaks.emerald_chestplate": "Emerald Chestplate",
+  "item.pickletweaks.emerald_leggings": "Emerald Leggings",
+  "item.pickletweaks.emerald_boots": "Emerald Boots",
 
   "item.pickletweaks.wooden_paxel": "Wooden Paxel",
   "item.pickletweaks.stone_paxel": "Stone Paxel",
@@ -51,6 +60,7 @@
   "item.pickletweaks.golden_paxel": "Golden Paxel",
   "item.pickletweaks.diamond_paxel": "Diamond Paxel",
   "item.pickletweaks.flint_paxel": "Flint Paxel",
+  "item.pickletweaks.emerald_paxel": "Emerald Paxel",
 
   "tooltip.pickletweaks.gives_buffs": "Gives Buffs",
   "tooltip.pickletweaks.buff_list_item": " - %s%s %s",

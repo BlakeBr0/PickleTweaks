@@ -10,6 +10,9 @@ import java.util.function.Supplier;
 public enum ModItemTier implements IItemTier {
     FLINT(1, 157, 3.8F, 1.0F, 10, () -> {
         return Ingredient.fromItems(Items.FLINT);
+    }),
+    EMERALD(1, 157, 3.8F, 1.0F, 10, () -> {
+        return Ingredient.fromItems(Items.FLINT);
     });
 
     private final int harvestLevel;

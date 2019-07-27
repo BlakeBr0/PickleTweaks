@@ -9,6 +9,7 @@ import com.blakebr0.cucumber.item.tool.BaseSwordItem;
 import com.blakebr0.pickletweaks.feature.item.CoalPieceItem;
 import com.blakebr0.pickletweaks.feature.item.DiamondAppleItem;
 import com.blakebr0.pickletweaks.feature.item.EmeraldAppleItem;
+import com.blakebr0.pickletweaks.feature.item.EmeraldArmorItem;
 import com.blakebr0.pickletweaks.feature.item.FlintArmorItem;
 import com.blakebr0.pickletweaks.feature.item.GrassFiberItem;
 import com.blakebr0.pickletweaks.feature.item.MagnetItem;
@@ -16,6 +17,12 @@ import com.blakebr0.pickletweaks.feature.item.MeshItem;
 import com.blakebr0.pickletweaks.feature.item.NightVisionGogglesItem;
 import com.blakebr0.pickletweaks.feature.item.PaxelItem;
 import com.blakebr0.pickletweaks.feature.item.WateringCanItem;
+import com.blakebr0.pickletweaks.feature.item.tool.EmeraldAxeItem;
+import com.blakebr0.pickletweaks.feature.item.tool.EmeraldHoeItem;
+import com.blakebr0.pickletweaks.feature.item.tool.EmeraldPaxelItem;
+import com.blakebr0.pickletweaks.feature.item.tool.EmeraldPickaxeItem;
+import com.blakebr0.pickletweaks.feature.item.tool.EmeraldShovelItem;
+import com.blakebr0.pickletweaks.feature.item.tool.EmeraldSwordItem;
 import com.blakebr0.pickletweaks.feature.item.tool.FlintAxeItem;
 import com.blakebr0.pickletweaks.feature.item.tool.FlintHoeItem;
 import com.blakebr0.pickletweaks.feature.item.tool.FlintPaxelItem;
@@ -130,18 +137,28 @@ public class ModItems {
 				new FlintAxeItem(p -> p.group(ITEM_GROUP)).setRegistryName("flint_axe"),
 				new FlintHoeItem(p -> p.group(ITEM_GROUP)).setRegistryName("flint_hoe"),
 				new FlintShearsItem(p -> p.group(ITEM_GROUP).maxDamage(100)).setRegistryName("flint_shears"),
+				new EmeraldSwordItem(p -> p.group(ITEM_GROUP)).setRegistryName("emerald_sword"),
+				new EmeraldPickaxeItem(p -> p.group(ITEM_GROUP)).setRegistryName("emerald_pickaxe"),
+				new EmeraldShovelItem(p -> p.group(ITEM_GROUP)).setRegistryName("emerald_shovel"),
+				new EmeraldAxeItem(p -> p.group(ITEM_GROUP)).setRegistryName("emerald_axe"),
+				new EmeraldHoeItem(p -> p.group(ITEM_GROUP)).setRegistryName("emerald_hoe"),
 
 				new FlintArmorItem(EquipmentSlotType.HEAD, p -> p.group(ITEM_GROUP)).setRegistryName("flint_helmet"),
 				new FlintArmorItem(EquipmentSlotType.CHEST, p -> p.group(ITEM_GROUP)).setRegistryName("flint_chestplate"),
 				new FlintArmorItem(EquipmentSlotType.LEGS, p -> p.group(ITEM_GROUP)).setRegistryName("flint_leggings"),
 				new FlintArmorItem(EquipmentSlotType.FEET, p -> p.group(ITEM_GROUP)).setRegistryName("flint_boots"),
+				new EmeraldArmorItem(EquipmentSlotType.HEAD, p -> p.group(ITEM_GROUP)).setRegistryName("emerald_helmet"),
+				new EmeraldArmorItem(EquipmentSlotType.CHEST, p -> p.group(ITEM_GROUP)).setRegistryName("emerald_chestplate"),
+				new EmeraldArmorItem(EquipmentSlotType.LEGS, p -> p.group(ITEM_GROUP)).setRegistryName("emerald_leggings"),
+				new EmeraldArmorItem(EquipmentSlotType.FEET, p -> p.group(ITEM_GROUP)).setRegistryName("emerald_boots"),
 
 				new PaxelItem(ItemTier.WOOD, p -> p.group(ITEM_GROUP)).setRegistryName("wooden_paxel"),
 				new PaxelItem(ItemTier.STONE, p -> p.group(ITEM_GROUP)).setRegistryName("stone_paxel"),
 				new PaxelItem(ItemTier.IRON, p -> p.group(ITEM_GROUP)).setRegistryName("iron_paxel"),
 				new PaxelItem(ItemTier.GOLD, p -> p.group(ITEM_GROUP)).setRegistryName("golden_paxel"),
 				new PaxelItem(ItemTier.DIAMOND, p -> p.group(ITEM_GROUP)).setRegistryName("diamond_paxel"),
-				new FlintPaxelItem(p -> p.group(ITEM_GROUP)).setRegistryName("flint_paxel")
+				new FlintPaxelItem(p -> p.group(ITEM_GROUP)).setRegistryName("flint_paxel"),
+				new EmeraldPaxelItem(p -> p.group(ITEM_GROUP)).setRegistryName("emerald_paxel")
 		);
 
 //			registry.register(itemAluminumPaxel, "aluminum_paxel");
