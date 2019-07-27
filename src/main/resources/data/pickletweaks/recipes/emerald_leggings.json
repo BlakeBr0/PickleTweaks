@@ -3,7 +3,7 @@
 	"conditions": [
 		{
 			"type": "cucumber:enabled",
-			"item": "pickletweaks:flint_leggings"
+			"item": "pickletweaks:emerald_leggings"
 		}
 	],
 	"pattern": [
@@ -13,10 +13,10 @@
 	],
 	"key": {
 		"F": {
-			"item": "minecraft:flint"
+			"tag": "forge:gems/emerald"
 		}
 	},
 	"result": {
-		"item": "pickletweaks:flint_leggings"
+		"item": "pickletweaks:emerald_leggings"
 	}
 }
