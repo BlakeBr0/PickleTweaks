@@ -139,7 +139,7 @@ public class WateringCanItem extends BaseItem implements IEnableable {
 					BlockState plantState = world.getBlockState(aoePos);
 					Block plantBlock = world.getBlockState(aoePos).getBlock();
 					if (plantBlock instanceof IGrowable || plantBlock instanceof IPlantable || plantBlock == Blocks.MYCELIUM || plantBlock == Blocks.CHORUS_FLOWER) {
-						world.notifyBlockUpdate(aoePos, plantState, plantState, 1);
+						plantState.randomTick(world, aoePos, rand);
 					}
 				});
 
