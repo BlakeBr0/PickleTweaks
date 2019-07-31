@@ -15,10 +15,12 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.CropsBlock;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.enchantment.Enchantments;
 import net.minecraft.init.Enchantments;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.Hand;
 import net.minecraft.util.NonNullList;
 import net.minecraftforge.common.config.ConfigCategory;
 import net.minecraftforge.common.config.Configuration;
@@ -50,9 +52,9 @@ public class FeatureRightClickHarvest {
 
 	@SubscribeEvent
 	public void onRightClickCrop(RightClickBlock event) {
-		if (!ModConfigold.confRightClickHarvest) return;
+//		if (!ModConfigold.confRightClickHarvest) return;
 		if (event.getEntityPlayer() == null) return;
-		if (event.getHand() != EnumHand.MAIN_HAND) return;
+		if (event.getHand() != Hand.MAIN_HAND) return;
 
 		BlockState state = event.getWorld().getBlockState(event.getPos());
 		if (BLACKLIST.contains(state.getBlock().getRegistryName().toString())) 
@@ -62,8 +64,7 @@ public class FeatureRightClickHarvest {
 			CropsBlock crop = (CropsBlock) state.getBlock();
 			if (crop.isMaxAge(state) && getSeed(crop) != null) {
 				int fortune = EnchantmentHelper.getEnchantmentLevel(Enchantments.FORTUNE, event.getItemStack());
-				NonNullList<ItemStack> drops = NonNullList.create();
-				crop.getDrops(drops, event.getWorld(), event.getPos(), state, fortune);
+				crop.getDrops(event.getWorld(), event.getPos(), state, fortune);
 				ListIterator<ItemStack> itr = drops.listIterator();
 				while (itr.hasNext()) {
 					ItemStack drop = itr.next();
@@ -74,7 +75,7 @@ public class FeatureRightClickHarvest {
 					}
 				}
 				
-				event.getEntityPlayer().swingArm(EnumHand.MAIN_HAND);
+				event.getEntityPlayer().swingArm(Hand.MAIN_HAND);
 				
 				if (!event.getWorld().isRemote) {
 					for (ItemStack drop : drops) {

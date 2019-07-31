@@ -37,7 +37,7 @@ public class TweakToolBreaking {
 
 		Item item = stack.getItem();
 		if (stack.isDamageable() && (item instanceof ToolItem || item instanceof SwordItem)) {
-			if (isBroken(stack, (stack.getItem() instanceof SwordItem ? 1 : 0))) {
+			if (isBroken(stack)) {
 				event.setCanceled(true);
 			}
 		}
@@ -54,7 +54,7 @@ public class TweakToolBreaking {
 
 		Item item = stack.getItem();
 		if (stack.isDamageable() && (item instanceof ToolItem || item instanceof SwordItem)) {
-			if (isBroken(stack, (stack.getItem() instanceof SwordItem ? 1 : 0))) {
+			if (isBroken(stack)) {
 				event.setCanceled(true);
 			}
 		}
@@ -71,7 +71,7 @@ public class TweakToolBreaking {
 
 		Item item = stack.getItem();
 		if (stack.isDamageable() && item instanceof HoeItem) {
-			if (isBroken(stack, 0)) {
+			if (isBroken(stack)) {
 				event.setCanceled(true);
 			}
 		}
@@ -89,7 +89,7 @@ public class TweakToolBreaking {
 		if (stack.isDamageable()) {
 			Item item = stack.getItem();
 			if (item instanceof ToolItem || item instanceof SwordItem || item instanceof HoeItem) {
-				if (isBroken(stack, item instanceof ToolItem ? 1 : 0)) {
+				if (isBroken(stack)) {
 					event.setCanceled(true);
 				}
 			}
@@ -107,7 +107,7 @@ public class TweakToolBreaking {
 
 		Item item = stack.getItem();
 		if (stack.isDamageable() && item instanceof ShootableItem) {
-			if (isBroken(stack, 0)) {
+			if (isBroken(stack)) {
 				event.setCanceled(true);
 			}
 		}
@@ -124,7 +124,7 @@ public class TweakToolBreaking {
 
 		Item item = stack.getItem();
 		if (stack.isDamageable() && item instanceof ShovelItem) {
-			if (isBroken(stack, 0)) {
+			if (isBroken(stack)) {
 				event.setCanceled(true);
 			}
 		}
@@ -142,7 +142,7 @@ public class TweakToolBreaking {
 		if (stack.isDamageable()) {
 			Item item = stack.getItem();
 			if (item instanceof ToolItem || item instanceof SwordItem || item instanceof HoeItem || item instanceof ShootableItem) {
-				if (isBroken(stack, (stack.getItem() instanceof SwordItem ? 1 : 0))) {
+				if (isBroken(stack)) {
 					itr.next();
 					itr.add(ModTooltips.BROKEN.color(TextFormatting.RED).build());
 				}
@@ -150,12 +150,7 @@ public class TweakToolBreaking {
 		}
 	}
 
-	public static boolean isBroken(ItemStack stack, int offset) {
-		int baseOffset = offset;
-//		if (overrides.containsKey(stack.getItem())) {
-//			offset += overrides.get(stack.getItem());
-//		}
-
-		return stack.getMaxDamage() > baseOffset && stack.getDamage() >= (stack.getMaxDamage() - offset) - 1;
+	public static boolean isBroken(ItemStack stack) {
+		return stack.getMaxDamage() > 2 && stack.getDamage() >= stack.getMaxDamage() - 2;
 	}
 }
