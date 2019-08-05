@@ -11,6 +11,6 @@ public class PTItemGroup extends ItemGroup {
 
 	@Override
 	public ItemStack createIcon() {
-		return new ItemStack(ModItems.EMERALD_APPLE.orElse(null));
+		return new ItemStack(ModItems.EMERALD_APPLE);
 	}
 }

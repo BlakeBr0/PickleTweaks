@@ -7,60 +7,52 @@ import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.IForgeRegistry;
 
 import static com.blakebr0.pickletweaks.PickleTweaks.ITEM_GROUP;
 
 public class ModBlocks {
-	public static final RegistryObject<ColoredCobblestoneBlock> WHITE_COBBLESTONE = get("white_cobblestone");
-	public static final RegistryObject<ColoredCobblestoneBlock> ORANGE_COBBLESTONE = get("orange_cobblestone");
-	public static final RegistryObject<ColoredCobblestoneBlock> MAGENTA_COBBLESTONE = get("magenta_cobblestone");
-	public static final RegistryObject<ColoredCobblestoneBlock> LIGHT_BLUE_COBBLESTONE = get("light_blue_cobblestone");
-	public static final RegistryObject<ColoredCobblestoneBlock> YELLOW_COBBLESTONE = get("yellow_cobblestone");
-	public static final RegistryObject<ColoredCobblestoneBlock> LIME_COBBLESTONE = get("lime_cobblestone");
-	public static final RegistryObject<ColoredCobblestoneBlock> PINK_COBBLESTONE = get("pink_cobblestone");
-	public static final RegistryObject<ColoredCobblestoneBlock> GRAY_COBBLESTONE = get("gray_cobblestone");
-	public static final RegistryObject<ColoredCobblestoneBlock> LIGHT_GRAY_COBBLESTONE = get("light_gray_cobblestone");
-	public static final RegistryObject<ColoredCobblestoneBlock> CYAN_COBBLESTONE = get("cyan_cobblestone");
-	public static final RegistryObject<ColoredCobblestoneBlock> PURPLE_COBBLESTONE = get("purple_cobblestone");
-	public static final RegistryObject<ColoredCobblestoneBlock> BLUE_COBBLESTONE = get("blue_cobblestone");
-	public static final RegistryObject<ColoredCobblestoneBlock> BROWN_COBBLESTONE = get("brown_cobblestone");
-	public static final RegistryObject<ColoredCobblestoneBlock> GREEN_COBBLESTONE = get("green_cobblestone");
-	public static final RegistryObject<ColoredCobblestoneBlock> RED_COBBLESTONE = get("red_cobblestone");
-	public static final RegistryObject<ColoredCobblestoneBlock> BLACK_COBBLESTONE = get("black_cobblestone");
+	public static final ColoredCobblestoneBlock WHITE_COBBLESTONE = new ColoredCobblestoneBlock(16383998);
+	public static final ColoredCobblestoneBlock ORANGE_COBBLESTONE = new ColoredCobblestoneBlock(16351261);
+	public static final ColoredCobblestoneBlock MAGENTA_COBBLESTONE = new ColoredCobblestoneBlock(13061821);
+	public static final ColoredCobblestoneBlock LIGHT_BLUE_COBBLESTONE = new ColoredCobblestoneBlock(3847130);
+	public static final ColoredCobblestoneBlock YELLOW_COBBLESTONE = new ColoredCobblestoneBlock(16701501);
+	public static final ColoredCobblestoneBlock LIME_COBBLESTONE = new ColoredCobblestoneBlock(8439583);
+	public static final ColoredCobblestoneBlock PINK_COBBLESTONE = new ColoredCobblestoneBlock(15961002);
+	public static final ColoredCobblestoneBlock GRAY_COBBLESTONE = new ColoredCobblestoneBlock(4673362);
+	public static final ColoredCobblestoneBlock LIGHT_GRAY_COBBLESTONE = new ColoredCobblestoneBlock(10329495);
+	public static final ColoredCobblestoneBlock CYAN_COBBLESTONE = new ColoredCobblestoneBlock(1481884);
+	public static final ColoredCobblestoneBlock PURPLE_COBBLESTONE = new ColoredCobblestoneBlock(8991416);
+	public static final ColoredCobblestoneBlock BLUE_COBBLESTONE = new ColoredCobblestoneBlock(3949738);
+	public static final ColoredCobblestoneBlock BROWN_COBBLESTONE = new ColoredCobblestoneBlock(8606770);
+	public static final ColoredCobblestoneBlock GREEN_COBBLESTONE = new ColoredCobblestoneBlock(6192150);
+	public static final ColoredCobblestoneBlock RED_COBBLESTONE = new ColoredCobblestoneBlock(11546150);
+	public static final ColoredCobblestoneBlock BLACK_COBBLESTONE = new ColoredCobblestoneBlock(1908001);
 
-	public static final RegistryObject<DarkGlassBlock> DARK_GLASS = get("dark_glass");
+	public static final DarkGlassBlock DARK_GLASS = new DarkGlassBlock();
 
 	@SubscribeEvent
 	public void onRegisterBlocks(RegistryEvent.Register<Block> event) {
 		IForgeRegistry<Block> registry = event.getRegistry();
 
-		registerAll(registry,
-				new ColoredCobblestoneBlock(16383998).setRegistryName("white_cobblestone"),
-				new ColoredCobblestoneBlock(16351261).setRegistryName("orange_cobblestone"),
-				new ColoredCobblestoneBlock(13061821).setRegistryName("magenta_cobblestone"),
-				new ColoredCobblestoneBlock(3847130).setRegistryName("light_blue_cobblestone"),
-				new ColoredCobblestoneBlock(16701501).setRegistryName("yellow_cobblestone"),
-				new ColoredCobblestoneBlock(8439583).setRegistryName("lime_cobblestone"),
-				new ColoredCobblestoneBlock(15961002).setRegistryName("pink_cobblestone"),
-				new ColoredCobblestoneBlock(4673362).setRegistryName("gray_cobblestone"),
-				new ColoredCobblestoneBlock(10329495).setRegistryName("light_gray_cobblestone"),
-				new ColoredCobblestoneBlock(1481884).setRegistryName("cyan_cobblestone"),
-				new ColoredCobblestoneBlock(8991416).setRegistryName("purple_cobblestone"),
-				new ColoredCobblestoneBlock(3949738).setRegistryName("blue_cobblestone"),
-				new ColoredCobblestoneBlock(8606770).setRegistryName("brown_cobblestone"),
-				new ColoredCobblestoneBlock(6192150).setRegistryName("green_cobblestone"),
-				new ColoredCobblestoneBlock(11546150).setRegistryName("red_cobblestone"),
-				new ColoredCobblestoneBlock(1908001).setRegistryName("black_cobblestone"),
+		register(registry, WHITE_COBBLESTONE.setRegistryName("white_cobblestone"));
+		register(registry, ORANGE_COBBLESTONE.setRegistryName("orange_cobblestone"));
+		register(registry, MAGENTA_COBBLESTONE.setRegistryName("magenta_cobblestone"));
+		register(registry, LIGHT_BLUE_COBBLESTONE.setRegistryName("light_blue_cobblestone"));
+		register(registry, YELLOW_COBBLESTONE.setRegistryName("yellow_cobblestone"));
+		register(registry, LIME_COBBLESTONE.setRegistryName("lime_cobblestone"));
+		register(registry, PINK_COBBLESTONE.setRegistryName("pink_cobblestone"));
+		register(registry, GRAY_COBBLESTONE.setRegistryName("gray_cobblestone"));
+		register(registry, LIGHT_GRAY_COBBLESTONE.setRegistryName("light_gray_cobblestone"));
+		register(registry, CYAN_COBBLESTONE.setRegistryName("cyan_cobblestone"));
+		register(registry, PURPLE_COBBLESTONE.setRegistryName("purple_cobblestone"));
+		register(registry, BLUE_COBBLESTONE.setRegistryName("blue_cobblestone"));
+		register(registry, BROWN_COBBLESTONE.setRegistryName("brown_cobblestone"));
+		register(registry, GREEN_COBBLESTONE.setRegistryName("green_cobblestone"));
+		register(registry, RED_COBBLESTONE.setRegistryName("red_cobblestone"));
+		register(registry, BLACK_COBBLESTONE.setRegistryName("black_cobblestone"));
 
-				new DarkGlassBlock().setRegistryName("dark_glass")
-		);
-	}
-
-	private static void registerAll(IForgeRegistry<Block> registry, Block... blocks) {
-		for (Block block : blocks)
-			register(registry, block);
+		register(registry, DARK_GLASS.setRegistryName("dark_glass"));
 	}
 
 	private static void register(IForgeRegistry<Block> registry, Block block) {
@@ -74,9 +66,5 @@ public class ModBlocks {
 	private static void register(IForgeRegistry<Block> registry, Block block, BlockItem item) {
 		registry.register(block);
 		ModItems.BLOCK_ITEMS.add(item);
-	}
-
-	private static <T extends Block> RegistryObject<T> get(String name) {
-		return RegistryObject.of("pickletweaks:" + name, () -> Block.class);
 	}
 }

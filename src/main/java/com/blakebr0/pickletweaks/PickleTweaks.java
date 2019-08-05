@@ -88,22 +88,24 @@ public class PickleTweaks {
 	public void onBlockColors(ColorHandlerEvent.Block event) {
 		BlockColors colors = event.getBlockColors();
 
-		ModBlocks.WHITE_COBBLESTONE.ifPresent(b -> colors.register(new IColored.BlockColors(), b));
-		ModBlocks.ORANGE_COBBLESTONE.ifPresent(b -> colors.register(new IColored.BlockColors(), b));
-		ModBlocks.MAGENTA_COBBLESTONE.ifPresent(b -> colors.register(new IColored.BlockColors(), b));
-		ModBlocks.LIGHT_BLUE_COBBLESTONE.ifPresent(b -> colors.register(new IColored.BlockColors(), b));
-		ModBlocks.YELLOW_COBBLESTONE.ifPresent(b -> colors.register(new IColored.BlockColors(), b));
-		ModBlocks.LIME_COBBLESTONE.ifPresent(b -> colors.register(new IColored.BlockColors(), b));
-		ModBlocks.PINK_COBBLESTONE.ifPresent(b -> colors.register(new IColored.BlockColors(), b));
-		ModBlocks.GRAY_COBBLESTONE.ifPresent(b -> colors.register(new IColored.BlockColors(), b));
-		ModBlocks.LIGHT_GRAY_COBBLESTONE.ifPresent(b -> colors.register(new IColored.BlockColors(), b));
-		ModBlocks.CYAN_COBBLESTONE.ifPresent(b -> colors.register(new IColored.BlockColors(), b));
-		ModBlocks.PURPLE_COBBLESTONE.ifPresent(b -> colors.register(new IColored.BlockColors(), b));
-		ModBlocks.BLUE_COBBLESTONE.ifPresent(b -> colors.register(new IColored.BlockColors(), b));
-		ModBlocks.BROWN_COBBLESTONE.ifPresent(b -> colors.register(new IColored.BlockColors(), b));
-		ModBlocks.GREEN_COBBLESTONE.ifPresent(b -> colors.register(new IColored.BlockColors(), b));
-		ModBlocks.RED_COBBLESTONE.ifPresent(b -> colors.register(new IColored.BlockColors(), b));
-		ModBlocks.BLACK_COBBLESTONE.ifPresent(b -> colors.register(new IColored.BlockColors(), b));
+		colors.register(new IColored.BlockColors(),
+				ModBlocks.WHITE_COBBLESTONE,
+				ModBlocks.ORANGE_COBBLESTONE,
+				ModBlocks.MAGENTA_COBBLESTONE,
+				ModBlocks.LIGHT_BLUE_COBBLESTONE,
+				ModBlocks.YELLOW_COBBLESTONE,
+				ModBlocks.LIME_COBBLESTONE,
+				ModBlocks.PINK_COBBLESTONE,
+				ModBlocks.GRAY_COBBLESTONE,
+				ModBlocks.LIGHT_GRAY_COBBLESTONE,
+				ModBlocks.CYAN_COBBLESTONE,
+				ModBlocks.PURPLE_COBBLESTONE,
+				ModBlocks.BLUE_COBBLESTONE,
+				ModBlocks.BROWN_COBBLESTONE,
+				ModBlocks.GREEN_COBBLESTONE,
+				ModBlocks.RED_COBBLESTONE,
+				ModBlocks.BLACK_COBBLESTONE
+		);
 	}
 	
 	@OnlyIn(Dist.CLIENT)
@@ -111,21 +113,23 @@ public class PickleTweaks {
 	public void onItemColors(ColorHandlerEvent.Item event) {
 		ItemColors colors = event.getItemColors();
 
-		ModBlocks.WHITE_COBBLESTONE.ifPresent(b -> colors.register(new IColored.ItemBlockColors(), b));
-		ModBlocks.ORANGE_COBBLESTONE.ifPresent(b -> colors.register(new IColored.ItemBlockColors(), b));
-		ModBlocks.MAGENTA_COBBLESTONE.ifPresent(b -> colors.register(new IColored.ItemBlockColors(), b));
-		ModBlocks.LIGHT_BLUE_COBBLESTONE.ifPresent(b -> colors.register(new IColored.ItemBlockColors(), b));
-		ModBlocks.YELLOW_COBBLESTONE.ifPresent(b -> colors.register(new IColored.ItemBlockColors(), b));
-		ModBlocks.LIME_COBBLESTONE.ifPresent(b -> colors.register(new IColored.ItemBlockColors(), b));
-		ModBlocks.PINK_COBBLESTONE.ifPresent(b -> colors.register(new IColored.ItemBlockColors(), b));
-		ModBlocks.GRAY_COBBLESTONE.ifPresent(b -> colors.register(new IColored.ItemBlockColors(), b));
-		ModBlocks.LIGHT_GRAY_COBBLESTONE.ifPresent(b -> colors.register(new IColored.ItemBlockColors(), b));
-		ModBlocks.CYAN_COBBLESTONE.ifPresent(b -> colors.register(new IColored.ItemBlockColors(), b));
-		ModBlocks.PURPLE_COBBLESTONE.ifPresent(b -> colors.register(new IColored.ItemBlockColors(), b));
-		ModBlocks.BLUE_COBBLESTONE.ifPresent(b -> colors.register(new IColored.ItemBlockColors(), b));
-		ModBlocks.BROWN_COBBLESTONE.ifPresent(b -> colors.register(new IColored.ItemBlockColors(), b));
-		ModBlocks.GREEN_COBBLESTONE.ifPresent(b -> colors.register(new IColored.ItemBlockColors(), b));
-		ModBlocks.RED_COBBLESTONE.ifPresent(b -> colors.register(new IColored.ItemBlockColors(), b));
-		ModBlocks.BLACK_COBBLESTONE.ifPresent(b -> colors.register(new IColored.ItemBlockColors(), b));
+		colors.register(new IColored.ItemBlockColors(),
+				ModBlocks.WHITE_COBBLESTONE,
+				ModBlocks.ORANGE_COBBLESTONE,
+				ModBlocks.MAGENTA_COBBLESTONE,
+				ModBlocks.LIGHT_BLUE_COBBLESTONE,
+				ModBlocks.YELLOW_COBBLESTONE,
+				ModBlocks.LIME_COBBLESTONE,
+				ModBlocks.PINK_COBBLESTONE,
+				ModBlocks.GRAY_COBBLESTONE,
+				ModBlocks.LIGHT_GRAY_COBBLESTONE,
+				ModBlocks.CYAN_COBBLESTONE,
+				ModBlocks.PURPLE_COBBLESTONE,
+				ModBlocks.BLUE_COBBLESTONE,
+				ModBlocks.BROWN_COBBLESTONE,
+				ModBlocks.GREEN_COBBLESTONE,
+				ModBlocks.RED_COBBLESTONE,
+				ModBlocks.BLACK_COBBLESTONE
+		);
 	}
 }
