@@ -71,6 +71,12 @@ public class ModItems {
 	public static final FlintHoeItem FLINT_HOE = new FlintHoeItem(p -> p.group(ITEM_GROUP));
 	public static final FlintShearsItem FLINT_SHEARS = new FlintShearsItem(p -> p.group(ITEM_GROUP).maxDamage(100));
 
+	public static final EmeraldSwordItem EMERALD_SWORD = new EmeraldSwordItem(p -> p.group(ITEM_GROUP));
+	public static final EmeraldPickaxeItem EMERALD_PICKAXE = new EmeraldPickaxeItem(p -> p.group(ITEM_GROUP));
+	public static final EmeraldShovelItem EMERALD_SHOVEL = new EmeraldShovelItem(p -> p.group(ITEM_GROUP));
+	public static final EmeraldAxeItem EMERALD_AXE = new EmeraldAxeItem(p -> p.group(ITEM_GROUP));
+	public static final EmeraldHoeItem EMERALD_HOE = new EmeraldHoeItem(p -> p.group(ITEM_GROUP));
+
 	public static final FlintArmorItem FLINT_HELMET = new FlintArmorItem(EquipmentSlotType.HEAD, p -> p.group(ITEM_GROUP));
 	public static final FlintArmorItem FLINT_CHESTPLATE = new FlintArmorItem(EquipmentSlotType.CHEST, p -> p.group(ITEM_GROUP));
 	public static final FlintArmorItem FLINT_LEGGINGS = new FlintArmorItem(EquipmentSlotType.LEGS, p -> p.group(ITEM_GROUP));
@@ -141,6 +147,12 @@ public class ModItems {
 		registry.register(FLINT_AXE.setRegistryName("flint_axe"));
 		registry.register(FLINT_HOE.setRegistryName("flint_hoe"));
 		registry.register(FLINT_SHEARS.setRegistryName("flint_shears"));
+
+		registry.register(EMERALD_SWORD.setRegistryName("emerald_sword"));
+		registry.register(EMERALD_PICKAXE.setRegistryName("emerald_pickaxe"));
+		registry.register(EMERALD_SHOVEL.setRegistryName("emerald_shovel"));
+		registry.register(EMERALD_AXE.setRegistryName("emerald_axe"));
+		registry.register(EMERALD_HOE.setRegistryName("emerald_hoe"));
 
 		registry.register(FLINT_HELMET.setRegistryName("flint_helmet"));
 		registry.register(FLINT_CHESTPLATE.setRegistryName("flint_chestplate"));
