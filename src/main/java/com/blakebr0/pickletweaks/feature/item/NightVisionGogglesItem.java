@@ -27,6 +27,6 @@ public class NightVisionGogglesItem extends BaseArmorItem implements IEnableable
 
 	@Override
 	public boolean isEnabled() {
-		return !ModConfigs.isLoaded() || ModConfigs.ENABLE_NIGHT_VISION_GOGGLES.get();
+		return ModConfigs.ENABLE_NIGHT_VISION_GOGGLES.get();
 	}
 }

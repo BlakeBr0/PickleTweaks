@@ -11,8 +11,6 @@ public class ModConfigs {
     public static final ForgeConfigSpec CLIENT;
     public static final ForgeConfigSpec COMMON;
 
-    private static boolean loaded = false;
-
     public static final ForgeConfigSpec.BooleanValue ENABLE_TOOL_INFO_TOOLTIP;
 
     // Client
@@ -151,14 +149,5 @@ public class ModConfigs {
         common.pop();
 
         COMMON = common.build();
-    }
-
-    @SubscribeEvent
-    public void onLoad(ModConfig.Loading event) {
-        loaded = true;
-    }
-
-    public static boolean isLoaded() {
-        return loaded;
     }
 }

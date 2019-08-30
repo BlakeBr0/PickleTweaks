@@ -1,5 +1,6 @@
 package com.blakebr0.pickletweaks;
 
+import com.blakebr0.cucumber.helper.ConfigHelper;
 import com.blakebr0.cucumber.iface.IColored;
 import com.blakebr0.pickletweaks.config.ModConfigs;
 import com.blakebr0.pickletweaks.feature.FeatureBowInfo;
@@ -47,10 +48,11 @@ public class PickleTweaks {
 		bus.register(new ModBlocks());
 		bus.register(new ModItems());
 		bus.register(new ModRecipeSerializers());
-		bus.register(new ModConfigs());
 
 		ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, ModConfigs.CLIENT);
 		ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, ModConfigs.COMMON);
+
+        ConfigHelper.load(ModConfigs.COMMON, "pickletweaks-common.toml");
 	}
 
 	@SubscribeEvent

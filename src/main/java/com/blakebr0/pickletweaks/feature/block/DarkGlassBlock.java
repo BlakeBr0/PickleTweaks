@@ -21,6 +21,6 @@ public class DarkGlassBlock extends BaseGlassBlock implements IEnableable {
 
 	@Override
 	public boolean isEnabled() {
-		return !ModConfigs.isLoaded() || ModConfigs.ENABLE_DARK_GLASS.get();
+		return ModConfigs.ENABLE_DARK_GLASS.get();
 	}
 }

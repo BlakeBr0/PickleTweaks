@@ -14,6 +14,6 @@ public class FlintPaxelItem extends PaxelItem implements IEnableable {
 
     @Override
     public boolean isEnabled() {
-        return !ModConfigs.isLoaded() || (ModConfigs.ENABLE_PAXELS.get() && ModConfigs.ENABLE_FLINT_GEAR.get());
+        return ModConfigs.ENABLE_PAXELS.get() && ModConfigs.ENABLE_FLINT_GEAR.get();
     }
 }

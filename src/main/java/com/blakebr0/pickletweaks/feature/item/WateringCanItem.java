@@ -161,6 +161,6 @@ public class WateringCanItem extends BaseItem implements IEnableable {
 
 	@Override
 	public boolean isEnabled() {
-		return !ModConfigs.isLoaded() || ModConfigs.ENABLE_WATERING_CAN.get();
+		return ModConfigs.ENABLE_WATERING_CAN.get();
 	}
 }

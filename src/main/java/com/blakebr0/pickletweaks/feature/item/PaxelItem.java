@@ -84,6 +84,6 @@ public class PaxelItem extends ToolItem implements IEnableable {
 
 	@Override
 	public boolean isEnabled() {
-		return !ModConfigs.isLoaded() || ModConfigs.ENABLE_PAXELS.get();
+		return ModConfigs.ENABLE_PAXELS.get();
 	}
 }

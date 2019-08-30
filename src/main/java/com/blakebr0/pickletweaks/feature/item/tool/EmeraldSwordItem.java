@@ -14,6 +14,6 @@ public class EmeraldSwordItem extends BaseSwordItem implements IEnableable {
 
     @Override
     public boolean isEnabled() {
-        return !ModConfigs.isLoaded() || ModConfigs.ENABLE_EMERALD_GEAR.get();
+        return ModConfigs.ENABLE_EMERALD_GEAR.get();
     }
 }

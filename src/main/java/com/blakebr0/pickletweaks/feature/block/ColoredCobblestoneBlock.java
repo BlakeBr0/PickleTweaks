@@ -17,7 +17,7 @@ public class ColoredCobblestoneBlock extends BaseBlock implements IEnableable, I
 
 	@Override
 	public boolean isEnabled() {
-		return !ModConfigs.isLoaded() || ModConfigs.ENABLE_COLORED_COBBLESTONE.get();
+		return ModConfigs.ENABLE_COLORED_COBBLESTONE.get();
 	}
 
 	@Override

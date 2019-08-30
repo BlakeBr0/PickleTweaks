@@ -15,6 +15,6 @@ public class FlintArmorItem extends BaseArmorItem implements IEnableable {
 
     @Override
     public boolean isEnabled() {
-        return !ModConfigs.isLoaded() || ModConfigs.ENABLE_FLINT_GEAR.get();
+        return ModConfigs.ENABLE_FLINT_GEAR.get();
     }
 }
