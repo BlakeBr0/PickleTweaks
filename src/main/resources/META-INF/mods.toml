@@ -31,19 +31,13 @@ authors="BlakeBr0" #optional
 description='''
 A bunch of vanilla+ features and tweaks.
 '''
-# A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
-[[dependencies.pickletweaks]] #optional
-    # the modid of the dependency
-    modId="forge" #mandatory
-    # Does this dependency have to exist - if not, ordering below must be specified
-    mandatory=true #mandatory
-    # The version range of the dependency
-    versionRange="[28.0.45,)" #mandatory
-    # An ordering relationship for the dependency - BEFORE or AFTER required if the relationship is not mandatory
+
+[[dependencies.pickletweaks]]
+    modId="forge"
+    mandatory=true
+    versionRange="[28.0.74,)"
     ordering="NONE"
-    # Side this dependency is applied on - BOTH, CLIENT or SERVER
     side="BOTH"
-# Here's another dependency
 [[dependencies.pickletweaks]]
     modId="minecraft"
     mandatory=true
@@ -53,6 +47,6 @@ A bunch of vanilla+ features and tweaks.
 [[dependencies.pickletweaks]]
     modId="cucumber"
     mandatory=true
-    versionRange="[2.0.2,)"
+    versionRange="[2.0.3,)"
     ordering="NONE"
     side="BOTH"

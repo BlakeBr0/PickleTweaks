@@ -52,7 +52,7 @@ public class PickleTweaks {
 		ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, ModConfigs.CLIENT);
 		ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, ModConfigs.COMMON);
 
-        ConfigHelper.load(ModConfigs.COMMON, "pickletweaks-common.toml");
+		ConfigHelper.load(ModConfigs.COMMON, "pickletweaks-common.toml");
 	}
 
 	@SubscribeEvent
