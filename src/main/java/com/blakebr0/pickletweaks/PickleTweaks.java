@@ -1,7 +1,5 @@
 package com.blakebr0.pickletweaks;
 
-import com.blakebr0.cucumber.helper.CompoundTagHelper;
-import com.blakebr0.cucumber.helper.NBTHelper;
 import com.blakebr0.cucumber.iface.IColored;
 import com.blakebr0.pickletweaks.config.ModConfigs;
 import com.blakebr0.pickletweaks.feature.FeatureBowInfo;
@@ -41,7 +39,6 @@ public class PickleTweaks {
 
 	public static final ItemGroup ITEM_GROUP = new PTItemGroup();
 	public static final Logger LOGGER = LogManager.getLogger(MOD_ID);
-	public static final CompoundTagHelper TAG_HELPER = NBTHelper.newCompoundTagHelper(MOD_ID);
 
 	public PickleTweaks() {
 		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
