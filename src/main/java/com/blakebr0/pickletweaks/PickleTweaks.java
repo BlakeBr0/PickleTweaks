@@ -4,6 +4,7 @@ import com.blakebr0.cucumber.helper.ConfigHelper;
 import com.blakebr0.cucumber.iface.IColored;
 import com.blakebr0.pickletweaks.config.ModConfigs;
 import com.blakebr0.pickletweaks.feature.FeatureBowInfo;
+import com.blakebr0.pickletweaks.feature.FeatureRightClickHarvest;
 import com.blakebr0.pickletweaks.feature.FeatureToolInfo;
 import com.blakebr0.pickletweaks.feature.handler.NightVisionGogglesHandler;
 import com.blakebr0.pickletweaks.feature.handler.ToggleMagnetInInventoryHandler;
@@ -58,6 +59,7 @@ public class PickleTweaks {
 	@SubscribeEvent
 	public void onCommonSetup(FMLCommonSetupEvent event) {
 		MinecraftForge.EVENT_BUS.register(new NightVisionGogglesHandler());
+		MinecraftForge.EVENT_BUS.register(new FeatureRightClickHarvest());
 		MinecraftForge.EVENT_BUS.register(new TweakToolBreaking());
 
 		DeferredWorkQueue.runLater(() -> {
