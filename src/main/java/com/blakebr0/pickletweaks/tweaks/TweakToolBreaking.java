@@ -25,13 +25,12 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import java.util.ListIterator;
 
 public class TweakToolBreaking {
-	// TODO: Convert to PlayerInteractEvent.LeftClickBlock
 	@SubscribeEvent(priority = EventPriority.HIGH)
 	public void onBreakingBlock(PlayerEvent.BreakSpeed event) {
 		if (!ModConfigs.ENABLE_TOOL_BREAKING_TWEAK.get())
 			return;
 
-		ItemStack stack = event.getEntityPlayer().getHeldItemMainhand();
+		ItemStack stack = event.getPlayer().getHeldItemMainhand();
 		if (stack.isEmpty())
 			return;
 
@@ -82,7 +81,7 @@ public class TweakToolBreaking {
 		if (!ModConfigs.ENABLE_TOOL_BREAKING_TWEAK.get())
 			return;
 
-		ItemStack stack = event.getEntityPlayer().getHeldItemMainhand();
+		ItemStack stack = event.getPlayer().getHeldItemMainhand();
 		if (stack.isEmpty())
 			return;
 
