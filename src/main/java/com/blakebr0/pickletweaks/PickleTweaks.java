@@ -6,6 +6,7 @@ import com.blakebr0.pickletweaks.config.ModConfigs;
 import com.blakebr0.pickletweaks.feature.FeatureBowInfo;
 import com.blakebr0.pickletweaks.feature.FeatureRightClickHarvest;
 import com.blakebr0.pickletweaks.feature.FeatureToolInfo;
+import com.blakebr0.pickletweaks.feature.handler.ColorHandler;
 import com.blakebr0.pickletweaks.feature.handler.NightVisionGogglesHandler;
 import com.blakebr0.pickletweaks.feature.handler.ToggleMagnetInInventoryHandler;
 import com.blakebr0.pickletweaks.network.NetworkHandler;
@@ -23,6 +24,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DeferredWorkQueue;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
@@ -49,6 +51,10 @@ public class PickleTweaks {
 		bus.register(new ModBlocks());
 		bus.register(new ModItems());
 		bus.register(new ModRecipeSerializers());
+
+		DistExecutor.runWhenOn(Dist.CLIENT, () -> () -> {
+			bus.register(new ColorHandler());
+		});
 
 		ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, ModConfigs.CLIENT);
 		ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, ModConfigs.COMMON);
@@ -82,55 +88,5 @@ public class PickleTweaks {
 		MinecraftForge.EVENT_BUS.register(new ToggleMagnetInInventoryHandler());
 		MinecraftForge.EVENT_BUS.register(new FeatureToolInfo());
 		MinecraftForge.EVENT_BUS.register(new FeatureBowInfo());
-	}
-
-	@OnlyIn(Dist.CLIENT)
-	@SubscribeEvent
-	public void onBlockColors(ColorHandlerEvent.Block event) {
-		BlockColors colors = event.getBlockColors();
-
-		colors.register(new IColored.BlockColors(),
-				ModBlocks.WHITE_COBBLESTONE,
-				ModBlocks.ORANGE_COBBLESTONE,
-				ModBlocks.MAGENTA_COBBLESTONE,
-				ModBlocks.LIGHT_BLUE_COBBLESTONE,
-				ModBlocks.YELLOW_COBBLESTONE,
-				ModBlocks.LIME_COBBLESTONE,
-				ModBlocks.PINK_COBBLESTONE,
-				ModBlocks.GRAY_COBBLESTONE,
-				ModBlocks.LIGHT_GRAY_COBBLESTONE,
-				ModBlocks.CYAN_COBBLESTONE,
-				ModBlocks.PURPLE_COBBLESTONE,
-				ModBlocks.BLUE_COBBLESTONE,
-				ModBlocks.BROWN_COBBLESTONE,
-				ModBlocks.GREEN_COBBLESTONE,
-				ModBlocks.RED_COBBLESTONE,
-				ModBlocks.BLACK_COBBLESTONE
-		);
-	}
-	
-	@OnlyIn(Dist.CLIENT)
-	@SubscribeEvent
-	public void onItemColors(ColorHandlerEvent.Item event) {
-		ItemColors colors = event.getItemColors();
-
-		colors.register(new IColored.ItemBlockColors(),
-				ModBlocks.WHITE_COBBLESTONE,
-				ModBlocks.ORANGE_COBBLESTONE,
-				ModBlocks.MAGENTA_COBBLESTONE,
-				ModBlocks.LIGHT_BLUE_COBBLESTONE,
-				ModBlocks.YELLOW_COBBLESTONE,
-				ModBlocks.LIME_COBBLESTONE,
-				ModBlocks.PINK_COBBLESTONE,
-				ModBlocks.GRAY_COBBLESTONE,
-				ModBlocks.LIGHT_GRAY_COBBLESTONE,
-				ModBlocks.CYAN_COBBLESTONE,
-				ModBlocks.PURPLE_COBBLESTONE,
-				ModBlocks.BLUE_COBBLESTONE,
-				ModBlocks.BROWN_COBBLESTONE,
-				ModBlocks.GREEN_COBBLESTONE,
-				ModBlocks.RED_COBBLESTONE,
-				ModBlocks.BLACK_COBBLESTONE
-		);
 	}
 }
