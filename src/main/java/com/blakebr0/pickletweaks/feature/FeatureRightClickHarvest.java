@@ -73,13 +73,14 @@ public class FeatureRightClickHarvest {
 				event.getEntityPlayer().swingArm(EnumHand.MAIN_HAND);
 				
 				if (!event.getWorld().isRemote) {
+					ForgeEventFactory.fireBlockHarvesting(drops, event.getWorld(), event.getPos(), state, fortune, 1.0F, false, event.getEntityPlayer());
+
 					for (ItemStack drop : drops) {
 						if (!drop.isEmpty()) {
 							crop.spawnAsEntity(event.getWorld(), event.getPos(), drop);
 						}
 					}
-				
-					ForgeEventFactory.fireBlockHarvesting(drops, event.getWorld(), event.getPos(), state, fortune, 1.0F, false, event.getEntityPlayer());
+
 					event.getWorld().setBlockState(event.getPos(), crop.withAge(0));
 				}
 			}
