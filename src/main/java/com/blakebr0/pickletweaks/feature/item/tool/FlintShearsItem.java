@@ -8,7 +8,7 @@ import java.util.function.Function;
 
 public class FlintShearsItem extends BaseShearsItem implements IEnableable {
     public FlintShearsItem(Function<Properties, Properties> properties) {
-        super(properties);
+        super(properties.compose(p -> p.maxDamage(100)));
     }
 
     @Override

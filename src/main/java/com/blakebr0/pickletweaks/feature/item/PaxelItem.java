@@ -10,11 +10,13 @@ import net.minecraft.block.Blocks;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.IItemTier;
+import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUseContext;
 import net.minecraft.item.ToolItem;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Direction;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
@@ -36,6 +38,13 @@ public class PaxelItem extends ToolItem implements IEnableable {
 				.addToolType(ToolType.AXE, tier.getHarvestLevel())
 		));
 	}
+
+	@Override
+	public void fillItemGroup(ItemGroup group, NonNullList<ItemStack> items) {
+		if (this.isEnabled()) {
+			super.fillItemGroup(group, items);
+		}
+    }
 
 	@Override
 	public boolean canHarvestBlock(BlockState state) {
@@ -66,7 +75,7 @@ public class PaxelItem extends ToolItem implements IEnableable {
 			if (state != null) {
 				PlayerEntity player = context.getPlayer();
 				world.playSound(player, pos, SoundEvents.ITEM_SHOVEL_FLATTEN, SoundCategory.BLOCKS, 1.0F, 1.0F);
-				if (!world.isRemote) {
+				if (!world.isRemote()) {
 					world.setBlockState(pos, state, 11);
 					if (player != null) {
 						context.getItem().damageItem(1, player, entity -> {

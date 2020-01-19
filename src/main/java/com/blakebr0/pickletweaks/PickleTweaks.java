@@ -14,12 +14,10 @@ import com.blakebr0.pickletweaks.registry.ModItems;
 import com.blakebr0.pickletweaks.registry.ModRecipeSerializers;
 import com.blakebr0.pickletweaks.tweaks.TweakToolBreaking;
 import net.minecraft.item.ItemGroup;
-import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DeferredWorkQueue;
-import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
@@ -45,10 +43,6 @@ public class PickleTweaks {
 		bus.register(new ModItems());
 		bus.register(new ModRecipeSerializers());
 
-		DistExecutor.runWhenOn(Dist.CLIENT, () -> () -> {
-			bus.register(new ColorHandler());
-		});
-
 		ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, ModConfigs.CLIENT);
 		ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, ModConfigs.COMMON);
 
@@ -71,5 +65,7 @@ public class PickleTweaks {
 		MinecraftForge.EVENT_BUS.register(new ToggleMagnetInInventoryHandler());
 		MinecraftForge.EVENT_BUS.register(new FeatureToolInfo());
 		MinecraftForge.EVENT_BUS.register(new FeatureBowInfo());
+
+		ColorHandler.onClientSetup();
 	}
 }

@@ -53,15 +53,16 @@ public class FeatureRightClickHarvest {
 						}
 					}
 
+					NonNullList<ItemStack> list =  NonNullList.from(ItemStack.EMPTY, drops.toArray(new ItemStack[0]));
+					int fortune = EnchantmentHelper.getEnchantmentLevel(Enchantments.FORTUNE, event.getItemStack());
+					ForgeEventFactory.fireBlockHarvesting(list, world, pos, state, fortune, 1.0F, false, event.getPlayer());
+
 					for (ItemStack drop : drops) {
 						if (!drop.isEmpty()) {
 							Block.spawnAsEntity(world, pos, drop);
 						}
 					}
 
-					NonNullList<ItemStack> list =  NonNullList.from(ItemStack.EMPTY, drops.toArray(new ItemStack[0]));
-					int fortune = EnchantmentHelper.getEnchantmentLevel(Enchantments.FORTUNE, event.getItemStack());
-					ForgeEventFactory.fireBlockHarvesting(list, world, pos, state, fortune, 1.0F, false, event.getPlayer());
 					world.setBlockState(pos, crop.withAge(0));
 				}
 			}
