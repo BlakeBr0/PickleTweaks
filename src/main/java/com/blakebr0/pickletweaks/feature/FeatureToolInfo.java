@@ -34,7 +34,7 @@ public class FeatureToolInfo {
 
 	private String getMiningLevel(ToolItem item) {
 		int lvl = item.getTier().getHarvestLevel();
-		return lvl < MINING_LEVEL_NAMES.length ? MINING_LEVEL_NAMES[lvl] : String.valueOf(lvl);
+		return lvl >= 0 && lvl < MINING_LEVEL_NAMES.length ? MINING_LEVEL_NAMES[lvl] : String.valueOf(lvl);
 	}
 
 	private float getMiningSpeed(ToolItem item) {
