@@ -13,6 +13,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.world.World;
 
@@ -59,16 +60,18 @@ public class MagnetItem extends BaseItem implements IEnableable {
 					if (item.getThrowerId() != null && item.getThrowerId().equals(entity.getUniqueID()) && item.cannotPickup())
 						continue;
 
-					if (!world.isRemote) {
+					if (!world.isRemote()) {
 						item.setNoPickupDelay();
-						item.setPosition(entity.posX, entity.posY, entity.posZ);
+						BlockPos pos = entity.getPosition();
+						item.setPosition(pos.getX(), pos.getY(), pos.getZ());
 					}
 				}
 
-				List<ExperienceOrbEntity> xporb = world.getEntitiesWithinAABB(ExperienceOrbEntity.class, entity.getBoundingBox().grow(range));
-				for (ExperienceOrbEntity orb : xporb) {
-					if (!world.isRemote) {
-						orb.setPosition(entity.posX, entity.posY, entity.posZ);
+				List<ExperienceOrbEntity> xporbs = world.getEntitiesWithinAABB(ExperienceOrbEntity.class, entity.getBoundingBox().grow(range));
+				for (ExperienceOrbEntity orb : xporbs) {
+					if (!world.isRemote()) {
+						BlockPos pos = entity.getPosition();
+						orb.setPosition(pos.getX(), pos.getY(), pos.getZ());
 					}
 				}
 			}

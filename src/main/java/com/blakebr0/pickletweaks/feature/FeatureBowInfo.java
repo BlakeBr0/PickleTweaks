@@ -25,7 +25,7 @@ public class FeatureBowInfo {
 		if (item instanceof ShootableItem) {
 			tooltip.next();
 
-      		tooltip.add(ModTooltips.AMMO.args(this.getAmmo(event.getEntityPlayer())).build());
+      		tooltip.add(ModTooltips.AMMO.args(this.getAmmo(event.getPlayer())).build());
 		}
 	}
 

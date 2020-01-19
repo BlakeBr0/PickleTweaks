@@ -1,7 +1,6 @@
 package com.blakebr0.pickletweaks;
 
 import com.blakebr0.cucumber.helper.ConfigHelper;
-import com.blakebr0.cucumber.iface.IColored;
 import com.blakebr0.pickletweaks.config.ModConfigs;
 import com.blakebr0.pickletweaks.feature.FeatureBowInfo;
 import com.blakebr0.pickletweaks.feature.FeatureRightClickHarvest;
@@ -14,12 +13,8 @@ import com.blakebr0.pickletweaks.registry.ModBlocks;
 import com.blakebr0.pickletweaks.registry.ModItems;
 import com.blakebr0.pickletweaks.registry.ModRecipeSerializers;
 import com.blakebr0.pickletweaks.tweaks.TweakToolBreaking;
-import net.minecraft.client.renderer.color.BlockColors;
-import net.minecraft.client.renderer.color.ItemColors;
 import net.minecraft.item.ItemGroup;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.client.event.ColorHandlerEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -30,8 +25,6 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
-import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -71,16 +64,6 @@ public class PickleTweaks {
 		DeferredWorkQueue.runLater(() -> {
 			NetworkHandler.onCommonSetup();
 		});
-	}
-
-	@SubscribeEvent
-	public void onInterModEnqueue(InterModEnqueueEvent event) {
-
-	}
-
-	@SubscribeEvent
-	public void onInterModProcess(InterModProcessEvent event) {
-
 	}
 
 	@SubscribeEvent

@@ -3,10 +3,7 @@ package com.blakebr0.pickletweaks.feature.item;
 import com.blakebr0.cucumber.iface.IEnableable;
 import com.blakebr0.cucumber.item.BaseItem;
 import com.blakebr0.pickletweaks.config.ModConfigs;
-import com.blakebr0.pickletweaks.registry.ModItems;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.LazyLoadBase;
-import net.minecraftforge.common.ForgeConfigSpec;
 
 import java.util.function.Function;
 

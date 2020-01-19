@@ -130,16 +130,16 @@ public class WateringCanItem extends BaseItem implements IEnableable {
 			}
 		}
 
-		if (!world.isRemote && this.water) {
+		if (!world.isRemote() && this.water) {
 			this.water = false;
 			int chance = Utils.randInt(1, 100);
 			if (chance <= 25) {
 				blocks = BlockPos.getAllInBox(pos.add(-1, -1, -1), pos.add(1, 1, 1));
 				blocks.forEach(aoePos -> {
 					BlockState plantState = world.getBlockState(aoePos);
-					Block plantBlock = world.getBlockState(aoePos).getBlock();
+					Block plantBlock = plantState.getBlock();
 					if (plantBlock instanceof IGrowable || plantBlock instanceof IPlantable || plantBlock == Blocks.MYCELIUM || plantBlock == Blocks.CHORUS_FLOWER) {
-						plantState.randomTick(world, aoePos, rand);
+						world.getPendingBlockTicks().scheduleTick(aoePos, plantBlock, 0);
 					}
 				});
 
