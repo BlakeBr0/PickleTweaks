@@ -20,12 +20,13 @@ sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = co
 repositories {
     maven { url "http://dvs1.progwml6.com/files/maven/" }
     maven { url "http://tehnut.info/maven/" }
+    maven { url "https://maven.tterrag.com/" }
     mavenLocal()
     jcenter()
 }
 
 minecraft {
-    mappings channel: 'snapshot', version: '20190719-1.14.3'
+    mappings channel: 'snapshot', version: '20200115-mixed-1.15.1'
 
     runs {
         client {
