@@ -17,7 +17,7 @@ loaderVersion="[31,)"
   [[dependencies.pickletweaks]]
       modId="forge"
       mandatory=true
-      versionRange="[31.0,)"
+      versionRange="[31.1,)"
       ordering="NONE"
       side="BOTH"
   [[dependencies.pickletweaks]]
@@ -29,6 +29,6 @@ loaderVersion="[31,)"
   [[dependencies.pickletweaks]]
       modId="cucumber"
       mandatory=true
-      versionRange="[3.0.0,)"
+      versionRange="[3.0.2,)"
       ordering="NONE"
       side="BOTH"
