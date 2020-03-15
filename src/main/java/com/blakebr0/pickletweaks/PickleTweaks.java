@@ -5,6 +5,7 @@ import com.blakebr0.pickletweaks.config.ModConfigs;
 import com.blakebr0.pickletweaks.feature.FeatureBowInfo;
 import com.blakebr0.pickletweaks.feature.FeatureRightClickHarvest;
 import com.blakebr0.pickletweaks.feature.FeatureToolInfo;
+import com.blakebr0.pickletweaks.feature.client.ModelHandler;
 import com.blakebr0.pickletweaks.feature.handler.ColorHandler;
 import com.blakebr0.pickletweaks.feature.handler.NightVisionGogglesHandler;
 import com.blakebr0.pickletweaks.feature.handler.ToggleMagnetInInventoryHandler;
@@ -67,5 +68,6 @@ public class PickleTweaks {
 		MinecraftForge.EVENT_BUS.register(new FeatureBowInfo());
 
 		ColorHandler.onClientSetup();
+		ModelHandler.onClientSetup();
 	}
 }
