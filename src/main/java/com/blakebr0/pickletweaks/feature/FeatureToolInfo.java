@@ -12,7 +12,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import java.util.ListIterator;
 
 public class FeatureToolInfo {
-	private static final String[] MINING_LEVEL_NAMES = new String[] { "Stone", "Iron", "Diamond", "Obsidian" };
+	public static final String[] MINING_LEVEL_NAMES = new String[] { "Stone", "Iron", "Diamond", "Obsidian" };
 
 	@SubscribeEvent
 	public void onTooltip(ItemTooltipEvent event) {

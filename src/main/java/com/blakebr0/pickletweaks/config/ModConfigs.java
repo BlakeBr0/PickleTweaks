@@ -1,17 +1,13 @@
 package com.blakebr0.pickletweaks.config;
 
 import net.minecraftforge.common.ForgeConfigSpec;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.config.ModConfig;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class ModConfigs {
     public static final ForgeConfigSpec CLIENT;
     public static final ForgeConfigSpec COMMON;
 
     public static final ForgeConfigSpec.BooleanValue ENABLE_TOOL_INFO_TOOLTIP;
+    public static final ForgeConfigSpec.BooleanValue ENABLE_WAILA_HARVEST_LEVEL;
 
     // Client
     static {
@@ -25,6 +21,10 @@ public class ModConfigs {
                 .comment("Tool Information Tooltips enabled?")
                 .translation("configGui.pickletweaks.enable_tool_info_tooltip")
                 .define("toolInfoTooltip", true);
+        ENABLE_WAILA_HARVEST_LEVEL = client
+                .comment("Waila harvest level tooltip enabled?")
+                .translation("configGui.pickletweaks.enable_waila_harvest_level")
+                .define("wailaHarvestLevel", true);
         client.pop();
 
         CLIENT = client.build();
