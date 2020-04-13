@@ -1,10 +1,14 @@
 package com.blakebr0.pickletweaks.registry;
 
+import com.blakebr0.cucumber.block.BaseBlock;
 import com.blakebr0.cucumber.item.BaseBlockItem;
 import com.blakebr0.pickletweaks.PickleTweaks;
 import com.blakebr0.pickletweaks.feature.block.ColoredCobblestoneBlock;
 import com.blakebr0.pickletweaks.feature.block.DarkGlassBlock;
+import com.blakebr0.pickletweaks.feature.block.SmoothGlowstoneBlock;
 import net.minecraft.block.Block;
+import net.minecraft.block.SoundType;
+import net.minecraft.block.material.Material;
 import net.minecraft.item.BlockItem;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
@@ -41,6 +45,7 @@ public class ModBlocks {
 	public static final RegistryObject<ColoredCobblestoneBlock> BLACK_COBBLESTONE = register("black_cobblestone", () -> new ColoredCobblestoneBlock(1908001));
 
 	public static final RegistryObject<DarkGlassBlock> DARK_GLASS = register("dark_glass", DarkGlassBlock::new);
+	public static final RegistryObject<BaseBlock> SMOOTH_GLOWSTONE = register("smooth_glowstone", SmoothGlowstoneBlock::new);
 
 	@SubscribeEvent
 	public void onRegisterBlocks(RegistryEvent.Register<Block> event) {

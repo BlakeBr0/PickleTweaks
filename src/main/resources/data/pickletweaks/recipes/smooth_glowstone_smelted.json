@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "minecraft:glowstone"
+  },
+  "result": "pickletweaks:smooth_glowstone",
+  "experience": 0.3,
+  "cookingtime": 200
+}
