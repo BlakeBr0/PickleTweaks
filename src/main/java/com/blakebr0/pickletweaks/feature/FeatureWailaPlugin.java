@@ -17,7 +17,7 @@ import net.minecraft.util.text.ITextComponent;
 import java.util.List;
 
 @WailaPlugin
-public class FeatureWailaTooltips implements IWailaPlugin {
+public class FeatureWailaPlugin implements IWailaPlugin {
 	@Override
 	public void register(IRegistrar registrar) {
 	    if (ModConfigs.ENABLE_WAILA_HARVEST_LEVEL.get()) {
