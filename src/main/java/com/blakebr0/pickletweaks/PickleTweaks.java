@@ -14,6 +14,7 @@ import com.blakebr0.pickletweaks.registry.ModBlocks;
 import com.blakebr0.pickletweaks.registry.ModItems;
 import com.blakebr0.pickletweaks.registry.ModRecipeSerializers;
 import com.blakebr0.pickletweaks.tweaks.TweakToolBreaking;
+import com.blakebr0.pickletweaks.tweaks.TweakToolUselessifier;
 import net.minecraft.item.ItemGroup;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -55,6 +56,7 @@ public class PickleTweaks {
 		MinecraftForge.EVENT_BUS.register(new NightVisionGogglesHandler());
 		MinecraftForge.EVENT_BUS.register(new FeatureRightClickHarvest());
 		MinecraftForge.EVENT_BUS.register(new TweakToolBreaking());
+		MinecraftForge.EVENT_BUS.register(new TweakToolUselessifier());
 
 		DeferredWorkQueue.runLater(() -> {
 			NetworkHandler.onCommonSetup();

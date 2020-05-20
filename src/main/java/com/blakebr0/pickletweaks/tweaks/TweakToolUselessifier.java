@@ -1,39 +1,43 @@
-/*
 package com.blakebr0.pickletweaks.tweaks;
 
-import java.util.ListIterator;
-
-import com.blakebr0.cucumber.util.Utils;
-import com.blakebr0.pickletweaks.tweaks.tools.ToolTweaks;
-
-import net.minecraft.entity.player.EntityPlayer;
+import com.blakebr0.cucumber.lib.Localizable;
+import com.blakebr0.pickletweaks.config.ModConfigs;
+import com.blakebr0.pickletweaks.lib.ModTooltips;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.HoeItem;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemHoe;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemTool;
+import net.minecraft.item.ShearsItem;
+import net.minecraft.item.ShootableItem;
+import net.minecraft.item.SwordItem;
+import net.minecraft.item.TieredItem;
+import net.minecraft.util.DamageSource;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.text.translation.I18n;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickBlock;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+
+import java.util.List;
+import java.util.ListIterator;
 
 public class TweakToolUselessifier {
-
 	@SubscribeEvent
-	public void breakSpeed(PlayerEvent.BreakSpeed event) {
-		if (event.getEntityPlayer() == null) {
+	public void onBreakSpeed(PlayerEvent.BreakSpeed event) {
+        PlayerEntity player = event.getPlayer();
+        if (player == null)
 			return;
-		}
 
-		ItemStack stack = event.getEntityPlayer().getHeldItemMainhand();
-
-		if (stack.isEmpty()) {
+		ItemStack stack = player.getHeldItemMainhand();
+		if (stack.isEmpty())
 			return;
-		}
 
 		if (isUselessTool(stack.getItem())) {
 			event.setNewSpeed(0);
@@ -41,83 +45,111 @@ public class TweakToolUselessifier {
 	}
 
 	@SubscribeEvent
-	public void onHurt(LivingHurtEvent event) {
-		if (!(event.getSource().getDamageType().equals("player"))) {
+	public void onLivingHurt(LivingHurtEvent event) {
+        DamageSource source = event.getSource();
+        if (!(source.getDamageType().equals("player")))
 			return;
-		}
-		
-		if (!(event.getSource().getTrueSource() instanceof EntityPlayer)) {
-			return;
-		}
 
-		EntityPlayer player = (EntityPlayer) event.getSource().getTrueSource();
+        Entity trueSource = source.getTrueSource();
+        if (!(trueSource instanceof PlayerEntity))
+			return;
+
+		PlayerEntity player = (PlayerEntity) trueSource;
 		ItemStack stack = player.getHeldItemMainhand();
-
-		if (stack.isEmpty()) {
+		if (stack.isEmpty())
 			return;
-		}
 
 		if (isUselessTool(stack.getItem())) {
 			event.setCanceled(true);
 		}
 	}
 
-	@SideOnly(Side.CLIENT)
-	@SubscribeEvent
-	public void onItemToolTip(ItemTooltipEvent event) {
-		if (event.getEntityPlayer() == null) {
-			return;
-		}
-		
-		if (!ToolTweaks.uselessTools.contains(event.getItemStack().getItem())) {
-			return;
-		}
 
-		ListIterator<String> tooltip = event.getToolTip().listIterator();
-		while (tooltip.hasNext()) {
-			if (tooltip.next().contains(I18n.translateToLocal("attribute.name.generic.attackDamage"))) {
-				tooltip.set(" 0 " + Utils.localize("attribute.name.generic.attackDamage"));
-			}
-		}
-
-		if (isUselessTool(event.getItemStack().getItem())) {
-			event.getToolTip().add(TextFormatting.RED + Utils.localize("tooltip.useless_tool_1"));
-			event.getToolTip().add(TextFormatting.RED + Utils.localize("tooltip.useless_tool_2"));
-		}
-	}
 
 	@SubscribeEvent
-	public void onRightClickBlock(RightClickBlock event) {
-		if (event.getEntityPlayer() == null) {
+	public void onRightClickBlock(PlayerInteractEvent.RightClickBlock event) {
+		PlayerEntity player = event.getPlayer();
+		if (player == null)
 			return;
-		}
 
-		ItemStack stack = event.getEntityPlayer().getHeldItemMainhand();
-
-		if (stack.isEmpty()) {
+		ItemStack stack = player.getHeldItemMainhand();
+		if (stack.isEmpty())
 			return;
-		}
 
-		if (isUselessTool(stack.getItem()) && stack.getItem() instanceof ItemHoe) {
+		if (isUselessTool(stack.getItem())) {
 			event.setCanceled(true);
 		}
 	}
 
-	public static boolean isUselessTool(Item item) {
-		if (item == null) {
-			return false;
-		}
-		
-		if (!ToolTweaks.uselessTools.contains(item)) {
-			return false;
-		}
-		
-		if (item instanceof ItemTool) {
-			return true;
-		}
+	@SubscribeEvent
+	public void onRightClickItem(PlayerInteractEvent.RightClickItem event) {
+		PlayerEntity player = event.getPlayer();
+		if (player == null)
+			return;
 
-		return false;
+		ItemStack stack = player.getHeldItemMainhand();
+		if (stack.isEmpty())
+			return;
+
+		if (isUselessTool(stack.getItem())) {
+			event.setCanceled(true);
+		}
 	}
 
+	@SubscribeEvent
+	public void onEntityInteract(PlayerInteractEvent.EntityInteract event) {
+		PlayerEntity player = event.getPlayer();
+		if (player == null)
+			return;
+
+		ItemStack stack = player.getHeldItemMainhand();
+		if (stack.isEmpty())
+			return;
+
+		if (isUselessTool(stack.getItem())) {
+			event.setCanceled(true);
+		}
+	}
+
+	@OnlyIn(Dist.CLIENT)
+	@SubscribeEvent
+	public void onItemTooltip(ItemTooltipEvent event) {
+		Item item = event.getItemStack().getItem();
+		if (isUselessTool(item)) {
+			List<ITextComponent> tooltip = event.getToolTip();
+			ListIterator<ITextComponent> lines = tooltip.listIterator();
+			while (lines.hasNext()) {
+				String s = Localizable.of("attribute.name.generic.attackDamage").buildString();
+				if (lines.next().getFormattedText().contains(s)) {
+					lines.set(new StringTextComponent(" 0 ").appendText(s).applyTextStyle(TextFormatting.DARK_GREEN));
+				}
+			}
+
+			if (item instanceof HoeItem) {
+				tooltip.add(ModTooltips.USELESS_HOE_1.color(TextFormatting.RED).build());
+			} else if (item instanceof SwordItem) {
+				tooltip.add(ModTooltips.USELESS_WEAPON_1.color(TextFormatting.RED).build());
+			} else if (item instanceof ShootableItem) {
+				tooltip.add(ModTooltips.USELESS_BOW_1.color(TextFormatting.RED).build());
+			} else {
+				tooltip.add(ModTooltips.USELESS_TOOL_1.color(TextFormatting.RED).build());
+			}
+
+			tooltip.add(ModTooltips.USELESS_TOOL_2.color(TextFormatting.RED).build());
+		}
+	}
+
+	public static boolean isUselessTool(Item item) {
+		if (item == null)
+			return false;
+
+		ResourceLocation id = item.getRegistryName();
+		if (id == null)
+			return false;
+
+		if (!ModConfigs.USELESS_TOOLS.get().contains(id.toString()))
+			return false;
+
+        return item instanceof TieredItem || item instanceof ShootableItem || item instanceof ShearsItem;
+    }
 }
-*/

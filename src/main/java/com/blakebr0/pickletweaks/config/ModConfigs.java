@@ -2,6 +2,9 @@ package com.blakebr0.pickletweaks.config;
 
 import net.minecraftforge.common.ForgeConfigSpec;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ModConfigs {
     public static final ForgeConfigSpec CLIENT;
     public static final ForgeConfigSpec COMMON;
@@ -54,7 +57,7 @@ public class ModConfigs {
     public static final ForgeConfigSpec.BooleanValue GRID_REPAIR_CHEAP_SHOVEL;
 
     public static final ForgeConfigSpec.BooleanValue ENABLE_TOOL_BREAKING_TWEAK;
-//    public static final ForgeConfigSpec.ConfigValue<List<String>> USELESS_TOOLS;
+    public static final ForgeConfigSpec.ConfigValue<List<String>> USELESS_TOOLS;
 
     // Common
     static {
@@ -151,11 +154,10 @@ public class ModConfigs {
                 .comment("Enabled tools not breaking?")
                 .translation("configGui.pickletweaks.enable_tool_breaking_tweak")
                 .define("toolBreaking", true);
-//        USELESS_TOOLS = common
-//                .comment("Tools that should be ineffective.")
-//                .comment("Ex: [\"minecraft:stone_pickaxe\", \"minecraft:stone_sword\"]")
-//                .translation("configGui.pickletweaks.useless_tools")
-//                .define("uselessTools", new ArrayList<>());
+        USELESS_TOOLS = common
+                .comment("Tools and weapons that should be ineffective. \nEx: [\"minecraft:stone_pickaxe\", \"minecraft:stone_sword\"]")
+                .translation("configGui.pickletweaks.useless_tools")
+                .define("uselessTools", new ArrayList<>());
         common.pop();
 
         COMMON = common.build();
