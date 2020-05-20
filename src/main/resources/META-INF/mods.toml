@@ -29,6 +29,6 @@ loaderVersion="[31,)"
   [[dependencies.pickletweaks]]
       modId="cucumber"
       mandatory=true
-      versionRange="[3.0.2,)"
+      versionRange="[3.0.5,)"
       ordering="NONE"
       side="BOTH"

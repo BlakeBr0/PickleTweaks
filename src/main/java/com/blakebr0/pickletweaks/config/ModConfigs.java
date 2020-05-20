@@ -34,6 +34,7 @@ public class ModConfigs {
 
     public static final ForgeConfigSpec.BooleanValue ENABLE_COLORED_COBBLESTONE;
     public static final ForgeConfigSpec.BooleanValue ENABLE_DARK_GLASS;
+    public static final ForgeConfigSpec.BooleanValue ENABLE_SMOOTH_GLOWSTONE;
 
     public static final ForgeConfigSpec.BooleanValue ENABLE_COAL_PIECES;
     public static final ForgeConfigSpec.BooleanValue ENABLE_APPLES;
@@ -75,6 +76,10 @@ public class ModConfigs {
                 .comment("Dark Glass enabled?")
                 .translation("configGui.pickletweaks.enable_dark_glass")
                 .define("darkGlass", true);
+        ENABLE_SMOOTH_GLOWSTONE = common
+                .comment("Smooth Glowstone enabled?")
+                .translation("configGui.pickletweaks.enable_smooth_glowstone")
+                .define("smoothGlowstone", true);
 
         ENABLE_COAL_PIECES = common
                 .comment("Coal and Charcoal Piece enabled?")
