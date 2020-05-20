@@ -8,7 +8,6 @@ import net.minecraft.inventory.CraftingInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ShovelItem;
 import net.minecraft.item.crafting.IRecipeSerializer;
-import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.item.crafting.ShapelessRecipe;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.NonNullList;
@@ -17,8 +16,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.registries.ForgeRegistryEntry;
 
 public class GridRepairRecipe extends ShapelessRecipe {
-	public GridRepairRecipe(ResourceLocation id, String group, ItemStack output, NonNullList<Ingredient> inputs) {
-		super(id, group, output, inputs);
+	public GridRepairRecipe(ResourceLocation id) {
+		super(id, "", ItemStack.EMPTY, NonNullList.create());
 	}
 
 	@Override
@@ -60,7 +59,7 @@ public class GridRepairRecipe extends ShapelessRecipe {
 			return ItemStack.EMPTY;
 		}
 
-		if (GridRepairBlacklist.isBlacklisted(tool.getItem())) {
+		if (GridRepairHelper.isBlacklisted(tool.getItem())) {
 			return ItemStack.EMPTY;
 		}
 
@@ -121,12 +120,12 @@ public class GridRepairRecipe extends ShapelessRecipe {
 	public static class Serializer extends ForgeRegistryEntry<IRecipeSerializer<?>> implements IRecipeSerializer<GridRepairRecipe> {
 		@Override
 		public GridRepairRecipe read(ResourceLocation recipeId, JsonObject json) {
-			return new GridRepairRecipe(recipeId, "", ItemStack.EMPTY, NonNullList.create());
+			return new GridRepairRecipe(recipeId);
 		}
 
 		@Override
 		public GridRepairRecipe read(ResourceLocation recipeId, PacketBuffer buffer) {
-			return new GridRepairRecipe(recipeId, "", ItemStack.EMPTY, NonNullList.create());
+			return new GridRepairRecipe(recipeId);
 		}
 
 		@Override

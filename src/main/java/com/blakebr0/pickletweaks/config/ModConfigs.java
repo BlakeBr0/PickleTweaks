@@ -55,6 +55,7 @@ public class ModConfigs {
     public static final ForgeConfigSpec.BooleanValue GRID_REPAIR_DISABLE_DEFAULTS;
     public static final ForgeConfigSpec.BooleanValue GRID_REPAIR_OVERRIDE_MODE;
     public static final ForgeConfigSpec.BooleanValue GRID_REPAIR_CHEAP_SHOVEL;
+    public static final ForgeConfigSpec.ConfigValue<List<String>> GRID_REPAIR_BLACKLIST;
 
     public static final ForgeConfigSpec.BooleanValue ENABLE_TOOL_BREAKING_TWEAK;
     public static final ForgeConfigSpec.ConfigValue<List<String>> USELESS_TOOLS;
@@ -147,6 +148,10 @@ public class ModConfigs {
                 .comment("Makes it so shovels need 50% less material to repair.")
                 .translation("configGui.pickletweaks.grid_repair_cheap_shovel")
                 .define("cheapShovel", true);
+        GRID_REPAIR_BLACKLIST = common
+                .comment("Tools that should not be repairable in the crafting grid. \nEx: [\"minecraft:stone_pickaxe\", \"minecraft:stone_sword\"]")
+                .translation("configGui.pickletweaks.grid_repair_blacklist")
+                .define("blacklist", new ArrayList<>());
         common.pop();
 
         common.comment("Disable and configure tweaks.").push("Tweaks");
