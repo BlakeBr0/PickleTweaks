@@ -1,28 +1,28 @@
 {
   "type": "minecraft:crafting_shaped",
   "conditions": [
-	{
-	  "type": "cucumber:enabled",
-	  "item": "pickletweaks:magnet"
-	}
+    {
+      "type": "cucumber:enabled",
+      "item": "pickletweaks:magnet"
+    }
   ],
   "pattern": [
-	"IEI",
-	"IRI",
-	" I "
+    "IEI",
+    "IRI",
+    " I "
   ],
   "key": {
-	"I": {
-	  "tag": "forge:ingots/iron"
-	},
-	"R": {
-	  "tag": "forge:dusts/redstone"
-	},
-	"E": {
-	  "item": "minecraft:ender_pearl"
-	}
+    "I": {
+      "tag": "forge:ingots/iron"
+    },
+    "R": {
+      "tag": "forge:dusts/redstone"
+    },
+    "E": {
+      "item": "minecraft:ender_pearl"
+    }
   },
   "result": {
-	"item": "pickletweaks:magnet"
+    "item": "pickletweaks:magnet"
   }
 }

@@ -1,18 +1,18 @@
 {
   "type": "minecraft:crafting_shapeless",
   "conditions": [
-	{
-	  "type": "cucumber:enabled",
-	  "item": "pickletweaks:charcoal_piece"
-	}
+    {
+      "type": "cucumber:enabled",
+      "item": "pickletweaks:charcoal_piece"
+    }
   ],
   "ingredients": [
-	{
-	  "item": "minecraft:charcoal"
-	}
+    {
+      "item": "minecraft:charcoal"
+    }
   ],
   "result": {
-	"item": "pickletweaks:charcoal_piece",
-	"count": 8
+    "item": "pickletweaks:charcoal_piece",
+    "count": 8
   }
 }

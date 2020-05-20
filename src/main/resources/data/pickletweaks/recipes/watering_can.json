@@ -1,28 +1,28 @@
 {
   "type": "minecraft:crafting_shaped",
   "conditions": [
-	{
-	  "type": "cucumber:enabled",
-	  "item": "pickletweaks:watering_can"
-	}
+    {
+      "type": "cucumber:enabled",
+      "item": "pickletweaks:watering_can"
+    }
   ],
   "pattern": [
-	" BI",
-	"IWI",
-	" I "
+    " BI",
+    "IWI",
+    " I "
   ],
   "key": {
-	"I": {
-	  "tag": "forge:ingots/iron"
-	},
-	"W": {
-	  "item": "minecraft:bowl"
-	},
-	"B": {
-	  "item": "minecraft:bone_meal"
-	}
+    "I": {
+      "tag": "forge:ingots/iron"
+    },
+    "W": {
+      "item": "minecraft:bowl"
+    },
+    "B": {
+      "item": "minecraft:bone_meal"
+    }
   },
   "result": {
-	"item": "pickletweaks:watering_can"
+    "item": "pickletweaks:watering_can"
   }
 }

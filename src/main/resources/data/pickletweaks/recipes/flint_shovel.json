@@ -1,10 +1,10 @@
 {
   "type": "minecraft:crafting_shaped",
   "conditions": [
-	{
-	   "type": "forge:item_exists",
-	   "item": "pickletweaks:flint_shovel"
-	 }
+    {
+      "type": "cucumber:enabled",
+      "item": "pickletweaks:flint_shovel"
+    }
   ],
   "pattern": [
     "F",
@@ -15,7 +15,7 @@
     "F": {
       "item": "minecraft:flint"
     },
-	"S": {
+    "S": {
       "tag": "forge:rods/wooden"
     }
   },
