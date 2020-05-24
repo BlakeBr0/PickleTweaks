@@ -56,6 +56,7 @@ public class ModConfigs {
     public static final ForgeConfigSpec.BooleanValue GRID_REPAIR_OVERRIDE_MODE;
     public static final ForgeConfigSpec.BooleanValue GRID_REPAIR_CHEAP_SHOVEL;
     public static final ForgeConfigSpec.ConfigValue<List<String>> GRID_REPAIR_BLACKLIST;
+    public static final ForgeConfigSpec.ConfigValue<List<String>> GRID_REPAIR_OVERRIDES;
 
     public static final ForgeConfigSpec.BooleanValue ENABLE_TOOL_BREAKING_TWEAK;
     public static final ForgeConfigSpec.ConfigValue<List<String>> USELESS_TOOLS;
@@ -149,9 +150,19 @@ public class ModConfigs {
                 .translation("configGui.pickletweaks.grid_repair_cheap_shovel")
                 .define("cheapShovel", true);
         GRID_REPAIR_BLACKLIST = common
-                .comment("Tools that should not be repairable in the crafting grid. \nEx: [\"minecraft:stone_pickaxe\", \"minecraft:stone_sword\"]")
+                .comment("Tools that should not be repairable in the crafting grid." +
+                        "\nEx: [\"minecraft:stone_pickaxe\", \"minecraft:stone_sword\"]")
                 .translation("configGui.pickletweaks.grid_repair_blacklist")
                 .define("blacklist", new ArrayList<>());
+        GRID_REPAIR_OVERRIDES = common
+                .comment("Here you can specify custom repair materials for tools." +
+                        "\nEx: [\"minecraft:stone_shovel=minecraft:stick\"]" +
+                        "\nYou can use tags for materials by doing tag:<tag-id>." +
+                        "\nEx: [\"minecraft:stone_shovel=tag:forge:ingots/iron\"]" +
+                        "\nYou can specify how effective the material is by appending @<multiplier>" +
+                        "\nEx: [\"minecraft:stone_shovel=minecraft:stick@0.5\"]")
+                .translation("configGui.pickletweaks.grid_repair_overrides")
+                .define("overrides", new ArrayList<>());
         common.pop();
 
         common.comment("Disable and configure tweaks.").push("Tweaks");
@@ -160,7 +171,8 @@ public class ModConfigs {
                 .translation("configGui.pickletweaks.enable_tool_breaking_tweak")
                 .define("toolBreaking", true);
         USELESS_TOOLS = common
-                .comment("Tools and weapons that should be ineffective. \nEx: [\"minecraft:stone_pickaxe\", \"minecraft:stone_sword\"]")
+                .comment("Tools and weapons that should be ineffective." +
+                        "\nEx: [\"minecraft:stone_pickaxe\", \"minecraft:stone_sword\"]")
                 .translation("configGui.pickletweaks.useless_tools")
                 .define("uselessTools", new ArrayList<>());
         common.pop();

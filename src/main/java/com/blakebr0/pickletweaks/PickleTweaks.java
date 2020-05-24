@@ -6,6 +6,7 @@ import com.blakebr0.pickletweaks.feature.FeatureBowInfo;
 import com.blakebr0.pickletweaks.feature.FeatureRightClickHarvest;
 import com.blakebr0.pickletweaks.feature.FeatureToolInfo;
 import com.blakebr0.pickletweaks.feature.client.ModelHandler;
+import com.blakebr0.pickletweaks.feature.crafting.GridRepairOverride;
 import com.blakebr0.pickletweaks.feature.handler.ColorHandler;
 import com.blakebr0.pickletweaks.feature.handler.NightVisionGogglesHandler;
 import com.blakebr0.pickletweaks.feature.handler.ToggleMagnetInInventoryHandler;
@@ -35,7 +36,7 @@ public class PickleTweaks {
 	public static final String NAME = "Pickle Tweaks";
 
 	public static final ItemGroup ITEM_GROUP = new PTItemGroup();
-	public static final Logger LOGGER = LogManager.getLogger(MOD_ID);
+	public static final Logger LOGGER = LogManager.getLogger(NAME);
 
 	public PickleTweaks() {
 		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -60,6 +61,7 @@ public class PickleTweaks {
 
 		DeferredWorkQueue.runLater(() -> {
 			NetworkHandler.onCommonSetup();
+			GridRepairOverride.onCommonSetup();
 		});
 	}
 
