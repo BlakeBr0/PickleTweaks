@@ -27,6 +27,7 @@ import com.blakebr0.pickletweaks.feature.item.tool.FlintShearsItem;
 import com.blakebr0.pickletweaks.feature.item.tool.FlintShovelItem;
 import com.blakebr0.pickletweaks.feature.item.tool.FlintSwordItem;
 import com.blakebr0.pickletweaks.lib.ModArmorMaterial;
+import net.minecraft.block.Block;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemTier;
@@ -38,57 +39,59 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.IForgeRegistry;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Supplier;
 
 import static com.blakebr0.pickletweaks.PickleTweaks.ITEM_GROUP;
 
 public class ModItems {
-	public static final List<Supplier<? extends Item>> BLOCK_ENTRIES = new ArrayList<>();
-	public static final List<Supplier<? extends Item>> ENTRIES = new ArrayList<>();
+	public static final List<Supplier<Item>> BLOCK_ENTRIES = new ArrayList<>();
+	public static final Map<RegistryObject<Item>, Supplier<Item>> ENTRIES = new LinkedHashMap<>();
 
-	public static final RegistryObject<CoalPieceItem> COAL_PIECE = register("coal_piece", () -> new CoalPieceItem(p -> p.group(ITEM_GROUP)));
-	public static final RegistryObject<CoalPieceItem> CHARCOAL_PIECE = register("charcoal_piece", () -> new CoalPieceItem(p -> p.group(ITEM_GROUP)));
-	public static final RegistryObject<DiamondAppleItem> DIAMOND_APPLE = register("diamond_apple", () -> new DiamondAppleItem(p -> p.group(ITEM_GROUP)));
-	public static final RegistryObject<EmeraldAppleItem> EMERALD_APPLE = register("emerald_apple", () -> new EmeraldAppleItem(p -> p.group(ITEM_GROUP)));
-	public static final RegistryObject<WateringCanItem> WATERING_CAN = register("watering_can", () -> new WateringCanItem(p -> p.group(ITEM_GROUP)));
-	public static final RegistryObject<GrassFiberItem> GRASS_FIBER = register("grass_fiber", () -> new GrassFiberItem(p -> p.group(ITEM_GROUP)));
-	public static final RegistryObject<MeshItem> GRASS_FIBER_MESH = register("grass_fiber_mesh", () -> new MeshItem(20, p -> p.group(ITEM_GROUP)));
-	public static final RegistryObject<MeshItem> MESH = register("mesh", () -> new MeshItem(64, p -> p.group(ITEM_GROUP)));
-	public static final RegistryObject<MeshItem> REINFORCED_MESH = register("reinforced_mesh", () -> new MeshItem(512, p -> p.group(ITEM_GROUP)));
-	public static final RegistryObject<MagnetItem> MAGNET = register("magnet", () -> new MagnetItem(p -> p.group(ITEM_GROUP)));
-	public static final RegistryObject<NightVisionGogglesItem> NIGHT_VISION_GOGGLES = register("night_vision_goggles", () -> new NightVisionGogglesItem(ModArmorMaterial.NIGHT_VISION_GOGGLES, p -> p.group(ITEM_GROUP)));
-	public static final RegistryObject<NightVisionGogglesItem> REINFORCED_NIGHT_VISION_GOGGLES = register("reinforced_night_vision_goggles", () -> new NightVisionGogglesItem(ModArmorMaterial.REINFORCED_NIGHT_VISION_GOGGLES, p -> p.group(ITEM_GROUP)));
+	public static final RegistryObject<Item> COAL_PIECE = register("coal_piece", () -> new CoalPieceItem(p -> p.group(ITEM_GROUP)));
+	public static final RegistryObject<Item> CHARCOAL_PIECE = register("charcoal_piece", () -> new CoalPieceItem(p -> p.group(ITEM_GROUP)));
+	public static final RegistryObject<Item> DIAMOND_APPLE = register("diamond_apple", () -> new DiamondAppleItem(p -> p.group(ITEM_GROUP)));
+	public static final RegistryObject<Item> EMERALD_APPLE = register("emerald_apple", () -> new EmeraldAppleItem(p -> p.group(ITEM_GROUP)));
+	public static final RegistryObject<Item> WATERING_CAN = register("watering_can", () -> new WateringCanItem(p -> p.group(ITEM_GROUP)));
+	public static final RegistryObject<Item> GRASS_FIBER = register("grass_fiber", () -> new GrassFiberItem(p -> p.group(ITEM_GROUP)));
+	public static final RegistryObject<Item> GRASS_FIBER_MESH = register("grass_fiber_mesh", () -> new MeshItem(20, p -> p.group(ITEM_GROUP)));
+	public static final RegistryObject<Item> MESH = register("mesh", () -> new MeshItem(64, p -> p.group(ITEM_GROUP)));
+	public static final RegistryObject<Item> REINFORCED_MESH = register("reinforced_mesh", () -> new MeshItem(512, p -> p.group(ITEM_GROUP)));
+	public static final RegistryObject<Item> MAGNET = register("magnet", () -> new MagnetItem(p -> p.group(ITEM_GROUP)));
+	public static final RegistryObject<Item> NIGHT_VISION_GOGGLES = register("night_vision_goggles", () -> new NightVisionGogglesItem(ModArmorMaterial.NIGHT_VISION_GOGGLES, p -> p.group(ITEM_GROUP)));
+	public static final RegistryObject<Item> REINFORCED_NIGHT_VISION_GOGGLES = register("reinforced_night_vision_goggles", () -> new NightVisionGogglesItem(ModArmorMaterial.REINFORCED_NIGHT_VISION_GOGGLES, p -> p.group(ITEM_GROUP)));
 
-	public static final RegistryObject<FlintSwordItem> FLINT_SWORD = register("flint_sword", () -> new FlintSwordItem(p -> p.group(ITEM_GROUP)));
-	public static final RegistryObject<FlintPickaxeItem> FLINT_PICKAXE = register("flint_pickaxe", () -> new FlintPickaxeItem(p -> p.group(ITEM_GROUP)));
-	public static final RegistryObject<FlintShovelItem> FLINT_SHOVEL = register("flint_shovel", () -> new FlintShovelItem(p -> p.group(ITEM_GROUP)));
-	public static final RegistryObject<FlintAxeItem> FLINT_AXE = register("flint_axe", () -> new FlintAxeItem(p -> p.group(ITEM_GROUP)));
-	public static final RegistryObject<FlintHoeItem> FLINT_HOE = register("flint_hoe", () -> new FlintHoeItem(p -> p.group(ITEM_GROUP)));
-	public static final RegistryObject<FlintShearsItem> FLINT_SHEARS = register("flint_shears", () -> new FlintShearsItem(p -> p.group(ITEM_GROUP)));
+	public static final RegistryObject<Item> FLINT_SWORD = register("flint_sword", () -> new FlintSwordItem(p -> p.group(ITEM_GROUP)));
+	public static final RegistryObject<Item> FLINT_PICKAXE = register("flint_pickaxe", () -> new FlintPickaxeItem(p -> p.group(ITEM_GROUP)));
+	public static final RegistryObject<Item> FLINT_SHOVEL = register("flint_shovel", () -> new FlintShovelItem(p -> p.group(ITEM_GROUP)));
+	public static final RegistryObject<Item> FLINT_AXE = register("flint_axe", () -> new FlintAxeItem(p -> p.group(ITEM_GROUP)));
+	public static final RegistryObject<Item> FLINT_HOE = register("flint_hoe", () -> new FlintHoeItem(p -> p.group(ITEM_GROUP)));
+	public static final RegistryObject<Item> FLINT_SHEARS = register("flint_shears", () -> new FlintShearsItem(p -> p.group(ITEM_GROUP)));
 
-	public static final RegistryObject<EmeraldSwordItem> EMERALD_SWORD = register("emerald_sword", () -> new EmeraldSwordItem(p -> p.group(ITEM_GROUP)));
-	public static final RegistryObject<EmeraldPickaxeItem> EMERALD_PICKAXE = register("emerald_pickaxe", () -> new EmeraldPickaxeItem(p -> p.group(ITEM_GROUP)));
-	public static final RegistryObject<EmeraldShovelItem> EMERALD_SHOVEL = register("emerald_shovel", () -> new EmeraldShovelItem(p -> p.group(ITEM_GROUP)));
-	public static final RegistryObject<EmeraldAxeItem> EMERALD_AXE = register("emerald_axe", () -> new EmeraldAxeItem(p -> p.group(ITEM_GROUP)));
-	public static final RegistryObject<EmeraldHoeItem> EMERALD_HOE = register("emerald_hoe", () -> new EmeraldHoeItem(p -> p.group(ITEM_GROUP)));
+	public static final RegistryObject<Item> EMERALD_SWORD = register("emerald_sword", () -> new EmeraldSwordItem(p -> p.group(ITEM_GROUP)));
+	public static final RegistryObject<Item> EMERALD_PICKAXE = register("emerald_pickaxe", () -> new EmeraldPickaxeItem(p -> p.group(ITEM_GROUP)));
+	public static final RegistryObject<Item> EMERALD_SHOVEL = register("emerald_shovel", () -> new EmeraldShovelItem(p -> p.group(ITEM_GROUP)));
+	public static final RegistryObject<Item> EMERALD_AXE = register("emerald_axe", () -> new EmeraldAxeItem(p -> p.group(ITEM_GROUP)));
+	public static final RegistryObject<Item> EMERALD_HOE = register("emerald_hoe", () -> new EmeraldHoeItem(p -> p.group(ITEM_GROUP)));
 
-	public static final RegistryObject<FlintArmorItem> FLINT_HELMET = register("flint_helmet", () -> new FlintArmorItem(EquipmentSlotType.HEAD, p -> p.group(ITEM_GROUP)));
-	public static final RegistryObject<FlintArmorItem> FLINT_CHESTPLATE = register("flint_chestplate", () -> new FlintArmorItem(EquipmentSlotType.CHEST, p -> p.group(ITEM_GROUP)));
-	public static final RegistryObject<FlintArmorItem> FLINT_LEGGINGS = register("flint_leggings", () -> new FlintArmorItem(EquipmentSlotType.LEGS, p -> p.group(ITEM_GROUP)));
-	public static final RegistryObject<FlintArmorItem> FLINT_BOOTS = register("flint_boots", () -> new FlintArmorItem(EquipmentSlotType.FEET, p -> p.group(ITEM_GROUP)));
-	public static final RegistryObject<EmeraldArmorItem> EMERALD_HELMET = register("emerald_helmet", () -> new EmeraldArmorItem(EquipmentSlotType.HEAD, p -> p.group(ITEM_GROUP)));
-	public static final RegistryObject<EmeraldArmorItem> EMERALD_CHESTPLATE = register("emerald_chestplate", () -> new EmeraldArmorItem(EquipmentSlotType.CHEST, p -> p.group(ITEM_GROUP)));
-	public static final RegistryObject<EmeraldArmorItem> EMERALD_LEGGINGS = register("emerald_leggings", () -> new EmeraldArmorItem(EquipmentSlotType.LEGS, p -> p.group(ITEM_GROUP)));
-	public static final RegistryObject<EmeraldArmorItem> EMERALD_BOOTS = register("emerald_boots", () -> new EmeraldArmorItem(EquipmentSlotType.FEET, p -> p.group(ITEM_GROUP)));
+	public static final RegistryObject<Item> FLINT_HELMET = register("flint_helmet", () -> new FlintArmorItem(EquipmentSlotType.HEAD, p -> p.group(ITEM_GROUP)));
+	public static final RegistryObject<Item> FLINT_CHESTPLATE = register("flint_chestplate", () -> new FlintArmorItem(EquipmentSlotType.CHEST, p -> p.group(ITEM_GROUP)));
+	public static final RegistryObject<Item> FLINT_LEGGINGS = register("flint_leggings", () -> new FlintArmorItem(EquipmentSlotType.LEGS, p -> p.group(ITEM_GROUP)));
+	public static final RegistryObject<Item> FLINT_BOOTS = register("flint_boots", () -> new FlintArmorItem(EquipmentSlotType.FEET, p -> p.group(ITEM_GROUP)));
+	public static final RegistryObject<Item> EMERALD_HELMET = register("emerald_helmet", () -> new EmeraldArmorItem(EquipmentSlotType.HEAD, p -> p.group(ITEM_GROUP)));
+	public static final RegistryObject<Item> EMERALD_CHESTPLATE = register("emerald_chestplate", () -> new EmeraldArmorItem(EquipmentSlotType.CHEST, p -> p.group(ITEM_GROUP)));
+	public static final RegistryObject<Item> EMERALD_LEGGINGS = register("emerald_leggings", () -> new EmeraldArmorItem(EquipmentSlotType.LEGS, p -> p.group(ITEM_GROUP)));
+	public static final RegistryObject<Item> EMERALD_BOOTS = register("emerald_boots", () -> new EmeraldArmorItem(EquipmentSlotType.FEET, p -> p.group(ITEM_GROUP)));
 
-	public static final RegistryObject<PaxelItem> WOODEN_PAXEL = register("wooden_paxel", () -> new PaxelItem(ItemTier.WOOD, p -> p.group(ITEM_GROUP)));
-	public static final RegistryObject<PaxelItem> STONE_PAXEL = register("stone_paxel", () -> new PaxelItem(ItemTier.STONE, p -> p.group(ITEM_GROUP)));
-	public static final RegistryObject<PaxelItem> IRON_PAXEL = register("iron_paxel", () -> new PaxelItem(ItemTier.IRON, p -> p.group(ITEM_GROUP)));
-	public static final RegistryObject<PaxelItem> GOLDEN_PAXEL = register("golden_paxel", () -> new PaxelItem(ItemTier.GOLD, p -> p.group(ITEM_GROUP)));
-	public static final RegistryObject<PaxelItem> DIAMOND_PAXEL = register("diamond_paxel", () -> new PaxelItem(ItemTier.DIAMOND, p -> p.group(ITEM_GROUP)));
-	public static final RegistryObject<PaxelItem> FLINT_PAXEL = register("flint_paxel", () -> new FlintPaxelItem(p -> p.group(ITEM_GROUP)));
-	public static final RegistryObject<PaxelItem> EMERALD_PAXEL = register("emerald_paxel", () -> new EmeraldPaxelItem(p -> p.group(ITEM_GROUP)));
+	public static final RegistryObject<Item> WOODEN_PAXEL = register("wooden_paxel", () -> new PaxelItem(ItemTier.WOOD, p -> p.group(ITEM_GROUP)));
+	public static final RegistryObject<Item> STONE_PAXEL = register("stone_paxel", () -> new PaxelItem(ItemTier.STONE, p -> p.group(ITEM_GROUP)));
+	public static final RegistryObject<Item> IRON_PAXEL = register("iron_paxel", () -> new PaxelItem(ItemTier.IRON, p -> p.group(ITEM_GROUP)));
+	public static final RegistryObject<Item> GOLDEN_PAXEL = register("golden_paxel", () -> new PaxelItem(ItemTier.GOLD, p -> p.group(ITEM_GROUP)));
+	public static final RegistryObject<Item> DIAMOND_PAXEL = register("diamond_paxel", () -> new PaxelItem(ItemTier.DIAMOND, p -> p.group(ITEM_GROUP)));
+	public static final RegistryObject<Item> FLINT_PAXEL = register("flint_paxel", () -> new FlintPaxelItem(p -> p.group(ITEM_GROUP)));
+	public static final RegistryObject<Item> EMERALD_PAXEL = register("emerald_paxel", () -> new EmeraldPaxelItem(p -> p.group(ITEM_GROUP)));
 
 	// Thermal Foundation tool material stats
 	// https://github.com/CoFH/ThermalFoundation/blob/master/src/main/java/cofh/thermalfoundation/init/TFEquipment.java
@@ -123,16 +126,20 @@ public class ModItems {
 		IForgeRegistry<Item> registry = event.getRegistry();
 
 		BLOCK_ENTRIES.stream().map(Supplier::get).forEach(registry::register);
-		ENTRIES.stream().map(Supplier::get).forEach(registry::register);
+		ENTRIES.forEach((reg, item) -> {
+			registry.register(item.get());
+			reg.updateReference(registry);
+		});
 	}
 
-	private static <T extends Item> RegistryObject<T> register(String name) {
+	private static RegistryObject<Item> register(String name) {
 		return register(name, () -> new BaseItem(p -> p.group(ITEM_GROUP)));
 	}
 
-	private static <T extends Item> RegistryObject<T> register(String name, Supplier<? extends Item> item) {
+	private static RegistryObject<Item> register(String name, Supplier<? extends Item> item) {
 		ResourceLocation loc = new ResourceLocation(PickleTweaks.MOD_ID, name);
-		ENTRIES.add(() -> item.get().setRegistryName(loc));
-		return RegistryObject.of(loc, ForgeRegistries.ITEMS);
+		RegistryObject<Item> reg = RegistryObject.of(loc, ForgeRegistries.ITEMS);
+		ENTRIES.put(reg, () -> item.get().setRegistryName(loc));
+		return reg;
 	}
 }
