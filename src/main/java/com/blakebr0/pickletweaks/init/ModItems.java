@@ -91,6 +91,7 @@ public final class ModItems {
 	public static final RegistryObject<Item> DIAMOND_PAXEL = register("diamond_paxel", () -> new PaxelItem(ItemTier.DIAMOND, p -> p.group(ITEM_GROUP)));
 	public static final RegistryObject<Item> FLINT_PAXEL = register("flint_paxel", () -> new FlintPaxelItem(p -> p.group(ITEM_GROUP)));
 	public static final RegistryObject<Item> EMERALD_PAXEL = register("emerald_paxel", () -> new EmeraldPaxelItem(p -> p.group(ITEM_GROUP)));
+	public static final RegistryObject<Item> NETHERITE_PAXEL = register("netherite_paxel", () -> new PaxelItem(ItemTier.NETHERITE, p -> p.group(ITEM_GROUP)));
 
 	// Thermal Foundation tool material stats
 	// https://github.com/CoFH/ThermalFoundation/blob/master/src/main/java/cofh/thermalfoundation/init/TFEquipment.java

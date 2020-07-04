@@ -62,6 +62,7 @@
   "item.pickletweaks.diamond_paxel": "Diamond Paxel",
   "item.pickletweaks.flint_paxel": "Flint Paxel",
   "item.pickletweaks.emerald_paxel": "Emerald Paxel",
+  "item.pickletweaks.netherite_paxel": "Netherite Paxel",
 
   "tooltip.pickletweaks.gives_buffs": "Gives Buffs",
   "tooltip.pickletweaks.buff_list_item": " - %s%s %s",
