@@ -11,16 +11,18 @@ import com.blakebr0.pickletweaks.feature.handler.ColorHandler;
 import com.blakebr0.pickletweaks.feature.handler.NightVisionGogglesHandler;
 import com.blakebr0.pickletweaks.feature.handler.ToggleMagnetInInventoryHandler;
 import com.blakebr0.pickletweaks.network.NetworkHandler;
-import com.blakebr0.pickletweaks.registry.ModBlocks;
-import com.blakebr0.pickletweaks.registry.ModItems;
-import com.blakebr0.pickletweaks.registry.ModRecipeSerializers;
+import com.blakebr0.pickletweaks.init.ModBlocks;
+import com.blakebr0.pickletweaks.init.ModItems;
+import com.blakebr0.pickletweaks.init.ModRecipeSerializers;
 import com.blakebr0.pickletweaks.tweaks.TweakToolBreaking;
 import com.blakebr0.pickletweaks.tweaks.TweakToolUselessifier;
 import net.minecraft.item.ItemGroup;
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DeferredWorkQueue;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
@@ -45,6 +47,10 @@ public class PickleTweaks {
 		bus.register(new ModBlocks());
 		bus.register(new ModItems());
 		bus.register(new ModRecipeSerializers());
+
+		DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
+			bus.register(new ColorHandler());
+		});
 
 		ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, ModConfigs.CLIENT);
 		ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, ModConfigs.COMMON);
@@ -71,7 +77,6 @@ public class PickleTweaks {
 		MinecraftForge.EVENT_BUS.register(new FeatureToolInfo());
 		MinecraftForge.EVENT_BUS.register(new FeatureBowInfo());
 
-		ColorHandler.onClientSetup();
 		ModelHandler.onClientSetup();
 	}
 }

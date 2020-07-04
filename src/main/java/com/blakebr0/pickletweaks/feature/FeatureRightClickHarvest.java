@@ -22,7 +22,7 @@ import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import java.lang.reflect.Method;
 import java.util.List;
 
-public class FeatureRightClickHarvest {
+public final class FeatureRightClickHarvest {
 	private static final Method GET_SEED;
 
 	static {
@@ -73,7 +73,7 @@ public class FeatureRightClickHarvest {
 		try {
 			return (Item) GET_SEED.invoke(block);
 		} catch (Exception e) {
-			PickleTweaks.LOGGER.error("Unable to load seed from crop {}", e.getLocalizedMessage());
+			PickleTweaks.LOGGER.error("Unable to get seed from crop {}", e.getLocalizedMessage());
 		}
 
 		return null;

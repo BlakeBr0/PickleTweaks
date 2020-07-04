@@ -1,4 +1,4 @@
-package com.blakebr0.pickletweaks.registry;
+package com.blakebr0.pickletweaks.init;
 
 import com.blakebr0.pickletweaks.PickleTweaks;
 import com.blakebr0.pickletweaks.feature.crafting.GridRepairRecipe;
@@ -8,7 +8,7 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.registries.IForgeRegistry;
 
-public class ModRecipeSerializers {
+public final class ModRecipeSerializers {
 	public static final IRecipeSerializer<GridRepairRecipe> CRAFTING_GRID_REPAIR = new GridRepairRecipe.Serializer();
 
 	@SubscribeEvent

@@ -1,6 +1,6 @@
 package com.blakebr0.pickletweaks.tweaks;
 
-import com.blakebr0.cucumber.lib.Localizable;
+import com.blakebr0.cucumber.util.Localizable;
 import com.blakebr0.pickletweaks.config.ModConfigs;
 import com.blakebr0.pickletweaks.lib.ModTooltips;
 import net.minecraft.entity.Entity;
@@ -28,7 +28,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import java.util.List;
 import java.util.ListIterator;
 
-public class TweakToolUselessifier {
+public final class TweakToolUselessifier {
 	@SubscribeEvent
 	public void onBreakSpeed(PlayerEvent.BreakSpeed event) {
         PlayerEntity player = event.getPlayer();
@@ -120,8 +120,8 @@ public class TweakToolUselessifier {
 			ListIterator<ITextComponent> lines = tooltip.listIterator();
 			while (lines.hasNext()) {
 				String s = Localizable.of("attribute.name.generic.attackDamage").buildString();
-				if (lines.next().getFormattedText().contains(s)) {
-					lines.set(new StringTextComponent(" 0 ").appendText(s).applyTextStyle(TextFormatting.DARK_GREEN));
+				if (lines.next().getString().contains(s)) {
+					lines.set(new StringTextComponent(" 0 ").func_240702_b_(s).func_240699_a_(TextFormatting.DARK_GREEN));
 				}
 			}
 

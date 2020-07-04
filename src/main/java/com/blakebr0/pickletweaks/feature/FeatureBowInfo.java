@@ -13,7 +13,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 import java.util.ListIterator;
 
-public class FeatureBowInfo {
+public final class FeatureBowInfo {
 	@SubscribeEvent
 	public void onTooltip(ItemTooltipEvent event) {
 		if (!ModConfigs.ENABLE_TOOL_INFO_TOOLTIP.get()) return;

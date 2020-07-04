@@ -1,23 +1,14 @@
 package com.blakebr0.pickletweaks.feature.handler;
 
 import com.blakebr0.cucumber.iface.IColored;
-import com.blakebr0.pickletweaks.registry.ModBlocks;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.color.BlockColors;
-import net.minecraft.client.renderer.color.ItemColors;
+import com.blakebr0.pickletweaks.init.ModBlocks;
+import net.minecraftforge.client.event.ColorHandlerEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 
-public class ColorHandler {
-    public static void onClientSetup() {
-        Minecraft minecraft = Minecraft.getInstance();
-        BlockColors blockColors = minecraft.getBlockColors();
-        ItemColors itemColors = minecraft.getItemColors();
-
-        onBlockColors(blockColors);
-        onItemColors(itemColors);
-    }
-
-    private static void onBlockColors(BlockColors colors) {
-        colors.register(new IColored.BlockColors(),
+public final class ColorHandler {
+    @SubscribeEvent
+    public void onBlockColors(ColorHandlerEvent.Block event) {
+        event.getBlockColors().register(new IColored.BlockColors(),
                 ModBlocks.WHITE_COBBLESTONE.get(),
                 ModBlocks.ORANGE_COBBLESTONE.get(),
                 ModBlocks.MAGENTA_COBBLESTONE.get(),
@@ -37,8 +28,9 @@ public class ColorHandler {
         );
     }
 
-    private static void onItemColors(ItemColors colors) {
-        colors.register(new IColored.ItemBlockColors(),
+    @SubscribeEvent
+    public void onItemColors(ColorHandlerEvent.Item event) {
+        event.getItemColors().register(new IColored.ItemBlockColors(),
                 ModBlocks.WHITE_COBBLESTONE.get(),
                 ModBlocks.ORANGE_COBBLESTONE.get(),
                 ModBlocks.MAGENTA_COBBLESTONE.get(),

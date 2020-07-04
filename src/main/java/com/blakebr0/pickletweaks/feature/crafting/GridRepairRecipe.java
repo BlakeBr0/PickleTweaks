@@ -2,7 +2,7 @@ package com.blakebr0.pickletweaks.feature.crafting;
 
 import com.blakebr0.cucumber.helper.StackHelper;
 import com.blakebr0.pickletweaks.config.ModConfigs;
-import com.blakebr0.pickletweaks.registry.ModRecipeSerializers;
+import com.blakebr0.pickletweaks.init.ModRecipeSerializers;
 import com.google.gson.JsonObject;
 import net.minecraft.inventory.CraftingInventory;
 import net.minecraft.item.ItemStack;

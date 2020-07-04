@@ -1,6 +1,6 @@
 package com.blakebr0.pickletweaks.lib;
 
-import com.blakebr0.cucumber.lib.Tooltip;
+import com.blakebr0.cucumber.util.Tooltip;
 
 public class ModTooltips {
     public static final Tooltip GIVES_BUFFS = new Tooltip("tooltip.pickletweaks.gives_buffs");

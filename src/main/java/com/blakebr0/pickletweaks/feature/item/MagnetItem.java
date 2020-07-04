@@ -13,7 +13,6 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.world.World;
 
@@ -62,16 +61,14 @@ public class MagnetItem extends BaseItem implements IEnableable {
 
 					if (!world.isRemote()) {
 						item.setNoPickupDelay();
-						BlockPos pos = entity.getPosition();
-						item.setPosition(pos.getX(), pos.getY(), pos.getZ());
+						item.setPosition(entity.getPosX(), entity.getPosY(), entity.getPosZ());
 					}
 				}
 
 				List<ExperienceOrbEntity> xporbs = world.getEntitiesWithinAABB(ExperienceOrbEntity.class, entity.getBoundingBox().grow(range));
 				for (ExperienceOrbEntity orb : xporbs) {
 					if (!world.isRemote()) {
-						BlockPos pos = entity.getPosition();
-						orb.setPosition(pos.getX(), pos.getY(), pos.getZ());
+						orb.setPosition(entity.getPosX(), entity.getPosY(), entity.getPosZ());
 					}
 				}
 			}

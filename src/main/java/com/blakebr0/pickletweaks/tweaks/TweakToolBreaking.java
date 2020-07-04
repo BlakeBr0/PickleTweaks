@@ -24,7 +24,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 import java.util.ListIterator;
 
-public class TweakToolBreaking {
+public final class TweakToolBreaking {
 	@SubscribeEvent(priority = EventPriority.HIGH)
 	public void onBreakingBlock(PlayerEvent.BreakSpeed event) {
 		if (!ModConfigs.ENABLE_TOOL_BREAKING_TWEAK.get())
@@ -87,7 +87,7 @@ public class TweakToolBreaking {
 
 		if (stack.isDamageable()) {
 			Item item = stack.getItem();
-			if (item instanceof ToolItem || item instanceof SwordItem || item instanceof HoeItem) {
+			if (item instanceof ToolItem || item instanceof SwordItem) {
 				if (isBroken(stack)) {
 					event.setCanceled(true);
 				}
@@ -140,7 +140,7 @@ public class TweakToolBreaking {
 
 		if (stack.isDamageable()) {
 			Item item = stack.getItem();
-			if (item instanceof ToolItem || item instanceof SwordItem || item instanceof HoeItem || item instanceof ShootableItem) {
+			if (item instanceof ToolItem || item instanceof SwordItem || item instanceof ShootableItem) {
 				if (isBroken(stack)) {
 					itr.next();
 					itr.add(ModTooltips.BROKEN.color(TextFormatting.RED).build());

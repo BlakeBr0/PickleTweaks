@@ -11,7 +11,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 import java.util.ListIterator;
 
-public class FeatureToolInfo {
+public final class FeatureToolInfo {
 	public static final String[] MINING_LEVEL_NAMES = new String[] { "Stone", "Iron", "Diamond", "Obsidian" };
 
 	@SubscribeEvent

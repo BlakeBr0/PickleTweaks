@@ -4,8 +4,8 @@ import com.blakebr0.pickletweaks.PickleTweaks;
 import com.blakebr0.pickletweaks.config.ModConfigs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tags.ITag;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.tags.Tag;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.registries.ForgeRegistries;
 
@@ -109,9 +109,9 @@ public class GridRepairOverride {
 					return entry;
 				} else if (entry.material instanceof String) {
 					String tagId = (String) entry.material;
-					Tag<Item> tag = ItemTags.getCollection().get(new ResourceLocation(tagId));
-					if (tag != null && tag.contains(mat.getItem())) {
-						Collection<Item> items = tag.getAllElements();
+					ITag<Item> tag = ItemTags.getCollection().get(new ResourceLocation(tagId));
+					if (tag != null && tag.func_230235_a_(mat.getItem())) {
+						Collection<Item> items = tag.func_230236_b_();
 						if (items.stream().anyMatch(i -> i == mat.getItem()))
 							return entry;
 					}

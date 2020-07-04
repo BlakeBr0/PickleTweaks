@@ -1,4 +1,4 @@
-package com.blakebr0.pickletweaks.registry;
+package com.blakebr0.pickletweaks.init;
 
 import com.blakebr0.cucumber.item.BaseItem;
 import com.blakebr0.pickletweaks.PickleTweaks;
@@ -27,7 +27,6 @@ import com.blakebr0.pickletweaks.feature.item.tool.FlintShearsItem;
 import com.blakebr0.pickletweaks.feature.item.tool.FlintShovelItem;
 import com.blakebr0.pickletweaks.feature.item.tool.FlintSwordItem;
 import com.blakebr0.pickletweaks.lib.ModArmorMaterial;
-import net.minecraft.block.Block;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemTier;
@@ -46,7 +45,7 @@ import java.util.function.Supplier;
 
 import static com.blakebr0.pickletweaks.PickleTweaks.ITEM_GROUP;
 
-public class ModItems {
+public final class ModItems {
 	public static final List<Supplier<Item>> BLOCK_ENTRIES = new ArrayList<>();
 	public static final Map<RegistryObject<Item>, Supplier<Item>> ENTRIES = new LinkedHashMap<>();
 

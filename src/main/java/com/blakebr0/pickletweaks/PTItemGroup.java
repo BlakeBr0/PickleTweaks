@@ -1,6 +1,6 @@
 package com.blakebr0.pickletweaks;
 
-import com.blakebr0.pickletweaks.registry.ModItems;
+import com.blakebr0.pickletweaks.init.ModItems;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 

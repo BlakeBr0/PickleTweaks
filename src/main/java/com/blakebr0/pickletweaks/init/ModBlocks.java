@@ -1,4 +1,4 @@
-package com.blakebr0.pickletweaks.registry;
+package com.blakebr0.pickletweaks.init;
 
 import com.blakebr0.cucumber.item.BaseBlockItem;
 import com.blakebr0.pickletweaks.PickleTweaks;
@@ -21,7 +21,7 @@ import java.util.function.Supplier;
 
 import static com.blakebr0.pickletweaks.PickleTweaks.ITEM_GROUP;
 
-public class ModBlocks {
+public final class ModBlocks {
 	public static final Map<RegistryObject<Block>, Supplier<Block>> ENTRIES = new LinkedHashMap<>();
 
 	public static final RegistryObject<Block> WHITE_COBBLESTONE = register("white_cobblestone", () -> new ColoredCobblestoneBlock(16383998));

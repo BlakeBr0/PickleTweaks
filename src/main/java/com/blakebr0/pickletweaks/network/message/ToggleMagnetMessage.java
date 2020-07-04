@@ -1,4 +1,4 @@
-package com.blakebr0.pickletweaks.network;
+package com.blakebr0.pickletweaks.network.message;
 
 import com.blakebr0.cucumber.helper.NBTHelper;
 import com.blakebr0.pickletweaks.feature.item.MagnetItem;
@@ -10,7 +10,7 @@ import net.minecraftforge.fml.network.NetworkEvent;
 import java.util.function.Supplier;
 
 public class ToggleMagnetMessage {
-    private int slot;
+    private final int slot;
 
     public ToggleMagnetMessage(int slot) {
         this.slot = slot;

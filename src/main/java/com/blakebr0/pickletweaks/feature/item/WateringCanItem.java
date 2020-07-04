@@ -76,14 +76,13 @@ public class WateringCanItem extends BaseItem implements IEnableable {
 		if (NBTHelper.getBoolean(stack, "Water"))
 			return new ActionResult<>(ActionResultType.FAIL, stack);
 
-		RayTraceResult trace = rayTrace(world, player, RayTraceContext.FluidMode.SOURCE_ONLY);
+		BlockRayTraceResult trace = rayTrace(world, player, RayTraceContext.FluidMode.SOURCE_ONLY);
 		if (trace.getType() != RayTraceResult.Type.BLOCK) {
 			return new ActionResult<>(ActionResultType.FAIL, stack);
 		}
 
-		BlockRayTraceResult blockTrace = (BlockRayTraceResult) trace;
-		BlockPos pos = blockTrace.getPos();
-		Direction direction = blockTrace.getFace();
+		BlockPos pos = trace.getPos();
+		Direction direction = trace.getFace();
 		if (world.isBlockModifiable(player, pos) && player.canPlayerEdit(pos.offset(direction), direction, stack)) {
 			BlockState state = world.getBlockState(pos);
 			if (state.getMaterial() == Material.WATER) {

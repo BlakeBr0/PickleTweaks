@@ -78,4 +78,10 @@ public enum ModArmorMaterial implements IArmorMaterial {
     public float getToughness() {
         return this.toughness;
     }
+
+    // TODO: 1.16: look into this further
+    @Override
+    public float func_230304_f_() {
+        return 0F;
+    }
 }

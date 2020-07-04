@@ -13,7 +13,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NightVisionGogglesHandler {
+public final class NightVisionGogglesHandler {
     public static final List<String> WEARERS = new ArrayList<>();
 
     public static String getPlayerKey(PlayerEntity player) {
