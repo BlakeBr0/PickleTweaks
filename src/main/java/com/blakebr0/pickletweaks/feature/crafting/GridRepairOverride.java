@@ -110,8 +110,8 @@ public class GridRepairOverride {
 				} else if (entry.material instanceof String) {
 					String tagId = (String) entry.material;
 					ITag<Item> tag = ItemTags.getCollection().get(new ResourceLocation(tagId));
-					if (tag != null && tag.func_230235_a_(mat.getItem())) {
-						Collection<Item> items = tag.func_230236_b_();
+					if (tag != null && tag.contains(mat.getItem())) {
+						Collection<Item> items = tag.getAllElements();
 						if (items.stream().anyMatch(i -> i == mat.getItem()))
 							return entry;
 					}

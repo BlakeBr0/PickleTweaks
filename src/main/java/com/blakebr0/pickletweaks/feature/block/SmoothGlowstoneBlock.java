@@ -11,7 +11,7 @@ public class SmoothGlowstoneBlock extends BaseBlock implements IEnableable {
         super(Material.GOURD, p -> p
                 .hardnessAndResistance(0.3F)
                 .sound(SoundType.GLASS)
-                .func_235838_a_(s -> 15)
+                .setLightLevel(s -> 15)
         );
     }
 
