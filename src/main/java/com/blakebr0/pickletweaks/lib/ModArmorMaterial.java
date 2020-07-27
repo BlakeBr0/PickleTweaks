@@ -12,16 +12,16 @@ import net.minecraftforge.common.Tags;
 import java.util.function.Supplier;
 
 public enum ModArmorMaterial implements IArmorMaterial {
-    NIGHT_VISION_GOGGLES("pickletweaks:night_vision_goggles", 15, new int[] { 2, 5, 6, 2 }, 9, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F, () -> {
+    NIGHT_VISION_GOGGLES("pickletweaks:night_vision_goggles", 15, new int[] { 2, 5, 6, 2 }, 9, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F, 0.0F, () -> {
         return Ingredient.fromTag(Tags.Items.INGOTS_IRON);
     }),
-    REINFORCED_NIGHT_VISION_GOGGLES("pickletweaks:reinforced_night_vision_goggles", 30, new int[] { 4, 5, 6, 2 }, 9, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.5F, () -> {
+    REINFORCED_NIGHT_VISION_GOGGLES("pickletweaks:reinforced_night_vision_goggles", 30, new int[] { 4, 5, 6, 2 }, 9, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.5F, 0.0F, () -> {
         return Ingredient.fromTag(Tags.Items.GEMS_DIAMOND);
     }),
-    FLINT("pickletweaks:flint", 15, new int[] { 1, 4, 5, 2 }, 12, SoundEvents.ITEM_ARMOR_EQUIP_CHAIN, 0.0F, () -> {
+    FLINT("pickletweaks:flint", 15, new int[] { 1, 4, 5, 2 }, 12, SoundEvents.ITEM_ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, () -> {
         return Ingredient.fromItems(Items.FLINT);
     }),
-    EMERALD("pickletweaks:emerald", 27, new int[] { 4, 6, 9, 4 }, 12, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0F, () -> {
+    EMERALD("pickletweaks:emerald", 27, new int[] { 4, 6, 9, 4 }, 12, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0F, 0.0F, () -> {
         return Ingredient.fromTag(Tags.Items.GEMS_EMERALD);
     });
 
@@ -32,15 +32,17 @@ public enum ModArmorMaterial implements IArmorMaterial {
     private final int enchantability;
     private final SoundEvent soundEvent;
     private final float toughness;
+    private final float knockbackResistance;
     private final LazyValue<Ingredient> repairMaterial;
 
-    ModArmorMaterial(String name, int maxDamageFactor, int[] damageReductionAmountArray, int enchantability, SoundEvent soundEvent, float toughness, Supplier<Ingredient> repairMaterial) {
+    ModArmorMaterial(String name, int maxDamageFactor, int[] damageReductionAmountArray, int enchantability, SoundEvent soundEvent, float toughness, float knockbackResistance, Supplier<Ingredient> repairMaterial) {
         this.name = name;
         this.maxDamageFactor = maxDamageFactor;
         this.damageReductionAmountArray = damageReductionAmountArray;
         this.enchantability = enchantability;
         this.soundEvent = soundEvent;
         this.toughness = toughness;
+        this.knockbackResistance = knockbackResistance;
         this.repairMaterial = new LazyValue<>(repairMaterial);
     }
 
@@ -79,9 +81,8 @@ public enum ModArmorMaterial implements IArmorMaterial {
         return this.toughness;
     }
 
-    // TODO: 1.16: look into this further
     @Override
-    public float func_230304_f_() {
-        return 0F;
+    public float getKnockbackResistance() {
+        return this.knockbackResistance;
     }
 }

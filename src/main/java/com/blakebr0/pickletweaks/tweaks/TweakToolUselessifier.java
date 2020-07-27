@@ -121,7 +121,7 @@ public final class TweakToolUselessifier {
 			while (lines.hasNext()) {
 				String s = Localizable.of("attribute.name.generic.attackDamage").buildString();
 				if (lines.next().getString().contains(s)) {
-					lines.set(new StringTextComponent(" 0 ").func_240702_b_(s).func_240699_a_(TextFormatting.DARK_GREEN));
+					lines.set(new StringTextComponent(" 0 ").appendString(s).mergeStyle(TextFormatting.DARK_GREEN));
 				}
 			}
 

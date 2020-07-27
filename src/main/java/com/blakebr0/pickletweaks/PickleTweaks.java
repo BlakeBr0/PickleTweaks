@@ -33,7 +33,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 @Mod(PickleTweaks.MOD_ID)
-public class PickleTweaks {
+public final class PickleTweaks {
 	public static final String MOD_ID = "pickletweaks";
 	public static final String NAME = "Pickle Tweaks";
 

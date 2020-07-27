@@ -61,7 +61,7 @@ public class EmeraldAppleItem extends BaseItem implements IEnableable {
 	}
 
 	@Override
-	public void addInformation(ItemStack stack, World world, List<ITextComponent> tooltip, ITooltipFlag flag){
+	public void addInformation(ItemStack stack, World world, List<ITextComponent> tooltip, ITooltipFlag flag) {
 		if (Screen.hasShiftDown()) {
 			tooltip.add(ModTooltips.GIVES_BUFFS.build());
 			tooltip.add(ModTooltips.BUFF_LIST_ITEM.args(Colors.WHITE, Effects.STRENGTH.getDisplayName(), "I").build());
