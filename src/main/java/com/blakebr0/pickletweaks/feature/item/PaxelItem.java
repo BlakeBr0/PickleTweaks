@@ -62,8 +62,9 @@ public class PaxelItem extends ToolItem implements IEnableable {
 	public float getDestroySpeed(ItemStack stack, BlockState state) {
 		Material material = state.getMaterial();
 		return material != Material.IRON && material != Material.ANVIL && material != Material.ROCK
-				&& material != Material.WOOD && material != Material.PLANTS && material != Material.TALL_PLANTS
-				&& material != Material.BAMBOO ? super.getDestroySpeed(stack, state) : this.efficiency;
+				&& material != Material.WOOD && material != Material.NETHER_WOOD && material != Material.PLANTS
+				&& material != Material.TALL_PLANTS && material != Material.BAMBOO ? super.getDestroySpeed(stack, state)
+				: this.efficiency;
 	}
 
 	@Override
