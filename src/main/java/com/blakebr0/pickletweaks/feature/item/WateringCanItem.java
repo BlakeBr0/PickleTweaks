@@ -31,6 +31,7 @@ import net.minecraft.util.math.RayTraceContext;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.IPlantable;
 
 import java.util.List;
@@ -148,7 +149,8 @@ public class WateringCanItem extends BaseItem implements IEnableable {
 					BlockState plantState = world.getBlockState(aoePos);
 					Block plantBlock = plantState.getBlock();
 					if (plantBlock instanceof IGrowable || plantBlock instanceof IPlantable || plantBlock == Blocks.MYCELIUM || plantBlock == Blocks.CHORUS_FLOWER) {
-						world.getPendingBlockTicks().scheduleTick(aoePos, plantBlock, 0);
+						plantState.randomTick((ServerWorld) world, aoePos, random);
+						world.notifyBlockUpdate(aoePos, plantState, plantState, 2);
 					}
 				});
 
