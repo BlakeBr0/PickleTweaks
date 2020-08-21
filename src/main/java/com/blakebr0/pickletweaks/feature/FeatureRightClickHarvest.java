@@ -5,16 +5,12 @@ import com.blakebr0.pickletweaks.config.ModConfigs;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.CropsBlock;
-import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Hand;
-import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
-import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickBlock;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
@@ -52,10 +48,6 @@ public final class FeatureRightClickHarvest {
 							break;
 						}
 					}
-
-					NonNullList<ItemStack> list =  NonNullList.from(ItemStack.EMPTY, drops.toArray(new ItemStack[0]));
-					int fortune = EnchantmentHelper.getEnchantmentLevel(Enchantments.FORTUNE, event.getItemStack());
-					ForgeEventFactory.fireBlockHarvesting(list, world, pos, state, fortune, 1.0F, false, event.getPlayer());
 
 					for (ItemStack drop : drops) {
 						if (!drop.isEmpty()) {
