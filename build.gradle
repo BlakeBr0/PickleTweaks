@@ -11,7 +11,7 @@ buildscript {
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'idea'
 
-version = '5.1.0'
+version = '5.1.1'
 group = 'com.blakebr0.pickletweaks'
 archivesBaseName = 'PickleTweaks-1.16.2'
 
