@@ -52,6 +52,7 @@ public final class ModConfigs {
 
     public static final ForgeConfigSpec.BooleanValue GRID_REPAIR_ENABLED;
     public static final ForgeConfigSpec.IntValue GRID_REPAIR_COST;
+    public static final ForgeConfigSpec.BooleanValue GRID_REPAIR_STRIP_ENCHANTMENTS;
     public static final ForgeConfigSpec.BooleanValue GRID_REPAIR_DISABLE_DEFAULTS;
     public static final ForgeConfigSpec.BooleanValue GRID_REPAIR_OVERRIDE_MODE;
     public static final ForgeConfigSpec.BooleanValue GRID_REPAIR_CHEAP_SHOVEL;
@@ -137,6 +138,10 @@ public final class ModConfigs {
                 .comment("How much material should be required to fully repair a tool.")
                 .translation("configGui.pickletweaks.grid_repair_cost")
                 .defineInRange("cost", 4, 1, 8);
+        GRID_REPAIR_STRIP_ENCHANTMENTS = common
+                .comment("Crafting grid repair removes all non-curse enchantments.")
+                .translation("configGui.pickletweaks.strip_enchantments")
+                .define("stripEnchantments", false);
         GRID_REPAIR_DISABLE_DEFAULTS = common
                 .comment("Should default repair materials be disabled? Doing this makes it so ONLY the custom materials work.")
                 .translation("configGui.pickletweaks.grid_repair_disable_defaults")
