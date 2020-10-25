@@ -3,7 +3,6 @@ package com.blakebr0.pickletweaks.feature.crafting;
 import com.blakebr0.cucumber.helper.StackHelper;
 import com.blakebr0.pickletweaks.config.ModConfigs;
 import com.blakebr0.pickletweaks.init.ModRecipeSerializers;
-import com.google.common.collect.Maps;
 import com.google.gson.JsonObject;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -15,7 +14,6 @@ import net.minecraft.item.crafting.ShapelessRecipe;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 import net.minecraftforge.registries.ForgeRegistryEntry;
 
@@ -62,7 +60,7 @@ public class GridRepairRecipe extends ShapelessRecipe {
 			return ItemStack.EMPTY;
 		}
 
-		if (tool.getItem().hasContainerItem(tool)) {
+		if (tool.hasContainerItem()) {
 			return ItemStack.EMPTY;
 		}
 
@@ -101,10 +99,14 @@ public class GridRepairRecipe extends ShapelessRecipe {
 
 		tool.setDamage(tool.getDamage() - (int) (damage * matCount));
 
-		/** Strip enchantments. Vanilla implementation here: {@link net.minecraft.item.crafting.RepairItemRecipe#getCraftingResult(CraftingInventory inv)}. */
-		if(ModConfigs.GRID_REPAIR_STRIP_ENCHANTMENTS.get()) {
+		// Strip enchantments. Vanilla implementation here: {@link net.minecraft.item.crafting.RepairItemRecipe#getCraftingResult(CraftingInventory inv)}.
+		if (ModConfigs.GRID_REPAIR_STRIP_ENCHANTMENTS.get()) {
 			Map<Enchantment, Integer> enchantments = EnchantmentHelper.getEnchantments(tool);
-			enchantments = enchantments.entrySet().stream().filter(x -> x.getKey().isCurse()).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+			enchantments = enchantments.entrySet()
+					.stream()
+					.filter(x -> x.getKey().isCurse())
+					.collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+
 			EnchantmentHelper.setEnchantments(enchantments, tool);
 		}
 
@@ -120,7 +122,7 @@ public class GridRepairRecipe extends ShapelessRecipe {
 	public ItemStack getRecipeOutput() {
 		return ItemStack.EMPTY;
 	}
-	
+
 	@Override
 	public boolean isDynamic() {
 		return true;
@@ -148,3 +150,4 @@ public class GridRepairRecipe extends ShapelessRecipe {
 		}
 	}
 }
+

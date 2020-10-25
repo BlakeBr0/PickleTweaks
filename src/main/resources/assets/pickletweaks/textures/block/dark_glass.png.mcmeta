@@ -3,6 +3,6 @@
     "ctm_version": 1,
     "type": "ctm",
     "layer": "TRANSLUCENT",
-    "textures": [ "pickletweaks:blocks/dark_glass_ctm" ]
+    "textures": [ "pickletweaks:block/dark_glass_ctm" ]
   }
 }
