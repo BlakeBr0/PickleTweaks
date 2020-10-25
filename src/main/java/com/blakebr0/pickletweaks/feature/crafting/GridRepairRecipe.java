@@ -3,7 +3,10 @@ package com.blakebr0.pickletweaks.feature.crafting;
 import com.blakebr0.cucumber.helper.StackHelper;
 import com.blakebr0.pickletweaks.config.ModConfigs;
 import com.blakebr0.pickletweaks.init.ModRecipeSerializers;
+import com.google.common.collect.Maps;
 import com.google.gson.JsonObject;
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.inventory.CraftingInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ShovelItem;
@@ -12,8 +15,12 @@ import net.minecraft.item.crafting.ShapelessRecipe;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 import net.minecraftforge.registries.ForgeRegistryEntry;
+
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class GridRepairRecipe extends ShapelessRecipe {
 	public GridRepairRecipe(ResourceLocation id) {
@@ -93,6 +100,13 @@ public class GridRepairRecipe extends ShapelessRecipe {
 		}
 
 		tool.setDamage(tool.getDamage() - (int) (damage * matCount));
+
+		/** Strip enchantments. Vanilla implementation here: {@link net.minecraft.item.crafting.RepairItemRecipe#getCraftingResult(CraftingInventory inv)}. */
+		if(ModConfigs.GRID_REPAIR_STRIP_ENCHANTMENTS.get()) {
+			Map<Enchantment, Integer> enchantments = EnchantmentHelper.getEnchantments(tool);
+			enchantments = enchantments.entrySet().stream().filter(x -> x.getKey().isCurse()).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+			EnchantmentHelper.setEnchantments(enchantments, tool);
+		}
 
 		return tool;
 	}
