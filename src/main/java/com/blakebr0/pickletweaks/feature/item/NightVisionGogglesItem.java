@@ -15,6 +15,8 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import java.util.function.Function;
 
 public class NightVisionGogglesItem extends BaseArmorItem implements IEnableable {
+	private BipedModel<?> model;
+
 	public NightVisionGogglesItem(IArmorMaterial material, Function<Properties, Properties> properties) {
 		super(material, EquipmentSlotType.HEAD, properties);
 	}
@@ -22,7 +24,9 @@ public class NightVisionGogglesItem extends BaseArmorItem implements IEnableable
 	@OnlyIn(Dist.CLIENT)
 	@Override
 	public BipedModel getArmorModel(LivingEntity entity, ItemStack stack, EquipmentSlotType slot, BipedModel _default) {
-		return new NightVisionGogglesModel();
+		if (this.model == null)
+			this.model = new NightVisionGogglesModel();
+		return this.model;
 	}
 
 	@Override
