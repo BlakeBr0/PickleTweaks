@@ -73,6 +73,15 @@
   "item.pickletweaks.emerald_sickle": "Emerald Sickle",
   "item.pickletweaks.netherite_sickle": "Netherite Sickle",
 
+  "item.pickletweaks.wooden_scythe": "Wooden Scythe",
+  "item.pickletweaks.stone_scythe": "Stone Scythe",
+  "item.pickletweaks.iron_scythe": "Iron Scythe",
+  "item.pickletweaks.golden_scythe": "Golden Scythe",
+  "item.pickletweaks.diamond_scythe": "Diamond Scythe",
+  "item.pickletweaks.flint_scythe": "Flint Scythe",
+  "item.pickletweaks.emerald_scythe": "Emerald Scythe",
+  "item.pickletweaks.netherite_scythe": "Netherite Scythe",
+
   "tooltip.pickletweaks.gives_buffs": "Gives Buffs",
   "tooltip.pickletweaks.buff_list_item": " - %s%s %s",
   "tooltip.pickletweaks.empty": "Empty",

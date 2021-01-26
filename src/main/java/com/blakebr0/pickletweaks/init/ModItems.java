@@ -12,12 +12,14 @@ import com.blakebr0.pickletweaks.feature.item.MagnetItem;
 import com.blakebr0.pickletweaks.feature.item.MeshItem;
 import com.blakebr0.pickletweaks.feature.item.NightVisionGogglesItem;
 import com.blakebr0.pickletweaks.feature.item.PaxelItem;
+import com.blakebr0.pickletweaks.feature.item.ScytheItem;
 import com.blakebr0.pickletweaks.feature.item.SickleItem;
 import com.blakebr0.pickletweaks.feature.item.WateringCanItem;
 import com.blakebr0.pickletweaks.feature.item.tool.EmeraldAxeItem;
 import com.blakebr0.pickletweaks.feature.item.tool.EmeraldHoeItem;
 import com.blakebr0.pickletweaks.feature.item.tool.EmeraldPaxelItem;
 import com.blakebr0.pickletweaks.feature.item.tool.EmeraldPickaxeItem;
+import com.blakebr0.pickletweaks.feature.item.tool.EmeraldScytheItem;
 import com.blakebr0.pickletweaks.feature.item.tool.EmeraldShovelItem;
 import com.blakebr0.pickletweaks.feature.item.tool.EmeraldSickleItem;
 import com.blakebr0.pickletweaks.feature.item.tool.EmeraldSwordItem;
@@ -25,6 +27,7 @@ import com.blakebr0.pickletweaks.feature.item.tool.FlintAxeItem;
 import com.blakebr0.pickletweaks.feature.item.tool.FlintHoeItem;
 import com.blakebr0.pickletweaks.feature.item.tool.FlintPaxelItem;
 import com.blakebr0.pickletweaks.feature.item.tool.FlintPickaxeItem;
+import com.blakebr0.pickletweaks.feature.item.tool.FlintScytheItem;
 import com.blakebr0.pickletweaks.feature.item.tool.FlintShearsItem;
 import com.blakebr0.pickletweaks.feature.item.tool.FlintShovelItem;
 import com.blakebr0.pickletweaks.feature.item.tool.FlintSickleItem;
@@ -104,6 +107,15 @@ public final class ModItems {
 	public static final RegistryObject<Item> FLINT_SICKLE = register("flint_sickle", () -> new FlintSickleItem(p -> p.group(ITEM_GROUP)));
 	public static final RegistryObject<Item> EMERALD_SICKLE = register("emerald_sickle", () ->  new EmeraldSickleItem(p -> p.group(ITEM_GROUP)));
 	public static final RegistryObject<Item> NETHERITE_SICKLE = register("netherite_sickle", () -> new SickleItem(ItemTier.NETHERITE, 3, p -> p.group(ITEM_GROUP)));
+
+	public static final RegistryObject<Item> WOODEN_SCYTHE = register("wooden_scythe", () -> new ScytheItem(ItemTier.WOOD, 1, p -> p.group(ITEM_GROUP)));
+	public static final RegistryObject<Item> STONE_SCYTHE = register("stone_scythe", () -> new ScytheItem(ItemTier.STONE, 1, p -> p.group(ITEM_GROUP)));
+	public static final RegistryObject<Item> IRON_SCYTHE = register("iron_scythe", () -> new ScytheItem(ItemTier.IRON, 2, p -> p.group(ITEM_GROUP)));
+	public static final RegistryObject<Item> GOLDEN_SCYTHE = register("golden_scythe", () -> new ScytheItem(ItemTier.GOLD, 2, p -> p.group(ITEM_GROUP)));
+	public static final RegistryObject<Item> DIAMOND_SCYTHE = register("diamond_scythe", () -> new ScytheItem(ItemTier.DIAMOND, 3, p -> p.group(ITEM_GROUP)));
+	public static final RegistryObject<Item> FLINT_SCYTHE = register("flint_scythe", () -> new FlintScytheItem(p -> p.group(ITEM_GROUP)));
+	public static final RegistryObject<Item> EMERALD_SCYTHE = register("emerald_scythe", () -> new EmeraldScytheItem(p -> p.group(ITEM_GROUP)));
+	public static final RegistryObject<Item> NETHERITE_SCYTHE = register("netherite_scythe", () -> new ScytheItem(ItemTier.NETHERITE, 3, p -> p.group(ITEM_GROUP)));
 
 	// Thermal Foundation tool material stats
 	// https://github.com/CoFH/ThermalFoundation/blob/master/src/main/java/cofh/thermalfoundation/init/TFEquipment.java

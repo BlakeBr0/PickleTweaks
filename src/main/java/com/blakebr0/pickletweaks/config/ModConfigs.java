@@ -50,6 +50,7 @@ public final class ModConfigs {
     public static final ForgeConfigSpec.BooleanValue ENABLE_EMERALD_GEAR;
     public static final ForgeConfigSpec.BooleanValue ENABLE_RIGHT_CLICK_HARVEST;
     public static final ForgeConfigSpec.BooleanValue ENABLE_SICKLES;
+    public static final ForgeConfigSpec.BooleanValue ENABLE_SCYTHES;
 
     public static final ForgeConfigSpec.BooleanValue GRID_REPAIR_ENABLED;
     public static final ForgeConfigSpec.IntValue GRID_REPAIR_COST;
@@ -132,6 +133,10 @@ public final class ModConfigs {
                 .comment("Enable Sickles?")
                 .translation("configGui.pickletweaks.enable_sickles")
                 .define("sickles", true);
+        ENABLE_SCYTHES = common
+                .comment("Enable Scythes?")
+                .translation("configGui.pickletweaks.enable_scythes")
+                .define("scythes", true);
         common.pop();
 
         common.comment("Crafting grid tool repair configuration options.").push("Grid Repair");
