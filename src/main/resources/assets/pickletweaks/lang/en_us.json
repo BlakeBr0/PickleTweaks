@@ -64,6 +64,15 @@
   "item.pickletweaks.emerald_paxel": "Emerald Paxel",
   "item.pickletweaks.netherite_paxel": "Netherite Paxel",
 
+  "item.pickletweaks.wooden_sickle": "Wooden Sickle",
+  "item.pickletweaks.stone_sickle": "Stone Sickle",
+  "item.pickletweaks.iron_sickle": "Iron Sickle",
+  "item.pickletweaks.golden_sickle": "Golden Sickle",
+  "item.pickletweaks.diamond_sickle": "Diamond Sickle",
+  "item.pickletweaks.flint_sickle": "Flint Sickle",
+  "item.pickletweaks.emerald_sickle": "Emerald Sickle",
+  "item.pickletweaks.netherite_sickle": "Netherite Sickle",
+
   "tooltip.pickletweaks.gives_buffs": "Gives Buffs",
   "tooltip.pickletweaks.buff_list_item": " - %s%s %s",
   "tooltip.pickletweaks.empty": "Empty",
