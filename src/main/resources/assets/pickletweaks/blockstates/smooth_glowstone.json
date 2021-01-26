@@ -1,5 +1,7 @@
 {
-    "variants": {
-        "": { "model": "pickletweaks:block/smooth_glowstone" }
+  "variants": {
+    "": {
+      "model": "pickletweaks:block/smooth_glowstone"
     }
+  }
 }

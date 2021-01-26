@@ -1,27 +1,27 @@
 {
-	"type": "minecraft:crafting_shaped",
-	"conditions": [
-		{
-			"type": "cucumber:enabled",
-			"item": "pickletweaks:reinforced_night_vision_goggles"
-		}
-	],
-	"pattern": [
-		"IGI",
-		"S S"
-	],
-	"key": {
-		"I": {
-			"tag": "forge:gems/diamond"
-		},
-		"G": {
-			"item": "minecraft:green_stained_glass_pane"
-		},
-		"S": {
-			"item": "minecraft:string"
-		}
-	},
-	"result": {
-		"item": "pickletweaks:reinforced_night_vision_goggles"
-	}
+  "type": "minecraft:crafting_shaped",
+  "conditions": [
+    {
+      "type": "cucumber:enabled",
+      "item": "pickletweaks:reinforced_night_vision_goggles"
+    }
+  ],
+  "pattern": [
+    "IGI",
+    "S S"
+  ],
+  "key": {
+    "I": {
+      "tag": "forge:gems/diamond"
+    },
+    "G": {
+      "item": "minecraft:green_stained_glass_pane"
+    },
+    "S": {
+      "item": "minecraft:string"
+    }
+  },
+  "result": {
+    "item": "pickletweaks:reinforced_night_vision_goggles"
+  }
 }

@@ -1,25 +1,25 @@
 {
-	"type": "minecraft:crafting_shaped",
-	"conditions": [
-		{
-			"type": "cucumber:enabled",
-			"item": "pickletweaks:flint_axe"
-		}
-	],
-	"pattern": [
-		"FF",
-		"FS",
-		" S"
-	],
-	"key": {
-		"F": {
-			"item": "minecraft:flint"
-		},
-		"S": {
-			"tag": "forge:rods/wooden"
-		}
-	},
-	"result": {
-		"item": "pickletweaks:flint_axe"
-	}
+  "type": "minecraft:crafting_shaped",
+  "conditions": [
+    {
+      "type": "cucumber:enabled",
+      "item": "pickletweaks:flint_axe"
+    }
+  ],
+  "pattern": [
+    "FF",
+    "FS",
+    " S"
+  ],
+  "key": {
+    "F": {
+      "item": "minecraft:flint"
+    },
+    "S": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "result": {
+    "item": "pickletweaks:flint_axe"
+  }
 }

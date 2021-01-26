@@ -1,21 +1,21 @@
 {
-	"type": "minecraft:crafting_shaped",
-	"conditions": [
-		{
-			"type": "cucumber:enabled",
-			"item": "pickletweaks:flint_boots"
-		}
-	],
-	"pattern": [
-		"F F",
-		"F F"
-	],
-	"key": {
-		"F": {
-			"item": "minecraft:flint"
-		}
-	},
-	"result": {
-		"item": "pickletweaks:flint_boots"
-	}
+  "type": "minecraft:crafting_shaped",
+  "conditions": [
+    {
+      "type": "cucumber:enabled",
+      "item": "pickletweaks:flint_boots"
+    }
+  ],
+  "pattern": [
+    "F F",
+    "F F"
+  ],
+  "key": {
+    "F": {
+      "item": "minecraft:flint"
+    }
+  },
+  "result": {
+    "item": "pickletweaks:flint_boots"
+  }
 }

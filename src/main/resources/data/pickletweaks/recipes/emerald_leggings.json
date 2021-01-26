@@ -1,22 +1,22 @@
 {
-	"type": "minecraft:crafting_shaped",
-	"conditions": [
-		{
-			"type": "cucumber:enabled",
-			"item": "pickletweaks:emerald_leggings"
-		}
-	],
-	"pattern": [
-		"FFF",
-		"F F",
-		"F F"
-	],
-	"key": {
-		"F": {
-			"tag": "forge:gems/emerald"
-		}
-	},
-	"result": {
-		"item": "pickletweaks:emerald_leggings"
-	}
+  "type": "minecraft:crafting_shaped",
+  "conditions": [
+    {
+      "type": "cucumber:enabled",
+      "item": "pickletweaks:emerald_leggings"
+    }
+  ],
+  "pattern": [
+    "FFF",
+    "F F",
+    "F F"
+  ],
+  "key": {
+    "F": {
+      "tag": "forge:gems/emerald"
+    }
+  },
+  "result": {
+    "item": "pickletweaks:emerald_leggings"
+  }
 }

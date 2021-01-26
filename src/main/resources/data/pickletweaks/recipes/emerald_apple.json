@@ -1,25 +1,25 @@
 {
-	"type": "minecraft:crafting_shaped",
-	"conditions": [
-		{
-			"type": "cucumber:enabled",
-			"item": "pickletweaks:emerald_apple"
-		}
-	],
-	"pattern": [
-		"EEE",
-		"EAE",
-		"EEE"
-	],
-	"key": {
-		"A": {
-			"item": "minecraft:apple"
-		},
-		"E": {
-			"tag": "forge:gems/emerald"
-		}
-	},
-	"result": {
-		"item": "pickletweaks:emerald_apple"
-	}
+  "type": "minecraft:crafting_shaped",
+  "conditions": [
+    {
+      "type": "cucumber:enabled",
+      "item": "pickletweaks:emerald_apple"
+    }
+  ],
+  "pattern": [
+    "EEE",
+    "EAE",
+    "EEE"
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:apple"
+    },
+    "E": {
+      "tag": "forge:gems/emerald"
+    }
+  },
+  "result": {
+    "item": "pickletweaks:emerald_apple"
+  }
 }

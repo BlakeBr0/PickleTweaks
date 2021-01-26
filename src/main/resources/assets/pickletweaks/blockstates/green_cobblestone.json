@@ -1,5 +1,7 @@
 {
-    "variants": {
-        "": { "model": "pickletweaks:block/colored_cobblestone" }
+  "variants": {
+    "": {
+      "model": "pickletweaks:block/colored_cobblestone"
     }
+  }
 }

@@ -1,6 +1,6 @@
 {
-	"parent": "block/cube_all",
-	"textures": {
-		"all": "pickletweaks:block/dark_glass"
-	}
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "pickletweaks:block/dark_glass"
+  }
 }
