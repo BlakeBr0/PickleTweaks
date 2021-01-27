@@ -11,7 +11,6 @@ import mcp.mobius.waila.api.TooltipPosition;
 import mcp.mobius.waila.api.WailaPlugin;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.util.text.ITextComponent;
 
 import java.util.List;
@@ -25,20 +24,17 @@ public class FeatureWailaPlugin implements IWailaPlugin {
                 @Override
                 public void appendBody(List<ITextComponent> tooltip, IDataAccessor accessor, IPluginConfig config) {
                     BlockState state = accessor.getBlockState();
-                    Block block = accessor.getBlock();
-                    if (block != Blocks.AIR) {
-                        if (block.getHarvestLevel(state) > -1) {
-                            String name = getHarvestLevelName(block, state);
-                            tooltip.add(ModTooltips.HARVEST_LEVEL.args(name).build());
-                        }
+                    if (state.getRequiresTool() && state.getHarvestLevel() > -1) {
+                        String name = getHarvestLevelName(state);
+                        tooltip.add(ModTooltips.HARVEST_LEVEL.args(name).build());
                     }
                 }
             }, TooltipPosition.BODY, Block.class);
         }
 	}
 
-    public String getHarvestLevelName(Block block, BlockState state) {
-        int level = block.getHarvestLevel(state);
+    private static String getHarvestLevelName(BlockState state) {
+        int level = state.getHarvestLevel();
         if (level < FeatureToolInfo.MINING_LEVEL_NAMES.length)
             return FeatureToolInfo.MINING_LEVEL_NAMES[level];
 
