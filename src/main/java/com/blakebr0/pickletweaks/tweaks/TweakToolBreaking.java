@@ -5,6 +5,7 @@ import com.blakebr0.pickletweaks.lib.ModTooltips;
 import net.minecraft.item.HoeItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.ShearsItem;
 import net.minecraft.item.ShootableItem;
 import net.minecraft.item.ShovelItem;
 import net.minecraft.item.SwordItem;
@@ -35,7 +36,7 @@ public final class TweakToolBreaking {
 			return;
 
 		Item item = stack.getItem();
-		if (stack.isDamageable() && (item instanceof ToolItem || item instanceof SwordItem)) {
+		if (stack.isDamageable() && isValidTool(item)) {
 			if (isBroken(stack)) {
 				event.setCanceled(true);
 			}
@@ -52,7 +53,7 @@ public final class TweakToolBreaking {
 			return;
 
 		Item item = stack.getItem();
-		if (stack.isDamageable() && (item instanceof ToolItem || item instanceof SwordItem)) {
+		if (stack.isDamageable() && isValidTool(item)) {
 			if (isBroken(stack)) {
 				event.setCanceled(true);
 			}
@@ -87,10 +88,8 @@ public final class TweakToolBreaking {
 
 		if (stack.isDamageable()) {
 			Item item = stack.getItem();
-			if (item instanceof ToolItem || item instanceof SwordItem) {
-				if (isBroken(stack)) {
-					event.setCanceled(true);
-				}
+			if (isValidTool(item) && isBroken(stack)) {
+				event.setCanceled(true);
 			}
 		}
 	}
@@ -105,7 +104,7 @@ public final class TweakToolBreaking {
 			return;
 
 		Item item = stack.getItem();
-		if (stack.isDamageable() && item instanceof ShootableItem) {
+		if (stack.isDamageable() && (item instanceof ShootableItem || item instanceof ShearsItem)) {
 			if (isBroken(stack)) {
 				event.setCanceled(true);
 			}
@@ -129,24 +128,45 @@ public final class TweakToolBreaking {
 		}
 	}
 
+	@SubscribeEvent(priority = EventPriority.HIGH)
+	public void onEntityInteract(PlayerInteractEvent.EntityInteract event) {
+		if (!ModConfigs.ENABLE_TOOL_BREAKING_TWEAK.get())
+			return;
+
+		ItemStack stack = event.getItemStack();
+		if (stack.isEmpty())
+			return;
+
+		Item item = stack.getItem();
+		if (stack.isDamageable() && item instanceof ShearsItem) {
+			if (isBroken(stack)) {
+				event.setCanceled(true);
+			}
+		}
+	}
+
 	@OnlyIn(Dist.CLIENT)
 	@SubscribeEvent(priority = EventPriority.LOW)
 	public void onItemTooltip(ItemTooltipEvent event) {
 		if (!ModConfigs.ENABLE_TOOL_BREAKING_TWEAK.get())
 			return;
 
-		ListIterator<ITextComponent> itr = event.getToolTip().listIterator();
+		ListIterator<ITextComponent> tooltip = event.getToolTip().listIterator();
 		ItemStack stack = event.getItemStack();
 
 		if (stack.isDamageable()) {
 			Item item = stack.getItem();
-			if (item instanceof ToolItem || item instanceof SwordItem || item instanceof ShootableItem) {
+			if (isValidTool(item) || item instanceof ShootableItem) {
 				if (isBroken(stack)) {
-					itr.next();
-					itr.add(ModTooltips.BROKEN.color(TextFormatting.RED).build());
+					tooltip.next();
+					tooltip.add(ModTooltips.BROKEN.color(TextFormatting.RED).build());
 				}
 			}
 		}
+	}
+
+	public static boolean isValidTool(Item item) {
+		return item instanceof ToolItem || item instanceof SwordItem || item instanceof ShearsItem;
 	}
 
 	public static boolean isBroken(ItemStack stack) {
