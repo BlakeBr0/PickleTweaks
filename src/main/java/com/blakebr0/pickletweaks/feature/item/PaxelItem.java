@@ -4,6 +4,7 @@ import com.blakebr0.cucumber.iface.IEnableable;
 import com.blakebr0.pickletweaks.config.ModConfigs;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -25,9 +26,11 @@ import net.minecraftforge.common.ToolType;
 
 import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 import java.util.function.Function;
 
 public class PaxelItem extends ToolItem implements IEnableable {
+	private static final Set<Material> EFFECTIVE_ON_MATERIALS = Sets.newHashSet(Material.WOOD, Material.NETHER_WOOD, Material.PLANTS, Material.TALL_PLANTS, Material.BAMBOO, Material.GOURD);
     private static final Map<Block, BlockState> PATH_STUFF = Maps.newHashMap(ImmutableMap.of(Blocks.GRASS_BLOCK, Blocks.GRASS_PATH.getDefaultState()));
 
     public PaxelItem(IItemTier tier, Function<Properties, Properties> properties) {
@@ -48,22 +51,21 @@ public class PaxelItem extends ToolItem implements IEnableable {
 
 	@Override
 	public boolean canHarvestBlock(BlockState state) {
-		Block block = state.getBlock();
 		int i = this.getTier().getHarvestLevel();
 		if (state.getHarvestTool() == ToolType.PICKAXE)
 			return i >= state.getHarvestLevel();
 
 		Material material = state.getMaterial();
 		return material == Material.ROCK || material == Material.IRON || material == Material.ANVIL
-				|| block == Blocks.SNOW || block == Blocks.SNOW_BLOCK;
+				|| state.isIn(Blocks.SNOW) || state.isIn(Blocks.SNOW_BLOCK);
 	}
 
 	@Override
 	public float getDestroySpeed(ItemStack stack, BlockState state) {
 		Material material = state.getMaterial();
 		return material != Material.IRON && material != Material.ANVIL && material != Material.ROCK
-				&& material != Material.WOOD && material != Material.NETHER_WOOD && material != Material.PLANTS
-				&& material != Material.TALL_PLANTS && material != Material.BAMBOO ? super.getDestroySpeed(stack, state)
+				&& !EFFECTIVE_ON_MATERIALS.contains(material)
+				? super.getDestroySpeed(stack, state)
 				: this.efficiency;
 	}
 
