@@ -11,7 +11,12 @@ public class ColoredCobblestoneBlock extends BaseBlock implements IEnableable, I
 	private final int color;
 
 	public ColoredCobblestoneBlock(int color) {
-		super(Material.ROCK, SoundType.STONE, 2.0F, 10.0F);
+		super(Material.ROCK, p -> p
+				.hardnessAndResistance(2.0F, 10.0F)
+				.sound(SoundType.STONE)
+				.setRequiresTool()
+		);
+
 		this.color = color;
 	}
 
