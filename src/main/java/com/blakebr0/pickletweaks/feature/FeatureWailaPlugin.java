@@ -23,18 +23,18 @@ public class FeatureWailaPlugin implements IWailaPlugin {
             registrar.registerComponentProvider(new IComponentProvider() {
                 @Override
                 public void appendBody(List<ITextComponent> tooltip, IDataAccessor accessor, IPluginConfig config) {
-                    BlockState state = accessor.getBlockState();
-                    if (state.getRequiresTool() && state.getHarvestLevel() > -1) {
-                        String name = getHarvestLevelName(state);
-                        tooltip.add(ModTooltips.HARVEST_LEVEL.args(name).build());
-                    }
+                BlockState state = accessor.getBlockState();
+                if (state.getRequiresTool()) {
+                    String name = getHarvestLevelName(state);
+                    tooltip.add(ModTooltips.HARVEST_LEVEL.args(name).build());
+                }
                 }
             }, TooltipPosition.BODY, Block.class);
         }
 	}
 
     private static String getHarvestLevelName(BlockState state) {
-        int level = state.getHarvestLevel();
+        int level = Math.max(0, state.getHarvestLevel());
         if (level < FeatureToolInfo.MINING_LEVEL_NAMES.length)
             return FeatureToolInfo.MINING_LEVEL_NAMES[level];
 
