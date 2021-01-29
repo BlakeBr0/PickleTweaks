@@ -1,5 +1,6 @@
 package com.blakebr0.pickletweaks.tweaks;
 
+import com.blakebr0.cucumber.event.ScytheHarvestCropEvent;
 import com.blakebr0.pickletweaks.config.ModConfigs;
 import com.blakebr0.pickletweaks.lib.ModTooltips;
 import net.minecraft.item.HoeItem;
@@ -142,6 +143,17 @@ public final class TweakToolBreaking {
 			if (isBroken(stack)) {
 				event.setCanceled(true);
 			}
+		}
+	}
+
+	@SubscribeEvent(priority = EventPriority.HIGH)
+	public void onScytheHarvestCrop(ScytheHarvestCropEvent event) {
+		ItemStack stack = event.getItemStack();
+		if (stack.isEmpty())
+			return;
+
+		if (stack.isDamageable() && isBroken(stack)) {
+			event.setCanceled(true);
 		}
 	}
 

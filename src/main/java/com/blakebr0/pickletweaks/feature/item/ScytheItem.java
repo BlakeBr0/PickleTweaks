@@ -9,7 +9,7 @@ import java.util.function.Function;
 
 public class ScytheItem extends BaseScytheItem implements IEnableable {
     public ScytheItem(IItemTier tier, int range, Function<Properties, Properties> properties) {
-        super(tier, 4.0F, -2.8F, range, properties);
+        super(tier, 4, -2.8F, range, properties);
     }
 
     @Override

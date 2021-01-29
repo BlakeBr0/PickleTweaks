@@ -1,5 +1,6 @@
 package com.blakebr0.pickletweaks.tweaks;
 
+import com.blakebr0.cucumber.event.ScytheHarvestCropEvent;
 import com.blakebr0.cucumber.util.Localizable;
 import com.blakebr0.pickletweaks.config.ModConfigs;
 import com.blakebr0.pickletweaks.lib.ModTooltips;
@@ -103,6 +104,17 @@ public final class TweakToolUselessifier {
 			return;
 
 		ItemStack stack = player.getHeldItemMainhand();
+		if (stack.isEmpty())
+			return;
+
+		if (isUselessTool(stack.getItem())) {
+			event.setCanceled(true);
+		}
+	}
+
+	@SubscribeEvent
+	public void onScytheHarvestCrop(ScytheHarvestCropEvent event) {
+		ItemStack stack = event.getItemStack();
 		if (stack.isEmpty())
 			return;
 
