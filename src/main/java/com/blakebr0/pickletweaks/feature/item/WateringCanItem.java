@@ -99,16 +99,14 @@ public class WateringCanItem extends BaseItem implements IEnableable {
 	}
 
 	@Override
-	public ActionResultType onItemUse(ItemUseContext context) {
+	public ActionResultType onItemUseFirst(ItemStack stack, ItemUseContext context) {
 		PlayerEntity player = context.getPlayer();
 		if (player == null)
 			return ActionResultType.FAIL;
 
-		Hand hand = context.getHand();
 		World world = context.getWorld();
 		BlockPos pos = context.getPos();
 		Direction direction = context.getFace();
-		ItemStack stack = player.getHeldItem(hand);
 
 		if (!player.canPlayerEdit(pos.offset(direction), direction, stack))
 			return ActionResultType.FAIL;
@@ -187,7 +185,6 @@ public class WateringCanItem extends BaseItem implements IEnableable {
 					Block plantBlock = state.getBlock();
 					if (plantBlock instanceof IGrowable || plantBlock instanceof IPlantable || plantBlock == Blocks.MYCELIUM || plantBlock == Blocks.CHORUS_FLOWER) {
 						state.randomTick((ServerWorld) world, aoePos, random);
-						world.notifyBlockUpdate(aoePos, state, state, 3);
 					}
 				});
 
