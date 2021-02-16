@@ -60,6 +60,7 @@ public final class ModItems {
 	public static final RegistryObject<Item> DIAMOND_APPLE = register("diamond_apple", () -> new DiamondAppleItem(p -> p.group(ITEM_GROUP)));
 	public static final RegistryObject<Item> EMERALD_APPLE = register("emerald_apple", () -> new EmeraldAppleItem(p -> p.group(ITEM_GROUP)));
 	public static final RegistryObject<Item> WATERING_CAN = register("watering_can", () -> new WateringCanItem(p -> p.group(ITEM_GROUP)));
+	public static final RegistryObject<Item> REINFORCED_WATERING_CAN = register("reinforced_watering_can", () -> new WateringCanItem(7, 0.35, p -> p.group(ITEM_GROUP)));
 	public static final RegistryObject<Item> GRASS_FIBER = register("grass_fiber", () -> new GrassFiberItem(p -> p.group(ITEM_GROUP)));
 	public static final RegistryObject<Item> GRASS_FIBER_MESH = register("grass_fiber_mesh", () -> new MeshItem(20, p -> p.group(ITEM_GROUP)));
 	public static final RegistryObject<Item> MESH = register("mesh", () -> new MeshItem(64, p -> p.group(ITEM_GROUP)));
