@@ -31,6 +31,6 @@ license="MIT"
   [[dependencies.pickletweaks]]
       modId="cucumber"
       mandatory=true
-      versionRange="[4.1.6,)"
+      versionRange="[4.1.7,)"
       ordering="NONE"
       side="BOTH"

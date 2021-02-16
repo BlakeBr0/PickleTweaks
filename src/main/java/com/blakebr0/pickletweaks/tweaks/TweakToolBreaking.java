@@ -3,6 +3,7 @@ package com.blakebr0.pickletweaks.tweaks;
 import com.blakebr0.cucumber.event.ScytheHarvestCropEvent;
 import com.blakebr0.pickletweaks.config.ModConfigs;
 import com.blakebr0.pickletweaks.lib.ModTooltips;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.HoeItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -32,7 +33,11 @@ public final class TweakToolBreaking {
 		if (!ModConfigs.ENABLE_TOOL_BREAKING_TWEAK.get())
 			return;
 
-		ItemStack stack = event.getPlayer().getHeldItemMainhand();
+		PlayerEntity player = event.getPlayer();
+		if (player.abilities.isCreativeMode)
+			return;
+
+		ItemStack stack = player.getHeldItemMainhand();
 		if (stack.isEmpty())
 			return;
 
@@ -49,7 +54,11 @@ public final class TweakToolBreaking {
 		if (!ModConfigs.ENABLE_TOOL_BREAKING_TWEAK.get())
 			return;
 
-		ItemStack stack = event.getPlayer().getHeldItemMainhand();
+		PlayerEntity player = event.getPlayer();
+		if (player.abilities.isCreativeMode)
+			return;
+
+		ItemStack stack = player.getHeldItemMainhand();
 		if (stack.isEmpty())
 			return;
 
@@ -64,6 +73,10 @@ public final class TweakToolBreaking {
 	@SubscribeEvent(priority = EventPriority.HIGH)
 	public void onUseHoe(UseHoeEvent event) {
 		if (!ModConfigs.ENABLE_TOOL_BREAKING_TWEAK.get())
+			return;
+
+		PlayerEntity player = event.getPlayer();
+		if (player.abilities.isCreativeMode)
 			return;
 
 		ItemStack stack = event.getContext().getItem();
@@ -83,7 +96,11 @@ public final class TweakToolBreaking {
 		if (!ModConfigs.ENABLE_TOOL_BREAKING_TWEAK.get())
 			return;
 
-		ItemStack stack = event.getPlayer().getHeldItemMainhand();
+		PlayerEntity player = event.getPlayer();
+		if (player.abilities.isCreativeMode)
+			return;
+
+		ItemStack stack = player.getHeldItemMainhand();
 		if (stack.isEmpty())
 			return;
 
@@ -98,6 +115,10 @@ public final class TweakToolBreaking {
 	@SubscribeEvent(priority = EventPriority.HIGH)
 	public void onRightClickItem(PlayerInteractEvent.RightClickItem event) {
 		if (!ModConfigs.ENABLE_TOOL_BREAKING_TWEAK.get())
+			return;
+
+		PlayerEntity player = event.getPlayer();
+		if (player.abilities.isCreativeMode)
 			return;
 
 		ItemStack stack = event.getItemStack();
@@ -117,6 +138,10 @@ public final class TweakToolBreaking {
 		if (!ModConfigs.ENABLE_TOOL_BREAKING_TWEAK.get())
 			return;
 
+		PlayerEntity player = event.getPlayer();
+		if (player.abilities.isCreativeMode)
+			return;
+
 		ItemStack stack = event.getItemStack();
 		if (stack.isEmpty())
 			return;
@@ -134,6 +159,10 @@ public final class TweakToolBreaking {
 		if (!ModConfigs.ENABLE_TOOL_BREAKING_TWEAK.get())
 			return;
 
+		PlayerEntity player = event.getPlayer();
+		if (player.abilities.isCreativeMode)
+			return;
+
 		ItemStack stack = event.getItemStack();
 		if (stack.isEmpty())
 			return;
@@ -148,6 +177,10 @@ public final class TweakToolBreaking {
 
 	@SubscribeEvent(priority = EventPriority.HIGH)
 	public void onScytheHarvestCrop(ScytheHarvestCropEvent event) {
+		PlayerEntity player = event.getPlayer();
+		if (player.abilities.isCreativeMode)
+			return;
+
 		ItemStack stack = event.getItemStack();
 		if (stack.isEmpty())
 			return;

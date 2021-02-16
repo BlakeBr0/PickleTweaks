@@ -33,7 +33,7 @@ public final class TweakToolUselessifier {
 	@SubscribeEvent
 	public void onBreakSpeed(PlayerEvent.BreakSpeed event) {
         PlayerEntity player = event.getPlayer();
-        if (player == null)
+        if (player.abilities.isCreativeMode)
 			return;
 
 		ItemStack stack = player.getHeldItemMainhand();
@@ -56,6 +56,9 @@ public final class TweakToolUselessifier {
 			return;
 
 		PlayerEntity player = (PlayerEntity) trueSource;
+		if (player.abilities.isCreativeMode)
+			return;
+
 		ItemStack stack = player.getHeldItemMainhand();
 		if (stack.isEmpty())
 			return;
@@ -70,7 +73,7 @@ public final class TweakToolUselessifier {
 	@SubscribeEvent
 	public void onRightClickBlock(PlayerInteractEvent.RightClickBlock event) {
 		PlayerEntity player = event.getPlayer();
-		if (player == null)
+		if (player.abilities.isCreativeMode)
 			return;
 
 		ItemStack stack = player.getHeldItemMainhand();
@@ -85,7 +88,7 @@ public final class TweakToolUselessifier {
 	@SubscribeEvent
 	public void onRightClickItem(PlayerInteractEvent.RightClickItem event) {
 		PlayerEntity player = event.getPlayer();
-		if (player == null)
+		if (player.abilities.isCreativeMode)
 			return;
 
 		ItemStack stack = player.getHeldItemMainhand();
@@ -100,7 +103,7 @@ public final class TweakToolUselessifier {
 	@SubscribeEvent
 	public void onEntityInteract(PlayerInteractEvent.EntityInteract event) {
 		PlayerEntity player = event.getPlayer();
-		if (player == null)
+		if (player.abilities.isCreativeMode)
 			return;
 
 		ItemStack stack = player.getHeldItemMainhand();
@@ -114,6 +117,10 @@ public final class TweakToolUselessifier {
 
 	@SubscribeEvent
 	public void onScytheHarvestCrop(ScytheHarvestCropEvent event) {
+		PlayerEntity player = event.getPlayer();
+		if (player.abilities.isCreativeMode)
+			return;
+
 		ItemStack stack = event.getItemStack();
 		if (stack.isEmpty())
 			return;
