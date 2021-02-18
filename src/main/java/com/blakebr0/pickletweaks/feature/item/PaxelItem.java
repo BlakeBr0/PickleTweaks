@@ -73,15 +73,36 @@ public class PaxelItem extends ToolItem implements IEnableable {
 	public ActionResultType onItemUse(ItemUseContext context) {
 		World world = context.getWorld();
 		BlockPos pos = context.getPos();
-		if (context.getFace() != Direction.DOWN && world.getBlockState(pos.up()).isAir(world, pos.up())) {
-			BlockState state = PATH_STUFF.get(world.getBlockState(pos).getBlock());
-			if (state != null) {
-				PlayerEntity player = context.getPlayer();
+		PlayerEntity player = context.getPlayer();
+		ItemStack stack = context.getItem();
+
+		BlockState state = world.getBlockState(pos);
+		BlockState modifiedState = state.getToolModifiedState(world, pos, player, stack, ToolType.AXE);
+
+		if (modifiedState != null) {
+			world.playSound(player, pos, SoundEvents.ITEM_AXE_STRIP, SoundCategory.BLOCKS, 1.0F, 1.0F);
+
+			if (!world.isRemote()) {
+				world.setBlockState(pos, modifiedState, 11);
+
+				if (player != null) {
+					stack.damageItem(1, player, entity -> {
+						entity.sendBreakAnimation(context.getHand());
+					});
+				}
+			}
+
+			return ActionResultType.func_233537_a_(world.isRemote());
+		} else if (context.getFace() != Direction.DOWN && world.getBlockState(pos.up()).isAir(world, pos.up())) {
+			BlockState pathState = PATH_STUFF.get(state.getBlock());
+			if (pathState != null) {
 				world.playSound(player, pos, SoundEvents.ITEM_SHOVEL_FLATTEN, SoundCategory.BLOCKS, 1.0F, 1.0F);
+
 				if (!world.isRemote()) {
-					world.setBlockState(pos, state, 11);
+					world.setBlockState(pos, pathState, 11);
+
 					if (player != null) {
-						context.getItem().damageItem(1, player, entity -> {
+						stack.damageItem(1, player, entity -> {
 							entity.sendBreakAnimation(context.getHand());
 						});
 					}
