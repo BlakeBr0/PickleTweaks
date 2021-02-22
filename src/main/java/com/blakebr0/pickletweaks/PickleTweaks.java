@@ -65,7 +65,7 @@ public final class PickleTweaks {
 		MinecraftForge.EVENT_BUS.register(new TweakToolBreaking());
 		MinecraftForge.EVENT_BUS.register(new TweakToolUselessifier());
 
-		DeferredWorkQueue.runLater(() -> {
+		event.enqueueWork(() -> {
 			NetworkHandler.onCommonSetup();
 			GridRepairOverride.onCommonSetup();
 		});
