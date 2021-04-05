@@ -177,6 +177,9 @@ public final class TweakToolBreaking {
 
 	@SubscribeEvent(priority = EventPriority.HIGH)
 	public void onScytheHarvestCrop(ScytheHarvestCropEvent event) {
+		if (!ModConfigs.ENABLE_TOOL_BREAKING_TWEAK.get())
+			return;
+
 		PlayerEntity player = event.getPlayer();
 		if (player.abilities.isCreativeMode)
 			return;
