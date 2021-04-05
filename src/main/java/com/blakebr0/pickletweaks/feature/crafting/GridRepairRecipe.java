@@ -39,7 +39,7 @@ public class GridRepairRecipe extends ShapelessRecipe {
 			if (slotStack.isEmpty())
 				continue;
 
-			ItemStack newSlotStack = StackHelper.withSize(slotStack.copy(), 1, false);
+			ItemStack newSlotStack = StackHelper.withSize(slotStack, 1, false);
 			if (!foundTool && newSlotStack.isDamageable()) {
 				tool = newSlotStack;
 				foundTool = true;
@@ -57,10 +57,6 @@ public class GridRepairRecipe extends ShapelessRecipe {
 		}
 
 		if (inputs.isEmpty()) {
-			return ItemStack.EMPTY;
-		}
-
-		if (tool.hasContainerItem()) {
 			return ItemStack.EMPTY;
 		}
 
@@ -131,6 +127,11 @@ public class GridRepairRecipe extends ShapelessRecipe {
 	@Override
 	public IRecipeSerializer<?> getSerializer() {
 		return ModRecipeSerializers.CRAFTING_GRID_REPAIR;
+	}
+
+	@Override
+	public NonNullList<ItemStack> getRemainingItems(CraftingInventory inv) {
+		return NonNullList.withSize(inv.getSizeInventory(), ItemStack.EMPTY);
 	}
 
 	public static class Serializer extends ForgeRegistryEntry<IRecipeSerializer<?>> implements IRecipeSerializer<GridRepairRecipe> {
