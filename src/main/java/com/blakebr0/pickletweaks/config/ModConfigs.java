@@ -34,6 +34,7 @@ public final class ModConfigs {
     }
 
     public static final ForgeConfigSpec.DoubleValue MAGNET_RANGE;
+    public static final ForgeConfigSpec.BooleanValue FAKE_PLAYER_WATERING;
 
     public static final ForgeConfigSpec.BooleanValue ENABLE_COLORED_COBBLESTONE;
     public static final ForgeConfigSpec.BooleanValue ENABLE_DARK_GLASS;
@@ -73,6 +74,10 @@ public final class ModConfigs {
                 .comment("The effective radius of the Magnet.")
                 .translation("configGui.pickletweaks.magnet_range")
                 .defineInRange("magnetRange", 7.0, 1.0, 16.0);
+        FAKE_PLAYER_WATERING = common
+                .comment("Should fake players be able to use watering cans?")
+                .translation("configGui.pickletweaks.fake_player_watering")
+                .define("fakePlayerWatering", true);
         common.pop();
 
         common.comment("Disable features.").push("Features");

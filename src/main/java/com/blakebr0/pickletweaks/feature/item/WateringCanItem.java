@@ -143,6 +143,9 @@ public class WateringCanItem extends BaseItem implements IEnableable {
 		if (!NBTHelper.getBoolean(stack, "Water"))
 			return ActionResultType.PASS;
 
+		if (!ModConfigs.FAKE_PLAYER_WATERING.get() && player instanceof FakePlayer)
+			return ActionResultType.PASS;
+
 		if (!world.isRemote()) {
 			String id = getID(stack);
 			long throttle = THROTTLES.getOrDefault(id, 0L);
