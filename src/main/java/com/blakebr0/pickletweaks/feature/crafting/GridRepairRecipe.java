@@ -31,32 +31,22 @@ public class GridRepairRecipe extends ShapelessRecipe {
 			return ItemStack.EMPTY;
 
 		ItemStack tool = ItemStack.EMPTY;
-		boolean foundTool = false;
 		NonNullList<ItemStack> inputs = NonNullList.create();
+
 		for (int i = 0; i < inv.getSizeInventory(); i++) {
 			ItemStack slotStack = inv.getStackInSlot(i);
 
 			if (slotStack.isEmpty())
 				continue;
 
-			ItemStack newSlotStack = StackHelper.withSize(slotStack, 1, false);
-			if (!foundTool && newSlotStack.isDamageable()) {
-				tool = newSlotStack;
-				foundTool = true;
+			if (tool.isEmpty() && slotStack.isDamageable()) {
+				tool = slotStack;
 			} else {
-				inputs.add(newSlotStack);
+				inputs.add(slotStack);
 			}
 		}
 
-		if (tool.isEmpty()) {
-			return ItemStack.EMPTY;
-		}
-
-		if (!tool.isDamaged()) {
-			return ItemStack.EMPTY;
-		}
-
-		if (inputs.isEmpty()) {
+		if (tool.isEmpty() || !tool.isDamaged() || inputs.isEmpty()) {
 			return ItemStack.EMPTY;
 		}
 
@@ -65,8 +55,8 @@ public class GridRepairRecipe extends ShapelessRecipe {
 		}
 
 		int repairCost = ModConfigs.GRID_REPAIR_COST.get();
-
 		boolean cheaperShovel = ModConfigs.GRID_REPAIR_CHEAP_SHOVEL.get();
+
 		if (cheaperShovel && tool.getItem() instanceof ShovelItem) {
 			repairCost = Math.max(1, repairCost / 2);
 		}
@@ -93,12 +83,14 @@ public class GridRepairRecipe extends ShapelessRecipe {
 			}
 		}
 
+		tool = StackHelper.withSize(tool, 1, false);
+
 		tool.setDamage(tool.getDamage() - (int) (damage * matCount));
 
 		// Strip enchantments. Vanilla implementation here: {@link net.minecraft.item.crafting.RepairItemRecipe#getCraftingResult(CraftingInventory inv)}.
 		if (ModConfigs.GRID_REPAIR_STRIP_ENCHANTMENTS.get()) {
-			Map<Enchantment, Integer> enchantments = EnchantmentHelper.getEnchantments(tool);
-			enchantments = enchantments.entrySet()
+			Map<Enchantment, Integer> enchantments = EnchantmentHelper.getEnchantments(tool)
+					.entrySet()
 					.stream()
 					.filter(x -> x.getKey().isCurse())
 					.collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
@@ -146,9 +138,7 @@ public class GridRepairRecipe extends ShapelessRecipe {
 		}
 
 		@Override
-		public void write(PacketBuffer buffer, GridRepairRecipe recipe) {
-
-		}
+		public void write(PacketBuffer buffer, GridRepairRecipe recipe) { }
 	}
 }
 
