@@ -5,10 +5,12 @@ import com.blakebr0.pickletweaks.lib.ModTooltips;
 import com.blakebr0.pickletweaks.tweaks.TweakToolUselessifier;
 import net.minecraft.item.Item;
 import net.minecraft.item.ToolItem;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
+import java.util.List;
 import java.util.ListIterator;
 
 public final class FeatureToolInfo {
@@ -21,7 +23,11 @@ public final class FeatureToolInfo {
 
 		ListIterator<ITextComponent> tooltip = event.getToolTip().listIterator();
 		Item item = event.getItemStack().getItem();
+
 		if (item instanceof ToolItem) {
+			if (isBlacklisted(item))
+				return;
+
 			ToolItem tool = (ToolItem) item;
 
 			tooltip.next();
@@ -41,5 +47,26 @@ public final class FeatureToolInfo {
 			return 0F;
 
 		return item.getTier().getEfficiency();
+	}
+
+	private static boolean isBlacklisted(Item item) {
+		List<String> blacklist = ModConfigs.TOOL_INFO_TOOLTIP_BLACKLIST.get();
+
+		ResourceLocation id = item.getRegistryName();
+		if (id == null)
+			return true;
+
+		return blacklist.stream().anyMatch(s -> {
+			String[] parts = s.split(":");
+
+			if (parts.length != 2)
+				return false;
+
+			if ("*".equals(parts[1])) {
+				return id.getNamespace().equals(parts[0]);
+			}
+
+			return id.toString().equals(s);
+		});
 	}
 }

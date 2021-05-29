@@ -1,5 +1,6 @@
 package com.blakebr0.pickletweaks.config;
 
+import com.google.common.collect.Lists;
 import net.minecraftforge.common.ForgeConfigSpec;
 
 import java.util.ArrayList;
@@ -35,6 +36,7 @@ public final class ModConfigs {
 
     public static final ForgeConfigSpec.DoubleValue MAGNET_RANGE;
     public static final ForgeConfigSpec.BooleanValue FAKE_PLAYER_WATERING;
+    public static final ForgeConfigSpec.ConfigValue<List<String>> TOOL_INFO_TOOLTIP_BLACKLIST;
 
     public static final ForgeConfigSpec.BooleanValue ENABLE_COLORED_COBBLESTONE;
     public static final ForgeConfigSpec.BooleanValue ENABLE_DARK_GLASS;
@@ -78,6 +80,13 @@ public final class ModConfigs {
                 .comment("Should fake players be able to use watering cans?")
                 .translation("configGui.pickletweaks.fake_player_watering")
                 .define("fakePlayerWatering", true);
+        TOOL_INFO_TOOLTIP_BLACKLIST = common
+                .comment("Here you can specify a list of tools that shouldn't have tool info tooltips." +
+                        "\nEx. [\"minecraft:iron_pickaxe\"]" +
+                        "\nYou can also blacklist entire mods by doing <mod-id>:*" +
+                        "\nEx. [\"pickletweaks:*\"]")
+                .translation("configGui.pickletweaks.tool_info_tooltip_blacklist")
+                .define("toolInfoTooltipBlacklist", Lists.newArrayList("silentgear:*"));
         common.pop();
 
         common.comment("Disable features.").push("Features");
