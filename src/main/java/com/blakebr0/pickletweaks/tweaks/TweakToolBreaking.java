@@ -4,6 +4,7 @@ import com.blakebr0.cucumber.event.ScytheHarvestCropEvent;
 import com.blakebr0.pickletweaks.config.ModConfigs;
 import com.blakebr0.pickletweaks.lib.ModTooltips;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.AxeItem;
 import net.minecraft.item.HoeItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -147,7 +148,7 @@ public final class TweakToolBreaking {
 			return;
 
 		Item item = stack.getItem();
-		if (stack.isDamageable() && item instanceof ShovelItem) {
+		if (stack.isDamageable() && (item instanceof ShovelItem || item instanceof AxeItem)) {
 			if (isBroken(stack)) {
 				event.setCanceled(true);
 			}
