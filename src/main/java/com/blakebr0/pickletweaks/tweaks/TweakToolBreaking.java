@@ -45,6 +45,7 @@ public final class TweakToolBreaking {
 		Item item = stack.getItem();
 		if (stack.isDamageable() && isValidTool(item)) {
 			if (isBroken(stack)) {
+				sendBrokenMessage(player, stack);
 				event.setCanceled(true);
 			}
 		}
@@ -66,6 +67,7 @@ public final class TweakToolBreaking {
 		Item item = stack.getItem();
 		if (stack.isDamageable() && isValidTool(item)) {
 			if (isBroken(stack)) {
+				sendBrokenMessage(player, stack);
 				event.setCanceled(true);
 			}
 		}
@@ -87,6 +89,7 @@ public final class TweakToolBreaking {
 		Item item = stack.getItem();
 		if (stack.isDamageable() && item instanceof HoeItem) {
 			if (isBroken(stack)) {
+				sendBrokenMessage(player, stack);
 				event.setCanceled(true);
 			}
 		}
@@ -108,6 +111,7 @@ public final class TweakToolBreaking {
 		if (stack.isDamageable()) {
 			Item item = stack.getItem();
 			if (isValidTool(item) && isBroken(stack)) {
+				sendBrokenMessage(player, stack);
 				event.setCanceled(true);
 			}
 		}
@@ -129,6 +133,7 @@ public final class TweakToolBreaking {
 		Item item = stack.getItem();
 		if (stack.isDamageable() && (item instanceof ShootableItem || item instanceof ShearsItem)) {
 			if (isBroken(stack)) {
+				sendBrokenMessage(player, stack);
 				event.setCanceled(true);
 			}
 		}
@@ -150,6 +155,7 @@ public final class TweakToolBreaking {
 		Item item = stack.getItem();
 		if (stack.isDamageable() && (item instanceof ShovelItem || item instanceof AxeItem)) {
 			if (isBroken(stack)) {
+				sendBrokenMessage(player, stack);
 				event.setCanceled(true);
 			}
 		}
@@ -171,6 +177,7 @@ public final class TweakToolBreaking {
 		Item item = stack.getItem();
 		if (stack.isDamageable() && item instanceof ShearsItem) {
 			if (isBroken(stack)) {
+				sendBrokenMessage(player, stack);
 				event.setCanceled(true);
 			}
 		}
@@ -190,6 +197,7 @@ public final class TweakToolBreaking {
 			return;
 
 		if (stack.isDamageable() && isBroken(stack)) {
+			sendBrokenMessage(player, stack);
 			event.setCanceled(true);
 		}
 	}
@@ -220,5 +228,9 @@ public final class TweakToolBreaking {
 
 	public static boolean isBroken(ItemStack stack) {
 		return stack.getMaxDamage() > 2 && stack.getDamage() >= stack.getMaxDamage() - 2;
+	}
+
+	private static void sendBrokenMessage(PlayerEntity player, ItemStack stack) {
+		player.sendStatusMessage(ModTooltips.YOUR_ITEM_IS_BROKEN.args(stack.getDisplayName()).color(TextFormatting.WHITE).build(), true);
 	}
 }

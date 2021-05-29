@@ -19,4 +19,5 @@ public class ModTooltips {
     public static final Tooltip USELESS_WEAPON_1 = new Tooltip("tooltip.pickletweaks.useless_weapon_1");
     public static final Tooltip USELESS_HOE_1 = new Tooltip("tooltip.pickletweaks.useless_hoe_1");
     public static final Tooltip USELESS_BOW_1 = new Tooltip("tooltip.pickletweaks.useless_bow_1");
+    public static final Tooltip YOUR_ITEM_IS_BROKEN = new Tooltip("tooltip.pickletweaks.your_item_is_broken");
 }

@@ -93,7 +93,6 @@ public final class ModConfigs {
                 .comment("Smooth Glowstone enabled?")
                 .translation("configGui.pickletweaks.enable_smooth_glowstone")
                 .define("smoothGlowstone", true);
-
         ENABLE_COAL_PIECES = common
                 .comment("Coal and Charcoal Piece enabled?")
                 .translation("configGui.pickletweaks.enable_coal_piece")
@@ -155,7 +154,7 @@ public final class ModConfigs {
                 .defineInRange("cost", 4, 1, 8);
         GRID_REPAIR_STRIP_ENCHANTMENTS = common
                 .comment("Crafting grid repair removes all non-curse enchantments.")
-                .translation("configGui.pickletweaks.strip_enchantments")
+                .translation("configGui.pickletweaks.grid_repair_strip_enchantments")
                 .define("stripEnchantments", false);
         GRID_REPAIR_DISABLE_DEFAULTS = common
                 .comment("Should default repair materials be disabled? Doing this makes it so ONLY the custom materials work.")
