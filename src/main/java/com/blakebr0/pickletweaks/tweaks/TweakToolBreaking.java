@@ -35,15 +35,15 @@ public final class TweakToolBreaking {
 			return;
 
 		PlayerEntity player = event.getPlayer();
-		if (player.abilities.isCreativeMode)
+		if (player.abilities.instabuild)
 			return;
 
-		ItemStack stack = player.getHeldItemMainhand();
+		ItemStack stack = player.getMainHandItem();
 		if (stack.isEmpty())
 			return;
 
 		Item item = stack.getItem();
-		if (stack.isDamageable() && isValidTool(item)) {
+		if (stack.isDamageableItem() && isValidTool(item)) {
 			if (isBroken(stack)) {
 				sendBrokenMessage(player, stack);
 				event.setCanceled(true);
@@ -57,15 +57,15 @@ public final class TweakToolBreaking {
 			return;
 
 		PlayerEntity player = event.getPlayer();
-		if (player.abilities.isCreativeMode)
+		if (player.abilities.instabuild)
 			return;
 
-		ItemStack stack = player.getHeldItemMainhand();
+		ItemStack stack = player.getMainHandItem();
 		if (stack.isEmpty())
 			return;
 
 		Item item = stack.getItem();
-		if (stack.isDamageable() && isValidTool(item)) {
+		if (stack.isDamageableItem() && isValidTool(item)) {
 			if (isBroken(stack)) {
 				sendBrokenMessage(player, stack);
 				event.setCanceled(true);
@@ -79,15 +79,15 @@ public final class TweakToolBreaking {
 			return;
 
 		PlayerEntity player = event.getPlayer();
-		if (player.abilities.isCreativeMode)
+		if (player.abilities.instabuild)
 			return;
 
-		ItemStack stack = event.getContext().getItem();
+		ItemStack stack = event.getContext().getItemInHand();
 		if (stack.isEmpty())
 			return;
 
 		Item item = stack.getItem();
-		if (stack.isDamageable() && item instanceof HoeItem) {
+		if (stack.isDamageableItem() && item instanceof HoeItem) {
 			if (isBroken(stack)) {
 				sendBrokenMessage(player, stack);
 				event.setCanceled(true);
@@ -101,14 +101,14 @@ public final class TweakToolBreaking {
 			return;
 
 		PlayerEntity player = event.getPlayer();
-		if (player.abilities.isCreativeMode)
+		if (player.abilities.instabuild)
 			return;
 
-		ItemStack stack = player.getHeldItemMainhand();
+		ItemStack stack = player.getMainHandItem();
 		if (stack.isEmpty())
 			return;
 
-		if (stack.isDamageable()) {
+		if (stack.isDamageableItem()) {
 			Item item = stack.getItem();
 			if (isValidTool(item) && isBroken(stack)) {
 				sendBrokenMessage(player, stack);
@@ -123,7 +123,7 @@ public final class TweakToolBreaking {
 			return;
 
 		PlayerEntity player = event.getPlayer();
-		if (player.abilities.isCreativeMode)
+		if (player.abilities.instabuild)
 			return;
 
 		ItemStack stack = event.getItemStack();
@@ -131,7 +131,7 @@ public final class TweakToolBreaking {
 			return;
 
 		Item item = stack.getItem();
-		if (stack.isDamageable() && (item instanceof ShootableItem || item instanceof ShearsItem)) {
+		if (stack.isDamageableItem() && (item instanceof ShootableItem || item instanceof ShearsItem)) {
 			if (isBroken(stack)) {
 				sendBrokenMessage(player, stack);
 				event.setCanceled(true);
@@ -145,7 +145,7 @@ public final class TweakToolBreaking {
 			return;
 
 		PlayerEntity player = event.getPlayer();
-		if (player.abilities.isCreativeMode)
+		if (player.abilities.instabuild)
 			return;
 
 		ItemStack stack = event.getItemStack();
@@ -153,7 +153,7 @@ public final class TweakToolBreaking {
 			return;
 
 		Item item = stack.getItem();
-		if (stack.isDamageable() && (item instanceof ShovelItem || item instanceof AxeItem)) {
+		if (stack.isDamageableItem() && (item instanceof ShovelItem || item instanceof AxeItem)) {
 			if (isBroken(stack)) {
 				sendBrokenMessage(player, stack);
 				event.setCanceled(true);
@@ -167,7 +167,7 @@ public final class TweakToolBreaking {
 			return;
 
 		PlayerEntity player = event.getPlayer();
-		if (player.abilities.isCreativeMode)
+		if (player.abilities.instabuild)
 			return;
 
 		ItemStack stack = event.getItemStack();
@@ -175,7 +175,7 @@ public final class TweakToolBreaking {
 			return;
 
 		Item item = stack.getItem();
-		if (stack.isDamageable() && item instanceof ShearsItem) {
+		if (stack.isDamageableItem() && item instanceof ShearsItem) {
 			if (isBroken(stack)) {
 				sendBrokenMessage(player, stack);
 				event.setCanceled(true);
@@ -189,14 +189,14 @@ public final class TweakToolBreaking {
 			return;
 
 		PlayerEntity player = event.getPlayer();
-		if (player.abilities.isCreativeMode)
+		if (player.abilities.instabuild)
 			return;
 
 		ItemStack stack = event.getItemStack();
 		if (stack.isEmpty())
 			return;
 
-		if (stack.isDamageable() && isBroken(stack)) {
+		if (stack.isDamageableItem() && isBroken(stack)) {
 			sendBrokenMessage(player, stack);
 			event.setCanceled(true);
 		}
@@ -211,7 +211,7 @@ public final class TweakToolBreaking {
 		ListIterator<ITextComponent> tooltip = event.getToolTip().listIterator();
 		ItemStack stack = event.getItemStack();
 
-		if (stack.isDamageable()) {
+		if (stack.isDamageableItem()) {
 			Item item = stack.getItem();
 			if (isValidTool(item) || item instanceof ShootableItem) {
 				if (isBroken(stack)) {
@@ -227,10 +227,10 @@ public final class TweakToolBreaking {
 	}
 
 	public static boolean isBroken(ItemStack stack) {
-		return stack.getMaxDamage() > 2 && stack.getDamage() >= stack.getMaxDamage() - 2;
+		return stack.getMaxDamage() > 2 && stack.getDamageValue() >= stack.getMaxDamage() - 2;
 	}
 
 	private static void sendBrokenMessage(PlayerEntity player, ItemStack stack) {
-		player.sendStatusMessage(ModTooltips.YOUR_ITEM_IS_BROKEN.args(stack.getDisplayName()).color(TextFormatting.WHITE).build(), true);
+		player.displayClientMessage(ModTooltips.YOUR_ITEM_IS_BROKEN.args(stack.getHoverName()).color(TextFormatting.WHITE).build(), true);
 	}
 }

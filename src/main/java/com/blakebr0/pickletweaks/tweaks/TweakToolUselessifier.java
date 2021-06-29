@@ -33,10 +33,10 @@ public final class TweakToolUselessifier {
 	@SubscribeEvent
 	public void onBreakSpeed(PlayerEvent.BreakSpeed event) {
         PlayerEntity player = event.getPlayer();
-        if (player.abilities.isCreativeMode)
+        if (player.abilities.instabuild)
 			return;
 
-		ItemStack stack = player.getHeldItemMainhand();
+		ItemStack stack = player.getMainHandItem();
 		if (stack.isEmpty())
 			return;
 
@@ -48,18 +48,18 @@ public final class TweakToolUselessifier {
 	@SubscribeEvent
 	public void onLivingHurt(LivingHurtEvent event) {
         DamageSource source = event.getSource();
-        if (!(source.getDamageType().equals("player")))
+        if (!(source.getMsgId().equals("player")))
 			return;
 
-        Entity trueSource = source.getTrueSource();
+        Entity trueSource = source.getEntity();
         if (!(trueSource instanceof PlayerEntity))
 			return;
 
 		PlayerEntity player = (PlayerEntity) trueSource;
-		if (player.abilities.isCreativeMode)
+		if (player.abilities.instabuild)
 			return;
 
-		ItemStack stack = player.getHeldItemMainhand();
+		ItemStack stack = player.getMainHandItem();
 		if (stack.isEmpty())
 			return;
 
@@ -73,10 +73,10 @@ public final class TweakToolUselessifier {
 	@SubscribeEvent
 	public void onRightClickBlock(PlayerInteractEvent.RightClickBlock event) {
 		PlayerEntity player = event.getPlayer();
-		if (player.abilities.isCreativeMode)
+		if (player.abilities.instabuild)
 			return;
 
-		ItemStack stack = player.getHeldItemMainhand();
+		ItemStack stack = player.getMainHandItem();
 		if (stack.isEmpty())
 			return;
 
@@ -88,10 +88,10 @@ public final class TweakToolUselessifier {
 	@SubscribeEvent
 	public void onRightClickItem(PlayerInteractEvent.RightClickItem event) {
 		PlayerEntity player = event.getPlayer();
-		if (player.abilities.isCreativeMode)
+		if (player.abilities.instabuild)
 			return;
 
-		ItemStack stack = player.getHeldItemMainhand();
+		ItemStack stack = player.getMainHandItem();
 		if (stack.isEmpty())
 			return;
 
@@ -103,10 +103,10 @@ public final class TweakToolUselessifier {
 	@SubscribeEvent
 	public void onEntityInteract(PlayerInteractEvent.EntityInteract event) {
 		PlayerEntity player = event.getPlayer();
-		if (player.abilities.isCreativeMode)
+		if (player.abilities.instabuild)
 			return;
 
-		ItemStack stack = player.getHeldItemMainhand();
+		ItemStack stack = player.getMainHandItem();
 		if (stack.isEmpty())
 			return;
 
@@ -118,7 +118,7 @@ public final class TweakToolUselessifier {
 	@SubscribeEvent
 	public void onScytheHarvestCrop(ScytheHarvestCropEvent event) {
 		PlayerEntity player = event.getPlayer();
-		if (player.abilities.isCreativeMode)
+		if (player.abilities.instabuild)
 			return;
 
 		ItemStack stack = event.getItemStack();
@@ -140,7 +140,7 @@ public final class TweakToolUselessifier {
 			while (lines.hasNext()) {
 				String s = Localizable.of("attribute.name.generic.attackDamage").buildString();
 				if (lines.next().getString().contains(s)) {
-					lines.set(new StringTextComponent(" 0 ").appendString(s).mergeStyle(TextFormatting.DARK_GREEN));
+					lines.set(new StringTextComponent(" 0 ").append(s).withStyle(TextFormatting.DARK_GREEN));
 				}
 			}
 

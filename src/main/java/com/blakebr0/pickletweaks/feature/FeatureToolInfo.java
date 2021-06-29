@@ -38,7 +38,7 @@ public final class FeatureToolInfo {
 	}
 
 	private static String getMiningLevel(ToolItem item) {
-		int lvl = item.getTier().getHarvestLevel();
+		int lvl = item.getTier().getLevel();
 		return lvl >= 0 && lvl < MINING_LEVEL_NAMES.length ? MINING_LEVEL_NAMES[lvl] : String.valueOf(lvl);
 	}
 
@@ -46,7 +46,7 @@ public final class FeatureToolInfo {
 		if (TweakToolUselessifier.isUselessTool(item))
 			return 0F;
 
-		return item.getTier().getEfficiency();
+		return item.getTier().getSpeed();
 	}
 
 	private static boolean isBlacklisted(Item item) {

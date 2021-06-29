@@ -7,6 +7,8 @@ import net.minecraft.item.ItemStack;
 
 import java.util.function.Function;
 
+import net.minecraft.item.Item.Properties;
+
 public class CoalPieceItem extends BaseItem implements IEnableable {
 	public CoalPieceItem(Function<Properties, Properties> properties) {
 		super(properties);

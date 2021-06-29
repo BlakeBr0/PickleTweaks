@@ -6,6 +6,8 @@ import com.blakebr0.pickletweaks.lib.ModItemTier;
 
 import java.util.function.Function;
 
+import net.minecraft.item.Item.Properties;
+
 public class FlintScytheItem extends ScytheItem {
     public FlintScytheItem(Function<Properties, Properties> properties) {
         super(ModItemTier.FLINT, 1, properties);

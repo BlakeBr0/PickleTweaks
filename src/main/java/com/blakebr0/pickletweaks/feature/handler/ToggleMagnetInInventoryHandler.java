@@ -28,15 +28,15 @@ public final class ToggleMagnetInInventoryHandler {
             if (player == null)
                 return;
 
-            ItemStack held = player.inventory.getItemStack();
+            ItemStack held = player.inventory.getCarried();
 
-            if (slot != null && held.isEmpty() && slot.inventory == player.inventory) {
-                ItemStack stack = slot.getStack();
+            if (slot != null && held.isEmpty() && slot.container == player.inventory) {
+                ItemStack stack = slot.getItem();
 
                 if (stack.getItem() instanceof MagnetItem) {
-                    NetworkHandler.INSTANCE.sendToServer(new ToggleMagnetMessage(slot.slotNumber));
+                    NetworkHandler.INSTANCE.sendToServer(new ToggleMagnetMessage(slot.index));
 
-                    player.playSound(SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, 0.5F, NBTHelper.getBoolean(stack, "Enabled") ? 0.5F : 1.0F);
+                    player.playSound(SoundEvents.EXPERIENCE_ORB_PICKUP, 0.5F, NBTHelper.getBoolean(stack, "Enabled") ? 0.5F : 1.0F);
 
                     event.setCanceled(true);
                 }

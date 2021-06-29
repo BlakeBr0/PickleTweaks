@@ -7,6 +7,8 @@ import com.blakebr0.pickletweaks.lib.ModItemTier;
 
 import java.util.function.Function;
 
+import net.minecraft.item.Item.Properties;
+
 public class EmeraldShovelItem extends BaseShovelItem implements IEnableable {
     public EmeraldShovelItem(Function<Properties, Properties> properties) {
         super(ModItemTier.EMERALD, properties);

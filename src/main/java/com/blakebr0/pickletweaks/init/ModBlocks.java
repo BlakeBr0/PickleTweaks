@@ -55,7 +55,7 @@ public final class ModBlocks {
 	}
 
 	private static RegistryObject<Block> register(String name, Supplier<Block> block) {
-		return register(name, block, b -> () -> new BaseBlockItem(b.get(), p -> p.group(ITEM_GROUP)));
+		return register(name, block, b -> () -> new BaseBlockItem(b.get(), p -> p.tab(ITEM_GROUP)));
 	}
 
 	private static RegistryObject<Block> register(String name, Supplier<Block> block, Function<RegistryObject<Block>, Supplier<? extends BlockItem>> item) {

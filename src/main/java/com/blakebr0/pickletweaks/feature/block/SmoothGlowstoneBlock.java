@@ -8,10 +8,10 @@ import net.minecraft.block.material.Material;
 
 public class SmoothGlowstoneBlock extends BaseBlock implements IEnableable {
     public SmoothGlowstoneBlock() {
-        super(Material.GOURD, p -> p
-                .hardnessAndResistance(0.3F)
+        super(Material.VEGETABLE, p -> p
+                .strength(0.3F)
                 .sound(SoundType.GLASS)
-                .setLightLevel(s -> 15)
+                .lightLevel(s -> 15)
         );
     }
 

@@ -20,49 +20,51 @@ import net.minecraft.world.World;
 import java.util.List;
 import java.util.function.Function;
 
+import net.minecraft.item.Item.Properties;
+
 public class DiamondAppleItem extends BaseItem implements IEnableable {
-	public static final Food FOOD = new Food.Builder().hunger(6).saturation(1.5F).setAlwaysEdible().build();
+	public static final Food FOOD = new Food.Builder().nutrition(6).saturationMod(1.5F).alwaysEat().build();
 
 	public DiamondAppleItem(Function<Properties, Properties> properties) {
 		super(properties.compose(p -> p.food(FOOD).rarity(Rarity.EPIC)));
 	}
 
 	@Override
-	public ItemStack onItemUseFinish(ItemStack stack, World world, LivingEntity entity) {
+	public ItemStack finishUsingItem(ItemStack stack, World world, LivingEntity entity) {
 		EffectInstance potion;
 		int duration = 0;
 
-		potion = entity.getActivePotionEffect(Effects.REGENERATION);
+		potion = entity.getEffect(Effects.REGENERATION);
 		if (potion != null && potion.getAmplifier() >= 1)
 			duration = potion.getDuration();
-		entity.addPotionEffect(new EffectInstance(Effects.REGENERATION, duration + 400, 1));
+		entity.addEffect(new EffectInstance(Effects.REGENERATION, duration + 400, 1));
 
-		potion = entity.getActivePotionEffect(Effects.ABSORPTION);
+		potion = entity.getEffect(Effects.ABSORPTION);
 		if (potion != null && potion.getAmplifier() >= 2)
 			duration = potion.getDuration();
-		entity.addPotionEffect(new EffectInstance(Effects.ABSORPTION, duration + 5000, 2));
+		entity.addEffect(new EffectInstance(Effects.ABSORPTION, duration + 5000, 2));
 
-		potion = entity.getActivePotionEffect(Effects.FIRE_RESISTANCE);
+		potion = entity.getEffect(Effects.FIRE_RESISTANCE);
 		if (potion != null && potion.getAmplifier() >= 0)
 			duration = potion.getDuration();
-		entity.addPotionEffect(new EffectInstance(Effects.FIRE_RESISTANCE, duration + 5000, 0));
+		entity.addEffect(new EffectInstance(Effects.FIRE_RESISTANCE, duration + 5000, 0));
 
-		potion = entity.getActivePotionEffect(Effects.RESISTANCE);
+		potion = entity.getEffect(Effects.DAMAGE_RESISTANCE);
 		if (potion != null && potion.getAmplifier() >= 0)
 			duration = potion.getDuration();
-		entity.addPotionEffect(new EffectInstance(Effects.RESISTANCE, duration + 5000, 0));
+		entity.addEffect(new EffectInstance(Effects.DAMAGE_RESISTANCE, duration + 5000, 0));
 
-		return entity.onFoodEaten(world, stack);
+		return entity.eat(world, stack);
 	}
 
 	@Override
-	public void addInformation(ItemStack stack, World world, List<ITextComponent> tooltip, ITooltipFlag flag) {
+	public void appendHoverText(ItemStack stack, World world, List<ITextComponent> tooltip, ITooltipFlag flag) {
 		if (Screen.hasShiftDown()) {
 			tooltip.add(ModTooltips.GIVES_BUFFS.build());
 			tooltip.add(ModTooltips.BUFF_LIST_ITEM.args(Colors.WHITE, Effects.REGENERATION.getDisplayName(), "II").build());
 			tooltip.add(ModTooltips.BUFF_LIST_ITEM.args(Colors.WHITE, Effects.ABSORPTION.getDisplayName(), "III").build());
 			tooltip.add(ModTooltips.BUFF_LIST_ITEM.args(Colors.WHITE, Effects.FIRE_RESISTANCE.getDisplayName(), "I").build());
-			tooltip.add(ModTooltips.BUFF_LIST_ITEM.args(Colors.WHITE, Effects.RESISTANCE.getDisplayName(), "I").build());
+			tooltip.add(ModTooltips.BUFF_LIST_ITEM.args(Colors.WHITE, Effects.DAMAGE_RESISTANCE.getDisplayName(), "I").build());
 		} else {
 			tooltip.add(Tooltips.HOLD_SHIFT_FOR_INFO.build());
 		}

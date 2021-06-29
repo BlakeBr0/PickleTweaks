@@ -22,7 +22,7 @@ public final class FeatureRightClickHarvest {
 	private static final Method GET_SEED;
 
 	static {
-		GET_SEED = ObfuscationReflectionHelper.findMethod(CropsBlock.class, "func_199772_f");
+		GET_SEED = ObfuscationReflectionHelper.findMethod(CropsBlock.class, "getBaseSeedId");
 	}
 
 	@SubscribeEvent
@@ -32,7 +32,7 @@ public final class FeatureRightClickHarvest {
 		if (event.getHand() != Hand.MAIN_HAND) return;
 
 		World world = event.getWorld();
-		if (!world.isRemote()) {
+		if (!world.isClientSide()) {
 			BlockPos pos = event.getPos();
 			BlockState state = world.getBlockState(pos);
 			Block block = state.getBlock();
@@ -40,7 +40,7 @@ public final class FeatureRightClickHarvest {
 				CropsBlock crop = (CropsBlock) block;
 				Item seed = getSeed(crop);
 				if (crop.isMaxAge(state) && seed != null) {
-					List<ItemStack> drops = Block.getDrops(state, (ServerWorld) world, pos, world.getTileEntity(pos));
+					List<ItemStack> drops = Block.getDrops(state, (ServerWorld) world, pos, world.getBlockEntity(pos));
 					for (ItemStack drop : drops) {
 						Item item = drop.getItem();
 						if (!drop.isEmpty() && item == seed) {
@@ -51,11 +51,11 @@ public final class FeatureRightClickHarvest {
 
 					for (ItemStack drop : drops) {
 						if (!drop.isEmpty()) {
-							Block.spawnAsEntity(world, pos, drop);
+							Block.popResource(world, pos, drop);
 						}
 					}
 
-					world.setBlockState(pos, crop.withAge(0));
+					world.setBlockAndUpdate(pos, crop.getStateForAge(0));
 				}
 			}
 		}

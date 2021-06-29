@@ -32,7 +32,7 @@ public final class FeatureBowInfo {
 			PlayerEntity player = event.getPlayer();
 			ShootableItem shootable = (ShootableItem) item;
 
-			if (EnchantmentHelper.getEnchantmentLevel(Enchantments.INFINITY, stack) > 0) {
+			if (EnchantmentHelper.getItemEnchantmentLevel(Enchantments.INFINITY_ARROWS, stack) > 0) {
 				while (tooltip.hasNext()) {
 					ITextComponent next = tooltip.next();
 
@@ -42,7 +42,7 @@ public final class FeatureBowInfo {
 						if ("enchantment.minecraft.infinity".equals(key)) {
 							TextFormatting formatting = getAmmo(player, shootable) > 0 ? TextFormatting.GREEN : TextFormatting.RED;
 
-							tooltip.set(new StringTextComponent(next.getString()).mergeStyle(formatting));
+							tooltip.set(new StringTextComponent(next.getString()).withStyle(formatting));
 						}
 					}
 				}
@@ -62,12 +62,12 @@ public final class FeatureBowInfo {
 		if (player == null)
 			return ammo;
 
-		ItemStack offHand = player.inventory.offHandInventory.get(0);
-		if (item.getAmmoPredicate().test(offHand))
+		ItemStack offHand = player.inventory.offhand.get(0);
+		if (item.getSupportedHeldProjectiles().test(offHand))
 			ammo += offHand.getCount();
 
-		for (ItemStack stack : player.inventory.mainInventory) {
-			if (item.getAmmoPredicate().test(stack))
+		for (ItemStack stack : player.inventory.items) {
+			if (item.getSupportedHeldProjectiles().test(stack))
 				ammo += stack.getCount();
 		}
 

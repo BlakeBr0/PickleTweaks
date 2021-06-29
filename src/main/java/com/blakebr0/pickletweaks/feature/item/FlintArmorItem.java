@@ -8,6 +8,8 @@ import net.minecraft.inventory.EquipmentSlotType;
 
 import java.util.function.Function;
 
+import net.minecraft.item.Item.Properties;
+
 public class FlintArmorItem extends BaseArmorItem implements IEnableable {
     public FlintArmorItem(EquipmentSlotType slot, Function<Properties, Properties> properties) {
         super(ModArmorMaterial.FLINT, slot, properties);

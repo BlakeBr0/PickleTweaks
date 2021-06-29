@@ -100,18 +100,18 @@ public class GridRepairOverride {
 	
 	public static Override getOverride(ItemStack tool, ItemStack mat) {
 		for (Override entry : OVERRIDES) {
-			if (entry.tool.isItemEqualIgnoreDurability(tool)) {
+			if (entry.tool.sameItemStackIgnoreDurability(tool)) {
 				if (entry.material instanceof ItemStack) {
 					ItemStack stack = (ItemStack) entry.material;
-					if (!stack.isItemEqual(mat))
+					if (!stack.sameItem(mat))
 						continue;
 
 					return entry;
 				} else if (entry.material instanceof String) {
 					String tagId = (String) entry.material;
-					ITag<Item> tag = ItemTags.getCollection().get(new ResourceLocation(tagId));
+					ITag<Item> tag = ItemTags.getAllTags().getTag(new ResourceLocation(tagId));
 					if (tag != null && tag.contains(mat.getItem())) {
-						Collection<Item> items = tag.getAllElements();
+						Collection<Item> items = tag.getValues();
 						if (items.stream().anyMatch(i -> i == mat.getItem()))
 							return entry;
 					}
@@ -123,7 +123,7 @@ public class GridRepairOverride {
 	}
 	
 	public static boolean hasToolOverride(ItemStack tool) {
-		return OVERRIDES.stream().anyMatch(o -> o.tool.isItemEqualIgnoreDurability(tool));
+		return OVERRIDES.stream().anyMatch(o -> o.tool.sameItemStackIgnoreDurability(tool));
 	}
 	
 	public static class Override {

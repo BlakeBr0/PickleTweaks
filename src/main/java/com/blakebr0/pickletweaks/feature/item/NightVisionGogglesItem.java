@@ -14,6 +14,8 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 import java.util.function.Function;
 
+import net.minecraft.item.Item.Properties;
+
 public class NightVisionGogglesItem extends BaseArmorItem implements IEnableable {
 	private BipedModel<?> model;
 

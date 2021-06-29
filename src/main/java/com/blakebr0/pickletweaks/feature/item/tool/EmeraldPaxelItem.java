@@ -7,6 +7,8 @@ import com.blakebr0.pickletweaks.lib.ModItemTier;
 
 import java.util.function.Function;
 
+import net.minecraft.item.Item.Properties;
+
 public class EmeraldPaxelItem extends PaxelItem implements IEnableable {
     public EmeraldPaxelItem(Function<Properties, Properties> properties) {
         super(ModItemTier.EMERALD, properties);

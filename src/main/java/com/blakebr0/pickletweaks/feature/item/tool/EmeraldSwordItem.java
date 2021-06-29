@@ -7,6 +7,8 @@ import com.blakebr0.pickletweaks.lib.ModItemTier;
 
 import java.util.function.Function;
 
+import net.minecraft.item.Item.Properties;
+
 public class EmeraldSwordItem extends BaseSwordItem implements IEnableable {
     public EmeraldSwordItem(Function<Properties, Properties> properties) {
         super(ModItemTier.EMERALD, properties);

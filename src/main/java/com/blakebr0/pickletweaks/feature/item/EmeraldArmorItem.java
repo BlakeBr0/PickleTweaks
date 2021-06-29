@@ -8,6 +8,8 @@ import net.minecraft.inventory.EquipmentSlotType;
 
 import java.util.function.Function;
 
+import net.minecraft.item.Item.Properties;
+
 public class EmeraldArmorItem extends BaseArmorItem implements IEnableable {
     public EmeraldArmorItem(EquipmentSlotType slot, Function<Properties, Properties> properties) {
         super(ModArmorMaterial.EMERALD, slot, properties);

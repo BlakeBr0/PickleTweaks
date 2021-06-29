@@ -6,9 +6,11 @@ import com.blakebr0.pickletweaks.config.ModConfigs;
 
 import java.util.function.Function;
 
+import net.minecraft.item.Item.Properties;
+
 public class FlintShearsItem extends BaseShearsItem implements IEnableable {
     public FlintShearsItem(Function<Properties, Properties> properties) {
-        super(properties.compose(p -> p.maxDamage(100)));
+        super(properties.compose(p -> p.durability(100)));
     }
 
     @Override

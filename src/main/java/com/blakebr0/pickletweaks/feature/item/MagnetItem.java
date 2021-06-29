@@ -21,21 +21,23 @@ import net.minecraft.world.World;
 import java.util.List;
 import java.util.function.Function;
 
+import net.minecraft.item.Item.Properties;
+
 public class MagnetItem extends BaseItem implements IEnableable {
 	public MagnetItem(Function<Properties, Properties> properties) {
-		super(properties.compose(p -> p.maxStackSize(1)));
+		super(properties.compose(p -> p.stacksTo(1)));
 	}
 
 	@Override
-	public boolean hasEffect(ItemStack stack) {
+	public boolean isFoil(ItemStack stack) {
 		return NBTHelper.getBoolean(stack, "Enabled");
 	}
 
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(World world, PlayerEntity player, Hand hand) {
-		ItemStack stack = player.getHeldItem(hand);
+	public ActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
+		ItemStack stack = player.getItemInHand(hand);
 
-		player.playSound(SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, 0.5F, NBTHelper.getBoolean(stack, "Enabled") ? 0.5F : 1.0F);
+		player.playSound(SoundEvents.EXPERIENCE_ORB_PICKUP, 0.5F, NBTHelper.getBoolean(stack, "Enabled") ? 0.5F : 1.0F);
 
 		NBTHelper.flipBoolean(stack, "Enabled");
 
@@ -43,7 +45,7 @@ public class MagnetItem extends BaseItem implements IEnableable {
 	}
 
 	@Override
-	public void addInformation(ItemStack stack, World world, List<ITextComponent> tooltip, ITooltipFlag advanced) {
+	public void appendHoverText(ItemStack stack, World world, List<ITextComponent> tooltip, ITooltipFlag advanced) {
 		if (NBTHelper.getBoolean(stack, "Enabled")) {
 			tooltip.add(ModTooltips.ENABLED.build());
 		} else {
@@ -55,24 +57,24 @@ public class MagnetItem extends BaseItem implements IEnableable {
 	public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean isSelected) {
 		if (entity instanceof PlayerEntity && NBTHelper.getBoolean(stack, "Enabled")) {
 			double range = ModConfigs.MAGNET_RANGE.get();
-			List<ItemEntity> items = world.getEntitiesWithinAABB(ItemEntity.class, entity.getBoundingBox().grow(range));
+			List<ItemEntity> items = world.getEntitiesOfClass(ItemEntity.class, entity.getBoundingBox().inflate(range));
 			for (ItemEntity item : items) {
 				if (!item.isAlive() || NBTHelper.getBoolean(stack, "PreventRemoteMovement"))
 					continue;
 
-				if (item.getThrowerId() != null && item.getThrowerId().equals(entity.getUniqueID()) && item.cannotPickup())
+				if (item.getThrower() != null && item.getThrower().equals(entity.getUUID()) && item.hasPickUpDelay())
 					continue;
 
-				if (!world.isRemote()) {
-					item.setNoPickupDelay();
-					item.setPosition(entity.getPosX(), entity.getPosY(), entity.getPosZ());
+				if (!world.isClientSide()) {
+					item.setNoPickUpDelay();
+					item.setPos(entity.getX(), entity.getY(), entity.getZ());
 				}
 			}
 
-			List<ExperienceOrbEntity> xporbs = world.getEntitiesWithinAABB(ExperienceOrbEntity.class, entity.getBoundingBox().grow(range));
+			List<ExperienceOrbEntity> xporbs = world.getEntitiesOfClass(ExperienceOrbEntity.class, entity.getBoundingBox().inflate(range));
 			for (ExperienceOrbEntity orb : xporbs) {
-				if (!world.isRemote()) {
-					orb.setPosition(entity.getPosX(), entity.getPosY(), entity.getPosZ());
+				if (!world.isClientSide()) {
+					orb.setPos(entity.getX(), entity.getY(), entity.getZ());
 				}
 			}
 		}

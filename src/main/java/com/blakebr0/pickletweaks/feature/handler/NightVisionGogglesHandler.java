@@ -17,11 +17,11 @@ public final class NightVisionGogglesHandler {
     public static final List<String> WEARERS = new ArrayList<>();
 
     public static String getPlayerKey(PlayerEntity player) {
-        return player.getGameProfile().getName() + ":" + player.getEntityWorld().isRemote;
+        return player.getGameProfile().getName() + ":" + player.getCommandSenderWorld().isClientSide;
     }
 
     public static boolean hasGoggles(PlayerEntity entity) {
-        ItemStack stack = entity.getItemStackFromSlot(EquipmentSlotType.HEAD);
+        ItemStack stack = entity.getItemBySlot(EquipmentSlotType.HEAD);
 
         return !stack.isEmpty() && stack.getItem() instanceof NightVisionGogglesItem;
     }
@@ -36,9 +36,9 @@ public final class NightVisionGogglesHandler {
             boolean hasGoggles = hasGoggles(player);
             if (WEARERS.contains(key)) {
                 if (hasGoggles) {
-                    player.addPotionEffect(new EffectInstance(Effects.NIGHT_VISION, 246, 0, true, false));
+                    player.addEffect(new EffectInstance(Effects.NIGHT_VISION, 246, 0, true, false));
                 } else {
-                    player.removeActivePotionEffect(Effects.NIGHT_VISION);
+                    player.removeEffectNoUpdate(Effects.NIGHT_VISION);
                     WEARERS.remove(key);
                 }
             } else if (hasGoggles) {

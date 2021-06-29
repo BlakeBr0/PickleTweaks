@@ -43,6 +43,8 @@ import java.util.UUID;
 import java.util.function.Function;
 import java.util.stream.Stream;
 
+import net.minecraft.item.Item.Properties;
+
 public class WateringCanItem extends BaseItem implements IEnableable {
 	private static final Map<String, Long> THROTTLES = new HashMap<>();
 	protected final int range;
@@ -53,14 +55,14 @@ public class WateringCanItem extends BaseItem implements IEnableable {
 	}
 
 	public WateringCanItem(int range, double chance, Function<Properties, Properties> properties) {
-		super(properties.compose(p -> p.maxStackSize(1)));
+		super(properties.compose(p -> p.stacksTo(1)));
 		this.range = range;
 		this.chance = chance;
 	}
 
 	@Override
-	public void fillItemGroup(ItemGroup group, NonNullList<ItemStack> items) {
-		if (this.isInGroup(group)) {
+	public void fillItemCategory(ItemGroup group, NonNullList<ItemStack> items) {
+		if (this.allowdedIn(group)) {
 			ItemStack stack = new ItemStack(this);
 			NBTHelper.setBoolean(stack, "Water", false);
 			items.add(stack);
@@ -68,29 +70,29 @@ public class WateringCanItem extends BaseItem implements IEnableable {
 	}
 
 	@Override
-	public UseAction getUseAction(ItemStack stack) {
+	public UseAction getUseAnimation(ItemStack stack) {
 		return UseAction.NONE;
 	}
 
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(World world, PlayerEntity player, Hand hand) {
-		ItemStack stack = player.getHeldItem(hand);
+	public ActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
+		ItemStack stack = player.getItemInHand(hand);
 		if (NBTHelper.getBoolean(stack, "Water"))
 			return new ActionResult<>(ActionResultType.PASS, stack);
 
-		BlockRayTraceResult trace = rayTrace(world, player, RayTraceContext.FluidMode.SOURCE_ONLY);
+		BlockRayTraceResult trace = getPlayerPOVHitResult(world, player, RayTraceContext.FluidMode.SOURCE_ONLY);
 		if (trace.getType() != RayTraceResult.Type.BLOCK)
 			return new ActionResult<>(ActionResultType.PASS, stack);
 
-		BlockPos pos = trace.getPos();
-		Direction direction = trace.getFace();
-		if (world.isBlockModifiable(player, pos) && player.canPlayerEdit(pos.offset(direction), direction, stack)) {
+		BlockPos pos = trace.getBlockPos();
+		Direction direction = trace.getDirection();
+		if (world.mayInteract(player, pos) && player.mayUseItemAt(pos.relative(direction), direction, stack)) {
 			BlockState state = world.getBlockState(pos);
 			if (state.getMaterial() == Material.WATER) {
 				NBTHelper.setString(stack, "ID", UUID.randomUUID().toString());
 				NBTHelper.setBoolean(stack, "Water", true);
 
-				player.playSound(SoundEvents.ITEM_BUCKET_FILL, 1.0F, 1.0F);
+				player.playSound(SoundEvents.BUCKET_FILL, 1.0F, 1.0F);
 
 				return new ActionResult<>(ActionResultType.SUCCESS, stack);
 			}
@@ -105,11 +107,11 @@ public class WateringCanItem extends BaseItem implements IEnableable {
 		if (player == null)
 			return ActionResultType.FAIL;
 
-		World world = context.getWorld();
-		BlockPos pos = context.getPos();
-		Direction direction = context.getFace();
+		World world = context.getLevel();
+		BlockPos pos = context.getClickedPos();
+		Direction direction = context.getClickedFace();
 
-		if (!player.canPlayerEdit(pos.offset(direction), direction, stack))
+		if (!player.mayUseItemAt(pos.relative(direction), direction, stack))
 			return ActionResultType.FAIL;
 
 		if (!NBTHelper.getBoolean(stack, "Water"))
@@ -120,7 +122,7 @@ public class WateringCanItem extends BaseItem implements IEnableable {
 
 	@OnlyIn(Dist.CLIENT)
 	@Override
-	public void addInformation(ItemStack stack, World world, List<ITextComponent> tooltip, ITooltipFlag advanced) {
+	public void appendHoverText(ItemStack stack, World world, List<ITextComponent> tooltip, ITooltipFlag advanced) {
 		if (NBTHelper.getBoolean(stack, "Water")) {
 			tooltip.add(ModTooltips.FILLED.build());
 		} else {
@@ -137,7 +139,7 @@ public class WateringCanItem extends BaseItem implements IEnableable {
 		if (player == null)
 			return ActionResultType.FAIL;
 
-		if (!player.canPlayerEdit(pos.offset(direction), direction, stack))
+		if (!player.mayUseItemAt(pos.relative(direction), direction, stack))
 			return ActionResultType.FAIL;
 
 		if (!NBTHelper.getBoolean(stack, "Water"))
@@ -146,7 +148,7 @@ public class WateringCanItem extends BaseItem implements IEnableable {
 		if (!ModConfigs.FAKE_PLAYER_WATERING.get() && player instanceof FakePlayer)
 			return ActionResultType.PASS;
 
-		if (!world.isRemote()) {
+		if (!world.isClientSide()) {
 			String id = getID(stack);
 			long throttle = THROTTLES.getOrDefault(id, 0L);
 			if (world.getGameTime() - throttle < getThrottleTicks(player))
@@ -156,34 +158,34 @@ public class WateringCanItem extends BaseItem implements IEnableable {
 		}
 
 		int range = (this.range - 1) / 2;
-		Stream<BlockPos> blocks = BlockPos.getAllInBox(pos.add(-range, -range, -range), pos.add(range, range, range));
+		Stream<BlockPos> blocks = BlockPos.betweenClosedStream(pos.offset(-range, -range, -range), pos.offset(range, range, range));
 		blocks.forEach(aoePos -> {
 			BlockState aoeState = world.getBlockState(aoePos);
 			if (aoeState.getBlock() instanceof FarmlandBlock) {
-				int moisture = aoeState.get(FarmlandBlock.MOISTURE);
+				int moisture = aoeState.getValue(FarmlandBlock.MOISTURE);
 				if (moisture < 7) {
-					world.setBlockState(aoePos, aoeState.with(FarmlandBlock.MOISTURE, 7), 3);
+					world.setBlock(aoePos, aoeState.setValue(FarmlandBlock.MOISTURE, 7), 3);
 				}
 			}
 		});
 
 		for (int x = -range; x <= range; x++) {
 			for (int z = -range; z <= range; z++) {
-				double d0 = pos.add(x, 0, z).getX() + world.getRandom().nextFloat();
-				double d1 = pos.add(x, 0, z).getY() + 1.0D;
-				double d2 = pos.add(x, 0, z).getZ() + world.getRandom().nextFloat();
+				double d0 = pos.offset(x, 0, z).getX() + world.getRandom().nextFloat();
+				double d1 = pos.offset(x, 0, z).getY() + 1.0D;
+				double d2 = pos.offset(x, 0, z).getZ() + world.getRandom().nextFloat();
 
 				BlockState state = world.getBlockState(pos);
-				if (state.isSolid() || state.getBlock() instanceof FarmlandBlock)
+				if (state.canOcclude() || state.getBlock() instanceof FarmlandBlock)
 					d1 += 0.3D;
 
 				world.addParticle(ParticleTypes.RAIN, d0, d1, d2, 0.0D, 0.0D, 0.0D);
 			}
 		}
 
-		if (!world.isRemote()) {
+		if (!world.isClientSide()) {
 			if (Math.random() <= this.chance) {
-				blocks = BlockPos.getAllInBox(pos.add(-range, -range, -range), pos.add(range, range, range));
+				blocks = BlockPos.betweenClosedStream(pos.offset(-range, -range, -range), pos.offset(range, range, range));
 				blocks.forEach(aoePos -> {
 					BlockState state = world.getBlockState(aoePos);
 					Block plantBlock = state.getBlock();

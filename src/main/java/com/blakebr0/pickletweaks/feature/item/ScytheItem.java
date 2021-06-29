@@ -7,6 +7,8 @@ import net.minecraft.item.IItemTier;
 
 import java.util.function.Function;
 
+import net.minecraft.item.Item.Properties;
+
 public class ScytheItem extends BaseScytheItem implements IEnableable {
     public ScytheItem(IItemTier tier, int range, Function<Properties, Properties> properties) {
         super(tier, 4, -2.8F, range, properties);

@@ -24,7 +24,7 @@ public class FeatureWailaPlugin implements IWailaPlugin {
                 @Override
                 public void appendBody(List<ITextComponent> tooltip, IDataAccessor accessor, IPluginConfig config) {
                 BlockState state = accessor.getBlockState();
-                if (state.getRequiresTool()) {
+                if (state.requiresCorrectToolForDrops()) {
                     String name = getHarvestLevelName(state);
                     tooltip.add(ModTooltips.HARVEST_LEVEL.args(name).build());
                 }

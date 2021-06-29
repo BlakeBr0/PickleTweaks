@@ -28,7 +28,7 @@ public class ToggleMagnetMessage {
         context.get().enqueueWork(() -> {
             PlayerEntity player = context.get().getSender();
             if (player != null) {
-                ItemStack stack = player.openContainer.inventorySlots.get(message.slot).getStack();
+                ItemStack stack = player.containerMenu.slots.get(message.slot).getItem();
                 if (stack.getItem() instanceof MagnetItem) {
                     NBTHelper.flipBoolean(stack, "Enabled");
                 }

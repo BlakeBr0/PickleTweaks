@@ -26,20 +26,20 @@ public class GridRepairRecipe extends ShapelessRecipe {
 	}
 
 	@Override
-	public ItemStack getCraftingResult(CraftingInventory inv) {
+	public ItemStack assemble(CraftingInventory inv) {
 		if (!ModConfigs.GRID_REPAIR_ENABLED.get())
 			return ItemStack.EMPTY;
 
 		ItemStack tool = ItemStack.EMPTY;
 		NonNullList<ItemStack> inputs = NonNullList.create();
 
-		for (int i = 0; i < inv.getSizeInventory(); i++) {
-			ItemStack slotStack = inv.getStackInSlot(i);
+		for (int i = 0; i < inv.getContainerSize(); i++) {
+			ItemStack slotStack = inv.getItem(i);
 
 			if (slotStack.isEmpty())
 				continue;
 
-			if (tool.isEmpty() && slotStack.isDamageable()) {
+			if (tool.isEmpty() && slotStack.isDamageableItem()) {
 				tool = slotStack;
 			} else {
 				inputs.add(slotStack);
@@ -75,7 +75,7 @@ public class GridRepairRecipe extends ShapelessRecipe {
 
 				matCount += matValue;
 
-				if (tool.getDamage() - (damage * matCount) <= 0) {
+				if (tool.getDamageValue() - (damage * matCount) <= 0) {
 					maxed = true;
 				}
 			} else {
@@ -85,7 +85,7 @@ public class GridRepairRecipe extends ShapelessRecipe {
 
 		tool = StackHelper.withSize(tool, 1, false);
 
-		tool.setDamage(tool.getDamage() - (int) (damage * matCount));
+		tool.setDamageValue(tool.getDamageValue() - (int) (damage * matCount));
 
 		// Strip enchantments. Vanilla implementation here: {@link net.minecraft.item.crafting.RepairItemRecipe#getCraftingResult(CraftingInventory inv)}.
 		if (ModConfigs.GRID_REPAIR_STRIP_ENCHANTMENTS.get()) {
@@ -103,16 +103,16 @@ public class GridRepairRecipe extends ShapelessRecipe {
 
 	@Override
 	public boolean matches(CraftingInventory inv, World world) {
-		return !this.getCraftingResult(inv).isEmpty();
+		return !this.assemble(inv).isEmpty();
 	}
 
 	@Override
-	public ItemStack getRecipeOutput() {
+	public ItemStack getResultItem() {
 		return ItemStack.EMPTY;
 	}
 
 	@Override
-	public boolean isDynamic() {
+	public boolean isSpecial() {
 		return true;
 	}
 
@@ -123,22 +123,22 @@ public class GridRepairRecipe extends ShapelessRecipe {
 
 	@Override
 	public NonNullList<ItemStack> getRemainingItems(CraftingInventory inv) {
-		return NonNullList.withSize(inv.getSizeInventory(), ItemStack.EMPTY);
+		return NonNullList.withSize(inv.getContainerSize(), ItemStack.EMPTY);
 	}
 
 	public static class Serializer extends ForgeRegistryEntry<IRecipeSerializer<?>> implements IRecipeSerializer<GridRepairRecipe> {
 		@Override
-		public GridRepairRecipe read(ResourceLocation recipeId, JsonObject json) {
+		public GridRepairRecipe fromJson(ResourceLocation recipeId, JsonObject json) {
 			return new GridRepairRecipe(recipeId);
 		}
 
 		@Override
-		public GridRepairRecipe read(ResourceLocation recipeId, PacketBuffer buffer) {
+		public GridRepairRecipe fromNetwork(ResourceLocation recipeId, PacketBuffer buffer) {
 			return new GridRepairRecipe(recipeId);
 		}
 
 		@Override
-		public void write(PacketBuffer buffer, GridRepairRecipe recipe) { }
+		public void toNetwork(PacketBuffer buffer, GridRepairRecipe recipe) { }
 	}
 }
 

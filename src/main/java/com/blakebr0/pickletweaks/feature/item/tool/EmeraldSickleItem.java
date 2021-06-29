@@ -6,6 +6,8 @@ import com.blakebr0.pickletweaks.lib.ModItemTier;
 
 import java.util.function.Function;
 
+import net.minecraft.item.Item.Properties;
+
 public class EmeraldSickleItem extends SickleItem {
     public EmeraldSickleItem(Function<Properties, Properties> properties) {
         super(ModItemTier.EMERALD, 3, properties);
