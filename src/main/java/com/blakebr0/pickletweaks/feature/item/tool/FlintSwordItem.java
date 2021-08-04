@@ -7,7 +7,7 @@ import com.blakebr0.pickletweaks.lib.ModItemTier;
 
 import java.util.function.Function;
 
-import net.minecraft.item.Item.Properties;
+import net.minecraft.world.item.Item.Properties;
 
 public class FlintSwordItem extends BaseSwordItem implements IEnableable {
     public FlintSwordItem(Function<Properties, Properties> properties) {

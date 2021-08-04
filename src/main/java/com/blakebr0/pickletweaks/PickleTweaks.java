@@ -16,7 +16,7 @@ import com.blakebr0.pickletweaks.init.ModRecipeSerializers;
 import com.blakebr0.pickletweaks.network.NetworkHandler;
 import com.blakebr0.pickletweaks.tweaks.TweakToolBreaking;
 import com.blakebr0.pickletweaks.tweaks.TweakToolUselessifier;
-import net.minecraft.item.ItemGroup;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -37,7 +37,7 @@ public final class PickleTweaks {
 	public static final String MOD_ID = "pickletweaks";
 	public static final String NAME = "Pickle Tweaks";
 
-	public static final ItemGroup ITEM_GROUP = new PTItemGroup();
+	public static final CreativeModeTab ITEM_GROUP = new PTItemGroup();
 	public static final Logger LOGGER = LogManager.getLogger(NAME);
 
 	public PickleTweaks() {

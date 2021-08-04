@@ -1,0 +1,12 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        maven { url = 'https://maven.minecraftforge.net' }
+    }
+}
+
+rootProject.name = 'test'
+
+include ':Cucumber'
+
+project(':Cucumber').projectDir = file('../Cucumber')

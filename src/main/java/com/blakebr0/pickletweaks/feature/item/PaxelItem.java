@@ -5,23 +5,23 @@ import com.blakebr0.pickletweaks.config.ModConfigs;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.material.Material;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.IItemTier;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemUseContext;
-import net.minecraft.item.ToolItem;
-import net.minecraft.util.ActionResultType;
-import net.minecraft.util.Direction;
-import net.minecraft.util.NonNullList;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvents;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.material.Material;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.context.UseOnContext;
+import net.minecraft.world.item.DiggerItem;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.core.Direction;
+import net.minecraft.core.NonNullList;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.common.ToolType;
 
 import java.util.HashSet;
@@ -29,13 +29,13 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.Function;
 
-import net.minecraft.item.Item.Properties;
+import net.minecraft.world.item.Item.Properties;
 
-public class PaxelItem extends ToolItem implements IEnableable {
+public class PaxelItem extends DiggerItem implements IEnableable {
 	private static final Set<Material> EFFECTIVE_ON_MATERIALS = Sets.newHashSet(Material.WOOD, Material.NETHER_WOOD, Material.PLANT, Material.REPLACEABLE_PLANT, Material.BAMBOO, Material.VEGETABLE);
     private static final Map<Block, BlockState> PATH_STUFF = Maps.newHashMap(ImmutableMap.of(Blocks.GRASS_BLOCK, Blocks.GRASS_PATH.defaultBlockState()));
 
-    public PaxelItem(IItemTier tier, Function<Properties, Properties> properties) {
+    public PaxelItem(Tier tier, Function<Properties, Properties> properties) {
 		super(4.0F, -3.2F, tier, new HashSet<>(), properties.apply(new Properties()
 				.defaultDurability((int) (tier.getUses() * 1.5))
 				.addToolType(ToolType.PICKAXE, tier.getLevel())
@@ -45,7 +45,7 @@ public class PaxelItem extends ToolItem implements IEnableable {
 	}
 
 	@Override
-	public void fillItemCategory(ItemGroup group, NonNullList<ItemStack> items) {
+	public void fillItemCategory(CreativeModeTab group, NonNullList<ItemStack> items) {
 		if (this.isEnabled()) {
 			super.fillItemCategory(group, items);
 		}
@@ -72,17 +72,17 @@ public class PaxelItem extends ToolItem implements IEnableable {
 	}
 
 	@Override
-	public ActionResultType useOn(ItemUseContext context) {
-		World world = context.getLevel();
+	public InteractionResult useOn(UseOnContext context) {
+		Level world = context.getLevel();
 		BlockPos pos = context.getClickedPos();
-		PlayerEntity player = context.getPlayer();
+		Player player = context.getPlayer();
 		ItemStack stack = context.getItemInHand();
 
 		BlockState state = world.getBlockState(pos);
 		BlockState modifiedState = state.getToolModifiedState(world, pos, player, stack, ToolType.AXE);
 
 		if (modifiedState != null) {
-			world.playSound(player, pos, SoundEvents.AXE_STRIP, SoundCategory.BLOCKS, 1.0F, 1.0F);
+			world.playSound(player, pos, SoundEvents.AXE_STRIP, SoundSource.BLOCKS, 1.0F, 1.0F);
 
 			if (!world.isClientSide()) {
 				world.setBlock(pos, modifiedState, 11);
@@ -94,11 +94,11 @@ public class PaxelItem extends ToolItem implements IEnableable {
 				}
 			}
 
-			return ActionResultType.sidedSuccess(world.isClientSide());
+			return InteractionResult.sidedSuccess(world.isClientSide());
 		} else if (context.getClickedFace() != Direction.DOWN && world.getBlockState(pos.above()).isAir(world, pos.above())) {
 			BlockState pathState = PATH_STUFF.get(state.getBlock());
 			if (pathState != null) {
-				world.playSound(player, pos, SoundEvents.SHOVEL_FLATTEN, SoundCategory.BLOCKS, 1.0F, 1.0F);
+				world.playSound(player, pos, SoundEvents.SHOVEL_FLATTEN, SoundSource.BLOCKS, 1.0F, 1.0F);
 
 				if (!world.isClientSide()) {
 					world.setBlock(pos, pathState, 11);
@@ -110,11 +110,11 @@ public class PaxelItem extends ToolItem implements IEnableable {
 					}
 				}
 
-				return ActionResultType.SUCCESS;
+				return InteractionResult.SUCCESS;
 			}
 		}
 
-		return ActionResultType.PASS;
+		return InteractionResult.PASS;
 	}
 
 	@Override

@@ -5,12 +5,12 @@ import com.blakebr0.pickletweaks.feature.item.MagnetItem;
 import com.blakebr0.pickletweaks.network.NetworkHandler;
 import com.blakebr0.pickletweaks.network.message.ToggleMagnetMessage;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.entity.player.ClientPlayerEntity;
-import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.client.gui.screen.inventory.ContainerScreen;
-import net.minecraft.inventory.container.Slot;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.SoundEvents;
+import net.minecraft.client.player.LocalPlayer;
+import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
+import net.minecraft.world.inventory.Slot;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraftforge.client.event.GuiScreenEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
@@ -20,10 +20,10 @@ public final class ToggleMagnetInInventoryHandler {
         Minecraft mc = Minecraft.getInstance();
         Screen gui = event.getGui();
 
-        if (gui instanceof ContainerScreen<?> && event.getButton() == 1) {
-            ContainerScreen<?> container = (ContainerScreen<?>) gui;
+        if (gui instanceof AbstractContainerScreen<?> && event.getButton() == 1) {
+            AbstractContainerScreen<?> container = (AbstractContainerScreen<?>) gui;
             Slot slot = container.getSlotUnderMouse();
-            ClientPlayerEntity player = mc.player;
+            LocalPlayer player = mc.player;
 
             if (player == null)
                 return;

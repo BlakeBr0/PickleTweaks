@@ -3,18 +3,18 @@ package com.blakebr0.pickletweaks.tweaks;
 import com.blakebr0.cucumber.event.ScytheHarvestCropEvent;
 import com.blakebr0.pickletweaks.config.ModConfigs;
 import com.blakebr0.pickletweaks.lib.ModTooltips;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.AxeItem;
-import net.minecraft.item.HoeItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.ShearsItem;
-import net.minecraft.item.ShootableItem;
-import net.minecraft.item.ShovelItem;
-import net.minecraft.item.SwordItem;
-import net.minecraft.item.ToolItem;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextFormatting;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.AxeItem;
+import net.minecraft.world.item.HoeItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ShearsItem;
+import net.minecraft.world.item.ProjectileWeaponItem;
+import net.minecraft.world.item.ShovelItem;
+import net.minecraft.world.item.SwordItem;
+import net.minecraft.world.item.DiggerItem;
+import net.minecraft.network.chat.Component;
+import net.minecraft.ChatFormatting;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
@@ -34,7 +34,7 @@ public final class TweakToolBreaking {
 		if (!ModConfigs.ENABLE_TOOL_BREAKING_TWEAK.get())
 			return;
 
-		PlayerEntity player = event.getPlayer();
+		Player player = event.getPlayer();
 		if (player.abilities.instabuild)
 			return;
 
@@ -56,7 +56,7 @@ public final class TweakToolBreaking {
 		if (!ModConfigs.ENABLE_TOOL_BREAKING_TWEAK.get())
 			return;
 
-		PlayerEntity player = event.getPlayer();
+		Player player = event.getPlayer();
 		if (player.abilities.instabuild)
 			return;
 
@@ -78,7 +78,7 @@ public final class TweakToolBreaking {
 		if (!ModConfigs.ENABLE_TOOL_BREAKING_TWEAK.get())
 			return;
 
-		PlayerEntity player = event.getPlayer();
+		Player player = event.getPlayer();
 		if (player.abilities.instabuild)
 			return;
 
@@ -100,7 +100,7 @@ public final class TweakToolBreaking {
 		if (!ModConfigs.ENABLE_TOOL_BREAKING_TWEAK.get())
 			return;
 
-		PlayerEntity player = event.getPlayer();
+		Player player = event.getPlayer();
 		if (player.abilities.instabuild)
 			return;
 
@@ -122,7 +122,7 @@ public final class TweakToolBreaking {
 		if (!ModConfigs.ENABLE_TOOL_BREAKING_TWEAK.get())
 			return;
 
-		PlayerEntity player = event.getPlayer();
+		Player player = event.getPlayer();
 		if (player.abilities.instabuild)
 			return;
 
@@ -131,7 +131,7 @@ public final class TweakToolBreaking {
 			return;
 
 		Item item = stack.getItem();
-		if (stack.isDamageableItem() && (item instanceof ShootableItem || item instanceof ShearsItem)) {
+		if (stack.isDamageableItem() && (item instanceof ProjectileWeaponItem || item instanceof ShearsItem)) {
 			if (isBroken(stack)) {
 				sendBrokenMessage(player, stack);
 				event.setCanceled(true);
@@ -144,7 +144,7 @@ public final class TweakToolBreaking {
 		if (!ModConfigs.ENABLE_TOOL_BREAKING_TWEAK.get())
 			return;
 
-		PlayerEntity player = event.getPlayer();
+		Player player = event.getPlayer();
 		if (player.abilities.instabuild)
 			return;
 
@@ -166,7 +166,7 @@ public final class TweakToolBreaking {
 		if (!ModConfigs.ENABLE_TOOL_BREAKING_TWEAK.get())
 			return;
 
-		PlayerEntity player = event.getPlayer();
+		Player player = event.getPlayer();
 		if (player.abilities.instabuild)
 			return;
 
@@ -188,7 +188,7 @@ public final class TweakToolBreaking {
 		if (!ModConfigs.ENABLE_TOOL_BREAKING_TWEAK.get())
 			return;
 
-		PlayerEntity player = event.getPlayer();
+		Player player = event.getPlayer();
 		if (player.abilities.instabuild)
 			return;
 
@@ -208,29 +208,29 @@ public final class TweakToolBreaking {
 		if (!ModConfigs.ENABLE_TOOL_BREAKING_TWEAK.get())
 			return;
 
-		ListIterator<ITextComponent> tooltip = event.getToolTip().listIterator();
+		ListIterator<Component> tooltip = event.getToolTip().listIterator();
 		ItemStack stack = event.getItemStack();
 
 		if (stack.isDamageableItem()) {
 			Item item = stack.getItem();
-			if (isValidTool(item) || item instanceof ShootableItem) {
+			if (isValidTool(item) || item instanceof ProjectileWeaponItem) {
 				if (isBroken(stack)) {
 					tooltip.next();
-					tooltip.add(ModTooltips.BROKEN.color(TextFormatting.RED).build());
+					tooltip.add(ModTooltips.BROKEN.color(ChatFormatting.RED).build());
 				}
 			}
 		}
 	}
 
 	public static boolean isValidTool(Item item) {
-		return item instanceof ToolItem || item instanceof SwordItem || item instanceof ShearsItem;
+		return item instanceof DiggerItem || item instanceof SwordItem || item instanceof ShearsItem;
 	}
 
 	public static boolean isBroken(ItemStack stack) {
 		return stack.getMaxDamage() > 2 && stack.getDamageValue() >= stack.getMaxDamage() - 2;
 	}
 
-	private static void sendBrokenMessage(PlayerEntity player, ItemStack stack) {
-		player.displayClientMessage(ModTooltips.YOUR_ITEM_IS_BROKEN.args(stack.getHoverName()).color(TextFormatting.WHITE).build(), true);
+	private static void sendBrokenMessage(Player player, ItemStack stack) {
+		player.displayClientMessage(ModTooltips.YOUR_ITEM_IS_BROKEN.args(stack.getHoverName()).color(ChatFormatting.WHITE).build(), true);
 	}
 }

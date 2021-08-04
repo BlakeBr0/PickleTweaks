@@ -4,20 +4,20 @@ import com.blakebr0.cucumber.event.ScytheHarvestCropEvent;
 import com.blakebr0.cucumber.util.Localizable;
 import com.blakebr0.pickletweaks.config.ModConfigs;
 import com.blakebr0.pickletweaks.lib.ModTooltips;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.HoeItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.ShearsItem;
-import net.minecraft.item.ShootableItem;
-import net.minecraft.item.SwordItem;
-import net.minecraft.item.TieredItem;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.StringTextComponent;
-import net.minecraft.util.text.TextFormatting;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.HoeItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ShearsItem;
+import net.minecraft.world.item.ProjectileWeaponItem;
+import net.minecraft.world.item.SwordItem;
+import net.minecraft.world.item.TieredItem;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TextComponent;
+import net.minecraft.ChatFormatting;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
@@ -32,7 +32,7 @@ import java.util.ListIterator;
 public final class TweakToolUselessifier {
 	@SubscribeEvent
 	public void onBreakSpeed(PlayerEvent.BreakSpeed event) {
-        PlayerEntity player = event.getPlayer();
+        Player player = event.getPlayer();
         if (player.abilities.instabuild)
 			return;
 
@@ -52,10 +52,10 @@ public final class TweakToolUselessifier {
 			return;
 
         Entity trueSource = source.getEntity();
-        if (!(trueSource instanceof PlayerEntity))
+        if (!(trueSource instanceof Player))
 			return;
 
-		PlayerEntity player = (PlayerEntity) trueSource;
+		Player player = (Player) trueSource;
 		if (player.abilities.instabuild)
 			return;
 
@@ -72,7 +72,7 @@ public final class TweakToolUselessifier {
 
 	@SubscribeEvent
 	public void onRightClickBlock(PlayerInteractEvent.RightClickBlock event) {
-		PlayerEntity player = event.getPlayer();
+		Player player = event.getPlayer();
 		if (player.abilities.instabuild)
 			return;
 
@@ -87,7 +87,7 @@ public final class TweakToolUselessifier {
 
 	@SubscribeEvent
 	public void onRightClickItem(PlayerInteractEvent.RightClickItem event) {
-		PlayerEntity player = event.getPlayer();
+		Player player = event.getPlayer();
 		if (player.abilities.instabuild)
 			return;
 
@@ -102,7 +102,7 @@ public final class TweakToolUselessifier {
 
 	@SubscribeEvent
 	public void onEntityInteract(PlayerInteractEvent.EntityInteract event) {
-		PlayerEntity player = event.getPlayer();
+		Player player = event.getPlayer();
 		if (player.abilities.instabuild)
 			return;
 
@@ -117,7 +117,7 @@ public final class TweakToolUselessifier {
 
 	@SubscribeEvent
 	public void onScytheHarvestCrop(ScytheHarvestCropEvent event) {
-		PlayerEntity player = event.getPlayer();
+		Player player = event.getPlayer();
 		if (player.abilities.instabuild)
 			return;
 
@@ -135,26 +135,26 @@ public final class TweakToolUselessifier {
 	public void onItemTooltip(ItemTooltipEvent event) {
 		Item item = event.getItemStack().getItem();
 		if (isUselessTool(item)) {
-			List<ITextComponent> tooltip = event.getToolTip();
-			ListIterator<ITextComponent> lines = tooltip.listIterator();
+			List<Component> tooltip = event.getToolTip();
+			ListIterator<Component> lines = tooltip.listIterator();
 			while (lines.hasNext()) {
 				String s = Localizable.of("attribute.name.generic.attackDamage").buildString();
 				if (lines.next().getString().contains(s)) {
-					lines.set(new StringTextComponent(" 0 ").append(s).withStyle(TextFormatting.DARK_GREEN));
+					lines.set(new TextComponent(" 0 ").append(s).withStyle(ChatFormatting.DARK_GREEN));
 				}
 			}
 
 			if (item instanceof HoeItem) {
-				tooltip.add(ModTooltips.USELESS_HOE_1.color(TextFormatting.RED).build());
+				tooltip.add(ModTooltips.USELESS_HOE_1.color(ChatFormatting.RED).build());
 			} else if (item instanceof SwordItem) {
-				tooltip.add(ModTooltips.USELESS_WEAPON_1.color(TextFormatting.RED).build());
-			} else if (item instanceof ShootableItem) {
-				tooltip.add(ModTooltips.USELESS_BOW_1.color(TextFormatting.RED).build());
+				tooltip.add(ModTooltips.USELESS_WEAPON_1.color(ChatFormatting.RED).build());
+			} else if (item instanceof ProjectileWeaponItem) {
+				tooltip.add(ModTooltips.USELESS_BOW_1.color(ChatFormatting.RED).build());
 			} else {
-				tooltip.add(ModTooltips.USELESS_TOOL_1.color(TextFormatting.RED).build());
+				tooltip.add(ModTooltips.USELESS_TOOL_1.color(ChatFormatting.RED).build());
 			}
 
-			tooltip.add(ModTooltips.USELESS_TOOL_2.color(TextFormatting.RED).build());
+			tooltip.add(ModTooltips.USELESS_TOOL_2.color(ChatFormatting.RED).build());
 		}
 	}
 
@@ -169,6 +169,6 @@ public final class TweakToolUselessifier {
 		if (!ModConfigs.USELESS_TOOLS.get().contains(id.toString()))
 			return false;
 
-        return item instanceof TieredItem || item instanceof ShootableItem || item instanceof ShearsItem;
+        return item instanceof TieredItem || item instanceof ProjectileWeaponItem || item instanceof ShearsItem;
     }
 }

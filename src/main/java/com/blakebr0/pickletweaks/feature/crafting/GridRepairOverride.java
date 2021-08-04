@@ -2,11 +2,11 @@ package com.blakebr0.pickletweaks.feature.crafting;
 
 import com.blakebr0.pickletweaks.PickleTweaks;
 import com.blakebr0.pickletweaks.config.ModConfigs;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.tags.ITag;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.tags.Tag;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.ArrayList;
@@ -109,7 +109,7 @@ public class GridRepairOverride {
 					return entry;
 				} else if (entry.material instanceof String) {
 					String tagId = (String) entry.material;
-					ITag<Item> tag = ItemTags.getAllTags().getTag(new ResourceLocation(tagId));
+					Tag<Item> tag = ItemTags.getAllTags().getTag(new ResourceLocation(tagId));
 					if (tag != null && tag.contains(mat.getItem())) {
 						Collection<Item> items = tag.getValues();
 						if (items.stream().anyMatch(i -> i == mat.getItem()))

@@ -2,15 +2,15 @@ package com.blakebr0.pickletweaks.feature;
 
 import com.blakebr0.pickletweaks.PickleTweaks;
 import com.blakebr0.pickletweaks.config.ModConfigs;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.CropsBlock;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.Hand;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
-import net.minecraft.world.server.ServerWorld;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.CropBlock;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.Level;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickBlock;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
@@ -22,25 +22,25 @@ public final class FeatureRightClickHarvest {
 	private static final Method GET_SEED;
 
 	static {
-		GET_SEED = ObfuscationReflectionHelper.findMethod(CropsBlock.class, "getBaseSeedId");
+		GET_SEED = ObfuscationReflectionHelper.findMethod(CropBlock.class, "getBaseSeedId");
 	}
 
 	@SubscribeEvent
 	public void onRightClickCrop(RightClickBlock event) {
 		if (!ModConfigs.ENABLE_RIGHT_CLICK_HARVEST.get()) return;
 		if (event.getPlayer() == null) return;
-		if (event.getHand() != Hand.MAIN_HAND) return;
+		if (event.getHand() != InteractionHand.MAIN_HAND) return;
 
-		World world = event.getWorld();
+		Level world = event.getWorld();
 		if (!world.isClientSide()) {
 			BlockPos pos = event.getPos();
 			BlockState state = world.getBlockState(pos);
 			Block block = state.getBlock();
-			if (block instanceof CropsBlock) {
-				CropsBlock crop = (CropsBlock) block;
+			if (block instanceof CropBlock) {
+				CropBlock crop = (CropBlock) block;
 				Item seed = getSeed(crop);
 				if (crop.isMaxAge(state) && seed != null) {
-					List<ItemStack> drops = Block.getDrops(state, (ServerWorld) world, pos, world.getBlockEntity(pos));
+					List<ItemStack> drops = Block.getDrops(state, (ServerLevel) world, pos, world.getBlockEntity(pos));
 					for (ItemStack drop : drops) {
 						Item item = drop.getItem();
 						if (!drop.isEmpty() && item == seed) {

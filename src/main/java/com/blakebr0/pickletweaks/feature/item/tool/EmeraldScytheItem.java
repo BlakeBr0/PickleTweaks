@@ -6,7 +6,7 @@ import com.blakebr0.pickletweaks.lib.ModItemTier;
 
 import java.util.function.Function;
 
-import net.minecraft.item.Item.Properties;
+import net.minecraft.world.item.Item.Properties;
 
 public class EmeraldScytheItem extends ScytheItem {
     public EmeraldScytheItem(Function<Properties, Properties> properties) {

@@ -3,14 +3,14 @@ package com.blakebr0.pickletweaks.feature.item;
 import com.blakebr0.cucumber.iface.IEnableable;
 import com.blakebr0.cucumber.item.tool.BaseScytheItem;
 import com.blakebr0.pickletweaks.config.ModConfigs;
-import net.minecraft.item.IItemTier;
+import net.minecraft.world.item.Tier;
 
 import java.util.function.Function;
 
-import net.minecraft.item.Item.Properties;
+import net.minecraft.world.item.Item.Properties;
 
 public class ScytheItem extends BaseScytheItem implements IEnableable {
-    public ScytheItem(IItemTier tier, int range, Function<Properties, Properties> properties) {
+    public ScytheItem(Tier tier, int range, Function<Properties, Properties> properties) {
         super(tier, 4, -2.8F, range, properties);
     }
 

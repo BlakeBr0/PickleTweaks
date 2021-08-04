@@ -3,10 +3,10 @@ package com.blakebr0.pickletweaks.feature;
 import com.blakebr0.pickletweaks.config.ModConfigs;
 import com.blakebr0.pickletweaks.lib.ModTooltips;
 import com.blakebr0.pickletweaks.tweaks.TweakToolUselessifier;
-import net.minecraft.item.Item;
-import net.minecraft.item.ToolItem;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.ITextComponent;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.DiggerItem;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.network.chat.Component;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
@@ -21,14 +21,14 @@ public final class FeatureToolInfo {
 		if (!ModConfigs.ENABLE_TOOL_INFO_TOOLTIP.get())
 			return;
 
-		ListIterator<ITextComponent> tooltip = event.getToolTip().listIterator();
+		ListIterator<Component> tooltip = event.getToolTip().listIterator();
 		Item item = event.getItemStack().getItem();
 
-		if (item instanceof ToolItem) {
+		if (item instanceof DiggerItem) {
 			if (isBlacklisted(item))
 				return;
 
-			ToolItem tool = (ToolItem) item;
+			DiggerItem tool = (DiggerItem) item;
 
 			tooltip.next();
 
@@ -37,12 +37,12 @@ public final class FeatureToolInfo {
 		}
 	}
 
-	private static String getMiningLevel(ToolItem item) {
+	private static String getMiningLevel(DiggerItem item) {
 		int lvl = item.getTier().getLevel();
 		return lvl >= 0 && lvl < MINING_LEVEL_NAMES.length ? MINING_LEVEL_NAMES[lvl] : String.valueOf(lvl);
 	}
 
-	private static float getMiningSpeed(ToolItem item) {
+	private static float getMiningSpeed(DiggerItem item) {
 		if (TweakToolUselessifier.isUselessTool(item))
 			return 0F;
 

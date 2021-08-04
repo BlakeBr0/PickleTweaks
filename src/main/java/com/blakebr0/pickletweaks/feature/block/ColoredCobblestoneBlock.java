@@ -4,8 +4,8 @@ import com.blakebr0.cucumber.block.BaseBlock;
 import com.blakebr0.cucumber.iface.IColored;
 import com.blakebr0.cucumber.iface.IEnableable;
 import com.blakebr0.pickletweaks.config.ModConfigs;
-import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.material.Material;
 
 public class ColoredCobblestoneBlock extends BaseBlock implements IEnableable, IColored {
 	private final int color;

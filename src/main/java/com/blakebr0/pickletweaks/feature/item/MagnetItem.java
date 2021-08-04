@@ -5,23 +5,23 @@ import com.blakebr0.cucumber.iface.IEnableable;
 import com.blakebr0.cucumber.item.BaseItem;
 import com.blakebr0.pickletweaks.config.ModConfigs;
 import com.blakebr0.pickletweaks.lib.ModTooltips;
-import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.item.ExperienceOrbEntity;
-import net.minecraft.entity.item.ItemEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.ActionResultType;
-import net.minecraft.util.Hand;
-import net.minecraft.util.SoundEvents;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.world.World;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.ExperienceOrb;
+import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.level.Level;
 
 import java.util.List;
 import java.util.function.Function;
 
-import net.minecraft.item.Item.Properties;
+import net.minecraft.world.item.Item.Properties;
 
 public class MagnetItem extends BaseItem implements IEnableable {
 	public MagnetItem(Function<Properties, Properties> properties) {
@@ -34,18 +34,18 @@ public class MagnetItem extends BaseItem implements IEnableable {
 	}
 
 	@Override
-	public ActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
+	public InteractionResultHolder<ItemStack> use(Level world, Player player, InteractionHand hand) {
 		ItemStack stack = player.getItemInHand(hand);
 
 		player.playSound(SoundEvents.EXPERIENCE_ORB_PICKUP, 0.5F, NBTHelper.getBoolean(stack, "Enabled") ? 0.5F : 1.0F);
 
 		NBTHelper.flipBoolean(stack, "Enabled");
 
-		return new ActionResult<>(ActionResultType.SUCCESS, stack);
+		return new InteractionResultHolder<>(InteractionResult.SUCCESS, stack);
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, World world, List<ITextComponent> tooltip, ITooltipFlag advanced) {
+	public void appendHoverText(ItemStack stack, Level world, List<Component> tooltip, TooltipFlag advanced) {
 		if (NBTHelper.getBoolean(stack, "Enabled")) {
 			tooltip.add(ModTooltips.ENABLED.build());
 		} else {
@@ -54,8 +54,8 @@ public class MagnetItem extends BaseItem implements IEnableable {
 	}
 
 	@Override
-	public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean isSelected) {
-		if (entity instanceof PlayerEntity && NBTHelper.getBoolean(stack, "Enabled")) {
+	public void inventoryTick(ItemStack stack, Level world, Entity entity, int slot, boolean isSelected) {
+		if (entity instanceof Player && NBTHelper.getBoolean(stack, "Enabled")) {
 			double range = ModConfigs.MAGNET_RANGE.get();
 			List<ItemEntity> items = world.getEntitiesOfClass(ItemEntity.class, entity.getBoundingBox().inflate(range));
 			for (ItemEntity item : items) {
@@ -71,8 +71,8 @@ public class MagnetItem extends BaseItem implements IEnableable {
 				}
 			}
 
-			List<ExperienceOrbEntity> xporbs = world.getEntitiesOfClass(ExperienceOrbEntity.class, entity.getBoundingBox().inflate(range));
-			for (ExperienceOrbEntity orb : xporbs) {
+			List<ExperienceOrb> xporbs = world.getEntitiesOfClass(ExperienceOrb.class, entity.getBoundingBox().inflate(range));
+			for (ExperienceOrb orb : xporbs) {
 				if (!world.isClientSide()) {
 					orb.setPos(entity.getX(), entity.getY(), entity.getZ());
 				}

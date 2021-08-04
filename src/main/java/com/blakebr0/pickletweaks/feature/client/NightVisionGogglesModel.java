@@ -1,21 +1,21 @@
 package com.blakebr0.pickletweaks.feature.client;
 
-import com.mojang.blaze3d.matrix.MatrixStack;
-import com.mojang.blaze3d.vertex.IVertexBuilder;
+import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.entity.model.BipedModel;
-import net.minecraft.client.renderer.model.ModelRenderer;
-import net.minecraft.entity.LivingEntity;
+import net.minecraft.client.model.HumanoidModel;
+import net.minecraft.client.model.geom.ModelPart;
+import net.minecraft.world.entity.LivingEntity;
 
-public class NightVisionGogglesModel extends BipedModel<LivingEntity> {
-    private final ModelRenderer main;
-    private final ModelRenderer lens;
-    private final ModelRenderer frame;
+public class NightVisionGogglesModel extends HumanoidModel<LivingEntity> {
+    private final ModelPart main;
+    private final ModelPart lens;
+    private final ModelPart frame;
 
     public NightVisionGogglesModel() {
         super(RenderType::entityTranslucent, 0.0F, 0.0F, 64, 32);
 
-        this.main = new ModelRenderer(this, 0, 7);
+        this.main = new ModelPart(this, 0, 7);
         this.main.setPos(0.0F, 0.0F, 0.0F);
         this.main.addBox(-8.0F, -7.0F, 1.0F, 1, 1, 6, 0.0F);
         this.main.addBox(7.0F, -7.0F, 1.0F, 1, 1, 6, 0.0F);
@@ -23,10 +23,10 @@ public class NightVisionGogglesModel extends BipedModel<LivingEntity> {
         this.main.addBox(-8.0F, -7.0F, -6.0F, 1, 2, 7, 0.0F);
         this.main.addBox(7.0F, -7.0F, -6.0F, 1, 2, 7, 0.0F);
 
-        this.lens = new ModelRenderer(this);
+        this.lens = new ModelPart(this);
         this.lens.setPos(0.0F, 0F, 0.0F);
 
-        ModelRenderer left = new ModelRenderer(this, 6, 0);
+        ModelPart left = new ModelPart(this, 6, 0);
         left.setPos(0.0F, 0.0F, 0.0F);
         left.addBox(-6.0F, -9.0F, -7.0F, 4, 5, 1, 0.0F);
         left.addBox(-2.0F, -8.0F, -7.0F, 1, 3, 1, 0.0F);
@@ -35,7 +35,7 @@ public class NightVisionGogglesModel extends BipedModel<LivingEntity> {
 
         this.lens.addChild(left);
 
-        ModelRenderer right = new ModelRenderer(this, 6, 0);
+        ModelPart right = new ModelPart(this, 6, 0);
         right.setPos(0.0F, 0.0F, 0.0F);
         right.addBox(6.0F, -8.0F, -7.0F, 1, 4, 1, 0.0F);
         right.addBox(1.0F, -8.0F, -7.0F, 1, 3, 1, 0.0F);
@@ -44,7 +44,7 @@ public class NightVisionGogglesModel extends BipedModel<LivingEntity> {
 
         this.lens.addChild(right);
 
-        this.frame = new ModelRenderer(this, 0, 13);
+        this.frame = new ModelPart(this, 0, 13);
         this.frame.setPos(0.0F, 0.0F, 0.0F);
         this.frame.addBox(-1.0F, -8.0F, -8.0F, 2, 3, 2, 0.0F);
         this.frame.addBox(-2.0F, -9.0F, -8.0F, 4, 1, 2, 0.0F);
@@ -64,7 +64,7 @@ public class NightVisionGogglesModel extends BipedModel<LivingEntity> {
     }
 
     @Override
-    public void renderToBuffer(MatrixStack stack, IVertexBuilder buffer, int light, int overlay, float r, float g, float b, float a) {
+    public void renderToBuffer(PoseStack stack, VertexConsumer buffer, int light, int overlay, float r, float g, float b, float a) {
         stack.pushPose();
         stack.scale(0.6F, 0.6F, 0.6F);
 

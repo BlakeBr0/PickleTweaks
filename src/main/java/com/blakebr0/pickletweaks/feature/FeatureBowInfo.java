@@ -2,17 +2,17 @@ package com.blakebr0.pickletweaks.feature;
 
 import com.blakebr0.pickletweaks.config.ModConfigs;
 import com.blakebr0.pickletweaks.lib.ModTooltips;
-import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.enchantment.Enchantments;
-import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.item.ArrowItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.ShootableItem;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.StringTextComponent;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ProjectileWeaponItem;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TextComponent;
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
@@ -25,24 +25,24 @@ public final class FeatureBowInfo {
 			return;
 
 		ItemStack stack = event.getItemStack();
-		ListIterator<ITextComponent> tooltip = event.getToolTip().listIterator();
+		ListIterator<Component> tooltip = event.getToolTip().listIterator();
 
 		Item item = stack.getItem();
-		if (item instanceof ShootableItem) {
-			PlayerEntity player = event.getPlayer();
-			ShootableItem shootable = (ShootableItem) item;
+		if (item instanceof ProjectileWeaponItem) {
+			Player player = event.getPlayer();
+			ProjectileWeaponItem shootable = (ProjectileWeaponItem) item;
 
 			if (EnchantmentHelper.getItemEnchantmentLevel(Enchantments.INFINITY_ARROWS, stack) > 0) {
 				while (tooltip.hasNext()) {
-					ITextComponent next = tooltip.next();
+					Component next = tooltip.next();
 
-					if (next instanceof TranslationTextComponent) {
-						String key = ((TranslationTextComponent) next).getKey();
+					if (next instanceof TranslatableComponent) {
+						String key = ((TranslatableComponent) next).getKey();
 
 						if ("enchantment.minecraft.infinity".equals(key)) {
-							TextFormatting formatting = getAmmo(player, shootable) > 0 ? TextFormatting.GREEN : TextFormatting.RED;
+							ChatFormatting formatting = getAmmo(player, shootable) > 0 ? ChatFormatting.GREEN : ChatFormatting.RED;
 
-							tooltip.set(new StringTextComponent(next.getString()).withStyle(formatting));
+							tooltip.set(new TextComponent(next.getString()).withStyle(formatting));
 						}
 					}
 				}
@@ -56,7 +56,7 @@ public final class FeatureBowInfo {
 		}
 	}
 
-	public static int getAmmo(PlayerEntity player, ShootableItem item) {
+	public static int getAmmo(Player player, ProjectileWeaponItem item) {
 		int ammo = 0;
 
 		if (player == null)

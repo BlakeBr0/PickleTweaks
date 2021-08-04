@@ -9,9 +9,9 @@ import mcp.mobius.waila.api.IRegistrar;
 import mcp.mobius.waila.api.IWailaPlugin;
 import mcp.mobius.waila.api.TooltipPosition;
 import mcp.mobius.waila.api.WailaPlugin;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.util.text.ITextComponent;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.network.chat.Component;
 
 import java.util.List;
 
@@ -22,7 +22,7 @@ public class FeatureWailaPlugin implements IWailaPlugin {
 	    if (ModConfigs.ENABLE_WAILA_HARVEST_LEVEL.get()) {
             registrar.registerComponentProvider(new IComponentProvider() {
                 @Override
-                public void appendBody(List<ITextComponent> tooltip, IDataAccessor accessor, IPluginConfig config) {
+                public void appendBody(List<Component> tooltip, IDataAccessor accessor, IPluginConfig config) {
                 BlockState state = accessor.getBlockState();
                 if (state.requiresCorrectToolForDrops()) {
                     String name = getHarvestLevelName(state);

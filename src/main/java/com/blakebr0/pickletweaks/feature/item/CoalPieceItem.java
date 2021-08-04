@@ -3,11 +3,11 @@ package com.blakebr0.pickletweaks.feature.item;
 import com.blakebr0.cucumber.iface.IEnableable;
 import com.blakebr0.cucumber.item.BaseItem;
 import com.blakebr0.pickletweaks.config.ModConfigs;
-import net.minecraft.item.ItemStack;
+import net.minecraft.world.item.ItemStack;
 
 import java.util.function.Function;
 
-import net.minecraft.item.Item.Properties;
+import net.minecraft.world.item.Item.Properties;
 
 public class CoalPieceItem extends BaseItem implements IEnableable {
 	public CoalPieceItem(Function<Properties, Properties> properties) {

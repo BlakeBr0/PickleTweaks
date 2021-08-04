@@ -4,17 +4,17 @@ import com.blakebr0.cucumber.helper.StackHelper;
 import com.blakebr0.pickletweaks.config.ModConfigs;
 import com.blakebr0.pickletweaks.init.ModRecipeSerializers;
 import com.google.gson.JsonObject;
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.inventory.CraftingInventory;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.ShovelItem;
-import net.minecraft.item.crafting.IRecipeSerializer;
-import net.minecraft.item.crafting.ShapelessRecipe;
-import net.minecraft.network.PacketBuffer;
-import net.minecraft.util.NonNullList;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.World;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.inventory.CraftingContainer;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ShovelItem;
+import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.item.crafting.ShapelessRecipe;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.core.NonNullList;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.registries.ForgeRegistryEntry;
 
 import java.util.Map;
@@ -26,7 +26,7 @@ public class GridRepairRecipe extends ShapelessRecipe {
 	}
 
 	@Override
-	public ItemStack assemble(CraftingInventory inv) {
+	public ItemStack assemble(CraftingContainer inv) {
 		if (!ModConfigs.GRID_REPAIR_ENABLED.get())
 			return ItemStack.EMPTY;
 
@@ -102,7 +102,7 @@ public class GridRepairRecipe extends ShapelessRecipe {
 	}
 
 	@Override
-	public boolean matches(CraftingInventory inv, World world) {
+	public boolean matches(CraftingContainer inv, Level world) {
 		return !this.assemble(inv).isEmpty();
 	}
 
@@ -117,28 +117,28 @@ public class GridRepairRecipe extends ShapelessRecipe {
 	}
 
 	@Override
-	public IRecipeSerializer<?> getSerializer() {
+	public RecipeSerializer<?> getSerializer() {
 		return ModRecipeSerializers.CRAFTING_GRID_REPAIR;
 	}
 
 	@Override
-	public NonNullList<ItemStack> getRemainingItems(CraftingInventory inv) {
+	public NonNullList<ItemStack> getRemainingItems(CraftingContainer inv) {
 		return NonNullList.withSize(inv.getContainerSize(), ItemStack.EMPTY);
 	}
 
-	public static class Serializer extends ForgeRegistryEntry<IRecipeSerializer<?>> implements IRecipeSerializer<GridRepairRecipe> {
+	public static class Serializer extends ForgeRegistryEntry<RecipeSerializer<?>> implements RecipeSerializer<GridRepairRecipe> {
 		@Override
 		public GridRepairRecipe fromJson(ResourceLocation recipeId, JsonObject json) {
 			return new GridRepairRecipe(recipeId);
 		}
 
 		@Override
-		public GridRepairRecipe fromNetwork(ResourceLocation recipeId, PacketBuffer buffer) {
+		public GridRepairRecipe fromNetwork(ResourceLocation recipeId, FriendlyByteBuf buffer) {
 			return new GridRepairRecipe(recipeId);
 		}
 
 		@Override
-		public void toNetwork(PacketBuffer buffer, GridRepairRecipe recipe) { }
+		public void toNetwork(FriendlyByteBuf buffer, GridRepairRecipe recipe) { }
 	}
 }
 

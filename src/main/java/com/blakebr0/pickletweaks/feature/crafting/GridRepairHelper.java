@@ -1,9 +1,9 @@
 package com.blakebr0.pickletweaks.feature.crafting;
 
 import com.blakebr0.pickletweaks.config.ModConfigs;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.resources.ResourceLocation;
 
 public class GridRepairHelper {
 	public static double getMaterialValue(ItemStack tool, ItemStack mat) {

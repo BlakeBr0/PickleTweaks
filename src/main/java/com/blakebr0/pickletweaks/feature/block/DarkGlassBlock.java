@@ -3,11 +3,11 @@ package com.blakebr0.pickletweaks.feature.block;
 import com.blakebr0.cucumber.block.BaseGlassBlock;
 import com.blakebr0.cucumber.iface.IEnableable;
 import com.blakebr0.pickletweaks.config.ModConfigs;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockReader;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.material.Material;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.BlockGetter;
 
 public class DarkGlassBlock extends BaseGlassBlock implements IEnableable {
 	public DarkGlassBlock() {
@@ -15,7 +15,7 @@ public class DarkGlassBlock extends BaseGlassBlock implements IEnableable {
 	}
 
 	@Override
-	public int getLightBlock(BlockState state, IBlockReader world, BlockPos pos) {
+	public int getLightBlock(BlockState state, BlockGetter world, BlockPos pos) {
 		return 255;
 	}
 

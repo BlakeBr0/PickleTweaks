@@ -4,14 +4,14 @@ import com.blakebr0.cucumber.iface.IEnableable;
 import com.blakebr0.cucumber.item.BaseArmorItem;
 import com.blakebr0.pickletweaks.config.ModConfigs;
 import com.blakebr0.pickletweaks.lib.ModArmorMaterial;
-import net.minecraft.inventory.EquipmentSlotType;
+import net.minecraft.world.entity.EquipmentSlot;
 
 import java.util.function.Function;
 
-import net.minecraft.item.Item.Properties;
+import net.minecraft.world.item.Item.Properties;
 
 public class EmeraldArmorItem extends BaseArmorItem implements IEnableable {
-    public EmeraldArmorItem(EquipmentSlotType slot, Function<Properties, Properties> properties) {
+    public EmeraldArmorItem(EquipmentSlot slot, Function<Properties, Properties> properties) {
         super(ModArmorMaterial.EMERALD, slot, properties);
     }
 

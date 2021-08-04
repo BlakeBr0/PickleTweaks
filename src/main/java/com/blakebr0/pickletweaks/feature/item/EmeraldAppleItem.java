@@ -6,71 +6,71 @@ import com.blakebr0.cucumber.lib.Colors;
 import com.blakebr0.cucumber.lib.Tooltips;
 import com.blakebr0.pickletweaks.config.ModConfigs;
 import com.blakebr0.pickletweaks.lib.ModTooltips;
-import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.item.Food;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Rarity;
-import net.minecraft.potion.EffectInstance;
-import net.minecraft.potion.Effects;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.world.World;
+import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Rarity;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.level.Level;
 
 import java.util.List;
 import java.util.function.Function;
 
-import net.minecraft.item.Item.Properties;
+import net.minecraft.world.item.Item.Properties;
 
 public class EmeraldAppleItem extends BaseItem implements IEnableable {
-	public static final Food FOOD = new Food.Builder().nutrition(10).saturationMod(2.0F).alwaysEat().build();
+	public static final FoodProperties FOOD = new FoodProperties.Builder().nutrition(10).saturationMod(2.0F).alwaysEat().build();
 
 	public EmeraldAppleItem(Function<Properties, Properties> properties) {
 		super(properties.compose(p -> p.food(FOOD).rarity(Rarity.EPIC)));
 	}
 
 	@Override
-	public ItemStack finishUsingItem(ItemStack stack, World world, LivingEntity entity) {
-		EffectInstance potion;
+	public ItemStack finishUsingItem(ItemStack stack, Level world, LivingEntity entity) {
+		MobEffectInstance potion;
 		int duration = 0;
 
-		potion = entity.getEffect(Effects.DAMAGE_BOOST);
+		potion = entity.getEffect(MobEffects.DAMAGE_BOOST);
 		if (potion != null && potion.getAmplifier() >= 0)
 			duration = potion.getDuration();
-		entity.addEffect(new EffectInstance(Effects.DAMAGE_BOOST, duration + 5000, 0));
+		entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, duration + 5000, 0));
 
-		potion = entity.getEffect(Effects.REGENERATION);
+		potion = entity.getEffect(MobEffects.REGENERATION);
 		if (potion != null && potion.getAmplifier() >= 2)
 			duration = potion.getDuration();
-		entity.addEffect(new EffectInstance(Effects.REGENERATION, duration + 400, 2));
+		entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, duration + 400, 2));
 
-		potion = entity.getEffect(Effects.ABSORPTION);
+		potion = entity.getEffect(MobEffects.ABSORPTION);
 		if (potion != null && potion.getAmplifier() >= 4)
 			duration = potion.getDuration();
-		entity.addEffect(new EffectInstance(Effects.ABSORPTION, duration + 5000, 4));
+		entity.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, duration + 5000, 4));
 
-		potion = entity.getEffect(Effects.FIRE_RESISTANCE);
+		potion = entity.getEffect(MobEffects.FIRE_RESISTANCE);
 		if (potion != null && potion.getAmplifier() >= 0)
 			duration = potion.getDuration();
-		entity.addEffect(new EffectInstance(Effects.FIRE_RESISTANCE, duration + 5000, 0));
+		entity.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, duration + 5000, 0));
 
-		potion = entity.getEffect(Effects.DAMAGE_RESISTANCE);
+		potion = entity.getEffect(MobEffects.DAMAGE_RESISTANCE);
 		if (potion != null && potion.getAmplifier() >= 1)
 			duration = potion.getDuration();
-		entity.addEffect(new EffectInstance(Effects.DAMAGE_RESISTANCE, duration + 5000, 1));
+		entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, duration + 5000, 1));
 
 		return entity.eat(world, stack);
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, World world, List<ITextComponent> tooltip, ITooltipFlag flag) {
+	public void appendHoverText(ItemStack stack, Level world, List<Component> tooltip, TooltipFlag flag) {
 		if (Screen.hasShiftDown()) {
 			tooltip.add(ModTooltips.GIVES_BUFFS.build());
-			tooltip.add(ModTooltips.BUFF_LIST_ITEM.args(Colors.WHITE, Effects.DAMAGE_BOOST.getDisplayName(), "I").build());
-			tooltip.add(ModTooltips.BUFF_LIST_ITEM.args(Colors.WHITE, Effects.REGENERATION.getDisplayName(), "III").build());
-			tooltip.add(ModTooltips.BUFF_LIST_ITEM.args(Colors.WHITE, Effects.ABSORPTION.getDisplayName(), "IV").build());
-			tooltip.add(ModTooltips.BUFF_LIST_ITEM.args(Colors.WHITE, Effects.FIRE_RESISTANCE.getDisplayName(), "I").build());
-			tooltip.add(ModTooltips.BUFF_LIST_ITEM.args(Colors.WHITE, Effects.DAMAGE_RESISTANCE.getDisplayName(), "II").build());
+			tooltip.add(ModTooltips.BUFF_LIST_ITEM.args(Colors.WHITE, MobEffects.DAMAGE_BOOST.getDisplayName(), "I").build());
+			tooltip.add(ModTooltips.BUFF_LIST_ITEM.args(Colors.WHITE, MobEffects.REGENERATION.getDisplayName(), "III").build());
+			tooltip.add(ModTooltips.BUFF_LIST_ITEM.args(Colors.WHITE, MobEffects.ABSORPTION.getDisplayName(), "IV").build());
+			tooltip.add(ModTooltips.BUFF_LIST_ITEM.args(Colors.WHITE, MobEffects.FIRE_RESISTANCE.getDisplayName(), "I").build());
+			tooltip.add(ModTooltips.BUFF_LIST_ITEM.args(Colors.WHITE, MobEffects.DAMAGE_RESISTANCE.getDisplayName(), "II").build());
 		} else {
 			tooltip.add(Tooltips.HOLD_SHIFT_FOR_INFO.build());
 		}
