@@ -5,12 +5,12 @@ import com.blakebr0.pickletweaks.PickleTweaks;
 import com.blakebr0.pickletweaks.feature.block.ColoredCobblestoneBlock;
 import com.blakebr0.pickletweaks.feature.block.DarkGlassBlock;
 import com.blakebr0.pickletweaks.feature.block.SmoothGlowstoneBlock;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.item.BlockItem;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.RegistryObject;
+import net.minecraftforge.fmllegacy.RegistryObject;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.IForgeRegistry;
 

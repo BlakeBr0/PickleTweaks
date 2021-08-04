@@ -3,12 +3,12 @@ package com.blakebr0.pickletweaks.feature.crafting;
 import com.blakebr0.pickletweaks.config.ModConfigs;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.resources.ResourceLocation;
 
 public class GridRepairHelper {
 	public static double getMaterialValue(ItemStack tool, ItemStack mat) {
-		GridRepairOverride.Override override = GridRepairOverride.getOverride(tool, mat);
-		boolean hasOverride = override != null;
+		var override = GridRepairOverride.getOverride(tool, mat);
+		var hasOverride = override != null;
+
 		if (checkDefault(tool, mat) || hasOverride) {
 			boolean overrideMode = ModConfigs.GRID_REPAIR_OVERRIDE_MODE.get();
 			if (overrideMode && !hasOverride && GridRepairOverride.hasToolOverride(tool))
@@ -26,7 +26,7 @@ public class GridRepairHelper {
 	}
 
 	public static boolean isBlacklisted(Item item) {
-		ResourceLocation id = item.getRegistryName();
+		var id = item.getRegistryName();
 		if (id == null)
 			return false;
 

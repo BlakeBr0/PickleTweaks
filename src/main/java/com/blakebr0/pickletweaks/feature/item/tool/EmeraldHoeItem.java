@@ -7,8 +7,6 @@ import com.blakebr0.pickletweaks.lib.ModItemTier;
 
 import java.util.function.Function;
 
-import net.minecraft.world.item.Item.Properties;
-
 public class EmeraldHoeItem extends BaseHoeItem implements IEnableable {
     public EmeraldHoeItem(Function<Properties, Properties> properties) {
         super(ModItemTier.EMERALD, properties);

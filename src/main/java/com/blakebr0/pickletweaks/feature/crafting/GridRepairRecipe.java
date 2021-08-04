@@ -4,16 +4,16 @@ import com.blakebr0.cucumber.helper.StackHelper;
 import com.blakebr0.pickletweaks.config.ModConfigs;
 import com.blakebr0.pickletweaks.init.ModRecipeSerializers;
 import com.google.gson.JsonObject;
-import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.core.NonNullList;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.inventory.CraftingContainer;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ShovelItem;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.ShapelessRecipe;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.core.NonNullList;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.registries.ForgeRegistryEntry;
 
@@ -30,11 +30,11 @@ public class GridRepairRecipe extends ShapelessRecipe {
 		if (!ModConfigs.GRID_REPAIR_ENABLED.get())
 			return ItemStack.EMPTY;
 
-		ItemStack tool = ItemStack.EMPTY;
+		var tool = ItemStack.EMPTY;
 		NonNullList<ItemStack> inputs = NonNullList.create();
 
 		for (int i = 0; i < inv.getContainerSize(); i++) {
-			ItemStack slotStack = inv.getItem(i);
+			var slotStack = inv.getItem(i);
 
 			if (slotStack.isEmpty())
 				continue;
@@ -66,7 +66,7 @@ public class GridRepairRecipe extends ShapelessRecipe {
 		double matCount = 0;
 		boolean maxed = false;
 
-		for (ItemStack mat : inputs) {
+		for (var mat : inputs) {
 			if (maxed) return ItemStack.EMPTY;
 
 			if (!mat.hasContainerItem()) {

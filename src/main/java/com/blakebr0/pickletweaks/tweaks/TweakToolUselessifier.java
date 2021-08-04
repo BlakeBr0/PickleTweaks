@@ -4,20 +4,15 @@ import com.blakebr0.cucumber.event.ScytheHarvestCropEvent;
 import com.blakebr0.cucumber.util.Localizable;
 import com.blakebr0.pickletweaks.config.ModConfigs;
 import com.blakebr0.pickletweaks.lib.ModTooltips;
-import net.minecraft.world.entity.Entity;
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.TextComponent;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.HoeItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ShearsItem;
 import net.minecraft.world.item.ProjectileWeaponItem;
+import net.minecraft.world.item.ShearsItem;
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.TieredItem;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TextComponent;
-import net.minecraft.ChatFormatting;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
@@ -26,17 +21,14 @@ import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
-import java.util.List;
-import java.util.ListIterator;
-
 public final class TweakToolUselessifier {
 	@SubscribeEvent
 	public void onBreakSpeed(PlayerEvent.BreakSpeed event) {
-        Player player = event.getPlayer();
-        if (player.abilities.instabuild)
+        var player = event.getPlayer();
+        if (player.getAbilities().instabuild)
 			return;
 
-		ItemStack stack = player.getMainHandItem();
+		var stack = player.getMainHandItem();
 		if (stack.isEmpty())
 			return;
 
@@ -47,19 +39,18 @@ public final class TweakToolUselessifier {
 
 	@SubscribeEvent
 	public void onLivingHurt(LivingHurtEvent event) {
-        DamageSource source = event.getSource();
+        var source = event.getSource();
         if (!(source.getMsgId().equals("player")))
 			return;
 
-        Entity trueSource = source.getEntity();
-        if (!(trueSource instanceof Player))
+        var trueSource = source.getEntity();
+        if (!(trueSource instanceof Player player))
 			return;
 
-		Player player = (Player) trueSource;
-		if (player.abilities.instabuild)
+		if (player.getAbilities().instabuild)
 			return;
 
-		ItemStack stack = player.getMainHandItem();
+		var stack = player.getMainHandItem();
 		if (stack.isEmpty())
 			return;
 
@@ -72,11 +63,11 @@ public final class TweakToolUselessifier {
 
 	@SubscribeEvent
 	public void onRightClickBlock(PlayerInteractEvent.RightClickBlock event) {
-		Player player = event.getPlayer();
-		if (player.abilities.instabuild)
+		var player = event.getPlayer();
+		if (player.getAbilities().instabuild)
 			return;
 
-		ItemStack stack = player.getMainHandItem();
+		var stack = player.getMainHandItem();
 		if (stack.isEmpty())
 			return;
 
@@ -87,11 +78,11 @@ public final class TweakToolUselessifier {
 
 	@SubscribeEvent
 	public void onRightClickItem(PlayerInteractEvent.RightClickItem event) {
-		Player player = event.getPlayer();
-		if (player.abilities.instabuild)
+		var player = event.getPlayer();
+		if (player.getAbilities().instabuild)
 			return;
 
-		ItemStack stack = player.getMainHandItem();
+		var stack = player.getMainHandItem();
 		if (stack.isEmpty())
 			return;
 
@@ -102,11 +93,11 @@ public final class TweakToolUselessifier {
 
 	@SubscribeEvent
 	public void onEntityInteract(PlayerInteractEvent.EntityInteract event) {
-		Player player = event.getPlayer();
-		if (player.abilities.instabuild)
+		var player = event.getPlayer();
+		if (player.getAbilities().instabuild)
 			return;
 
-		ItemStack stack = player.getMainHandItem();
+		var stack = player.getMainHandItem();
 		if (stack.isEmpty())
 			return;
 
@@ -117,11 +108,11 @@ public final class TweakToolUselessifier {
 
 	@SubscribeEvent
 	public void onScytheHarvestCrop(ScytheHarvestCropEvent event) {
-		Player player = event.getPlayer();
-		if (player.abilities.instabuild)
+		var player = event.getPlayer();
+		if (player.getAbilities().instabuild)
 			return;
 
-		ItemStack stack = event.getItemStack();
+		var stack = event.getItemStack();
 		if (stack.isEmpty())
 			return;
 
@@ -133,12 +124,14 @@ public final class TweakToolUselessifier {
 	@OnlyIn(Dist.CLIENT)
 	@SubscribeEvent
 	public void onItemTooltip(ItemTooltipEvent event) {
-		Item item = event.getItemStack().getItem();
+		var item = event.getItemStack().getItem();
+
 		if (isUselessTool(item)) {
-			List<Component> tooltip = event.getToolTip();
-			ListIterator<Component> lines = tooltip.listIterator();
+			var tooltip = event.getToolTip();
+			var lines = tooltip.listIterator();
+
 			while (lines.hasNext()) {
-				String s = Localizable.of("attribute.name.generic.attackDamage").buildString();
+				var s = Localizable.of("attribute.name.generic.attackDamage").buildString();
 				if (lines.next().getString().contains(s)) {
 					lines.set(new TextComponent(" 0 ").append(s).withStyle(ChatFormatting.DARK_GREEN));
 				}
@@ -162,7 +155,7 @@ public final class TweakToolUselessifier {
 		if (item == null)
 			return false;
 
-		ResourceLocation id = item.getRegistryName();
+		var id = item.getRegistryName();
 		if (id == null)
 			return false;
 

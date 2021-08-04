@@ -33,13 +33,13 @@ import com.blakebr0.pickletweaks.feature.item.tool.FlintShovelItem;
 import com.blakebr0.pickletweaks.feature.item.tool.FlintSickleItem;
 import com.blakebr0.pickletweaks.feature.item.tool.FlintSwordItem;
 import com.blakebr0.pickletweaks.lib.ModArmorMaterial;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Tiers;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.RegistryObject;
+import net.minecraftforge.fmllegacy.RegistryObject;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.IForgeRegistry;
 

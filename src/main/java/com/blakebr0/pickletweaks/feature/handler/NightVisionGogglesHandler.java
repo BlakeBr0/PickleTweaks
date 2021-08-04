@@ -1,12 +1,11 @@
 package com.blakebr0.pickletweaks.feature.handler;
 
 import com.blakebr0.pickletweaks.feature.item.NightVisionGogglesItem;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
@@ -21,7 +20,7 @@ public final class NightVisionGogglesHandler {
     }
 
     public static boolean hasGoggles(Player entity) {
-        ItemStack stack = entity.getItemBySlot(EquipmentSlot.HEAD);
+        var stack = entity.getItemBySlot(EquipmentSlot.HEAD);
 
         return !stack.isEmpty() && stack.getItem() instanceof NightVisionGogglesItem;
     }
@@ -29,11 +28,10 @@ public final class NightVisionGogglesHandler {
     @SubscribeEvent
     public void onLivingUpdate(LivingEvent.LivingUpdateEvent event) {
         LivingEntity entity = event.getEntityLiving();
-        if (entity instanceof Player) {
-            Player player = (Player) entity;
-            String key = getPlayerKey(player);
+        if (entity instanceof Player player) {
+            var key = getPlayerKey(player);
+            var hasGoggles = hasGoggles(player);
 
-            boolean hasGoggles = hasGoggles(player);
             if (WEARERS.contains(key)) {
                 if (hasGoggles) {
                     player.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION, 246, 0, true, false));

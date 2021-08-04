@@ -3,15 +3,10 @@ package com.blakebr0.pickletweaks.feature;
 import com.blakebr0.pickletweaks.config.ModConfigs;
 import com.blakebr0.pickletweaks.lib.ModTooltips;
 import com.blakebr0.pickletweaks.tweaks.TweakToolUselessifier;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.DiggerItem;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.Item;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-
-import java.util.List;
-import java.util.ListIterator;
 
 public final class FeatureToolInfo {
 	public static final String[] MINING_LEVEL_NAMES = new String[] { "Stone", "Iron", "Diamond", "Obsidian", "Netherite" };
@@ -21,14 +16,12 @@ public final class FeatureToolInfo {
 		if (!ModConfigs.ENABLE_TOOL_INFO_TOOLTIP.get())
 			return;
 
-		ListIterator<Component> tooltip = event.getToolTip().listIterator();
-		Item item = event.getItemStack().getItem();
+		var tooltip = event.getToolTip().listIterator();
+		var item = event.getItemStack().getItem();
 
-		if (item instanceof DiggerItem) {
+		if (item instanceof DiggerItem tool) {
 			if (isBlacklisted(item))
 				return;
-
-			DiggerItem tool = (DiggerItem) item;
 
 			tooltip.next();
 
@@ -50,14 +43,14 @@ public final class FeatureToolInfo {
 	}
 
 	private static boolean isBlacklisted(Item item) {
-		List<String> blacklist = ModConfigs.TOOL_INFO_TOOLTIP_BLACKLIST.get();
+		var blacklist = ModConfigs.TOOL_INFO_TOOLTIP_BLACKLIST.get();
 
-		ResourceLocation id = item.getRegistryName();
+		var id = item.getRegistryName();
 		if (id == null)
 			return true;
 
 		return blacklist.stream().anyMatch(s -> {
-			String[] parts = s.split(":");
+			var parts = s.split(":");
 
 			if (parts.length != 2)
 				return false;

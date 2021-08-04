@@ -3,11 +3,11 @@ package com.blakebr0.pickletweaks.feature.block;
 import com.blakebr0.cucumber.block.BaseGlassBlock;
 import com.blakebr0.cucumber.iface.IEnableable;
 import com.blakebr0.pickletweaks.config.ModConfigs;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.material.Material;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.Material;
 
 public class DarkGlassBlock extends BaseGlassBlock implements IEnableable {
 	public DarkGlassBlock() {

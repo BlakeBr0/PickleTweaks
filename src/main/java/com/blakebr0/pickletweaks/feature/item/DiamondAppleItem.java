@@ -7,20 +7,18 @@ import com.blakebr0.cucumber.lib.Tooltips;
 import com.blakebr0.pickletweaks.config.ModConfigs;
 import com.blakebr0.pickletweaks.lib.ModTooltips;
 import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 
 import java.util.List;
 import java.util.function.Function;
-
-import net.minecraft.world.item.Item.Properties;
 
 public class DiamondAppleItem extends BaseItem implements IEnableable {
 	public static final FoodProperties FOOD = new FoodProperties.Builder().nutrition(6).saturationMod(1.5F).alwaysEat().build();

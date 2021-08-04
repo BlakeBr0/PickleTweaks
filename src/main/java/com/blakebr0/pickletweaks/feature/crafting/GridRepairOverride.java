@@ -2,24 +2,22 @@ package com.blakebr0.pickletweaks.feature.crafting;
 
 import com.blakebr0.pickletweaks.PickleTweaks;
 import com.blakebr0.pickletweaks.config.ModConfigs;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.tags.Tag;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.ItemTags;
+import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 public class GridRepairOverride {
 	private static final List<Override> OVERRIDES = new ArrayList<>();
 
 	public static void onCommonSetup() {
-		List<String> values = ModConfigs.GRID_REPAIR_OVERRIDES.get();
-		for (String value : values) {
-			String[] parts = value.split("=");
+		var values = ModConfigs.GRID_REPAIR_OVERRIDES.get();
+
+		for (var value : values) {
+			var parts = value.split("=");
 
 			if (parts.length != 2) {
 				PickleTweaks.LOGGER.error("Invalid repair material syntax: {}", value);
@@ -31,12 +29,12 @@ public class GridRepairOverride {
 			String tag;
 			double multi = 1.0;
 
-			String[] toolName = parts[0].split(":");
+			var toolName = parts[0].split(":");
 			if (toolName.length != 2) {
 				PickleTweaks.LOGGER.error("Invalid repair material syntax: {}", value);
 				continue;
 			} else {
-				Item toolItem = ForgeRegistries.ITEMS.getValue(new ResourceLocation(toolName[0], toolName[1]));
+				var toolItem = ForgeRegistries.ITEMS.getValue(new ResourceLocation(toolName[0], toolName[1]));
 				if (toolItem == null) {
 					PickleTweaks.LOGGER.error("Invalid repair material syntax, tool item is null: {}", value);
 					continue;
@@ -45,10 +43,11 @@ public class GridRepairOverride {
 				tool = new ItemStack(toolItem);
 			}
 
-			String[] matName = parts[1].split(":");
+			var matName = parts[1].split(":");
 			if (matName.length == 3) {
 				if (matName[2].contains("@")) {
-					String[] matParts = matName[2].split("@");
+					var matParts = matName[2].split("@");
+
 					try {
 						multi = Double.parseDouble(matParts[1]);
 					} catch (NumberFormatException e) {
@@ -64,7 +63,7 @@ public class GridRepairOverride {
 					continue;
 				}
 
-				Item matItem = ForgeRegistries.ITEMS.getValue(new ResourceLocation(parts[1].split("@")[0]));
+				var matItem = ForgeRegistries.ITEMS.getValue(new ResourceLocation(parts[1].split("@")[0]));
 				if (matItem == null) {
 					PickleTweaks.LOGGER.error("Invalid repair material syntax, material item is null: {}", value);
 					continue;
@@ -73,7 +72,8 @@ public class GridRepairOverride {
 				mat = new ItemStack(matItem, 1);
 			} else if (matName.length == 2) {
 				if (parts[1].contains("@")) {
-					String[] matParts = parts[1].split("@");
+					var matParts = parts[1].split("@");
+
 					try {
 						multi = Double.parseDouble(matParts[1]);
 					} catch (NumberFormatException e) {
@@ -82,7 +82,7 @@ public class GridRepairOverride {
 					}
 				}
 
-				Item matItem = ForgeRegistries.ITEMS.getValue(new ResourceLocation(parts[1].split("@")[0]));
+				var matItem = ForgeRegistries.ITEMS.getValue(new ResourceLocation(parts[1].split("@")[0]));
 				if (matItem == null) {
 					PickleTweaks.LOGGER.error("Invalid repair material syntax, material item is null: {}", value);
 					continue;
@@ -99,19 +99,17 @@ public class GridRepairOverride {
 	}
 	
 	public static Override getOverride(ItemStack tool, ItemStack mat) {
-		for (Override entry : OVERRIDES) {
+		for (var entry : OVERRIDES) {
 			if (entry.tool.sameItemStackIgnoreDurability(tool)) {
-				if (entry.material instanceof ItemStack) {
-					ItemStack stack = (ItemStack) entry.material;
+				if (entry.material instanceof ItemStack stack) {
 					if (!stack.sameItem(mat))
 						continue;
 
 					return entry;
-				} else if (entry.material instanceof String) {
-					String tagId = (String) entry.material;
-					Tag<Item> tag = ItemTags.getAllTags().getTag(new ResourceLocation(tagId));
+				} else if (entry.material instanceof String tagId) {
+					var tag = ItemTags.getAllTags().getTag(new ResourceLocation(tagId));
 					if (tag != null && tag.contains(mat.getItem())) {
-						Collection<Item> items = tag.getValues();
+						var items = tag.getValues();
 						if (items.stream().anyMatch(i -> i == mat.getItem()))
 							return entry;
 					}

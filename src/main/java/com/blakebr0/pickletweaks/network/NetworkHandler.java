@@ -2,8 +2,8 @@ package com.blakebr0.pickletweaks.network;
 
 import com.blakebr0.pickletweaks.network.message.ToggleMagnetMessage;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.fml.network.NetworkRegistry;
-import net.minecraftforge.fml.network.simple.SimpleChannel;
+import net.minecraftforge.fmllegacy.network.NetworkRegistry;
+import net.minecraftforge.fmllegacy.network.simple.SimpleChannel;
 
 public class NetworkHandler {
     public static final SimpleChannel INSTANCE = NetworkRegistry.newSimpleChannel(new ResourceLocation("pickletweaks", "pickletweaks"), () -> "1.0", (s) -> true, (s) -> true);

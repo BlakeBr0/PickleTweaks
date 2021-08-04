@@ -7,8 +7,6 @@ import com.blakebr0.pickletweaks.lib.ModItemTier;
 
 import java.util.function.Function;
 
-import net.minecraft.world.item.Item.Properties;
-
 public class FlintPickaxeItem extends BasePickaxeItem implements IEnableable {
     public FlintPickaxeItem(Function<Properties, Properties> properties) {
         super(ModItemTier.FLINT, properties);

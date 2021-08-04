@@ -5,11 +5,8 @@ import com.blakebr0.pickletweaks.feature.item.MagnetItem;
 import com.blakebr0.pickletweaks.network.NetworkHandler;
 import com.blakebr0.pickletweaks.network.message.ToggleMagnetMessage;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
-import net.minecraft.world.inventory.Slot;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraftforge.client.event.GuiScreenEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -20,18 +17,17 @@ public final class ToggleMagnetInInventoryHandler {
         Minecraft mc = Minecraft.getInstance();
         Screen gui = event.getGui();
 
-        if (gui instanceof AbstractContainerScreen<?> && event.getButton() == 1) {
-            AbstractContainerScreen<?> container = (AbstractContainerScreen<?>) gui;
-            Slot slot = container.getSlotUnderMouse();
-            LocalPlayer player = mc.player;
+        if (gui instanceof AbstractContainerScreen<?> container && event.getButton() == 1) {
+            var slot = container.getSlotUnderMouse();
+            var player = mc.player;
 
             if (player == null)
                 return;
 
-            ItemStack held = player.inventory.getCarried();
+            var held = player.getInventory().getSelected();
 
-            if (slot != null && held.isEmpty() && slot.container == player.inventory) {
-                ItemStack stack = slot.getItem();
+            if (slot != null && held.isEmpty() && slot.container == player.getInventory()) {
+                var stack = slot.getItem();
 
                 if (stack.getItem() instanceof MagnetItem) {
                     NetworkHandler.INSTANCE.sendToServer(new ToggleMagnetMessage(slot.index));

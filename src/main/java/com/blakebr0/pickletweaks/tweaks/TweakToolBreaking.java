@@ -3,18 +3,17 @@ package com.blakebr0.pickletweaks.tweaks;
 import com.blakebr0.cucumber.event.ScytheHarvestCropEvent;
 import com.blakebr0.pickletweaks.config.ModConfigs;
 import com.blakebr0.pickletweaks.lib.ModTooltips;
+import net.minecraft.ChatFormatting;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.AxeItem;
+import net.minecraft.world.item.DiggerItem;
 import net.minecraft.world.item.HoeItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ShearsItem;
 import net.minecraft.world.item.ProjectileWeaponItem;
+import net.minecraft.world.item.ShearsItem;
 import net.minecraft.world.item.ShovelItem;
 import net.minecraft.world.item.SwordItem;
-import net.minecraft.world.item.DiggerItem;
-import net.minecraft.network.chat.Component;
-import net.minecraft.ChatFormatting;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
@@ -26,16 +25,14 @@ import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
-import java.util.ListIterator;
-
 public final class TweakToolBreaking {
 	@SubscribeEvent(priority = EventPriority.HIGH)
 	public void onBreakingBlock(PlayerEvent.BreakSpeed event) {
 		if (!ModConfigs.ENABLE_TOOL_BREAKING_TWEAK.get())
 			return;
 
-		Player player = event.getPlayer();
-		if (player.abilities.instabuild)
+		var player = event.getPlayer();
+		if (player.getAbilities().instabuild)
 			return;
 
 		ItemStack stack = player.getMainHandItem();
@@ -56,8 +53,8 @@ public final class TweakToolBreaking {
 		if (!ModConfigs.ENABLE_TOOL_BREAKING_TWEAK.get())
 			return;
 
-		Player player = event.getPlayer();
-		if (player.abilities.instabuild)
+		var player = event.getPlayer();
+		if (player.getAbilities().instabuild)
 			return;
 
 		ItemStack stack = player.getMainHandItem();
@@ -78,20 +75,18 @@ public final class TweakToolBreaking {
 		if (!ModConfigs.ENABLE_TOOL_BREAKING_TWEAK.get())
 			return;
 
-		Player player = event.getPlayer();
-		if (player.abilities.instabuild)
+		var player = event.getPlayer();
+		if (player.getAbilities().instabuild)
 			return;
 
-		ItemStack stack = event.getContext().getItemInHand();
+		var stack = event.getContext().getItemInHand();
 		if (stack.isEmpty())
 			return;
 
-		Item item = stack.getItem();
-		if (stack.isDamageableItem() && item instanceof HoeItem) {
-			if (isBroken(stack)) {
-				sendBrokenMessage(player, stack);
-				event.setCanceled(true);
-			}
+		var item = stack.getItem();
+		if (stack.isDamageableItem() && item instanceof HoeItem && isBroken(stack)) {
+			sendBrokenMessage(player, stack);
+			event.setCanceled(true);
 		}
 	}
 
@@ -100,16 +95,17 @@ public final class TweakToolBreaking {
 		if (!ModConfigs.ENABLE_TOOL_BREAKING_TWEAK.get())
 			return;
 
-		Player player = event.getPlayer();
-		if (player.abilities.instabuild)
+		var player = event.getPlayer();
+		if (player.getAbilities().instabuild)
 			return;
 
-		ItemStack stack = player.getMainHandItem();
+		var stack = player.getMainHandItem();
 		if (stack.isEmpty())
 			return;
 
 		if (stack.isDamageableItem()) {
-			Item item = stack.getItem();
+			var item = stack.getItem();
+
 			if (isValidTool(item) && isBroken(stack)) {
 				sendBrokenMessage(player, stack);
 				event.setCanceled(true);
@@ -122,15 +118,15 @@ public final class TweakToolBreaking {
 		if (!ModConfigs.ENABLE_TOOL_BREAKING_TWEAK.get())
 			return;
 
-		Player player = event.getPlayer();
-		if (player.abilities.instabuild)
+		var player = event.getPlayer();
+		if (player.getAbilities().instabuild)
 			return;
 
-		ItemStack stack = event.getItemStack();
+		var stack = event.getItemStack();
 		if (stack.isEmpty())
 			return;
 
-		Item item = stack.getItem();
+		var item = stack.getItem();
 		if (stack.isDamageableItem() && (item instanceof ProjectileWeaponItem || item instanceof ShearsItem)) {
 			if (isBroken(stack)) {
 				sendBrokenMessage(player, stack);
@@ -144,15 +140,15 @@ public final class TweakToolBreaking {
 		if (!ModConfigs.ENABLE_TOOL_BREAKING_TWEAK.get())
 			return;
 
-		Player player = event.getPlayer();
-		if (player.abilities.instabuild)
+		var player = event.getPlayer();
+		if (player.getAbilities().instabuild)
 			return;
 
-		ItemStack stack = event.getItemStack();
+		var stack = event.getItemStack();
 		if (stack.isEmpty())
 			return;
 
-		Item item = stack.getItem();
+		var item = stack.getItem();
 		if (stack.isDamageableItem() && (item instanceof ShovelItem || item instanceof AxeItem)) {
 			if (isBroken(stack)) {
 				sendBrokenMessage(player, stack);
@@ -166,20 +162,18 @@ public final class TweakToolBreaking {
 		if (!ModConfigs.ENABLE_TOOL_BREAKING_TWEAK.get())
 			return;
 
-		Player player = event.getPlayer();
-		if (player.abilities.instabuild)
+		var player = event.getPlayer();
+		if (player.getAbilities().instabuild)
 			return;
 
-		ItemStack stack = event.getItemStack();
+		var stack = event.getItemStack();
 		if (stack.isEmpty())
 			return;
 
-		Item item = stack.getItem();
-		if (stack.isDamageableItem() && item instanceof ShearsItem) {
-			if (isBroken(stack)) {
-				sendBrokenMessage(player, stack);
-				event.setCanceled(true);
-			}
+		var item = stack.getItem();
+		if (stack.isDamageableItem() && item instanceof ShearsItem && isBroken(stack)) {
+			sendBrokenMessage(player, stack);
+			event.setCanceled(true);
 		}
 	}
 
@@ -188,11 +182,11 @@ public final class TweakToolBreaking {
 		if (!ModConfigs.ENABLE_TOOL_BREAKING_TWEAK.get())
 			return;
 
-		Player player = event.getPlayer();
-		if (player.abilities.instabuild)
+		var player = event.getPlayer();
+		if (player.getAbilities().instabuild)
 			return;
 
-		ItemStack stack = event.getItemStack();
+		var stack = event.getItemStack();
 		if (stack.isEmpty())
 			return;
 
@@ -208,11 +202,12 @@ public final class TweakToolBreaking {
 		if (!ModConfigs.ENABLE_TOOL_BREAKING_TWEAK.get())
 			return;
 
-		ListIterator<Component> tooltip = event.getToolTip().listIterator();
-		ItemStack stack = event.getItemStack();
+		var tooltip = event.getToolTip().listIterator();
+		var stack = event.getItemStack();
 
 		if (stack.isDamageableItem()) {
-			Item item = stack.getItem();
+			var item = stack.getItem();
+
 			if (isValidTool(item) || item instanceof ProjectileWeaponItem) {
 				if (isBroken(stack)) {
 					tooltip.next();

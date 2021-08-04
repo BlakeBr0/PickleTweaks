@@ -7,8 +7,6 @@ import com.blakebr0.pickletweaks.lib.ModItemTier;
 
 import java.util.function.Function;
 
-import net.minecraft.world.item.Item.Properties;
-
 public class FlintAxeItem extends BaseAxeItem implements IEnableable {
     public FlintAxeItem(Function<Properties, Properties> properties) {
         super(ModItemTier.FLINT, properties);

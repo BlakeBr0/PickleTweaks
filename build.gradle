@@ -38,7 +38,7 @@ minecraft {
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
 
-            environment 'MOD_CLASSES', "${project.file('out/production/resources').canonicalPath}${File.pathSeparator}${project.file('out/production/classes').canonicalPath}"
+//            environment 'MOD_CLASSES', "${project.file('out/production/resources').canonicalPath}${File.pathSeparator}${project.file('out/production/classes').canonicalPath}"
 
             mods {
                 pickletweaks {
@@ -57,7 +57,7 @@ minecraft {
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
 
-            environment 'MOD_CLASSES', "${project.file('out/production/resources').canonicalPath}${File.pathSeparator}${project.file('out/production/classes').canonicalPath}"
+//            environment 'MOD_CLASSES', "${project.file('out/production/resources').canonicalPath}${File.pathSeparator}${project.file('out/production/classes').canonicalPath}"
 
             mods {
                 pickletweaks {
@@ -75,7 +75,7 @@ minecraft {
 dependencies {
     minecraft 'net.minecraftforge:forge:1.17.1-37.0.19'
 
-    compileOnly project(":Cucumber")
+    implementation project(':Cucumber')
 }
 
 jar {

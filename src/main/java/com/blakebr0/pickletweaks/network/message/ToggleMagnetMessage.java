@@ -2,10 +2,10 @@ package com.blakebr0.pickletweaks.network.message;
 
 import com.blakebr0.cucumber.helper.NBTHelper;
 import com.blakebr0.pickletweaks.feature.item.MagnetItem;
+import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraftforge.fml.network.NetworkEvent;
+import net.minecraftforge.fmllegacy.network.NetworkEvent;
 
 import java.util.function.Supplier;
 

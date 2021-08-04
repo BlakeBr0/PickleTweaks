@@ -7,8 +7,6 @@ import net.minecraft.world.item.Tier;
 
 import java.util.function.Function;
 
-import net.minecraft.world.item.Item.Properties;
-
 public class SickleItem extends BaseSickleItem implements IEnableable {
     public SickleItem(Tier tier, int range, Function<Properties, Properties> properties) {
         super(tier, 4.0F, -3.0F, range, properties);

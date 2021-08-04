@@ -5,23 +5,21 @@ import com.blakebr0.cucumber.iface.IEnableable;
 import com.blakebr0.cucumber.item.BaseItem;
 import com.blakebr0.pickletweaks.config.ModConfigs;
 import com.blakebr0.pickletweaks.lib.ModTooltips;
-import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.network.chat.Component;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.ExperienceOrb;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.InteractionResultHolder;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 
 import java.util.List;
 import java.util.function.Function;
-
-import net.minecraft.world.item.Item.Properties;
 
 public class MagnetItem extends BaseItem implements IEnableable {
 	public MagnetItem(Function<Properties, Properties> properties) {
@@ -35,7 +33,7 @@ public class MagnetItem extends BaseItem implements IEnableable {
 
 	@Override
 	public InteractionResultHolder<ItemStack> use(Level world, Player player, InteractionHand hand) {
-		ItemStack stack = player.getItemInHand(hand);
+		var stack = player.getItemInHand(hand);
 
 		player.playSound(SoundEvents.EXPERIENCE_ORB_PICKUP, 0.5F, NBTHelper.getBoolean(stack, "Enabled") ? 0.5F : 1.0F);
 
@@ -57,8 +55,9 @@ public class MagnetItem extends BaseItem implements IEnableable {
 	public void inventoryTick(ItemStack stack, Level world, Entity entity, int slot, boolean isSelected) {
 		if (entity instanceof Player && NBTHelper.getBoolean(stack, "Enabled")) {
 			double range = ModConfigs.MAGNET_RANGE.get();
-			List<ItemEntity> items = world.getEntitiesOfClass(ItemEntity.class, entity.getBoundingBox().inflate(range));
-			for (ItemEntity item : items) {
+			var items = world.getEntitiesOfClass(ItemEntity.class, entity.getBoundingBox().inflate(range));
+
+			for (var item : items) {
 				if (!item.isAlive() || NBTHelper.getBoolean(stack, "PreventRemoteMovement"))
 					continue;
 
@@ -71,8 +70,9 @@ public class MagnetItem extends BaseItem implements IEnableable {
 				}
 			}
 
-			List<ExperienceOrb> xporbs = world.getEntitiesOfClass(ExperienceOrb.class, entity.getBoundingBox().inflate(range));
-			for (ExperienceOrb orb : xporbs) {
+			var orbs = world.getEntitiesOfClass(ExperienceOrb.class, entity.getBoundingBox().inflate(range));
+
+			for (ExperienceOrb orb : orbs) {
 				if (!world.isClientSide()) {
 					orb.setPos(entity.getX(), entity.getY(), entity.getZ());
 				}
