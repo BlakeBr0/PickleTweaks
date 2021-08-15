@@ -4,8 +4,8 @@ import com.blakebr0.pickletweaks.init.ModItems;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 
-public class PTItemGroup extends CreativeModeTab {
-	public PTItemGroup() {
+public class PTCreativeTab extends CreativeModeTab {
+	public PTCreativeTab() {
 		super(PickleTweaks.MOD_ID);
 	}
 

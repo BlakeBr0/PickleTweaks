@@ -1,12 +1,18 @@
 package com.blakebr0.pickletweaks.lib;
 
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.LazyLoadedValue;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.Tiers;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraftforge.common.Tags;
+import net.minecraftforge.common.TierSortingRegistry;
 
+import java.util.List;
 import java.util.function.Supplier;
+
+import static com.blakebr0.pickletweaks.PickleTweaks.MOD_ID;
 
 public enum ModItemTier implements Tier {
     FLINT(1, 157, 4.5F, 1.75F, 7, () -> {
@@ -60,5 +66,10 @@ public enum ModItemTier implements Tier {
     @Override
     public Ingredient getRepairIngredient() {
         return this.repairMaterial.get();
+    }
+
+    public static void onCommonSetup() {
+        TierSortingRegistry.registerTier(FLINT, new ResourceLocation(MOD_ID, "flint"), List.of(Tiers.STONE), List.of());
+        TierSortingRegistry.registerTier(EMERALD, new ResourceLocation(MOD_ID, "emerald"), List.of(Tiers.DIAMOND), List.of());
     }
 }

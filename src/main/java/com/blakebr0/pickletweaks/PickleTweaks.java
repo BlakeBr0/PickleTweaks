@@ -13,6 +13,7 @@ import com.blakebr0.pickletweaks.feature.handler.ToggleMagnetInInventoryHandler;
 import com.blakebr0.pickletweaks.init.ModBlocks;
 import com.blakebr0.pickletweaks.init.ModItems;
 import com.blakebr0.pickletweaks.init.ModRecipeSerializers;
+import com.blakebr0.pickletweaks.lib.ModItemTier;
 import com.blakebr0.pickletweaks.network.NetworkHandler;
 import com.blakebr0.pickletweaks.tweaks.TweakToolBreaking;
 import com.blakebr0.pickletweaks.tweaks.TweakToolUselessifier;
@@ -42,8 +43,6 @@ public final class PickleTweaks {
 		var bus = FMLJavaModLoadingContext.get().getModEventBus();
 
 		bus.register(this);
-		bus.register(new ModBlocks());
-		bus.register(new ModItems());
 		bus.register(new ModRecipeSerializers());
 
 		ModBlocks.REGISTRY.register(bus);
@@ -51,6 +50,7 @@ public final class PickleTweaks {
 
 		DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
 			bus.register(new ColorHandler());
+			bus.register(new ModelHandler());
 		});
 
 		ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, ModConfigs.CLIENT);
@@ -65,6 +65,8 @@ public final class PickleTweaks {
 		MinecraftForge.EVENT_BUS.register(new FeatureRightClickHarvest());
 		MinecraftForge.EVENT_BUS.register(new TweakToolBreaking());
 		MinecraftForge.EVENT_BUS.register(new TweakToolUselessifier());
+
+		ModItemTier.onCommonSetup();
 
 		event.enqueueWork(() -> {
 			NetworkHandler.onCommonSetup();
