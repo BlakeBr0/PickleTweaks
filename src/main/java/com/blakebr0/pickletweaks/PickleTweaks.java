@@ -19,7 +19,6 @@ import com.blakebr0.pickletweaks.tweaks.TweakToolUselessifier;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -36,11 +35,11 @@ public final class PickleTweaks {
 	public static final String MOD_ID = "pickletweaks";
 	public static final String NAME = "Pickle Tweaks";
 
-	public static final CreativeModeTab ITEM_GROUP = new PTItemGroup();
+	public static final CreativeModeTab CREATIVE_TAB = new PTCreativeTab();
 	public static final Logger LOGGER = LogManager.getLogger(NAME);
 
 	public PickleTweaks() {
-		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
+		var bus = FMLJavaModLoadingContext.get().getModEventBus();
 
 		bus.register(this);
 		bus.register(new ModBlocks());

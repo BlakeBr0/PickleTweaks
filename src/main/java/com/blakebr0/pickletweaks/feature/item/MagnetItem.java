@@ -72,7 +72,7 @@ public class MagnetItem extends BaseItem implements IEnableable {
 
 			var orbs = world.getEntitiesOfClass(ExperienceOrb.class, entity.getBoundingBox().inflate(range));
 
-			for (ExperienceOrb orb : orbs) {
+			for (var orb : orbs) {
 				if (!world.isClientSide()) {
 					orb.setPos(entity.getX(), entity.getY(), entity.getZ());
 				}

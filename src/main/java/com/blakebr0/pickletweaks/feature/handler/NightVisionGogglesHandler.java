@@ -4,7 +4,6 @@ import com.blakebr0.pickletweaks.feature.item.NightVisionGogglesItem;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -27,7 +26,8 @@ public final class NightVisionGogglesHandler {
 
     @SubscribeEvent
     public void onLivingUpdate(LivingEvent.LivingUpdateEvent event) {
-        LivingEntity entity = event.getEntityLiving();
+        var entity = event.getEntityLiving();
+
         if (entity instanceof Player player) {
             var key = getPlayerKey(player);
             var hasGoggles = hasGoggles(player);

@@ -16,6 +16,7 @@ public class NightVisionGogglesItem extends BaseArmorItem implements IEnableable
 		super(material, EquipmentSlot.HEAD, properties);
 	}
 
+	// TODO: 1.17 find out how to do custom armor models
 //	@OnlyIn(Dist.CLIENT)
 //	@Override
 //	public HumanoidModel getArmorModel(LivingEntity entity, ItemStack stack, EquipmentSlot slot, HumanoidModel _default) {

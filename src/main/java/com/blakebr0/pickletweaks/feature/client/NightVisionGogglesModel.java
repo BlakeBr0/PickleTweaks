@@ -1,20 +1,20 @@
-//package com.blakebr0.pickletweaks.feature.client;
-//
-//import com.mojang.blaze3d.vertex.PoseStack;
-//import com.mojang.blaze3d.vertex.VertexConsumer;
-//import net.minecraft.client.model.HumanoidModel;
-//import net.minecraft.client.model.geom.ModelPart;
-//import net.minecraft.client.renderer.RenderType;
-//import net.minecraft.world.entity.LivingEntity;
-//
-//public class NightVisionGogglesModel extends HumanoidModel<LivingEntity> {
+package com.blakebr0.pickletweaks.feature.client;
+
+import net.minecraft.client.model.HumanoidModel;
+import net.minecraft.client.model.geom.ModelPart;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.world.entity.LivingEntity;
+
+// TODO: 1.17 figure out and implement night vision goggles model
+public class NightVisionGogglesModel extends HumanoidModel<LivingEntity> {
 //    private final ModelPart main;
 //    private final ModelPart lens;
 //    private final ModelPart frame;
-//
-//    public NightVisionGogglesModel() {
-//        super(RenderType::entityTranslucent, 0.0F, 0.0F, 64, 32);
-//
+
+    public NightVisionGogglesModel() {
+        super(null);
+//        super(part, RenderType::entityTranslucent);
+
 //        this.main = new ModelPart(this, 0, 7);
 //        this.main.setPos(0.0F, 0.0F, 0.0F);
 //        this.main.addBox(-8.0F, -7.0F, 1.0F, 1, 1, 6, 0.0F);
@@ -61,8 +61,8 @@
 //        this.frame.addBox(-7.0F, -4.0F, -8.0F, 1, 1, 2, 0.0F);
 //        this.frame.addBox(-3.0F, -4.0F, -8.0F, 1, 1, 2, 0.0F);
 //        this.frame.addBox(2.0F, -4.0F, -8.0F, 1, 1, 2, 0.0F);
-//    }
-//
+    }
+
 //    @Override
 //    public void renderToBuffer(PoseStack stack, VertexConsumer buffer, int light, int overlay, float r, float g, float b, float a) {
 //        stack.pushPose();
@@ -76,4 +76,4 @@
 //
 //        stack.popPose();
 //    }
-//}
+}

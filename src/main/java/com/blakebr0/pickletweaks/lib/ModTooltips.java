@@ -2,7 +2,7 @@ package com.blakebr0.pickletweaks.lib;
 
 import com.blakebr0.cucumber.util.Tooltip;
 
-public class ModTooltips {
+public final class ModTooltips {
     public static final Tooltip GIVES_BUFFS = new Tooltip("tooltip.pickletweaks.gives_buffs");
     public static final Tooltip BUFF_LIST_ITEM = new Tooltip("tooltip.pickletweaks.buff_list_item");
     public static final Tooltip EMPTY = new Tooltip("tooltip.pickletweaks.empty");
