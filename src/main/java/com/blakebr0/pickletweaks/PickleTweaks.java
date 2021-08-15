@@ -47,6 +47,9 @@ public final class PickleTweaks {
 		bus.register(new ModItems());
 		bus.register(new ModRecipeSerializers());
 
+		ModBlocks.REGISTRY.register(bus);
+		ModItems.REGISTRY.register(bus);
+
 		DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
 			bus.register(new ColorHandler());
 		});

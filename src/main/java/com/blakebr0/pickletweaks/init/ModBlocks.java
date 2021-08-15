@@ -5,24 +5,18 @@ import com.blakebr0.pickletweaks.PickleTweaks;
 import com.blakebr0.pickletweaks.feature.block.ColoredCobblestoneBlock;
 import com.blakebr0.pickletweaks.feature.block.DarkGlassBlock;
 import com.blakebr0.pickletweaks.feature.block.SmoothGlowstoneBlock;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fmllegacy.RegistryObject;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.IForgeRegistry;
+import net.minecraftforge.registries.DeferredRegister;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
-import static com.blakebr0.pickletweaks.PickleTweaks.ITEM_GROUP;
+import static com.blakebr0.pickletweaks.PickleTweaks.CREATIVE_TAB;
 
 public final class ModBlocks {
-	public static final Map<RegistryObject<Block>, Supplier<Block>> ENTRIES = new LinkedHashMap<>();
+	public static final DeferredRegister<Block> REGISTRY = DeferredRegister.create(Block.class, PickleTweaks.MOD_ID);
 
 	public static final RegistryObject<Block> WHITE_COBBLESTONE = register("white_cobblestone", () -> new ColoredCobblestoneBlock(16383998));
 	public static final RegistryObject<Block> ORANGE_COBBLESTONE = register("orange_cobblestone", () -> new ColoredCobblestoneBlock(16351261));
@@ -44,25 +38,13 @@ public final class ModBlocks {
 	public static final RegistryObject<Block> DARK_GLASS = register("dark_glass", DarkGlassBlock::new);
 	public static final RegistryObject<Block> SMOOTH_GLOWSTONE = register("smooth_glowstone", SmoothGlowstoneBlock::new);
 
-	@SubscribeEvent
-	public void onRegisterBlocks(RegistryEvent.Register<Block> event) {
-		IForgeRegistry<Block> registry = event.getRegistry();
-
-		ENTRIES.forEach((reg, block) -> {
-			registry.register(block.get());
-			reg.updateReference(registry);
-		});
-	}
-
 	private static RegistryObject<Block> register(String name, Supplier<Block> block) {
-		return register(name, block, b -> () -> new BaseBlockItem(b.get(), p -> p.tab(ITEM_GROUP)));
+		return register(name, block, b -> () -> new BaseBlockItem(b.get(), p -> p.tab(CREATIVE_TAB)));
 	}
 
 	private static RegistryObject<Block> register(String name, Supplier<Block> block, Function<RegistryObject<Block>, Supplier<? extends BlockItem>> item) {
-		ResourceLocation loc = new ResourceLocation(PickleTweaks.MOD_ID, name);
-		RegistryObject<Block> reg = RegistryObject.of(loc, ForgeRegistries.BLOCKS);
-		ENTRIES.put(reg, () -> block.get().setRegistryName(loc));
-		ModItems.BLOCK_ENTRIES.add(() -> item.apply(reg).get().setRegistryName(loc));
+		var reg = REGISTRY.register(name, block);
+		ModItems.REGISTRY.register(name, () -> item.apply(reg).get());
 		return reg;
 	}
 }
