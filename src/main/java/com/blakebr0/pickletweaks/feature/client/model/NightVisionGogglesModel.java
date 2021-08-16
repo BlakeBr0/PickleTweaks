@@ -1,4 +1,4 @@
-package com.blakebr0.pickletweaks.feature.client;
+package com.blakebr0.pickletweaks.feature.client.model;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
@@ -8,7 +8,6 @@ import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.CubeListBuilder;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.entity.LivingEntity;
 
@@ -38,8 +37,8 @@ public class NightVisionGogglesModel extends EntityModel<LivingEntity> {
     }
 
     public static LayerDefinition createBodyLayer() {
-        MeshDefinition mesh = new MeshDefinition();
-        PartDefinition root = mesh.getRoot();
+        var mesh = new MeshDefinition();
+        var root = mesh.getRoot();
 
         root.addOrReplaceChild(MAIN, CubeListBuilder.create()
                 .texOffs(0, 7)
@@ -54,7 +53,7 @@ public class NightVisionGogglesModel extends EntityModel<LivingEntity> {
         var lens = root.addOrReplaceChild(LENS, CubeListBuilder.create(), PartPose.ZERO);
 
         lens.addOrReplaceChild(LENS_LEFT, CubeListBuilder.create()
-                .texOffs(0, 6)
+                .texOffs(6, 0)
                 .addBox(-6.0F, -9.0F, -7.0F, 4, 5, 1)
                 .addBox(-2.0F, -8.0F, -7.0F, 1, 3, 1)
                 .addBox(-7.0F, -8.0F, -7.0F, 1, 4, 1)
