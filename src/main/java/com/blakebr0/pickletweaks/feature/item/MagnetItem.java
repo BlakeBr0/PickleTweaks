@@ -32,7 +32,7 @@ public class MagnetItem extends BaseItem implements IEnableable {
 	}
 
 	@Override
-	public InteractionResultHolder<ItemStack> use(Level world, Player player, InteractionHand hand) {
+	public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
 		var stack = player.getItemInHand(hand);
 
 		player.playSound(SoundEvents.EXPERIENCE_ORB_PICKUP, 0.5F, NBTHelper.getBoolean(stack, "Enabled") ? 0.5F : 1.0F);
@@ -43,7 +43,7 @@ public class MagnetItem extends BaseItem implements IEnableable {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, Level world, List<Component> tooltip, TooltipFlag advanced) {
+	public void appendHoverText(ItemStack stack, Level level, List<Component> tooltip, TooltipFlag advanced) {
 		if (NBTHelper.getBoolean(stack, "Enabled")) {
 			tooltip.add(ModTooltips.ENABLED.build());
 		} else {
@@ -52,10 +52,10 @@ public class MagnetItem extends BaseItem implements IEnableable {
 	}
 
 	@Override
-	public void inventoryTick(ItemStack stack, Level world, Entity entity, int slot, boolean isSelected) {
+	public void inventoryTick(ItemStack stack, Level level, Entity entity, int slot, boolean isSelected) {
 		if (entity instanceof Player && NBTHelper.getBoolean(stack, "Enabled")) {
 			double range = ModConfigs.MAGNET_RANGE.get();
-			var items = world.getEntitiesOfClass(ItemEntity.class, entity.getBoundingBox().inflate(range));
+			var items = level.getEntitiesOfClass(ItemEntity.class, entity.getBoundingBox().inflate(range));
 
 			for (var item : items) {
 				if (!item.isAlive() || NBTHelper.getBoolean(stack, "PreventRemoteMovement"))
@@ -64,16 +64,16 @@ public class MagnetItem extends BaseItem implements IEnableable {
 				if (item.getThrower() != null && item.getThrower().equals(entity.getUUID()) && item.hasPickUpDelay())
 					continue;
 
-				if (!world.isClientSide()) {
+				if (!level.isClientSide()) {
 					item.setNoPickUpDelay();
 					item.setPos(entity.getX(), entity.getY(), entity.getZ());
 				}
 			}
 
-			var orbs = world.getEntitiesOfClass(ExperienceOrb.class, entity.getBoundingBox().inflate(range));
+			var orbs = level.getEntitiesOfClass(ExperienceOrb.class, entity.getBoundingBox().inflate(range));
 
 			for (var orb : orbs) {
-				if (!world.isClientSide()) {
+				if (!level.isClientSide()) {
 					orb.setPos(entity.getX(), entity.getY(), entity.getZ());
 				}
 			}

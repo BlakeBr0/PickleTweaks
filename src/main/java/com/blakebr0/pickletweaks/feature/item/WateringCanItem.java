@@ -71,20 +71,20 @@ public class WateringCanItem extends BaseItem implements IEnableable {
 	}
 
 	@Override
-	public InteractionResultHolder<ItemStack> use(Level world, Player player, InteractionHand hand) {
+	public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
 		var stack = player.getItemInHand(hand);
 		if (NBTHelper.getBoolean(stack, "Water"))
 			return new InteractionResultHolder<>(InteractionResult.PASS, stack);
 
-		var trace = getPlayerPOVHitResult(world, player, ClipContext.Fluid.SOURCE_ONLY);
+		var trace = getPlayerPOVHitResult(level, player, ClipContext.Fluid.SOURCE_ONLY);
 		if (trace.getType() != HitResult.Type.BLOCK)
 			return new InteractionResultHolder<>(InteractionResult.PASS, stack);
 
 		var pos = trace.getBlockPos();
 		var direction = trace.getDirection();
 
-		if (world.mayInteract(player, pos) && player.mayUseItemAt(pos.relative(direction), direction, stack)) {
-			var state = world.getBlockState(pos);
+		if (level.mayInteract(player, pos) && player.mayUseItemAt(pos.relative(direction), direction, stack)) {
+			var state = level.getBlockState(pos);
 
 			if (state.getMaterial() == Material.WATER) {
 				NBTHelper.setString(stack, "ID", UUID.randomUUID().toString());
@@ -105,7 +105,7 @@ public class WateringCanItem extends BaseItem implements IEnableable {
 		if (player == null)
 			return InteractionResult.FAIL;
 
-		var world = context.getLevel();
+		var level = context.getLevel();
 		var pos = context.getClickedPos();
 		var direction = context.getClickedFace();
 
@@ -115,12 +115,12 @@ public class WateringCanItem extends BaseItem implements IEnableable {
 		if (!NBTHelper.getBoolean(stack, "Water"))
 			return InteractionResult.PASS;
 
-		return this.doWater(stack, world, player, pos, direction);
+		return this.doWater(stack, level, player, pos, direction);
 	}
 
 	@OnlyIn(Dist.CLIENT)
 	@Override
-	public void appendHoverText(ItemStack stack, Level world, List<Component> tooltip, TooltipFlag advanced) {
+	public void appendHoverText(ItemStack stack, Level level, List<Component> tooltip, TooltipFlag advanced) {
 		if (NBTHelper.getBoolean(stack, "Water")) {
 			tooltip.add(ModTooltips.FILLED.build());
 		} else {
@@ -133,7 +133,7 @@ public class WateringCanItem extends BaseItem implements IEnableable {
 		return ModConfigs.ENABLE_WATERING_CAN.get();
 	}
 
-	protected InteractionResult doWater(ItemStack stack, Level world, Player player, BlockPos pos, Direction direction) {
+	protected InteractionResult doWater(ItemStack stack, Level level, Player player, BlockPos pos, Direction direction) {
 		if (player == null)
 			return InteractionResult.FAIL;
 
@@ -146,51 +146,51 @@ public class WateringCanItem extends BaseItem implements IEnableable {
 		if (!ModConfigs.FAKE_PLAYER_WATERING.get() && player instanceof FakePlayer)
 			return InteractionResult.PASS;
 
-		if (!world.isClientSide()) {
+		if (!level.isClientSide()) {
 			var id = getID(stack);
 			long throttle = THROTTLES.getOrDefault(id, 0L);
-			if (world.getGameTime() - throttle < getThrottleTicks(player))
+			if (level.getGameTime() - throttle < getThrottleTicks(player))
 				return InteractionResult.PASS;
 
-			THROTTLES.put(id, world.getGameTime());
+			THROTTLES.put(id, level.getGameTime());
 		}
 
 		int range = (this.range - 1) / 2;
 		var blocks = BlockPos.betweenClosedStream(pos.offset(-range, -range, -range), pos.offset(range, range, range));
 
 		blocks.forEach(aoePos -> {
-			BlockState aoeState = world.getBlockState(aoePos);
+			BlockState aoeState = level.getBlockState(aoePos);
 			if (aoeState.getBlock() instanceof FarmBlock) {
 				int moisture = aoeState.getValue(FarmBlock.MOISTURE);
 				if (moisture < 7) {
-					world.setBlock(aoePos, aoeState.setValue(FarmBlock.MOISTURE, 7), 3);
+					level.setBlock(aoePos, aoeState.setValue(FarmBlock.MOISTURE, 7), 3);
 				}
 			}
 		});
 
 		for (int x = -range; x <= range; x++) {
 			for (int z = -range; z <= range; z++) {
-				double d0 = pos.offset(x, 0, z).getX() + world.getRandom().nextFloat();
+				double d0 = pos.offset(x, 0, z).getX() + level.getRandom().nextFloat();
 				double d1 = pos.offset(x, 0, z).getY() + 1.0D;
-				double d2 = pos.offset(x, 0, z).getZ() + world.getRandom().nextFloat();
+				double d2 = pos.offset(x, 0, z).getZ() + level.getRandom().nextFloat();
 
-				BlockState state = world.getBlockState(pos);
+				BlockState state = level.getBlockState(pos);
 				if (state.canOcclude() || state.getBlock() instanceof FarmBlock)
 					d1 += 0.3D;
 
-				world.addParticle(ParticleTypes.RAIN, d0, d1, d2, 0.0D, 0.0D, 0.0D);
+				level.addParticle(ParticleTypes.RAIN, d0, d1, d2, 0.0D, 0.0D, 0.0D);
 			}
 		}
 
-		if (!world.isClientSide()) {
+		if (!level.isClientSide()) {
 			if (Math.random() <= this.chance) {
 				blocks = BlockPos.betweenClosedStream(pos.offset(-range, -range, -range), pos.offset(range, range, range));
 				blocks.forEach(aoePos -> {
-					var state = world.getBlockState(aoePos);
+					var state = level.getBlockState(aoePos);
 					var plantBlock = state.getBlock();
 
 					if (plantBlock instanceof BonemealableBlock || plantBlock instanceof IPlantable || plantBlock == Blocks.MYCELIUM || plantBlock == Blocks.CHORUS_FLOWER) {
-						state.randomTick((ServerLevel) world, aoePos, Utils.RANDOM);
+						state.randomTick((ServerLevel) level, aoePos, Utils.RANDOM);
 					}
 				});
 

@@ -102,7 +102,7 @@ public class GridRepairRecipe extends ShapelessRecipe {
 	}
 
 	@Override
-	public boolean matches(CraftingContainer inv, Level world) {
+	public boolean matches(CraftingContainer inv, Level level) {
 		return !this.assemble(inv).isEmpty();
 	}
 

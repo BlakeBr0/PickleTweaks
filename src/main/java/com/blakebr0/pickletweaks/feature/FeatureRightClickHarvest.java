@@ -31,18 +31,18 @@ public final class FeatureRightClickHarvest {
 		if (event.getHand() != InteractionHand.MAIN_HAND)
 			return;
 
-		var world = event.getWorld();
+		var level = event.getWorld();
 
-		if (!world.isClientSide()) {
+		if (!level.isClientSide()) {
 			var pos = event.getPos();
-			var state = world.getBlockState(pos);
+			var state = level.getBlockState(pos);
 			var block = state.getBlock();
 
 			if (block instanceof CropBlock crop) {
 				var seed = getSeed(crop);
 
 				if (crop.isMaxAge(state) && seed != null) {
-					var drops = Block.getDrops(state, (ServerLevel) world, pos, world.getBlockEntity(pos));
+					var drops = Block.getDrops(state, (ServerLevel) level, pos, level.getBlockEntity(pos));
 
 					for (var drop : drops) {
 						var item = drop.getItem();
@@ -55,11 +55,11 @@ public final class FeatureRightClickHarvest {
 
 					for (var drop : drops) {
 						if (!drop.isEmpty()) {
-							Block.popResource(world, pos, drop);
+							Block.popResource(level, pos, drop);
 						}
 					}
 
-					world.setBlockAndUpdate(pos, crop.getStateForAge(0));
+					level.setBlockAndUpdate(pos, crop.getStateForAge(0));
 				}
 			}
 		}

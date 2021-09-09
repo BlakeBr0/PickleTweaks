@@ -28,7 +28,7 @@ public class DiamondAppleItem extends BaseItem implements IEnableable {
 	}
 
 	@Override
-	public ItemStack finishUsingItem(ItemStack stack, Level world, LivingEntity entity) {
+	public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
 		MobEffectInstance potion;
 		int duration = 0;
 
@@ -52,11 +52,11 @@ public class DiamondAppleItem extends BaseItem implements IEnableable {
 			duration = potion.getDuration();
 		entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, duration + 5000, 0));
 
-		return entity.eat(world, stack);
+		return entity.eat(level, stack);
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, Level world, List<Component> tooltip, TooltipFlag flag) {
+	public void appendHoverText(ItemStack stack, Level level, List<Component> tooltip, TooltipFlag flag) {
 		if (Screen.hasShiftDown()) {
 			tooltip.add(ModTooltips.GIVES_BUFFS.build());
 			tooltip.add(ModTooltips.BUFF_LIST_ITEM.args(Colors.WHITE, MobEffects.REGENERATION.getDisplayName(), "II").build());

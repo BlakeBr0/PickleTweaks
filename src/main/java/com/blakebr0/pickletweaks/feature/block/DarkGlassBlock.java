@@ -15,7 +15,7 @@ public class DarkGlassBlock extends BaseGlassBlock implements IEnableable {
 	}
 
 	@Override
-	public int getLightBlock(BlockState state, BlockGetter world, BlockPos pos) {
+	public int getLightBlock(BlockState state, BlockGetter level, BlockPos pos) {
 		return 255;
 	}
 
