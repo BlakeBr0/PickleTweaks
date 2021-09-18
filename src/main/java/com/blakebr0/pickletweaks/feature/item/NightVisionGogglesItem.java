@@ -3,11 +3,17 @@ package com.blakebr0.pickletweaks.feature.item;
 import com.blakebr0.cucumber.iface.IEnableable;
 import com.blakebr0.cucumber.item.BaseArmorItem;
 import com.blakebr0.pickletweaks.config.ModConfigs;
-import net.minecraft.world.entity.Entity;
+import com.blakebr0.pickletweaks.feature.client.ModelHandler;
+import com.blakebr0.pickletweaks.feature.client.model.NightVisionGogglesModel;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.client.IItemRenderProperties;
 
+import java.util.function.Consumer;
 import java.util.function.Function;
 
 public class NightVisionGogglesItem extends BaseArmorItem implements IEnableable {
@@ -16,12 +22,29 @@ public class NightVisionGogglesItem extends BaseArmorItem implements IEnableable
 	}
 
 	@Override
-	public String getArmorTexture(ItemStack stack, Entity entity, EquipmentSlot slot, String type) {
-		return "cucumber:textures/models/armor/invisible.png";
+	public void initializeClient(Consumer<IItemRenderProperties> consumer) {
+		consumer.accept(ItemRenderProperties.INSTANCE);
 	}
 
 	@Override
 	public boolean isEnabled() {
 		return ModConfigs.ENABLE_NIGHT_VISION_GOGGLES.get();
+	}
+
+	static class ItemRenderProperties implements IItemRenderProperties {
+		public static final ItemRenderProperties INSTANCE = new ItemRenderProperties();
+
+		private NightVisionGogglesModel model;
+
+		@Override
+		public <A extends HumanoidModel<?>> A getArmorModel(LivingEntity living, ItemStack stack, EquipmentSlot slot, A _default) {
+			if (this.model == null) {
+				var layer = Minecraft.getInstance().getEntityModels().bakeLayer(ModelHandler.NIGHT_VISION_GOGGLES_LAYER);
+
+				this.model = new NightVisionGogglesModel(layer);
+			}
+
+			return (A) this.model;
+		}
 	}
 }

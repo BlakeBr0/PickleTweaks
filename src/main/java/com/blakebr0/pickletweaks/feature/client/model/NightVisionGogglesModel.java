@@ -1,17 +1,17 @@
 package com.blakebr0.pickletweaks.feature.client.model;
 
+import com.google.common.collect.ImmutableList;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import net.minecraft.client.model.EntityModel;
+import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
+import net.minecraft.client.model.geom.builders.CubeDeformation;
 import net.minecraft.client.model.geom.builders.CubeListBuilder;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.entity.LivingEntity;
 
-public class NightVisionGogglesModel extends EntityModel<LivingEntity> {
+public class NightVisionGogglesModel extends HumanoidModel<LivingEntity> {
     private static final String MAIN = "main";
     private static final String LENS = "lens";
     private static final String LENS_LEFT = "lens_left";
@@ -23,21 +23,47 @@ public class NightVisionGogglesModel extends EntityModel<LivingEntity> {
     private final ModelPart frame;
 
     public NightVisionGogglesModel(ModelPart part) {
-        super(RenderType::entityTranslucent);
+        super(part);
         this.main = part.getChild(MAIN);
         this.lens = part.getChild(LENS);
         this.frame = part.getChild(FRAME);
     }
 
     @Override
-    public void renderToBuffer(PoseStack stack, VertexConsumer buffer, int light, int overlay, float r, float g, float b, float a) {
-        this.main.render(stack, buffer, light, overlay, r, g, b, a);
-        this.lens.render(stack, buffer, light, overlay, r, g, b, a);
-        this.frame.render(stack, buffer, light, overlay, r, g, b, a);
+    public void renderToBuffer(PoseStack matrix, VertexConsumer buffer, int light, int overlay, float r, float g, float b, float a) {
+        matrix.pushPose();
+
+        this.head.translateAndRotate(matrix);
+
+        matrix.scale(0.6F, 0.6F, 0.6F);
+
+        this.main.render(matrix, buffer, light, overlay, r, g, b, a);
+        this.lens.render(matrix, buffer, light, overlay, r, g, b, a);
+        this.frame.render(matrix, buffer, light, overlay, r, g, b, a);
+
+        matrix.popPose();
+    }
+
+    @Override
+    protected Iterable<ModelPart> headParts() {
+        this.main.copyFrom(this.head);
+        this.lens.copyFrom(this.main);
+        this.frame.copyFrom(this.main);
+
+        return ImmutableList.of(
+                this.main,
+                this.lens,
+                this.frame
+        );
+    }
+
+    @Override
+    protected Iterable<ModelPart> bodyParts() {
+        return ImmutableList.of();
     }
 
     public static LayerDefinition createBodyLayer() {
-        var mesh = new MeshDefinition();
+        var mesh = HumanoidModel.createMesh(new CubeDeformation(1.0F), 0F);
         var root = mesh.getRoot();
 
         root.addOrReplaceChild(MAIN, CubeListBuilder.create()
@@ -92,7 +118,4 @@ public class NightVisionGogglesModel extends EntityModel<LivingEntity> {
 
         return LayerDefinition.create(mesh, 64, 32);
     }
-
-    @Override
-    public void setupAnim(LivingEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) { }
 }
