@@ -35,8 +35,10 @@ public class FeatureWailaPlugin implements IWailaPlugin {
 
     private static String getHarvestLevelName(BlockState state) {
         int level = Math.max(0, state.getHarvestLevel());
-        if (level < FeatureToolInfo.MINING_LEVEL_NAMES.length)
-            return FeatureToolInfo.MINING_LEVEL_NAMES[level];
+        List<String> names = ModConfigs.HARVEST_LEVEL_NAMES.get();
+
+        if (level < names.size())
+            return names.get(level);
 
         return String.valueOf(level);
     }

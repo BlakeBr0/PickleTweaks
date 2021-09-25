@@ -14,8 +14,6 @@ import java.util.List;
 import java.util.ListIterator;
 
 public final class FeatureToolInfo {
-	public static final String[] MINING_LEVEL_NAMES = new String[] { "Stone", "Iron", "Diamond", "Obsidian", "Netherite" };
-
 	@SubscribeEvent
 	public void onItemTooltip(ItemTooltipEvent event) {
 		if (!ModConfigs.ENABLE_TOOL_INFO_TOOLTIP.get())
@@ -39,7 +37,9 @@ public final class FeatureToolInfo {
 
 	private static String getMiningLevel(ToolItem item) {
 		int lvl = item.getTier().getLevel();
-		return lvl >= 0 && lvl < MINING_LEVEL_NAMES.length ? MINING_LEVEL_NAMES[lvl] : String.valueOf(lvl);
+		List<String> names = ModConfigs.HARVEST_LEVEL_NAMES.get();
+
+		return lvl >= 0 && lvl < names.size() ? names.get(lvl) : String.valueOf(lvl);
 	}
 
 	private static float getMiningSpeed(ToolItem item) {
