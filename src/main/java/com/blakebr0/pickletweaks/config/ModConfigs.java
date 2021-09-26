@@ -10,6 +10,8 @@ public final class ModConfigs {
     public static final ForgeConfigSpec CLIENT;
     public static final ForgeConfigSpec COMMON;
 
+    public static final ForgeConfigSpec.ConfigValue<List<String>> HARVEST_LEVEL_NAMES;
+
     public static final ForgeConfigSpec.BooleanValue ENABLE_TOOL_INFO_TOOLTIP;
     public static final ForgeConfigSpec.BooleanValue ENABLE_WAILA_HARVEST_LEVEL;
 
@@ -18,6 +20,10 @@ public final class ModConfigs {
         final ForgeConfigSpec.Builder client = new ForgeConfigSpec.Builder();
 
         client.comment("General configuration options").push("General");
+        HARVEST_LEVEL_NAMES = client
+                .comment("The harvest level names used by the Tool Info Tweak tooltips.")
+                .translation("configGui.pickletweaks.harvest_level_names")
+                .define("harvestLevelNames", Lists.newArrayList("Stone", "Iron", "Diamond", "Obsidian", "Netherite"));
         client.pop();
 
         client.comment("Disable features.").push("Features");
