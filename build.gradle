@@ -22,9 +22,9 @@ println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getPro
 repositories {
     maven { url 'https://dvs1.progwml6.com/files/maven/' }
     maven {
-        url "https://cursemaven.com"
+        url 'https://cursemaven.com'
         content {
-            includeGroup "curse.maven"
+            includeGroup 'curse.maven'
         }
     }
 }
