@@ -29,8 +29,8 @@ public final class FeatureToolInfo {
 	}
 
 	private static String getMiningLevel(DiggerItem item) {
-		int lvl = item.getTier().getLevel();
-		List<String> names = ModConfigs.HARVEST_LEVEL_NAMES.get();
+		var lvl = item.getTier().getLevel();
+		var names = ModConfigs.HARVEST_LEVEL_NAMES.get();
 
 		return lvl >= 0 && lvl < names.size() ? names.get(lvl) : String.valueOf(lvl);
 	}

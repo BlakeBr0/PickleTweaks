@@ -23,7 +23,7 @@ public final class ModConfigs {
         HARVEST_LEVEL_NAMES = client
                 .comment("The harvest level names used by the Tool Info Tweak tooltips.")
                 .translation("configGui.pickletweaks.harvest_level_names")
-                .define("harvestLevelNames", Lists.newArrayList("Stone", "Iron", "Diamond", "Obsidian", "Netherite"));
+                .define("harvestLevelNames", List.of("Stone", "Iron", "Diamond", "Obsidian", "Netherite"));
         client.pop();
 
         client.comment("Disable features.").push("Features");
