@@ -22,7 +22,7 @@ public final class FeatureRightClickHarvest {
 	private static final Method GET_SEED;
 
 	static {
-		GET_SEED = ObfuscationReflectionHelper.findMethod(CropsBlock.class, "getBaseSeedId");
+		GET_SEED = ObfuscationReflectionHelper.findMethod(CropsBlock.class, "func_199772_f");
 	}
 
 	@SubscribeEvent
