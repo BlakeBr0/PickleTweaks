@@ -11,7 +11,7 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
-version = '5.2.4'
+version = '5.2.6'
 group = 'com.blakebr0.pickletweaks'
 archivesBaseName = 'PickleTweaks-1.17.1'
 
