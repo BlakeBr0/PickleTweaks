@@ -35,11 +35,11 @@ public final class TweakToolBreaking {
 		if (player.getAbilities().instabuild)
 			return;
 
-		ItemStack stack = player.getMainHandItem();
+		var stack = player.getMainHandItem();
 		if (stack.isEmpty())
 			return;
 
-		Item item = stack.getItem();
+		var item = stack.getItem();
 		if (stack.isDamageableItem() && isValidTool(item)) {
 			if (isBroken(stack)) {
 				sendBrokenMessage(player, stack);
@@ -57,11 +57,11 @@ public final class TweakToolBreaking {
 		if (player.getAbilities().instabuild)
 			return;
 
-		ItemStack stack = player.getMainHandItem();
+		var stack = player.getMainHandItem();
 		if (stack.isEmpty())
 			return;
 
-		Item item = stack.getItem();
+		var item = stack.getItem();
 		if (stack.isDamageableItem() && isValidTool(item)) {
 			if (isBroken(stack)) {
 				sendBrokenMessage(player, stack);

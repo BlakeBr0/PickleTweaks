@@ -27,15 +27,15 @@ public final class FeatureBowInfo {
 
 			if (EnchantmentHelper.getItemEnchantmentLevel(Enchantments.INFINITY_ARROWS, stack) > 0) {
 				while (tooltip.hasNext()) {
-					var next = tooltip.next();
+					var line = tooltip.next();
 
-					if (next instanceof TranslatableComponent) {
-						var key = ((TranslatableComponent) next).getKey();
+					if (line instanceof TranslatableComponent component) {
+						var key = component.getKey();
 
 						if ("enchantment.minecraft.infinity".equals(key)) {
 							var formatting = getAmmo(player, shootable) > 0 ? ChatFormatting.GREEN : ChatFormatting.RED;
 
-							tooltip.set(new TextComponent(next.getString()).withStyle(formatting));
+							tooltip.set(new TextComponent(line.getString()).withStyle(formatting));
 						}
 					}
 				}

@@ -93,7 +93,6 @@
   "tooltip.pickletweaks.mining_speed": "Mining Speed: %s",
   "tooltip.pickletweaks.ammo": "Ammo: %s",
   "tooltip.pickletweaks.broken": "BROKEN",
-  "tooltip.pickletweaks.harvest_level": "Harvest Level: %s",
   "tooltip.pickletweaks.useless_tool_1": "This tool cannot mine anything.",
   "tooltip.pickletweaks.useless_tool_2": "It can only be used for crafting.",
   "tooltip.pickletweaks.useless_hoe_1": "This hoe cannot till anything.",

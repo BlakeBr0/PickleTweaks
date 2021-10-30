@@ -17,7 +17,7 @@ public final class FeatureRightClickHarvest {
 	private static final Method GET_SEED;
 
 	static {
-		GET_SEED = ObfuscationReflectionHelper.findMethod(CropBlock.class, "getBaseSeedId");
+		GET_SEED = ObfuscationReflectionHelper.findMethod(CropBlock.class, "m_6404_");
 	}
 
 	@SubscribeEvent

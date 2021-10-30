@@ -27,7 +27,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.BonemealableBlock;
 import net.minecraft.world.level.block.FarmBlock;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.HitResult;
 import net.minecraftforge.api.distmarker.Dist;
@@ -59,8 +58,10 @@ public class WateringCanItem extends BaseItem implements IEnableable {
 	@Override
 	public void fillItemCategory(CreativeModeTab group, NonNullList<ItemStack> items) {
 		if (this.allowdedIn(group)) {
-			ItemStack stack = new ItemStack(this);
+			var stack = new ItemStack(this);
+
 			NBTHelper.setBoolean(stack, "Water", false);
+
 			items.add(stack);
 		}
 	}
@@ -159,7 +160,7 @@ public class WateringCanItem extends BaseItem implements IEnableable {
 		var blocks = BlockPos.betweenClosedStream(pos.offset(-range, -range, -range), pos.offset(range, range, range));
 
 		blocks.forEach(aoePos -> {
-			BlockState aoeState = level.getBlockState(aoePos);
+			var aoeState = level.getBlockState(aoePos);
 			if (aoeState.getBlock() instanceof FarmBlock) {
 				int moisture = aoeState.getValue(FarmBlock.MOISTURE);
 				if (moisture < 7) {
@@ -174,7 +175,7 @@ public class WateringCanItem extends BaseItem implements IEnableable {
 				double d1 = pos.offset(x, 0, z).getY() + 1.0D;
 				double d2 = pos.offset(x, 0, z).getZ() + level.getRandom().nextFloat();
 
-				BlockState state = level.getBlockState(pos);
+				var state = level.getBlockState(pos);
 				if (state.canOcclude() || state.getBlock() instanceof FarmBlock)
 					d1 += 0.3D;
 

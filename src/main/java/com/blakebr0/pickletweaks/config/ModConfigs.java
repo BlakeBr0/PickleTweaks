@@ -13,17 +13,16 @@ public final class ModConfigs {
     public static final ForgeConfigSpec.ConfigValue<List<String>> HARVEST_LEVEL_NAMES;
 
     public static final ForgeConfigSpec.BooleanValue ENABLE_TOOL_INFO_TOOLTIP;
-    public static final ForgeConfigSpec.BooleanValue ENABLE_WAILA_HARVEST_LEVEL;
 
     // Client
     static {
-        final ForgeConfigSpec.Builder client = new ForgeConfigSpec.Builder();
+        final var client = new ForgeConfigSpec.Builder();
 
         client.comment("General configuration options").push("General");
         HARVEST_LEVEL_NAMES = client
                 .comment("The harvest level names used by the Tool Info Tweak tooltips.")
                 .translation("configGui.pickletweaks.harvest_level_names")
-                .define("harvestLevelNames", List.of("Stone", "Iron", "Diamond", "Obsidian", "Netherite"));
+                .define("harvestLevelNames", Lists.newArrayList("Stone", "Iron", "Diamond", "Obsidian", "Netherite"));
         client.pop();
 
         client.comment("Disable features.").push("Features");
@@ -31,10 +30,6 @@ public final class ModConfigs {
                 .comment("Tool Information Tooltips enabled?")
                 .translation("configGui.pickletweaks.enable_tool_info_tooltip")
                 .define("toolInfoTooltip", true);
-        ENABLE_WAILA_HARVEST_LEVEL = client
-                .comment("Waila harvest level tooltip enabled?")
-                .translation("configGui.pickletweaks.enable_waila_harvest_level")
-                .define("wailaHarvestLevel", true);
         client.pop();
 
         CLIENT = client.build();
@@ -75,7 +70,7 @@ public final class ModConfigs {
 
     // Common
     static {
-        final ForgeConfigSpec.Builder common = new ForgeConfigSpec.Builder();
+        final var common = new ForgeConfigSpec.Builder();
 
         common.comment("General configuration options.").push("General");
         MAGNET_RANGE = common
@@ -87,10 +82,11 @@ public final class ModConfigs {
                 .translation("configGui.pickletweaks.fake_player_watering")
                 .define("fakePlayerWatering", true);
         TOOL_INFO_TOOLTIP_BLACKLIST = common
-                .comment("Here you can specify a list of tools that shouldn't have tool info tooltips." +
-                        "\nEx. [\"minecraft:iron_pickaxe\"]" +
-                        "\nYou can also blacklist entire mods by doing <mod-id>:*" +
-                        "\nEx. [\"pickletweaks:*\"]")
+                .comment("""
+                        Here you can specify a list of tools that shouldn't have tool info tooltips.
+                        Ex. ["minecraft:iron_pickaxe"]
+                        You can also blacklist entire mods by doing <mod-id>:*
+                        Ex. ["pickletweaks:*"]""")
                 .translation("configGui.pickletweaks.tool_info_tooltip_blacklist")
                 .define("toolInfoTooltipBlacklist", Lists.newArrayList("silentgear:*"));
         common.pop();
@@ -189,12 +185,13 @@ public final class ModConfigs {
                 .translation("configGui.pickletweaks.grid_repair_blacklist")
                 .define("blacklist", new ArrayList<>());
         GRID_REPAIR_OVERRIDES = common
-                .comment("Here you can specify custom repair materials for tools." +
-                        "\nEx: [\"minecraft:stone_shovel=minecraft:stick\"]" +
-                        "\nYou can use tags for materials by doing tag:<tag-id>." +
-                        "\nEx: [\"minecraft:stone_shovel=tag:forge:ingots/iron\"]" +
-                        "\nYou can specify how effective the material is by appending @<multiplier>" +
-                        "\nEx: [\"minecraft:stone_shovel=minecraft:stick@0.5\"]")
+                .comment("""
+                        Here you can specify custom repair materials for tools.
+                        Ex: ["minecraft:stone_shovel=minecraft:stick"]
+                        You can use tags for materials by doing tag:<tag-id>.
+                        Ex: ["minecraft:stone_shovel=tag:forge:ingots/iron"]
+                        You can specify how effective the material is by appending @<multiplier>
+                        Ex: ["minecraft:stone_shovel=minecraft:stick@0.5"]""")
                 .translation("configGui.pickletweaks.grid_repair_overrides")
                 .define("overrides", new ArrayList<>());
         common.pop();
@@ -205,8 +202,9 @@ public final class ModConfigs {
                 .translation("configGui.pickletweaks.enable_tool_breaking_tweak")
                 .define("toolBreaking", true);
         USELESS_TOOLS = common
-                .comment("Tools and weapons that should be ineffective." +
-                        "\nEx: [\"minecraft:stone_pickaxe\", \"minecraft:stone_sword\"]")
+                .comment("""
+                        Tools and weapons that should be ineffective.
+                        Ex: ["minecraft:stone_pickaxe", "minecraft:stone_sword"]""")
                 .translation("configGui.pickletweaks.useless_tools")
                 .define("uselessTools", new ArrayList<>());
         common.pop();

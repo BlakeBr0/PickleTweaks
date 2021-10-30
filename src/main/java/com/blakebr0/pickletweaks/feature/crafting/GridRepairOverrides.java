@@ -10,7 +10,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GridRepairOverride {
+public class GridRepairOverrides {
 	private static final List<Override> OVERRIDES = new ArrayList<>();
 
 	public static void onCommonSetup() {

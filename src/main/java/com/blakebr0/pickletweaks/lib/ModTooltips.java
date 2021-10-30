@@ -13,7 +13,6 @@ public final class ModTooltips {
     public static final Tooltip MINING_SPEED = new Tooltip("tooltip.pickletweaks.mining_speed");
     public static final Tooltip AMMO = new Tooltip("tooltip.pickletweaks.ammo");
     public static final Tooltip BROKEN = new Tooltip("tooltip.pickletweaks.broken");
-    public static final Tooltip HARVEST_LEVEL = new Tooltip("tooltip.pickletweaks.harvest_level");
     public static final Tooltip USELESS_TOOL_1 = new Tooltip("tooltip.pickletweaks.useless_tool_1");
     public static final Tooltip USELESS_TOOL_2 = new Tooltip("tooltip.pickletweaks.useless_tool_2");
     public static final Tooltip USELESS_WEAPON_1 = new Tooltip("tooltip.pickletweaks.useless_weapon_1");

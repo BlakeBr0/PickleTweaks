@@ -6,12 +6,12 @@ import net.minecraft.world.item.ItemStack;
 
 public class GridRepairHelper {
 	public static double getMaterialValue(ItemStack tool, ItemStack mat) {
-		var override = GridRepairOverride.getOverride(tool, mat);
+		var override = GridRepairOverrides.getOverride(tool, mat);
 		var hasOverride = override != null;
 
 		if (checkDefault(tool, mat) || hasOverride) {
 			boolean overrideMode = ModConfigs.GRID_REPAIR_OVERRIDE_MODE.get();
-			if (overrideMode && !hasOverride && GridRepairOverride.hasToolOverride(tool))
+			if (overrideMode && !hasOverride && GridRepairOverrides.hasToolOverride(tool))
 				return 0;
 
 			return hasOverride ? override.multi : 1.0;

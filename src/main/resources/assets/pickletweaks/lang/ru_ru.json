@@ -93,7 +93,6 @@
   "tooltip.pickletweaks.mining_speed": "Скорость копания: %s",
   "tooltip.pickletweaks.ammo": "Снарядов: %s",
   "tooltip.pickletweaks.broken": "СЛОМАНО",
-  "tooltip.pickletweaks.harvest_level": "Уровень добывания: %s",
   "tooltip.pickletweaks.useless_tool_1": "Этот инструмент ничего не может добывать.",
   "tooltip.pickletweaks.useless_tool_2": "Это можно использовать только для крафта.",
   "tooltip.pickletweaks.useless_hoe_1": "Эта мотыга ничего не может вспахать.",

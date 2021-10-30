@@ -6,7 +6,7 @@ import com.blakebr0.pickletweaks.feature.FeatureBowInfo;
 import com.blakebr0.pickletweaks.feature.FeatureRightClickHarvest;
 import com.blakebr0.pickletweaks.feature.FeatureToolInfo;
 import com.blakebr0.pickletweaks.feature.client.ModelHandler;
-import com.blakebr0.pickletweaks.feature.crafting.GridRepairOverride;
+import com.blakebr0.pickletweaks.feature.crafting.GridRepairOverrides;
 import com.blakebr0.pickletweaks.feature.handler.ColorHandler;
 import com.blakebr0.pickletweaks.feature.handler.NightVisionGogglesHandler;
 import com.blakebr0.pickletweaks.feature.handler.ToggleMagnetInInventoryHandler;
@@ -70,7 +70,7 @@ public final class PickleTweaks {
 
 		event.enqueueWork(() -> {
 			NetworkHandler.onCommonSetup();
-			GridRepairOverride.onCommonSetup();
+			GridRepairOverrides.onCommonSetup();
 		});
 	}
 

@@ -8,7 +8,9 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 public final class ColorHandler {
     @SubscribeEvent
     public void onBlockColors(ColorHandlerEvent.Block event) {
-        event.getBlockColors().register(new IColored.BlockColors(),
+        var colors = event.getBlockColors();
+
+        colors.register(new IColored.BlockColors(),
                 ModBlocks.WHITE_COBBLESTONE.get(),
                 ModBlocks.ORANGE_COBBLESTONE.get(),
                 ModBlocks.MAGENTA_COBBLESTONE.get(),
@@ -30,7 +32,9 @@ public final class ColorHandler {
 
     @SubscribeEvent
     public void onItemColors(ColorHandlerEvent.Item event) {
-        event.getItemColors().register(new IColored.ItemBlockColors(),
+        var colors = event.getItemColors();
+
+        colors.register(new IColored.ItemBlockColors(),
                 ModBlocks.WHITE_COBBLESTONE.get(),
                 ModBlocks.ORANGE_COBBLESTONE.get(),
                 ModBlocks.MAGENTA_COBBLESTONE.get(),
