@@ -3,7 +3,6 @@ package com.blakebr0.pickletweaks.init;
 import com.blakebr0.cucumber.item.BaseBlockItem;
 import com.blakebr0.pickletweaks.PickleTweaks;
 import com.blakebr0.pickletweaks.feature.block.ColoredCobblestoneBlock;
-import com.blakebr0.pickletweaks.feature.block.DarkGlassBlock;
 import com.blakebr0.pickletweaks.feature.block.SmoothGlowstoneBlock;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.block.Block;
@@ -35,7 +34,6 @@ public final class ModBlocks {
 	public static final RegistryObject<Block> RED_COBBLESTONE = register("red_cobblestone", () -> new ColoredCobblestoneBlock(11546150));
 	public static final RegistryObject<Block> BLACK_COBBLESTONE = register("black_cobblestone", () -> new ColoredCobblestoneBlock(1908001));
 
-	public static final RegistryObject<Block> DARK_GLASS = register("dark_glass", DarkGlassBlock::new);
 	public static final RegistryObject<Block> SMOOTH_GLOWSTONE = register("smooth_glowstone", SmoothGlowstoneBlock::new);
 
 	private static RegistryObject<Block> register(String name, Supplier<Block> block) {

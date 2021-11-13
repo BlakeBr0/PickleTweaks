@@ -79,7 +79,5 @@ public final class PickleTweaks {
 		MinecraftForge.EVENT_BUS.register(new ToggleMagnetInInventoryHandler());
 		MinecraftForge.EVENT_BUS.register(new FeatureToolInfo());
 		MinecraftForge.EVENT_BUS.register(new FeatureBowInfo());
-
-		ModelHandler.onClientSetup();
 	}
 }
