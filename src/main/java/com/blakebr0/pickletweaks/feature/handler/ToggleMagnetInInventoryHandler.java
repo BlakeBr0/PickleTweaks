@@ -7,16 +7,16 @@ import com.blakebr0.pickletweaks.network.message.ToggleMagnetMessage;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraftforge.client.event.GuiScreenEvent;
+import net.minecraftforge.client.event.ScreenEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 public final class ToggleMagnetInInventoryHandler {
     @SubscribeEvent
-    public void onMouseClicked(GuiScreenEvent.MouseClickedEvent.Pre event) {
+    public void onMouseClicked(ScreenEvent.MouseClickedEvent.Pre event) {
         var mc = Minecraft.getInstance();
-        var gui = event.getGui();
+        var screen = event.getScreen();
 
-        if (gui instanceof AbstractContainerScreen<?> container && event.getButton() == 1) {
+        if (screen instanceof AbstractContainerScreen<?> container && event.getButton() == 1) {
             var slot = container.getSlotUnderMouse();
             var player = mc.player;
 

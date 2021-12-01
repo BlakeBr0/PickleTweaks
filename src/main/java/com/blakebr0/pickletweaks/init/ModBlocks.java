@@ -6,8 +6,8 @@ import com.blakebr0.pickletweaks.feature.block.ColoredCobblestoneBlock;
 import com.blakebr0.pickletweaks.feature.block.SmoothGlowstoneBlock;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.fmllegacy.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.RegistryObject;
 
 import java.util.function.Function;
 import java.util.function.Supplier;
