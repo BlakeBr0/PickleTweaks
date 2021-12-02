@@ -12,7 +12,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ShovelItem;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.ShapelessRecipe;
-import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.registries.ForgeRegistryEntry;
@@ -55,13 +54,15 @@ public class GridRepairRecipe extends ShapelessRecipe {
 		}
 
 		int repairCost = ModConfigs.GRID_REPAIR_COST.get();
+		int enchantmentCost = ModConfigs.GRID_REPAIR_ENCHANTMENT_COST.get();
 		boolean cheaperShovel = ModConfigs.GRID_REPAIR_CHEAP_SHOVEL.get();
 
 		if (cheaperShovel && tool.getItem() instanceof ShovelItem) {
 			repairCost = Math.max(1, repairCost / 2);
+			enchantmentCost = Math.max(0, enchantmentCost / 2);
 		}
 
-		int damage = tool.getMaxDamage() / repairCost;
+		int damage = tool.getMaxDamage() / (repairCost + (tool.isEnchanted() ? enchantmentCost : 0));
 
 		double matCount = 0;
 		boolean maxed = false;
@@ -87,9 +88,8 @@ public class GridRepairRecipe extends ShapelessRecipe {
 
 		tool.setDamageValue(tool.getDamageValue() - (int) (damage * matCount));
 
-		// Strip enchantments. Vanilla implementation here: {@link net.minecraft.item.crafting.RepairItemRecipe#getCraftingResult(CraftingInventory inv)}.
 		if (ModConfigs.GRID_REPAIR_STRIP_ENCHANTMENTS.get()) {
-			Map<Enchantment, Integer> enchantments = EnchantmentHelper.getEnchantments(tool)
+			var enchantments = EnchantmentHelper.getEnchantments(tool)
 					.entrySet()
 					.stream()
 					.filter(x -> x.getKey().isCurse())
