@@ -34,14 +34,11 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.util.FakePlayer;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.UUID;
 import java.util.function.Function;
 
 public class WateringCanItem extends BaseItem implements IEnableable {
-	private static final Map<String, Long> THROTTLES = new HashMap<>();
 	protected final int range;
 	protected final double chance;
 
@@ -148,12 +145,14 @@ public class WateringCanItem extends BaseItem implements IEnableable {
 			return InteractionResult.PASS;
 
 		if (!level.isClientSide()) {
-			var id = getID(stack);
-			long throttle = THROTTLES.getOrDefault(id, 0L);
-			if (level.getGameTime() - throttle < getThrottleTicks(player))
-				return InteractionResult.PASS;
+			var cooldowns = player.getCooldowns();
+			var item = stack.getItem();
 
-			THROTTLES.put(id, level.getGameTime());
+			if (!cooldowns.isOnCooldown(item)) {
+				cooldowns.addCooldown(item, getThrottleTicks(player));
+			} else {
+				return InteractionResult.PASS;
+			}
 		}
 
 		int range = (this.range - 1) / 2;
@@ -202,15 +201,7 @@ public class WateringCanItem extends BaseItem implements IEnableable {
 		return InteractionResult.PASS;
 	}
 
-	private static String getID(ItemStack stack) {
-		if (!NBTHelper.hasKey(stack, "ID")) {
-			NBTHelper.setString(stack, "ID", UUID.randomUUID().toString());
-		}
-
-		return NBTHelper.getString(stack, "ID");
-	}
-
-	private static long getThrottleTicks(Player player) {
-		return player instanceof FakePlayer ? 10L : 5L;
+	private static int getThrottleTicks(Player player) {
+		return player instanceof FakePlayer ? 10 : 5;
 	}
 }
