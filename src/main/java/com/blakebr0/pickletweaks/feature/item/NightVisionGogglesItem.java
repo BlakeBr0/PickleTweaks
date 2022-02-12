@@ -37,14 +37,14 @@ public class NightVisionGogglesItem extends BaseArmorItem implements IEnableable
 		private NightVisionGogglesModel model;
 
 		@Override
-		public <A extends HumanoidModel<?>> A getArmorModel(LivingEntity living, ItemStack stack, EquipmentSlot slot, A _default) {
+		public HumanoidModel<?> getArmorModel(LivingEntity living, ItemStack stack, EquipmentSlot slot, HumanoidModel<?> _default) {
 			if (this.model == null) {
 				var layer = Minecraft.getInstance().getEntityModels().bakeLayer(ModelHandler.NIGHT_VISION_GOGGLES_LAYER);
 
 				this.model = new NightVisionGogglesModel(layer);
 			}
 
-			return (A) this.model;
+			return this.model;
 		}
 	}
 }
