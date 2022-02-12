@@ -46,6 +46,11 @@ import static com.blakebr0.pickletweaks.PickleTweaks.CREATIVE_TAB;
 public final class ModItems {
 	public static final DeferredRegister<Item> REGISTRY = DeferredRegister.create(Item.class, PickleTweaks.MOD_ID);
 
+	// register block items here for class load order purposes
+	static {
+		ModBlocks.BLOCK_ITEMS.forEach(REGISTRY::register);
+	}
+
 	public static final RegistryObject<Item> COAL_PIECE = register("coal_piece", () -> new CoalPieceItem(p -> p.tab(CREATIVE_TAB)));
 	public static final RegistryObject<Item> CHARCOAL_PIECE = register("charcoal_piece", () -> new CoalPieceItem(p -> p.tab(CREATIVE_TAB)));
 	public static final RegistryObject<Item> DIAMOND_APPLE = register("diamond_apple", () -> new DiamondAppleItem(p -> p.tab(CREATIVE_TAB)));
