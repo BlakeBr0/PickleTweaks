@@ -11,6 +11,6 @@ public class PTCreativeTab extends CreativeModeTab {
 
 	@Override
 	public ItemStack makeIcon() {
-		return new ItemStack(ModItems.EMERALD_APPLE.get());
+		return new ItemStack(ModItems.WATERING_CAN.get());
 	}
 }
