@@ -9,6 +9,7 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.inventory.CraftingContainer;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ShearsItem;
 import net.minecraft.world.item.ShovelItem;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.ShapelessRecipe;
@@ -56,8 +57,9 @@ public class GridRepairRecipe extends ShapelessRecipe {
 		int repairCost = ModConfigs.GRID_REPAIR_COST.get();
 		int enchantmentCost = ModConfigs.GRID_REPAIR_ENCHANTMENT_COST.get();
 		boolean cheaperShovel = ModConfigs.GRID_REPAIR_CHEAP_SHOVEL.get();
+		boolean cheaperShears = ModConfigs.GRID_REPAIR_CHEAP_SHEARS.get();
 
-		if (cheaperShovel && tool.getItem() instanceof ShovelItem) {
+		if ((cheaperShovel && tool.getItem() instanceof ShovelItem) || (cheaperShears && tool.getItem() instanceof ShearsItem)) {
 			repairCost = Math.max(1, repairCost / 2);
 			enchantmentCost = Math.max(0, enchantmentCost / 2);
 		}

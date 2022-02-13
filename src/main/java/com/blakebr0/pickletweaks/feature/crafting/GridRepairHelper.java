@@ -9,7 +9,7 @@ public class GridRepairHelper {
 		var override = GridRepairOverrides.getOverride(tool, mat);
 		var hasOverride = override != null;
 
-		if (checkDefault(tool, mat) || hasOverride) {
+		if (isValidRepairItem(tool, mat) || hasOverride) {
 			boolean overrideMode = ModConfigs.GRID_REPAIR_OVERRIDE_MODE.get();
 			if (overrideMode && !hasOverride && GridRepairOverrides.hasToolOverride(tool))
 				return 0;
@@ -20,7 +20,7 @@ public class GridRepairHelper {
 		return 0;
 	}
 
-	public static boolean checkDefault(ItemStack tool, ItemStack mat) {
+	public static boolean isValidRepairItem(ItemStack tool, ItemStack mat) {
 		boolean disabled = ModConfigs.GRID_REPAIR_DISABLE_DEFAULTS.get();
 		return !disabled && tool.getItem().isValidRepairItem(tool, mat);
 	}

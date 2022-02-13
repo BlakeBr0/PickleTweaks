@@ -61,6 +61,7 @@ public final class ModConfigs {
     public static final ForgeConfigSpec.BooleanValue GRID_REPAIR_DISABLE_DEFAULTS;
     public static final ForgeConfigSpec.BooleanValue GRID_REPAIR_OVERRIDE_MODE;
     public static final ForgeConfigSpec.BooleanValue GRID_REPAIR_CHEAP_SHOVEL;
+    public static final ForgeConfigSpec.BooleanValue GRID_REPAIR_CHEAP_SHEARS;
     public static final ForgeConfigSpec.ConfigValue<List<String>> GRID_REPAIR_BLACKLIST;
     public static final ForgeConfigSpec.ConfigValue<List<String>> GRID_REPAIR_OVERRIDES;
 
@@ -157,6 +158,9 @@ public final class ModConfigs {
         GRID_REPAIR_CHEAP_SHOVEL = common
                 .comment("Makes it so shovels need 50% less material to repair.")
                 .define("cheapShovel", true);
+        GRID_REPAIR_CHEAP_SHEARS = common
+                .comment("Makes it so shears need 50% less material to repair.")
+                .define("cheapShears", true);
         GRID_REPAIR_BLACKLIST = common
                 .comment("Tools that should not be repairable in the crafting grid." +
                         "\nEx: [\"minecraft:stone_pickaxe\", \"minecraft:stone_sword\"]")
@@ -169,7 +173,7 @@ public final class ModConfigs {
                         Ex: ["minecraft:stone_shovel=tag:forge:ingots/iron"]
                         You can specify how effective the material is by appending @<multiplier>
                         Ex: ["minecraft:stone_shovel=minecraft:stick@0.5"]""")
-                .define("overrides", new ArrayList<>());
+                .define("overrides", Lists.newArrayList("minecraft:shears=minecraft:iron_ingot", "pickletweaks:flint_shears=minecraft:flint"));
         common.pop();
 
         common.comment("Disable and configure tweaks.").push("Tweaks");
