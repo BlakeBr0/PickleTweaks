@@ -98,21 +98,19 @@ public class GridRepairOverrides {
 		}
 	}
 	
-	public static Override getOverride(ItemStack tool, ItemStack mat) {
+	public static Override getOverride(ItemStack tool, ItemStack material) {
 		for (var entry : OVERRIDES) {
 			if (entry.tool.sameItemStackIgnoreDurability(tool)) {
 				if (entry.material instanceof ItemStack stack) {
-					if (!stack.sameItem(mat))
+					if (!stack.sameItem(material))
 						continue;
 
 					return entry;
 				} else if (entry.material instanceof String tagId) {
-					var tag = ItemTags.getAllTags().getTag(new ResourceLocation(tagId));
-					if (tag != null && tag.contains(mat.getItem())) {
-						var items = tag.getValues();
-						if (items.stream().anyMatch(i -> i == mat.getItem()))
-							return entry;
-					}
+					var tag = ItemTags.create(new ResourceLocation(tagId));
+
+					if (material.is(tag))
+						return entry;
 				}
 			}
 		}
