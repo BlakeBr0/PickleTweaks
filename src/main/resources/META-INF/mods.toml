@@ -8,7 +8,7 @@ license="MIT"
     version="${file.jarVersion}"
     displayName="Pickle Tweaks"
     # updateJSONURL="http://myurl.me/"
-    displayURL="https://www.curseforge.com/minecraft/mc-mods/pickle-tweaks"
+    displayURL="https://blakesmods.com/pickle-tweaks"
     # logoFile="examplemod.png"
     credits="Cavemanrockx"
     authors="BlakeBr0"
@@ -19,7 +19,7 @@ license="MIT"
     [[dependencies.pickletweaks]]
         modId="forge"
         mandatory=true
-        versionRange="[40.0,)"
+        versionRange="[40.0.12,)"
         ordering="NONE"
         side="BOTH"
     [[dependencies.pickletweaks]]
