@@ -23,7 +23,7 @@ public final class ToggleMagnetInInventoryHandler {
             if (player == null)
                 return;
 
-            var held = player.getInventory().getSelected();
+            var held = container.getMenu().getCarried();
 
             if (slot != null && held.isEmpty() && slot.container == player.getInventory()) {
                 var stack = slot.getItem();
