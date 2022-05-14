@@ -1,6 +1,7 @@
 package com.blakebr0.pickletweaks.feature.handler;
 
 import com.blakebr0.cucumber.helper.NBTHelper;
+import com.blakebr0.pickletweaks.compat.curios.CuriosCompat;
 import com.blakebr0.pickletweaks.feature.item.MagnetItem;
 import com.blakebr0.pickletweaks.network.NetworkHandler;
 import com.blakebr0.pickletweaks.network.message.ToggleMagnetMessage;
@@ -25,7 +26,7 @@ public final class ToggleMagnetInInventoryHandler {
 
             var held = container.getMenu().getCarried();
 
-            if (slot != null && held.isEmpty() && slot.container == player.getInventory()) {
+            if (slot != null && held.isEmpty() && (slot.container == player.getInventory() || CuriosCompat.isCuriosScreen(container))) {
                 var stack = slot.getItem();
 
                 if (stack.getItem() instanceof MagnetItem) {

@@ -1,5 +1,6 @@
 package com.blakebr0.pickletweaks.feature.handler;
 
+import com.blakebr0.pickletweaks.compat.curios.CuriosCompat;
 import com.blakebr0.pickletweaks.feature.item.NightVisionGogglesItem;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -15,13 +16,14 @@ public final class NightVisionGogglesHandler {
     public static final List<String> WEARERS = new ArrayList<>();
 
     public static String getPlayerKey(Player player) {
-        return player.getGameProfile().getName() + ":" + player.getCommandSenderWorld().isClientSide;
+        return player.getGameProfile().getName() + ":" + player.level.isClientSide;
     }
 
-    public static boolean hasGoggles(Player entity) {
-        var stack = entity.getItemBySlot(EquipmentSlot.HEAD);
+    public static boolean hasGoggles(Player player) {
+        var stack = player.getItemBySlot(EquipmentSlot.HEAD);
 
-        return !stack.isEmpty() && stack.getItem() instanceof NightVisionGogglesItem;
+        return !stack.isEmpty() && stack.getItem() instanceof NightVisionGogglesItem
+                || CuriosCompat.findNightVisionGogglesCurio(player).isPresent();
     }
 
     @SubscribeEvent

@@ -1,5 +1,6 @@
 package com.blakebr0.pickletweaks.feature.client;
 
+import com.blakebr0.pickletweaks.feature.client.layer.NightVisionGogglesRenderLayer;
 import com.blakebr0.pickletweaks.feature.client.model.NightVisionGogglesModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.resources.ResourceLocation;
@@ -12,5 +13,20 @@ public class ModelHandler {
     @SubscribeEvent
     public void onRegisterLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(NIGHT_VISION_GOGGLES_LAYER, NightVisionGogglesModel::createBodyLayer);
+    }
+
+    @SubscribeEvent
+    public void onAddLayers(EntityRenderersEvent.AddLayers event) {
+        addLayerToPlayerSkin(event, "default");
+        addLayerToPlayerSkin(event, "slim");
+    }
+
+    @SuppressWarnings("unchecked rawtypes")
+    private static void addLayerToPlayerSkin(EntityRenderersEvent.AddLayers event, String skinName) {
+        var renderer = event.getSkin(skinName);
+
+        if (renderer != null) {
+            renderer.addLayer(new NightVisionGogglesRenderLayer(renderer));
+        }
     }
 }

@@ -1,6 +1,7 @@
 package com.blakebr0.pickletweaks;
 
 import com.blakebr0.cucumber.helper.ConfigHelper;
+import com.blakebr0.pickletweaks.compat.curios.CuriosCompat;
 import com.blakebr0.pickletweaks.config.ModConfigs;
 import com.blakebr0.pickletweaks.feature.FeatureBowInfo;
 import com.blakebr0.pickletweaks.feature.FeatureRightClickHarvest;
@@ -22,11 +23,13 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DistExecutor;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -65,6 +68,10 @@ public final class PickleTweaks {
 		MinecraftForge.EVENT_BUS.register(new TweakToolBreaking());
 		MinecraftForge.EVENT_BUS.register(new TweakToolUselessifier());
 
+		if (ModList.get().isLoaded("curios")) {
+			MinecraftForge.EVENT_BUS.register(new CuriosCompat());
+		}
+
 		ModItemTier.onCommonSetup();
 
 		event.enqueueWork(() -> {
@@ -78,5 +85,12 @@ public final class PickleTweaks {
 		MinecraftForge.EVENT_BUS.register(new ToggleMagnetInInventoryHandler());
 		MinecraftForge.EVENT_BUS.register(new FeatureToolInfo());
 		MinecraftForge.EVENT_BUS.register(new FeatureBowInfo());
+	}
+
+	@SubscribeEvent
+	public void onInterModEnqueue(InterModEnqueueEvent event) {
+		if (ModList.get().isLoaded("curios")) {
+			CuriosCompat.onInterModEnqueue(event);
+		}
 	}
 }
