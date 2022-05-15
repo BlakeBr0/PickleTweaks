@@ -5,8 +5,8 @@ import com.blakebr0.pickletweaks.compat.curios.curio.NightVisionGogglesCurio;
 import com.blakebr0.pickletweaks.feature.item.MagnetItem;
 import com.blakebr0.pickletweaks.feature.item.NightVisionGogglesItem;
 import com.blakebr0.pickletweaks.init.ModItems;
-import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.core.Direction;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -17,7 +17,6 @@ import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.InterModComms;
-import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.CuriosCapability;
@@ -42,10 +41,6 @@ public final class CuriosCompat {
 
     public static Optional<ItemStack> findMagnetCurio(LivingEntity entity) {
         return CuriosApi.getCuriosHelper().findFirstCurio(entity, ModItems.MAGNET.get()).map(SlotResult::stack);
-    }
-
-    public static boolean isCuriosScreen(AbstractContainerScreen<?> screen) {
-        return ModList.get().isLoaded("curios") && screen.getClass().getName().equals("top.theillusivec4.curios.client.gui.CuriosScreen");
     }
 
     @SubscribeEvent
@@ -85,7 +80,9 @@ public final class CuriosCompat {
 
         if (entity instanceof Player player) {
             findNightVisionGogglesCurio(player).ifPresent(stack -> {
-                stack.hurtAndBreak(1, entity, e -> {});
+                stack.hurtAndBreak(1, entity, e -> {
+                    e.broadcastBreakEvent(EquipmentSlot.HEAD);
+                });
             });
         }
     }

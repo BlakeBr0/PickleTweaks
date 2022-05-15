@@ -1,7 +1,6 @@
 package com.blakebr0.pickletweaks.feature.handler;
 
 import com.blakebr0.cucumber.helper.NBTHelper;
-import com.blakebr0.pickletweaks.compat.curios.CuriosCompat;
 import com.blakebr0.pickletweaks.feature.item.MagnetItem;
 import com.blakebr0.pickletweaks.network.NetworkHandler;
 import com.blakebr0.pickletweaks.network.message.ToggleMagnetMessage;
@@ -10,6 +9,7 @@ import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraftforge.client.event.ScreenEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModList;
 
 public final class ToggleMagnetInInventoryHandler {
     @SubscribeEvent
@@ -26,7 +26,7 @@ public final class ToggleMagnetInInventoryHandler {
 
             var held = container.getMenu().getCarried();
 
-            if (slot != null && held.isEmpty() && (slot.container == player.getInventory() || CuriosCompat.isCuriosScreen(container))) {
+            if (slot != null && held.isEmpty() && (slot.container == player.getInventory() || isCuriosScreen(container))) {
                 var stack = slot.getItem();
 
                 if (stack.getItem() instanceof MagnetItem) {
@@ -38,5 +38,9 @@ public final class ToggleMagnetInInventoryHandler {
                 }
             }
         }
+    }
+
+    private static boolean isCuriosScreen(AbstractContainerScreen<?> screen) {
+        return ModList.get().isLoaded("curios") && screen.getClass().getName().equals("top.theillusivec4.curios.client.gui.CuriosScreen");
     }
 }
