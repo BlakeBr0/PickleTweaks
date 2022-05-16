@@ -8,6 +8,7 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +24,7 @@ public final class NightVisionGogglesHandler {
         var stack = player.getItemBySlot(EquipmentSlot.HEAD);
 
         return !stack.isEmpty() && stack.getItem() instanceof NightVisionGogglesItem
-                || CuriosCompat.findNightVisionGogglesCurio(player).isPresent();
+                || (ModList.get().isLoaded("curios") && CuriosCompat.findNightVisionGogglesCurio(player).isPresent());
     }
 
     @SubscribeEvent

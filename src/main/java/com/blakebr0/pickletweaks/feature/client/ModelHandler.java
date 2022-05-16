@@ -6,6 +6,7 @@ import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModList;
 
 public class ModelHandler {
     public static final ModelLayerLocation NIGHT_VISION_GOGGLES_LAYER = new ModelLayerLocation(new ResourceLocation("minecraft:player"), "pickletweaks:night_vision_goggles");
@@ -17,8 +18,10 @@ public class ModelHandler {
 
     @SubscribeEvent
     public void onAddLayers(EntityRenderersEvent.AddLayers event) {
-        addLayerToPlayerSkin(event, "default");
-        addLayerToPlayerSkin(event, "slim");
+        if (ModList.get().isLoaded("curios")) {
+            addLayerToPlayerSkin(event, "default");
+            addLayerToPlayerSkin(event, "slim");
+        }
     }
 
     @SuppressWarnings("unchecked rawtypes")
