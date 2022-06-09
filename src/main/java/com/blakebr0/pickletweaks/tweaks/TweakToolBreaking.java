@@ -20,7 +20,6 @@ import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
-import net.minecraftforge.event.entity.player.UseHoeEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -67,26 +66,6 @@ public final class TweakToolBreaking {
 				sendBrokenMessage(player, stack);
 				event.setCanceled(true);
 			}
-		}
-	}
-
-	@SubscribeEvent(priority = EventPriority.HIGH)
-	public void onUseHoe(UseHoeEvent event) {
-		if (!ModConfigs.ENABLE_TOOL_BREAKING_TWEAK.get())
-			return;
-
-		var player = event.getPlayer();
-		if (player.getAbilities().instabuild)
-			return;
-
-		var stack = event.getContext().getItemInHand();
-		if (stack.isEmpty())
-			return;
-
-		var item = stack.getItem();
-		if (stack.isDamageableItem() && item instanceof HoeItem && isBroken(stack)) {
-			sendBrokenMessage(player, stack);
-			event.setCanceled(true);
 		}
 	}
 
@@ -149,7 +128,7 @@ public final class TweakToolBreaking {
 			return;
 
 		var item = stack.getItem();
-		if (stack.isDamageableItem() && (item instanceof ShovelItem || item instanceof AxeItem)) {
+		if (stack.isDamageableItem() && (item instanceof ShovelItem || item instanceof AxeItem || item instanceof HoeItem)) {
 			if (isBroken(stack)) {
 				sendBrokenMessage(player, stack);
 				event.setCanceled(true);

@@ -37,6 +37,7 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Tiers;
 import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 import java.util.function.Supplier;
@@ -44,7 +45,7 @@ import java.util.function.Supplier;
 import static com.blakebr0.pickletweaks.PickleTweaks.CREATIVE_TAB;
 
 public final class ModItems {
-	public static final DeferredRegister<Item> REGISTRY = DeferredRegister.create(Item.class, PickleTweaks.MOD_ID);
+	public static final DeferredRegister<Item> REGISTRY = DeferredRegister.create(ForgeRegistries.ITEMS, PickleTweaks.MOD_ID);
 
 	// register block items here for class load order purposes
 	static {

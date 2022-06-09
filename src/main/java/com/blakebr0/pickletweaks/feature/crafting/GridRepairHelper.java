@@ -3,6 +3,7 @@ package com.blakebr0.pickletweaks.feature.crafting;
 import com.blakebr0.pickletweaks.config.ModConfigs;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.registries.ForgeRegistries;
 
 public class GridRepairHelper {
 	public static double getMaterialValue(ItemStack tool, ItemStack mat) {
@@ -26,7 +27,7 @@ public class GridRepairHelper {
 	}
 
 	public static boolean isBlacklisted(Item item) {
-		var id = item.getRegistryName();
+		var id = ForgeRegistries.ITEMS.getKey(item);
 		if (id == null)
 			return false;
 

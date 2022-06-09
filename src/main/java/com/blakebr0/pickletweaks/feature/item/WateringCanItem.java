@@ -54,7 +54,7 @@ public class WateringCanItem extends BaseItem implements IEnableable {
 
 	@Override
 	public void fillItemCategory(CreativeModeTab group, NonNullList<ItemStack> items) {
-		if (this.allowdedIn(group)) {
+		if (this.allowedIn(group)) {
 			var stack = new ItemStack(this);
 
 			NBTHelper.setBoolean(stack, "Water", false);

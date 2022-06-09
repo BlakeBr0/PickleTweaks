@@ -5,7 +5,7 @@ import com.blakebr0.cucumber.util.Localizable;
 import com.blakebr0.pickletweaks.config.ModConfigs;
 import com.blakebr0.pickletweaks.lib.ModTooltips;
 import net.minecraft.ChatFormatting;
-import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.HoeItem;
 import net.minecraft.world.item.Item;
@@ -20,6 +20,7 @@ import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.registries.ForgeRegistries;
 
 public final class TweakToolUselessifier {
 	@SubscribeEvent
@@ -133,7 +134,7 @@ public final class TweakToolUselessifier {
 			while (lines.hasNext()) {
 				var s = Localizable.of("attribute.name.generic.attackDamage").buildString();
 				if (lines.next().getString().contains(s)) {
-					lines.set(new TextComponent(" 0 ").append(s).withStyle(ChatFormatting.DARK_GREEN));
+					lines.set(Component.literal(" 0 ").append(s).withStyle(ChatFormatting.DARK_GREEN));
 				}
 			}
 
@@ -155,7 +156,7 @@ public final class TweakToolUselessifier {
 		if (item == null)
 			return false;
 
-		var id = item.getRegistryName();
+		var id = ForgeRegistries.ITEMS.getKey(item);
 		if (id == null)
 			return false;
 

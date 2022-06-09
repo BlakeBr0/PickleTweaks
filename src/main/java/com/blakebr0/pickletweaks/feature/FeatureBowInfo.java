@@ -3,8 +3,8 @@ package com.blakebr0.pickletweaks.feature;
 import com.blakebr0.pickletweaks.config.ModConfigs;
 import com.blakebr0.pickletweaks.lib.ModTooltips;
 import net.minecraft.ChatFormatting;
-import net.minecraft.network.chat.TextComponent;
-import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.contents.TranslatableContents;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ProjectileWeaponItem;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
@@ -29,13 +29,13 @@ public final class FeatureBowInfo {
 				while (tooltip.hasNext()) {
 					var line = tooltip.next();
 
-					if (line instanceof TranslatableComponent component) {
-						var key = component.getKey();
+					if (line.getContents() instanceof TranslatableContents contents) {
+						var key = contents.getKey();
 
 						if ("enchantment.minecraft.infinity".equals(key)) {
 							var formatting = getAmmo(player, shootable) > 0 ? ChatFormatting.GREEN : ChatFormatting.RED;
 
-							tooltip.set(new TextComponent(line.getString()).withStyle(formatting));
+							tooltip.set(Component.literal(line.getString()).withStyle(formatting));
 						}
 					}
 				}

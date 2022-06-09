@@ -15,7 +15,6 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.ShapelessRecipe;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.registries.ForgeRegistryEntry;
 
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -128,7 +127,7 @@ public class GridRepairRecipe extends ShapelessRecipe {
 		return NonNullList.withSize(inv.getContainerSize(), ItemStack.EMPTY);
 	}
 
-	public static class Serializer extends ForgeRegistryEntry<RecipeSerializer<?>> implements RecipeSerializer<GridRepairRecipe> {
+	public static class Serializer implements RecipeSerializer<GridRepairRecipe> {
 		@Override
 		public GridRepairRecipe fromJson(ResourceLocation recipeId, JsonObject json) {
 			return new GridRepairRecipe(recipeId);

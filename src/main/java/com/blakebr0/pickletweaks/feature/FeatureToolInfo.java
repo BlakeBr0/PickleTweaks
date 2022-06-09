@@ -7,6 +7,7 @@ import net.minecraft.world.item.DiggerItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.registries.ForgeRegistries;
 
 public final class FeatureToolInfo {
 	@SubscribeEvent
@@ -45,7 +46,7 @@ public final class FeatureToolInfo {
 	private static boolean isBlacklisted(Item item) {
 		var blacklist = ModConfigs.TOOL_INFO_TOOLTIP_BLACKLIST.get();
 
-		var id = item.getRegistryName();
+		var id = ForgeRegistries.ITEMS.getKey(item);
 		if (id == null)
 			return true;
 

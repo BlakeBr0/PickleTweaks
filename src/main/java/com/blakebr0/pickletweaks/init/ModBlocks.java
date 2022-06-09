@@ -7,6 +7,7 @@ import com.blakebr0.pickletweaks.feature.block.SmoothGlowstoneBlock;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 import java.util.LinkedHashMap;
@@ -17,7 +18,7 @@ import java.util.function.Supplier;
 import static com.blakebr0.pickletweaks.PickleTweaks.CREATIVE_TAB;
 
 public final class ModBlocks {
-	public static final DeferredRegister<Block> REGISTRY = DeferredRegister.create(Block.class, PickleTweaks.MOD_ID);
+	public static final DeferredRegister<Block> REGISTRY = DeferredRegister.create(ForgeRegistries.BLOCKS, PickleTweaks.MOD_ID);
 	public static final Map<String, Supplier<BlockItem>> BLOCK_ITEMS = new LinkedHashMap<>();
 
 	public static final RegistryObject<Block> WHITE_COBBLESTONE = register("white_cobblestone", () -> new ColoredCobblestoneBlock(16383998));
