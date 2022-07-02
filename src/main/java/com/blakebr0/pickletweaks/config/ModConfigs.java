@@ -2,6 +2,7 @@ package com.blakebr0.pickletweaks.config;
 
 import com.google.common.collect.Lists;
 import net.minecraftforge.common.ForgeConfigSpec;
+import net.minecraftforge.fml.ModList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -188,5 +189,9 @@ public final class ModConfigs {
         common.pop();
 
         COMMON = common.build();
+    }
+
+    public static boolean isCuriosInstalled() {
+        return ModList.get().isLoaded("curios");
     }
 }

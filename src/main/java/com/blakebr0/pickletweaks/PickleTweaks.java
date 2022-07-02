@@ -23,7 +23,6 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DistExecutor;
-import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
@@ -68,7 +67,7 @@ public final class PickleTweaks {
 		MinecraftForge.EVENT_BUS.register(new TweakToolBreaking());
 		MinecraftForge.EVENT_BUS.register(new TweakToolUselessifier());
 
-		if (ModList.get().isLoaded("curios")) {
+		if (ModConfigs.isCuriosInstalled()) {
 			MinecraftForge.EVENT_BUS.register(new CuriosCompat());
 		}
 
@@ -89,7 +88,7 @@ public final class PickleTweaks {
 
 	@SubscribeEvent
 	public void onInterModEnqueue(InterModEnqueueEvent event) {
-		if (ModList.get().isLoaded("curios")) {
+		if (ModConfigs.isCuriosInstalled()) {
 			CuriosCompat.onInterModEnqueue(event);
 		}
 	}
