@@ -25,13 +25,13 @@ public final class FeatureRightClickHarvest {
 		if (!ModConfigs.ENABLE_RIGHT_CLICK_HARVEST.get())
 			return;
 
-		if (event.getPlayer() == null)
+		if (event.getEntity() == null)
 			return;
 
 		if (event.getHand() != InteractionHand.MAIN_HAND)
 			return;
 
-		var level = event.getWorld();
+		var level = event.getLevel();
 
 		if (!level.isClientSide()) {
 			var pos = event.getPos();

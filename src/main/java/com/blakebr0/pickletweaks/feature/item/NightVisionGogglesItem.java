@@ -11,7 +11,7 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.client.IItemRenderProperties;
+import net.minecraftforge.client.extensions.common.IClientItemExtensions;
 
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -22,7 +22,7 @@ public class NightVisionGogglesItem extends BaseArmorItem implements IEnableable
 	}
 
 	@Override
-	public void initializeClient(Consumer<IItemRenderProperties> consumer) {
+	public void initializeClient(Consumer<IClientItemExtensions> consumer) {
 		consumer.accept(ItemRenderProperties.INSTANCE);
 	}
 
@@ -31,13 +31,13 @@ public class NightVisionGogglesItem extends BaseArmorItem implements IEnableable
 		return ModConfigs.ENABLE_NIGHT_VISION_GOGGLES.get();
 	}
 
-	static class ItemRenderProperties implements IItemRenderProperties {
+	static class ItemRenderProperties implements IClientItemExtensions {
 		public static final ItemRenderProperties INSTANCE = new ItemRenderProperties();
 
 		private NightVisionGogglesModel model;
 
 		@Override
-		public HumanoidModel<?> getArmorModel(LivingEntity living, ItemStack stack, EquipmentSlot slot, HumanoidModel<?> _default) {
+		public HumanoidModel<?> getHumanoidArmorModel(LivingEntity living, ItemStack stack, EquipmentSlot slot, HumanoidModel<?> _default) {
 			if (this.model == null) {
 				var layer = Minecraft.getInstance().getEntityModels().bakeLayer(ModelHandler.NIGHT_VISION_GOGGLES_LAYER);
 

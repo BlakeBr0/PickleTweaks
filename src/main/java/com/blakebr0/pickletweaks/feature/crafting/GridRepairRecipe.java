@@ -71,7 +71,7 @@ public class GridRepairRecipe extends ShapelessRecipe {
 		for (var mat : inputs) {
 			if (maxed) return ItemStack.EMPTY;
 
-			if (!mat.hasContainerItem()) {
+			if (!mat.hasCraftingRemainingItem()) {
 				double matValue = GridRepairHelper.getMaterialValue(tool, mat);
 				if (matValue == 0) return ItemStack.EMPTY;
 

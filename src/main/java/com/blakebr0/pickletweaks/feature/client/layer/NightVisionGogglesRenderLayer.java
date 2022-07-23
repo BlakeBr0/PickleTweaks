@@ -15,7 +15,7 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraftforge.client.RenderProperties;
+import net.minecraftforge.client.extensions.common.IClientItemExtensions;
 
 public class NightVisionGogglesRenderLayer<T extends LivingEntity, M extends HumanoidModel<T>> extends RenderLayer<T, M> {
     private static final ResourceLocation TEXTURE_BASIC = new ResourceLocation(PickleTweaks.MOD_ID, "textures/models/armor/night_vision_goggles_layer_1.png");
@@ -28,7 +28,7 @@ public class NightVisionGogglesRenderLayer<T extends LivingEntity, M extends Hum
     @Override
     public void render(PoseStack matrix, MultiBufferSource buffer, int lightness, T entity, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {
         CuriosCompat.findNightVisionGogglesCurio(entity).ifPresent(curio -> {
-            var model = RenderProperties.get(curio).getArmorModel(entity, curio, EquipmentSlot.CHEST, null);
+            var model = IClientItemExtensions.of(curio).getHumanoidArmorModel(entity, curio, EquipmentSlot.CHEST, null);
             var texture = curio.is(ModItems.NIGHT_VISION_GOGGLES.get()) ? TEXTURE_BASIC : TEXTURE_REINFORCED;
 
             this.getParentModel().copyPropertiesTo((HumanoidModel<T>) model);

@@ -20,7 +20,7 @@ import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
-import net.minecraftforge.event.world.BlockEvent;
+import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
@@ -30,7 +30,7 @@ public final class TweakToolBreaking {
 		if (!ModConfigs.ENABLE_TOOL_BREAKING_TWEAK.get())
 			return;
 
-		var player = event.getPlayer();
+		var player = event.getEntity();
 		if (player.getAbilities().instabuild)
 			return;
 
@@ -74,7 +74,7 @@ public final class TweakToolBreaking {
 		if (!ModConfigs.ENABLE_TOOL_BREAKING_TWEAK.get())
 			return;
 
-		var player = event.getPlayer();
+		var player = event.getEntity();
 		if (player.getAbilities().instabuild)
 			return;
 
@@ -97,7 +97,7 @@ public final class TweakToolBreaking {
 		if (!ModConfigs.ENABLE_TOOL_BREAKING_TWEAK.get())
 			return;
 
-		var player = event.getPlayer();
+		var player = event.getEntity();
 		if (player.getAbilities().instabuild)
 			return;
 
@@ -119,7 +119,7 @@ public final class TweakToolBreaking {
 		if (!ModConfigs.ENABLE_TOOL_BREAKING_TWEAK.get())
 			return;
 
-		var player = event.getPlayer();
+		var player = event.getEntity();
 		if (player.getAbilities().instabuild)
 			return;
 
@@ -141,7 +141,7 @@ public final class TweakToolBreaking {
 		if (!ModConfigs.ENABLE_TOOL_BREAKING_TWEAK.get())
 			return;
 
-		var player = event.getPlayer();
+		var player = event.getEntity();
 		if (player.getAbilities().instabuild)
 			return;
 

@@ -2,15 +2,13 @@ package com.blakebr0.pickletweaks.feature.handler;
 
 import com.blakebr0.cucumber.iface.IColored;
 import com.blakebr0.pickletweaks.init.ModBlocks;
-import net.minecraftforge.client.event.ColorHandlerEvent;
+import net.minecraftforge.client.event.RegisterColorHandlersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 public final class ColorHandler {
     @SubscribeEvent
-    public void onBlockColors(ColorHandlerEvent.Block event) {
-        var colors = event.getBlockColors();
-
-        colors.register(new IColored.BlockColors(),
+    public void onBlockColors(RegisterColorHandlersEvent.Block event) {
+        event.register(new IColored.BlockColors(),
                 ModBlocks.WHITE_COBBLESTONE.get(),
                 ModBlocks.ORANGE_COBBLESTONE.get(),
                 ModBlocks.MAGENTA_COBBLESTONE.get(),
@@ -31,10 +29,8 @@ public final class ColorHandler {
     }
 
     @SubscribeEvent
-    public void onItemColors(ColorHandlerEvent.Item event) {
-        var colors = event.getItemColors();
-
-        colors.register(new IColored.ItemBlockColors(),
+    public void onItemColors(RegisterColorHandlersEvent.Item event) {
+        event.register(new IColored.ItemBlockColors(),
                 ModBlocks.WHITE_COBBLESTONE.get(),
                 ModBlocks.ORANGE_COBBLESTONE.get(),
                 ModBlocks.MAGENTA_COBBLESTONE.get(),

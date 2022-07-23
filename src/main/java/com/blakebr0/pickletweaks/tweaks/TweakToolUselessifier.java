@@ -25,7 +25,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 public final class TweakToolUselessifier {
 	@SubscribeEvent
 	public void onBreakSpeed(PlayerEvent.BreakSpeed event) {
-        var player = event.getPlayer();
+        var player = event.getEntity();
         if (player.getAbilities().instabuild)
 			return;
 
@@ -64,7 +64,7 @@ public final class TweakToolUselessifier {
 
 	@SubscribeEvent
 	public void onRightClickBlock(PlayerInteractEvent.RightClickBlock event) {
-		var player = event.getPlayer();
+		var player = event.getEntity();
 		if (player.getAbilities().instabuild)
 			return;
 
@@ -79,7 +79,7 @@ public final class TweakToolUselessifier {
 
 	@SubscribeEvent
 	public void onRightClickItem(PlayerInteractEvent.RightClickItem event) {
-		var player = event.getPlayer();
+		var player = event.getEntity();
 		if (player.getAbilities().instabuild)
 			return;
 
@@ -94,7 +94,7 @@ public final class TweakToolUselessifier {
 
 	@SubscribeEvent
 	public void onEntityInteract(PlayerInteractEvent.EntityInteract event) {
-		var player = event.getPlayer();
+		var player = event.getEntity();
 		if (player.getAbilities().instabuild)
 			return;
 

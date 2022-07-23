@@ -28,8 +28,8 @@ public final class NightVisionGogglesHandler {
     }
 
     @SubscribeEvent
-    public void onLivingUpdate(LivingEvent.LivingUpdateEvent event) {
-        var entity = event.getEntityLiving();
+    public void onLivingTick(LivingEvent.LivingTickEvent event) {
+        var entity = event.getEntity();
 
         if (entity instanceof Player player) {
             var key = getPlayerKey(player);

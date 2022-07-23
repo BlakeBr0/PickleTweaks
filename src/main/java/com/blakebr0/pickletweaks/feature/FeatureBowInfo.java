@@ -23,9 +23,9 @@ public final class FeatureBowInfo {
 		var item = stack.getItem();
 
 		if (item instanceof ProjectileWeaponItem shootable) {
-			var player = event.getPlayer();
+			var player = event.getEntity();
 
-			if (EnchantmentHelper.getItemEnchantmentLevel(Enchantments.INFINITY_ARROWS, stack) > 0) {
+			if (EnchantmentHelper.getTagEnchantmentLevel(Enchantments.INFINITY_ARROWS, stack) > 0) {
 				while (tooltip.hasNext()) {
 					var line = tooltip.next();
 

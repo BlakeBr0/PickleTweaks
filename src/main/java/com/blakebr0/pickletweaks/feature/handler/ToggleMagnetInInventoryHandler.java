@@ -13,7 +13,7 @@ import net.minecraftforge.fml.ModList;
 
 public final class ToggleMagnetInInventoryHandler {
     @SubscribeEvent
-    public void onMouseClicked(ScreenEvent.MouseClickedEvent.Pre event) {
+    public void onMouseClicked(ScreenEvent.MouseButtonPressed.Pre event) {
         var mc = Minecraft.getInstance();
         var screen = event.getScreen();
 

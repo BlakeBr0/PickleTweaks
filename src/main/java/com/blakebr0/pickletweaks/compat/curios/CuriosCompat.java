@@ -76,7 +76,7 @@ public final class CuriosCompat {
 
     @SubscribeEvent
     public void onLivingHurt(LivingHurtEvent event) {
-        var entity = event.getEntityLiving();
+        var entity = event.getEntity();
 
         if (entity instanceof Player player) {
             findNightVisionGogglesCurio(player).ifPresent(stack -> {
