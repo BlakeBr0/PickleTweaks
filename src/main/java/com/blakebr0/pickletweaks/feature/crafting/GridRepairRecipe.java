@@ -119,7 +119,7 @@ public class GridRepairRecipe extends ShapelessRecipe {
 
 	@Override
 	public RecipeSerializer<?> getSerializer() {
-		return ModRecipeSerializers.CRAFTING_GRID_REPAIR;
+		return ModRecipeSerializers.CRAFTING_GRID_REPAIR.get();
 	}
 
 	@Override
