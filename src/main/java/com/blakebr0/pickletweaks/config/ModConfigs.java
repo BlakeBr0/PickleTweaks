@@ -39,9 +39,7 @@ public final class ModConfigs {
     public static final ForgeConfigSpec.ConfigValue<List<String>> TOOL_INFO_TOOLTIP_BLACKLIST;
 
     public static final ForgeConfigSpec.BooleanValue ENABLE_COLORED_COBBLESTONE;
-    public static final ForgeConfigSpec.BooleanValue ENABLE_DARK_GLASS;
     public static final ForgeConfigSpec.BooleanValue ENABLE_SMOOTH_GLOWSTONE;
-
     public static final ForgeConfigSpec.BooleanValue ENABLE_COAL_PIECES;
     public static final ForgeConfigSpec.BooleanValue ENABLE_APPLES;
     public static final ForgeConfigSpec.BooleanValue ENABLE_WATERING_CAN;
@@ -93,9 +91,6 @@ public final class ModConfigs {
         ENABLE_COLORED_COBBLESTONE = common
                 .comment("Colored Cobblestone enabled?")
                 .define("coloredCobblestone", true);
-        ENABLE_DARK_GLASS = common
-                .comment("Dark Glass enabled?")
-                .define("darkGlass", true);
         ENABLE_SMOOTH_GLOWSTONE = common
                 .comment("Smooth Glowstone enabled?")
                 .define("smoothGlowstone", true);
