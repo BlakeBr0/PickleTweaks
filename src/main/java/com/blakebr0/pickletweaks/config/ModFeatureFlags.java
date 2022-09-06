@@ -1,9 +1,11 @@
 package com.blakebr0.pickletweaks.config;
 
 import com.blakebr0.cucumber.util.FeatureFlag;
+import com.blakebr0.cucumber.util.FeatureFlags;
 import com.blakebr0.pickletweaks.PickleTweaks;
 import net.minecraft.resources.ResourceLocation;
 
+@FeatureFlags
 public final class ModFeatureFlags {
     public static final FeatureFlag APPLES = FeatureFlag.create(new ResourceLocation(PickleTweaks.MOD_ID, "apples"), ModConfigs.ENABLE_APPLES);
     public static final FeatureFlag COAL_PIECES = FeatureFlag.create(new ResourceLocation(PickleTweaks.MOD_ID, "coal_pieces"), ModConfigs.ENABLE_COAL_PIECES);
