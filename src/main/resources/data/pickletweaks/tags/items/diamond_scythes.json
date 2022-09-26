@@ -1,9 +1,9 @@
 {
   "replace": false,
   "values": [
-    "mysticalagriculture:diamond_scythe",
+    "pickletweaks:diamond_scythe",
     {
-      "id": "pickletweaks:diamond_scythe",
+      "id": "mysticalagriculture:diamond_scythe",
       "required": false
     }
   ]
