@@ -7,7 +7,7 @@
     }
   ],
   "base": {
-    "item": "pickletweaks:diamond_scythe"
+    "tag": "pickletweaks:diamond_scythes"
   },
   "addition": {
     "tag": "forge:ingots/netherite"
