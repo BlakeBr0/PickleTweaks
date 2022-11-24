@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "pickletweaks:wooden_paxel",
+    "pickletweaks:stone_paxel",
+    "pickletweaks:iron_paxel",
+    "pickletweaks:golden_paxel",
+    "pickletweaks:diamond_paxel",
+    "pickletweaks:flint_paxel",
+    "pickletweaks:emerald_paxel",
+    "pickletweaks:netherite_paxel"
+  ]
+}

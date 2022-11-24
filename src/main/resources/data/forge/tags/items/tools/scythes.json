@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "pickletweaks:wooden_scythe",
+    "pickletweaks:stone_scythe",
+    "pickletweaks:iron_scythe",
+    "pickletweaks:golden_scythe",
+    "pickletweaks:diamond_scythe",
+    "pickletweaks:flint_scythe",
+    "pickletweaks:emerald_scythe",
+    "pickletweaks:netherite_scythe"
+  ]
+}
