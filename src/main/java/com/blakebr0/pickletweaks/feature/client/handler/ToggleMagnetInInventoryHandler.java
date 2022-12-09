@@ -1,6 +1,7 @@
-package com.blakebr0.pickletweaks.feature.handler;
+package com.blakebr0.pickletweaks.feature.client.handler;
 
 import com.blakebr0.cucumber.helper.NBTHelper;
+import com.blakebr0.pickletweaks.config.ModConfigs;
 import com.blakebr0.pickletweaks.feature.item.MagnetItem;
 import com.blakebr0.pickletweaks.network.NetworkHandler;
 import com.blakebr0.pickletweaks.network.message.ToggleMagnetMessage;
@@ -41,6 +42,6 @@ public final class ToggleMagnetInInventoryHandler {
     }
 
     private static boolean isCuriosScreen(AbstractContainerScreen<?> screen) {
-        return ModList.get().isLoaded("curios") && screen.getClass().getName().equals("top.theillusivec4.curios.client.gui.CuriosScreen");
+        return ModConfigs.isCuriosInstalled() && screen.getClass().getName().equals("top.theillusivec4.curios.client.gui.CuriosScreen");
     }
 }

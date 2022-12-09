@@ -1,4 +1,4 @@
-package com.blakebr0.pickletweaks.feature.handler;
+package com.blakebr0.pickletweaks.feature.client.handler;
 
 import com.blakebr0.pickletweaks.compat.curios.CuriosCompat;
 import com.blakebr0.pickletweaks.feature.item.NightVisionGogglesItem;

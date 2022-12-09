@@ -1,4 +1,4 @@
-package com.blakebr0.pickletweaks.feature.handler;
+package com.blakebr0.pickletweaks.feature.client.handler;
 
 import com.blakebr0.cucumber.iface.IColored;
 import com.blakebr0.pickletweaks.init.ModBlocks;
