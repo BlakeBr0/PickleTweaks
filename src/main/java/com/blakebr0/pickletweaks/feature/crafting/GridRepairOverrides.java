@@ -100,7 +100,7 @@ public class GridRepairOverrides {
 	
 	public static Override getOverride(ItemStack tool, ItemStack material) {
 		for (var entry : OVERRIDES) {
-			if (entry.tool.sameItemStackIgnoreDurability(tool)) {
+			if (entry.tool.sameItem(tool)) {
 				if (entry.material instanceof ItemStack stack) {
 					if (!stack.sameItem(material))
 						continue;
@@ -119,7 +119,7 @@ public class GridRepairOverrides {
 	}
 	
 	public static boolean hasToolOverride(ItemStack tool) {
-		return OVERRIDES.stream().anyMatch(o -> o.tool.sameItemStackIgnoreDurability(tool));
+		return OVERRIDES.stream().anyMatch(o -> o.tool.sameItem(tool));
 	}
 	
 	public static class Override {

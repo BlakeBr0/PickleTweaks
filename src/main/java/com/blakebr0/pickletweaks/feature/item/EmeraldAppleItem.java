@@ -1,10 +1,8 @@
 package com.blakebr0.pickletweaks.feature.item;
 
-import com.blakebr0.cucumber.iface.IEnableable;
 import com.blakebr0.cucumber.item.BaseItem;
 import com.blakebr0.cucumber.lib.Colors;
 import com.blakebr0.cucumber.lib.Tooltips;
-import com.blakebr0.pickletweaks.config.ModConfigs;
 import com.blakebr0.pickletweaks.lib.ModTooltips;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
@@ -18,13 +16,12 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 
 import java.util.List;
-import java.util.function.Function;
 
-public class EmeraldAppleItem extends BaseItem implements IEnableable {
+public class EmeraldAppleItem extends BaseItem {
 	public static final FoodProperties FOOD = new FoodProperties.Builder().nutrition(10).saturationMod(2.0F).alwaysEat().build();
 
-	public EmeraldAppleItem(Function<Properties, Properties> properties) {
-		super(properties.compose(p -> p.food(FOOD).rarity(Rarity.EPIC)));
+	public EmeraldAppleItem() {
+		super(p -> p.food(FOOD).rarity(Rarity.EPIC));
 	}
 
 	@Override
@@ -72,10 +69,5 @@ public class EmeraldAppleItem extends BaseItem implements IEnableable {
 		} else {
 			tooltip.add(Tooltips.HOLD_SHIFT_FOR_INFO.build());
 		}
-	}
-
-	@Override
-	public boolean isEnabled() {
-		return ModConfigs.ENABLE_APPLES.get();
 	}
 }

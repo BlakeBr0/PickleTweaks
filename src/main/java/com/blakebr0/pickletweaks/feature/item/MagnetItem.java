@@ -1,7 +1,6 @@
 package com.blakebr0.pickletweaks.feature.item;
 
 import com.blakebr0.cucumber.helper.NBTHelper;
-import com.blakebr0.cucumber.iface.IEnableable;
 import com.blakebr0.cucumber.item.BaseItem;
 import com.blakebr0.pickletweaks.config.ModConfigs;
 import com.blakebr0.pickletweaks.lib.ModTooltips;
@@ -19,16 +18,10 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 
 import java.util.List;
-import java.util.function.Function;
 
-public class MagnetItem extends BaseItem implements IEnableable {
-	public MagnetItem(Function<Properties, Properties> properties) {
-		super(properties.compose(p -> p.stacksTo(1)));
-	}
-
-	@Override
-	public boolean isFoil(ItemStack stack) {
-		return NBTHelper.getBoolean(stack, "Enabled");
+public class MagnetItem extends BaseItem {
+	public MagnetItem() {
+		super(p -> p.stacksTo(1));
 	}
 
 	@Override
@@ -40,6 +33,11 @@ public class MagnetItem extends BaseItem implements IEnableable {
 		NBTHelper.flipBoolean(stack, "Enabled");
 
 		return new InteractionResultHolder<>(InteractionResult.SUCCESS, stack);
+	}
+
+	@Override
+	public boolean isFoil(ItemStack stack) {
+		return NBTHelper.getBoolean(stack, "Enabled");
 	}
 
 	@Override
@@ -78,10 +76,5 @@ public class MagnetItem extends BaseItem implements IEnableable {
 				}
 			}
 		}
-	}
-
-	@Override
-	public boolean isEnabled() {
-		return ModConfigs.ENABLE_MAGNET.get();
 	}
 }

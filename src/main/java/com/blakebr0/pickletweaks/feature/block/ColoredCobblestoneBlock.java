@@ -2,12 +2,10 @@ package com.blakebr0.pickletweaks.feature.block;
 
 import com.blakebr0.cucumber.block.BaseBlock;
 import com.blakebr0.cucumber.iface.IColored;
-import com.blakebr0.cucumber.iface.IEnableable;
-import com.blakebr0.pickletweaks.config.ModConfigs;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.material.Material;
 
-public class ColoredCobblestoneBlock extends BaseBlock implements IEnableable, IColored {
+public class ColoredCobblestoneBlock extends BaseBlock implements IColored {
 	private final int color;
 
 	public ColoredCobblestoneBlock(int color) {
@@ -18,11 +16,6 @@ public class ColoredCobblestoneBlock extends BaseBlock implements IEnableable, I
 		);
 
 		this.color = color;
-	}
-
-	@Override
-	public boolean isEnabled() {
-		return ModConfigs.ENABLE_COLORED_COBBLESTONE.get();
 	}
 
 	@Override

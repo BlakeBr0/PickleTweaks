@@ -11,6 +11,7 @@ import net.minecraft.world.inventory.CraftingContainer;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ShearsItem;
 import net.minecraft.world.item.ShovelItem;
+import net.minecraft.world.item.crafting.CraftingBookCategory;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.ShapelessRecipe;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
@@ -21,7 +22,7 @@ import java.util.stream.Collectors;
 
 public class GridRepairRecipe extends ShapelessRecipe {
 	public GridRepairRecipe(ResourceLocation id) {
-		super(id, "", ItemStack.EMPTY, NonNullList.create());
+		super(id, "", CraftingBookCategory.EQUIPMENT, ItemStack.EMPTY, NonNullList.create());
 	}
 
 	@Override

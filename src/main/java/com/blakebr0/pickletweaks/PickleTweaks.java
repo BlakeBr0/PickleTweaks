@@ -7,10 +7,10 @@ import com.blakebr0.pickletweaks.feature.FeatureBowInfo;
 import com.blakebr0.pickletweaks.feature.FeatureRightClickHarvest;
 import com.blakebr0.pickletweaks.feature.FeatureToolInfo;
 import com.blakebr0.pickletweaks.feature.client.ModelHandler;
+import com.blakebr0.pickletweaks.feature.client.handler.ColorHandler;
+import com.blakebr0.pickletweaks.feature.client.handler.NightVisionGogglesHandler;
+import com.blakebr0.pickletweaks.feature.client.handler.ToggleMagnetInInventoryHandler;
 import com.blakebr0.pickletweaks.feature.crafting.GridRepairOverrides;
-import com.blakebr0.pickletweaks.feature.handler.ColorHandler;
-import com.blakebr0.pickletweaks.feature.handler.NightVisionGogglesHandler;
-import com.blakebr0.pickletweaks.feature.handler.ToggleMagnetInInventoryHandler;
 import com.blakebr0.pickletweaks.init.ModBlocks;
 import com.blakebr0.pickletweaks.init.ModItems;
 import com.blakebr0.pickletweaks.init.ModRecipeSerializers;
@@ -18,7 +18,6 @@ import com.blakebr0.pickletweaks.lib.ModItemTier;
 import com.blakebr0.pickletweaks.network.NetworkHandler;
 import com.blakebr0.pickletweaks.tweaks.TweakToolBreaking;
 import com.blakebr0.pickletweaks.tweaks.TweakToolUselessifier;
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -38,7 +37,6 @@ public final class PickleTweaks {
 	public static final String MOD_ID = "pickletweaks";
 	public static final String NAME = "Pickle Tweaks";
 	public static final Logger LOGGER = LoggerFactory.getLogger(NAME);
-	public static final CreativeModeTab CREATIVE_TAB = new PTCreativeTab();
 
 	public PickleTweaks() {
 		var bus = FMLJavaModLoadingContext.get().getModEventBus();

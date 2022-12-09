@@ -1,8 +1,6 @@
 package com.blakebr0.pickletweaks.feature.item;
 
-import com.blakebr0.cucumber.iface.IEnableable;
 import com.blakebr0.cucumber.item.BaseArmorItem;
-import com.blakebr0.pickletweaks.config.ModConfigs;
 import com.blakebr0.pickletweaks.feature.client.ModelHandler;
 import com.blakebr0.pickletweaks.feature.client.model.NightVisionGogglesModel;
 import net.minecraft.client.Minecraft;
@@ -14,21 +12,15 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.client.extensions.common.IClientItemExtensions;
 
 import java.util.function.Consumer;
-import java.util.function.Function;
 
-public class NightVisionGogglesItem extends BaseArmorItem implements IEnableable {
-	public NightVisionGogglesItem(ArmorMaterial material, Function<Properties, Properties> properties) {
-		super(material, EquipmentSlot.HEAD, properties);
+public class NightVisionGogglesItem extends BaseArmorItem {
+	public NightVisionGogglesItem(ArmorMaterial material) {
+		super(material, EquipmentSlot.HEAD);
 	}
 
 	@Override
 	public void initializeClient(Consumer<IClientItemExtensions> consumer) {
 		consumer.accept(ItemRenderProperties.INSTANCE);
-	}
-
-	@Override
-	public boolean isEnabled() {
-		return ModConfigs.ENABLE_NIGHT_VISION_GOGGLES.get();
 	}
 
 	static class ItemRenderProperties implements IClientItemExtensions {
