@@ -12,6 +12,7 @@ import com.blakebr0.pickletweaks.feature.client.handler.NightVisionGogglesHandle
 import com.blakebr0.pickletweaks.feature.client.handler.ToggleMagnetInInventoryHandler;
 import com.blakebr0.pickletweaks.feature.crafting.GridRepairOverrides;
 import com.blakebr0.pickletweaks.init.ModBlocks;
+import com.blakebr0.pickletweaks.init.ModCreativeModeTabs;
 import com.blakebr0.pickletweaks.init.ModItems;
 import com.blakebr0.pickletweaks.init.ModRecipeSerializers;
 import com.blakebr0.pickletweaks.lib.ModItemTier;
@@ -42,6 +43,7 @@ public final class PickleTweaks {
 		var bus = FMLJavaModLoadingContext.get().getModEventBus();
 
 		bus.register(this);
+		bus.register(new ModCreativeModeTabs());
 
 		ModBlocks.REGISTRY.register(bus);
 		ModItems.REGISTRY.register(bus);

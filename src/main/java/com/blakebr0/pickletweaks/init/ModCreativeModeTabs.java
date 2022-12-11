@@ -39,7 +39,7 @@ public final class ModCreativeModeTabs {
                 output.accept(ModItems.COAL_PIECE, ModFeatureFlags.COAL_PIECES);
                 output.accept(ModItems.CHARCOAL_PIECE, ModFeatureFlags.COAL_PIECES);
                 output.accept(ModItems.DIAMOND_APPLE, ModFeatureFlags.APPLES);
-                output.accept(ModItems.EMERALD_BOOTS, ModFeatureFlags.APPLES);
+                output.accept(ModItems.EMERALD_APPLE, ModFeatureFlags.APPLES);
 
                 stack = new ItemStack(ModItems.WATERING_CAN.get());
                 NBTHelper.setBoolean(stack, "Water", false);
@@ -47,7 +47,7 @@ public final class ModCreativeModeTabs {
 
                 stack = new ItemStack(ModItems.REINFORCED_WATERING_CAN.get());
                 NBTHelper.setBoolean(stack, "Water", false);
-                output.accept(ModItems.REINFORCED_WATERING_CAN, ModFeatureFlags.WATERING_CAN);
+                output.accept(stack, ModFeatureFlags.WATERING_CAN);
 
                 output.accept(ModItems.GRASS_FIBER, ModFeatureFlags.MESHES);
                 output.accept(ModItems.MESH, ModFeatureFlags.MESHES);
@@ -107,8 +107,7 @@ public final class ModCreativeModeTabs {
 
             builder.title(Component.translatable("itemGroup.pickletweaks"))
                     .icon(() -> new ItemStack(ModItems.WATERING_CAN.get()))
-                    .displayItems(displayItems)
-                    .build();
+                    .displayItems(displayItems);
         });
     }
 }
