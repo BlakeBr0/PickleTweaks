@@ -2,8 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "conditions": [
     {
-      "type": "cucumber:enabled",
-      "item": "pickletweaks:flint_helmet"
+      "type": "cucumber:feature_flag",
+      "flag": "pickletweaks:flint_gear"
     }
   ],
   "pattern": [

@@ -2,8 +2,8 @@
   "type": "minecraft:crafting_shapeless",
   "conditions": [
     {
-      "type": "cucumber:enabled",
-      "item": "pickletweaks:mesh"
+      "type": "cucumber:feature_flag",
+      "flag": "pickletweaks:meshes"
     }
   ],
   "ingredients": [

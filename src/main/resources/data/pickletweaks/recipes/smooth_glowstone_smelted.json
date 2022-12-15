@@ -2,8 +2,8 @@
   "type": "minecraft:smelting",
   "conditions": [
     {
-      "type": "cucumber:enabled",
-      "item": "pickletweaks:smooth_glowstone"
+      "type": "cucumber:feature_flag",
+      "flag": "pickletweaks:smooth_glowstone"
     }
   ],
   "ingredient": {

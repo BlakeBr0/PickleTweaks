@@ -2,8 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "conditions": [
     {
-      "type": "cucumber:enabled",
-      "item": "pickletweaks:stone_sickle"
+      "type": "cucumber:feature_flag",
+      "flag": "pickletweaks:sickles"
     }
   ],
   "pattern": [

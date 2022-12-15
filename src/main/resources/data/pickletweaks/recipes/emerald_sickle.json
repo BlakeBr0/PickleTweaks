@@ -2,8 +2,12 @@
   "type": "minecraft:crafting_shaped",
   "conditions": [
     {
-      "type": "cucumber:enabled",
-      "item": "pickletweaks:emerald_sickle"
+      "type": "cucumber:feature_flag",
+      "flag": "pickletweaks:emerald_gear"
+    },
+    {
+      "type": "cucumber:feature_flag",
+      "flag": "pickletweaks:sickles"
     }
   ],
   "pattern": [

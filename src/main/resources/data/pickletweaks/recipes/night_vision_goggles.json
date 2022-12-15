@@ -2,8 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "conditions": [
     {
-      "type": "cucumber:enabled",
-      "item": "pickletweaks:night_vision_goggles"
+      "type": "cucumber:feature_flag",
+      "flag": "pickletweaks:night_vision_goggles"
     }
   ],
   "pattern": [
