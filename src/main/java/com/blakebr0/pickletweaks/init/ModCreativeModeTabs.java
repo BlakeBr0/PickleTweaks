@@ -50,6 +50,7 @@ public final class ModCreativeModeTabs {
                 output.accept(stack, ModFeatureFlags.WATERING_CAN);
 
                 output.accept(ModItems.GRASS_FIBER, ModFeatureFlags.MESHES);
+                output.accept(ModItems.GRASS_FIBER_MESH, ModFeatureFlags.MESHES);
                 output.accept(ModItems.MESH, ModFeatureFlags.MESHES);
                 output.accept(ModItems.REINFORCED_MESH, ModFeatureFlags.MESHES);
                 output.accept(ModItems.MAGNET, ModFeatureFlags.MAGNET);

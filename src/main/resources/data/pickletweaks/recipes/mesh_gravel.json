@@ -7,9 +7,17 @@
     }
   ],
   "ingredients": [
-    {
-      "item": "pickletweaks:grass_fiber_mesh"
-    },
+    [
+      {
+        "item": "pickletweaks:mesh"
+      },
+      {
+        "item": "pickletweaks:reinforced_mesh"
+      },
+      {
+        "item": "pickletweaks:grass_fiber_mesh"
+      }
+    ],
     {
       "item": "minecraft:gravel"
     }
