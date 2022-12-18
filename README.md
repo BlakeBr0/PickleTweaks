@@ -7,6 +7,7 @@ The official release builds can be downloaded from the following websites.
 
 - [Blake's Mods](https://blakesmods.com/pickle-tweaks/download)
 - [CurseForge](https://www.curseforge.com/minecraft/mc-mods/pickle-tweaks)
+- [Modrinth](https://modrinth.com/mod/pickle-tweaks)
 
 ## Development
 
