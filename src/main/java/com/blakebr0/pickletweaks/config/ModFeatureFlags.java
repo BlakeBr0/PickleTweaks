@@ -23,5 +23,5 @@ public final class ModFeatureFlags {
     public static final FeatureFlag SMOOTH_GLOWSTONE = FeatureFlag.create(new ResourceLocation(PickleTweaks.MOD_ID, "smooth_glowstone"), ModConfigs.ENABLE_WATERING_CAN);
     public static final FeatureFlag TOOL_BREAKING = FeatureFlag.create(new ResourceLocation(PickleTweaks.MOD_ID, "tool_breaking"), ModConfigs.ENABLE_TOOL_BREAKING_TWEAK);
     public static final FeatureFlag TOOL_INFO_TOOLTIP = FeatureFlag.create(new ResourceLocation(PickleTweaks.MOD_ID, "tool_info_tooltip"), ModConfigs.ENABLE_TOOL_INFO_TOOLTIP);
-    public static final FeatureFlag WATERING_CAN = FeatureFlag.create(new ResourceLocation(PickleTweaks.MOD_ID, "watering_can"), ModConfigs.ENABLE_WATERING_CAN);
+    public static final FeatureFlag WATERING_CANS = FeatureFlag.create(new ResourceLocation(PickleTweaks.MOD_ID, "watering_cans"), ModConfigs.ENABLE_WATERING_CAN);
 }

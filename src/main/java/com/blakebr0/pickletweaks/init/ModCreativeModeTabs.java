@@ -43,11 +43,11 @@ public final class ModCreativeModeTabs {
 
                 stack = new ItemStack(ModItems.WATERING_CAN.get());
                 NBTHelper.setBoolean(stack, "Water", false);
-                output.accept(stack, ModFeatureFlags.WATERING_CAN);
+                output.accept(stack, ModFeatureFlags.WATERING_CANS);
 
                 stack = new ItemStack(ModItems.REINFORCED_WATERING_CAN.get());
                 NBTHelper.setBoolean(stack, "Water", false);
-                output.accept(stack, ModFeatureFlags.WATERING_CAN);
+                output.accept(stack, ModFeatureFlags.WATERING_CANS);
 
                 output.accept(ModItems.GRASS_FIBER, ModFeatureFlags.MESHES);
                 output.accept(ModItems.GRASS_FIBER_MESH, ModFeatureFlags.MESHES);
