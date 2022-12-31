@@ -11,7 +11,7 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
-version = '1.19.2-7.0.2'
+version = '1.19.3-7.1.0'
 group = 'com.blakebr0.pickletweaks'
 archivesBaseName = 'PickleTweaks'
 
@@ -90,7 +90,7 @@ dependencies {
 
     runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}")
     runtimeOnly fg.deobf("curse.maven:jade-324717:${jade_version}")
-    runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}-forge:${jei_version}")
+//    runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}-forge:${jei_version}")
 }
 
 jar {
