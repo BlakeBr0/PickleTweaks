@@ -5,14 +5,11 @@ import com.blakebr0.pickletweaks.config.ModConfigs;
 import com.blakebr0.pickletweaks.lib.ModTooltips;
 import net.minecraft.ChatFormatting;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.DiggerItem;
-import net.minecraft.world.item.HoeItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ProjectileWeaponItem;
 import net.minecraft.world.item.ShearsItem;
-import net.minecraft.world.item.ShovelItem;
 import net.minecraft.world.item.SwordItem;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -128,7 +125,7 @@ public final class TweakToolBreaking {
 			return;
 
 		var item = stack.getItem();
-		if (stack.isDamageableItem() && (item instanceof ShovelItem || item instanceof AxeItem || item instanceof HoeItem)) {
+		if (stack.isDamageableItem() && isValidTool(item)) {
 			if (isBroken(stack)) {
 				sendBrokenMessage(player, stack);
 				event.setCanceled(true);
