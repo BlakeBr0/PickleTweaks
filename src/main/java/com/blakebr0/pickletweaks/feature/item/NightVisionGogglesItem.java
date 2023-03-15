@@ -15,7 +15,7 @@ import java.util.function.Consumer;
 
 public class NightVisionGogglesItem extends BaseArmorItem {
 	public NightVisionGogglesItem(ArmorMaterial material) {
-		super(material, EquipmentSlot.HEAD);
+		super(material, Type.HELMET);
 	}
 
 	@Override

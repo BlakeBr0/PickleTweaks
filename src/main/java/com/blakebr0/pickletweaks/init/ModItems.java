@@ -21,7 +21,7 @@ import com.blakebr0.pickletweaks.feature.item.NightVisionGogglesItem;
 import com.blakebr0.pickletweaks.feature.item.WateringCanItem;
 import com.blakebr0.pickletweaks.lib.ModArmorMaterial;
 import com.blakebr0.pickletweaks.lib.ModItemTier;
-import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Tiers;
 import net.minecraftforge.registries.DeferredRegister;
@@ -65,14 +65,14 @@ public final class ModItems {
 	public static final RegistryObject<Item> EMERALD_AXE = register("emerald_axe", () -> new BaseAxeItem(ModItemTier.EMERALD));
 	public static final RegistryObject<Item> EMERALD_HOE = register("emerald_hoe", () -> new BaseHoeItem(ModItemTier.EMERALD));
 
-	public static final RegistryObject<Item> FLINT_HELMET = register("flint_helmet", () -> new BaseArmorItem(ModArmorMaterial.FLINT, EquipmentSlot.HEAD));
-	public static final RegistryObject<Item> FLINT_CHESTPLATE = register("flint_chestplate", () -> new BaseArmorItem(ModArmorMaterial.FLINT, EquipmentSlot.CHEST));
-	public static final RegistryObject<Item> FLINT_LEGGINGS = register("flint_leggings", () -> new BaseArmorItem(ModArmorMaterial.FLINT, EquipmentSlot.LEGS));
-	public static final RegistryObject<Item> FLINT_BOOTS = register("flint_boots", () -> new BaseArmorItem(ModArmorMaterial.FLINT, EquipmentSlot.FEET));
-	public static final RegistryObject<Item> EMERALD_HELMET = register("emerald_helmet", () -> new BaseArmorItem(ModArmorMaterial.EMERALD, EquipmentSlot.HEAD));
-	public static final RegistryObject<Item> EMERALD_CHESTPLATE = register("emerald_chestplate", () -> new BaseArmorItem(ModArmorMaterial.EMERALD, EquipmentSlot.CHEST));
-	public static final RegistryObject<Item> EMERALD_LEGGINGS = register("emerald_leggings", () -> new BaseArmorItem(ModArmorMaterial.EMERALD, EquipmentSlot.LEGS));
-	public static final RegistryObject<Item> EMERALD_BOOTS = register("emerald_boots", () -> new BaseArmorItem(ModArmorMaterial.EMERALD, EquipmentSlot.FEET));
+	public static final RegistryObject<Item> FLINT_HELMET = register("flint_helmet", () -> new BaseArmorItem(ModArmorMaterial.FLINT, ArmorItem.Type.HELMET));
+	public static final RegistryObject<Item> FLINT_CHESTPLATE = register("flint_chestplate", () -> new BaseArmorItem(ModArmorMaterial.FLINT, ArmorItem.Type.CHESTPLATE));
+	public static final RegistryObject<Item> FLINT_LEGGINGS = register("flint_leggings", () -> new BaseArmorItem(ModArmorMaterial.FLINT, ArmorItem.Type.LEGGINGS));
+	public static final RegistryObject<Item> FLINT_BOOTS = register("flint_boots", () -> new BaseArmorItem(ModArmorMaterial.FLINT, ArmorItem.Type.BOOTS));
+	public static final RegistryObject<Item> EMERALD_HELMET = register("emerald_helmet", () -> new BaseArmorItem(ModArmorMaterial.EMERALD, ArmorItem.Type.HELMET));
+	public static final RegistryObject<Item> EMERALD_CHESTPLATE = register("emerald_chestplate", () -> new BaseArmorItem(ModArmorMaterial.EMERALD, ArmorItem.Type.CHESTPLATE));
+	public static final RegistryObject<Item> EMERALD_LEGGINGS = register("emerald_leggings", () -> new BaseArmorItem(ModArmorMaterial.EMERALD, ArmorItem.Type.LEGGINGS));
+	public static final RegistryObject<Item> EMERALD_BOOTS = register("emerald_boots", () -> new BaseArmorItem(ModArmorMaterial.EMERALD, ArmorItem.Type.BOOTS));
 
 	public static final RegistryObject<Item> WOODEN_PAXEL = register("wooden_paxel", () -> new BasePaxelItem(Tiers.WOOD));
 	public static final RegistryObject<Item> STONE_PAXEL = register("stone_paxel", () -> new BasePaxelItem(Tiers.STONE));

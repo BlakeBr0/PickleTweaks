@@ -5,6 +5,7 @@ import com.blakebr0.pickletweaks.config.ModConfigs;
 import com.blakebr0.pickletweaks.init.ModRecipeSerializers;
 import com.google.gson.JsonObject;
 import net.minecraft.core.NonNullList;
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.inventory.CraftingContainer;
@@ -26,15 +27,15 @@ public class GridRepairRecipe extends ShapelessRecipe {
 	}
 
 	@Override
-	public ItemStack assemble(CraftingContainer inv) {
+	public ItemStack assemble(CraftingContainer inventory, RegistryAccess access) {
 		if (!ModConfigs.GRID_REPAIR_ENABLED.get())
 			return ItemStack.EMPTY;
 
 		var tool = ItemStack.EMPTY;
 		NonNullList<ItemStack> inputs = NonNullList.create();
 
-		for (int i = 0; i < inv.getContainerSize(); i++) {
-			var slotStack = inv.getItem(i);
+		for (int i = 0; i < inventory.getContainerSize(); i++) {
+			var slotStack = inventory.getItem(i);
 
 			if (slotStack.isEmpty())
 				continue;
@@ -104,12 +105,12 @@ public class GridRepairRecipe extends ShapelessRecipe {
 	}
 
 	@Override
-	public boolean matches(CraftingContainer inv, Level level) {
-		return !this.assemble(inv).isEmpty();
+	public boolean matches(CraftingContainer inventory, Level level) {
+		return !this.assemble(inventory, level.registryAccess()).isEmpty();
 	}
 
 	@Override
-	public ItemStack getResultItem() {
+	public ItemStack getResultItem(RegistryAccess access) {
 		return ItemStack.EMPTY;
 	}
 

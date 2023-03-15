@@ -59,7 +59,8 @@ public class MagnetItem extends BaseItem {
 				if (!item.isAlive() || NBTHelper.getBoolean(stack, "PreventRemoteMovement"))
 					continue;
 
-				if (item.getThrower() != null && item.getThrower().equals(entity.getUUID()) && item.hasPickUpDelay())
+				var thrower = item.getOwner();
+				if (thrower != null && thrower.getUUID().equals(entity.getUUID()) && item.hasPickUpDelay())
 					continue;
 
 				if (!level.isClientSide()) {
