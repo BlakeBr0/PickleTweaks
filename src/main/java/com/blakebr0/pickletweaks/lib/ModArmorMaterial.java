@@ -12,20 +12,20 @@ import net.minecraftforge.common.Tags;
 import java.util.function.Supplier;
 
 public enum ModArmorMaterial implements ArmorMaterial {
-    NIGHT_VISION_GOGGLES("pickletweaks:night_vision_goggles", 15, new int[] { 2, 5, 6, 2 }, 9, SoundEvents.ARMOR_EQUIP_IRON, 0.0F, 0.0F, () -> {
+    NIGHT_VISION_GOGGLES("pickletweaks:night_vision_goggles", 15, new int[] { 2, 6, 5, 2 }, 9, SoundEvents.ARMOR_EQUIP_IRON, 0.0F, 0.0F, () -> {
         return Ingredient.of(Tags.Items.INGOTS_IRON);
     }),
-    REINFORCED_NIGHT_VISION_GOGGLES("pickletweaks:reinforced_night_vision_goggles", 30, new int[] { 4, 5, 6, 2 }, 9, SoundEvents.ARMOR_EQUIP_IRON, 0.5F, 0.0F, () -> {
+    REINFORCED_NIGHT_VISION_GOGGLES("pickletweaks:reinforced_night_vision_goggles", 30, new int[] { 4, 6, 5, 2 }, 9, SoundEvents.ARMOR_EQUIP_IRON, 0.5F, 0.0F, () -> {
         return Ingredient.of(Tags.Items.GEMS_DIAMOND);
     }),
-    FLINT("pickletweaks:flint", 15, new int[] { 1, 4, 5, 2 }, 12, SoundEvents.ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, () -> {
+    FLINT("pickletweaks:flint", 15, new int[] { 1, 5, 4, 2 }, 12, SoundEvents.ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, () -> {
         return Ingredient.of(Items.FLINT);
     }),
-    EMERALD("pickletweaks:emerald", 27, new int[] { 4, 6, 9, 4 }, 12, SoundEvents.ARMOR_EQUIP_DIAMOND, 2.0F, 0.0F, () -> {
+    EMERALD("pickletweaks:emerald", 27, new int[] { 4, 9, 6, 4 }, 12, SoundEvents.ARMOR_EQUIP_DIAMOND, 2.0F, 0.0F, () -> {
         return Ingredient.of(Tags.Items.GEMS_EMERALD);
     });
 
-    private static final int[] MAX_DAMAGE_ARRAY = new int[] { 13, 15, 16, 11 };
+    private static final int[] MAX_DAMAGE_ARRAY = new int[] { 13, 16, 15, 11 };
     private final String name;
     private final int maxDamageFactor;
     private final int[] damageReductionAmountArray;
