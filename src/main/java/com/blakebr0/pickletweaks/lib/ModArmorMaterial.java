@@ -21,7 +21,7 @@ public enum ModArmorMaterial implements ArmorMaterial {
     FLINT("pickletweaks:flint", 15, new int[] { 1, 5, 4, 2 }, 12, SoundEvents.ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, () -> {
         return Ingredient.of(Items.FLINT);
     }),
-    EMERALD("pickletweaks:emerald", 27, new int[] { 4, 9, 6, 4 }, 12, SoundEvents.ARMOR_EQUIP_DIAMOND, 2.0F, 0.0F, () -> {
+    EMERALD("pickletweaks:emerald", 27, new int[] { 3, 8, 6, 3 }, 12, SoundEvents.ARMOR_EQUIP_DIAMOND, 2.0F, 0.0F, () -> {
         return Ingredient.of(Tags.Items.GEMS_EMERALD);
     });
 
