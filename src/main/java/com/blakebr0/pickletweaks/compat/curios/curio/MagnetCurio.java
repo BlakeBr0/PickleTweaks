@@ -15,7 +15,7 @@ public record MagnetCurio(ItemStack stack) implements ICurio {
     public void curioTick(SlotContext context) {
         var entity = context.entity();
         if (entity instanceof Player player) {
-            this.stack.inventoryTick(player.level, player, -1, false);
+            this.stack.inventoryTick(player.level(), player, -1, false);
         }
     }
 }

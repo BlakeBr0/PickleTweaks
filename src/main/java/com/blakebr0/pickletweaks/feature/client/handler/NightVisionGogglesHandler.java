@@ -17,7 +17,7 @@ public final class NightVisionGogglesHandler {
     public static final List<String> WEARERS = new ArrayList<>();
 
     public static String getPlayerKey(Player player) {
-        return player.getGameProfile().getName() + ":" + player.level.isClientSide;
+        return player.getGameProfile().getName() + ":" + player.isLocalPlayer();
     }
 
     public static boolean hasGoggles(Player player) {

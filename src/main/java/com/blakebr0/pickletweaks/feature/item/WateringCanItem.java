@@ -24,7 +24,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.BonemealableBlock;
 import net.minecraft.world.level.block.FarmBlock;
-import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.HitResult;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -65,7 +65,8 @@ public class WateringCanItem extends BaseItem {
 		if (level.mayInteract(player, pos) && player.mayUseItemAt(pos.relative(direction), direction, stack)) {
 			var state = level.getBlockState(pos);
 
-			if (state.getMaterial() == Material.WATER) {
+			// TODO: 1.20 - is this as helpful as Material.WATER?
+			if (state.getFluidState().is(Fluids.WATER)) {
 				NBTHelper.setString(stack, "ID", UUID.randomUUID().toString());
 				NBTHelper.setBoolean(stack, "Water", true);
 
