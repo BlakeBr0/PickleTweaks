@@ -1,16 +1,13 @@
 {
-  "type": "minecraft:smithing",
-  "conditions": [
-    {
-      "type": "cucumber:feature_flag",
-      "flag": "pickletweaks:sickles"
-    }
-  ],
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "minecraft:netherite_ingot"
+  },
   "base": {
     "tag": "pickletweaks:diamond_sickles"
   },
-  "addition": {
-    "tag": "forge:ingots/netherite"
+  "template": {
+    "item": "minecraft:netherite_upgrade_smithing_template"
   },
   "result": {
     "item": "pickletweaks:netherite_sickle"
