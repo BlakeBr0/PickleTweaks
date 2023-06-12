@@ -11,6 +11,7 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.tags.FluidTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
@@ -24,7 +25,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.BonemealableBlock;
 import net.minecraft.world.level.block.FarmBlock;
-import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.HitResult;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -63,10 +63,9 @@ public class WateringCanItem extends BaseItem {
 		var direction = trace.getDirection();
 
 		if (level.mayInteract(player, pos) && player.mayUseItemAt(pos.relative(direction), direction, stack)) {
-			var state = level.getBlockState(pos);
+			var fluid = level.getFluidState(pos);
 
-			// TODO: 1.20 - is this as helpful as Material.WATER?
-			if (state.getFluidState().is(Fluids.WATER)) {
+			if (fluid.is(FluidTags.WATER)) {
 				NBTHelper.setString(stack, "ID", UUID.randomUUID().toString());
 				NBTHelper.setBoolean(stack, "Water", true);
 
