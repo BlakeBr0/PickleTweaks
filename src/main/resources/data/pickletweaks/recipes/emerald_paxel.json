@@ -13,13 +13,13 @@
   ],
   "key": {
     "A": {
-      "item": "pickletweaks:emerald_axe"
+      "tag": "forge:axe/emerald"
     },
     "B": {
-      "item": "pickletweaks:emerald_pickaxe"
+      "tag": "forge:pickaxe/emerald"
     },
     "C": {
-      "item": "pickletweaks:emerald_shovel"
+      "tag": "forge:shovel/emerald"
     },
     "S": {
       "tag": "forge:rods/wooden"
