@@ -84,8 +84,6 @@
 
   "tooltip.pickletweaks.gives_buffs": "Накладывает эффекты",
   "tooltip.pickletweaks.buff_list_item": " - %s%s %s",
-  "tooltip.pickletweaks.empty": "Пусто",
-  "tooltip.pickletweaks.filled": "Заполнена",
   "tooltip.pickletweaks.disabled": "Выключен",
   "tooltip.pickletweaks.enabled": "Включен",
   "tooltip.pickletweaks.mining_level": "Уровень копания: %s",
