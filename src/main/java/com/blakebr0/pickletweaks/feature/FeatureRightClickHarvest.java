@@ -45,6 +45,9 @@ public final class FeatureRightClickHarvest {
 
 					entity.swing(hand, true);
 
+					var sound = block.getSoundType(state, level, pos, entity).getBreakSound();
+
+					level.playSound(null, pos, sound, SoundSource.BLOCKS, 1.0F, 1.0F);
 					level.setBlockAndUpdate(pos, crop.getStateForAge(0));
 				}
 			}
@@ -54,6 +57,9 @@ public final class FeatureRightClickHarvest {
 
 				entity.swing(hand, true);
 
+				var sound = block.getSoundType(state, level, pos, entity).getBreakSound();
+
+				level.playSound(null, pos, sound, SoundSource.BLOCKS, 1.0F, 1.0F);
 				level.setBlockAndUpdate(pos, state.setValue(NetherWartBlock.AGE, 0));
 			}
 		}
