@@ -49,6 +49,11 @@ public final class FeatureRightClickHarvest {
 						}
 					}
 
+					var entity = event.getEntity();
+					var hand = event.getHand();
+
+					entity.swing(hand, true);
+
 					level.setBlockAndUpdate(pos, crop.getStateForAge(0));
 				}
 			}
