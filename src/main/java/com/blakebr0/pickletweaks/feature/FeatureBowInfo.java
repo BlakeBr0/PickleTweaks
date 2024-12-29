@@ -27,6 +27,9 @@ public final class FeatureBowInfo {
 		if (item instanceof ProjectileWeaponItem shootable) {
 			var player = event.getEntity();
 			var registries = event.getContext().registries();
+			if (registries == null)
+				return;
+
 			var infinity = registries.lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(Enchantments.INFINITY);
 
 			if (EnchantmentHelper.getTagEnchantmentLevel(infinity, stack) > 0) {
