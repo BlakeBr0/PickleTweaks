@@ -168,9 +168,9 @@ public final class ModConfigs {
                         Here you can specify custom repair materials for tools.
                         Ex: ["minecraft:stone_shovel=minecraft:stick"]
                         You can use tags for materials by doing tag:<tag-id>.
-                        Ex: ["minecraft:stone_shovel=tag:forge:ingots/iron"]
+                        Ex: ["minecraft:stone_shovel=tag:c:ingots/iron"]
                         You can also use tags for tools by doing tag:<tag-id>.
-                        Ex: ["tag:minecraft:tools=tag:forge:ingots/iron"]
+                        Ex: ["tag:minecraft:tools=tag:c:ingots/iron"]
                         You can specify how effective the material is by appending @<multiplier>
                         Ex: ["minecraft:stone_shovel=minecraft:stick@0.5"]""")
                 .define("overrides", Lists.newArrayList("minecraft:shears=minecraft:iron_ingot", "pickletweaks:flint_shears=minecraft:flint"));
