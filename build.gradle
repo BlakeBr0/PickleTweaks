@@ -72,7 +72,6 @@ dependencies {
 }
 
 java.withSourcesJar()
-java.withJavadocJar()
 
 tasks.withType(ProcessResources).configureEach {
     var replaceProperties = [
