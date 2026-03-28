@@ -2,9 +2,7 @@ package com.blakebr0.pickletweaks.feature.crafting;
 
 import com.blakebr0.cucumber.helper.StackHelper;
 import com.blakebr0.pickletweaks.config.ModConfigs;
-import com.blakebr0.pickletweaks.init.ModRecipeSerializers;
 import com.mojang.serialization.MapCodec;
-import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
@@ -13,29 +11,34 @@ import net.minecraft.world.item.ShearsItem;
 import net.minecraft.world.item.ShovelItem;
 import net.minecraft.world.item.crafting.CraftingBookCategory;
 import net.minecraft.world.item.crafting.CraftingInput;
+import net.minecraft.world.item.crafting.NormalCraftingRecipe;
+import net.minecraft.world.item.crafting.PlacementInfo;
 import net.minecraft.world.item.crafting.RecipeSerializer;
-import net.minecraft.world.item.crafting.ShapelessRecipe;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentEffectComponents;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.ItemEnchantments;
 import net.minecraft.world.level.Level;
 
-public class GridRepairRecipe extends ShapelessRecipe {
+public class GridRepairRecipe extends NormalCraftingRecipe {
+	public static final MapCodec<GridRepairRecipe> MAP_CODEC = MapCodec.unit(new GridRepairRecipe());
+	public static final StreamCodec<RegistryFriendlyByteBuf, GridRepairRecipe> STREAM_CODEC = StreamCodec.unit(new GridRepairRecipe());
+	public static final RecipeSerializer<GridRepairRecipe> SERIALIZER = new RecipeSerializer<>(MAP_CODEC, STREAM_CODEC);
+
 	public GridRepairRecipe() {
-		super("", CraftingBookCategory.EQUIPMENT, ItemStack.EMPTY, NonNullList.create());
+		super(new CommonInfo(false), new CraftingBookInfo(CraftingBookCategory.MISC, ""));
 	}
 
 	@Override
-	public ItemStack assemble(CraftingInput inventory, HolderLookup.Provider lookup) {
+	public ItemStack assemble(CraftingInput input) {
 		if (!ModConfigs.GRID_REPAIR_ENABLED.get())
 			return ItemStack.EMPTY;
 
 		var tool = ItemStack.EMPTY;
 		NonNullList<ItemStack> inputs = NonNullList.create();
 
-		for (int i = 0; i < inventory.size(); i++) {
-			var slotStack = inventory.getItem(i);
+		for (int i = 0; i < input.size(); i++) {
+			var slotStack = input.getItem(i);
 
 			if (slotStack.isEmpty())
 				continue;
@@ -73,7 +76,8 @@ public class GridRepairRecipe extends ShapelessRecipe {
 		for (var mat : inputs) {
 			if (maxed) return ItemStack.EMPTY;
 
-			if (!mat.hasCraftingRemainingItem()) {
+			var remainder = mat.getCraftingRemainder();
+			if (remainder != null) {
 				double matValue = GridRepairHelper.getMaterialValue(tool, mat);
 				if (matValue == 0) return ItemStack.EMPTY;
 
@@ -104,12 +108,7 @@ public class GridRepairRecipe extends ShapelessRecipe {
 
 	@Override
 	public boolean matches(CraftingInput inventory, Level level) {
-		return !this.assemble(inventory, level.registryAccess()).isEmpty();
-	}
-
-	@Override
-	public ItemStack getResultItem(HolderLookup.Provider lookup) {
-		return ItemStack.EMPTY;
+		return !this.assemble(inventory).isEmpty();
 	}
 
 	@Override
@@ -118,8 +117,13 @@ public class GridRepairRecipe extends ShapelessRecipe {
 	}
 
 	@Override
-	public RecipeSerializer<?> getSerializer() {
-		return ModRecipeSerializers.CRAFTING_GRID_REPAIR.get();
+	public RecipeSerializer<GridRepairRecipe> getSerializer() {
+		return SERIALIZER;
+	}
+
+	@Override
+	protected PlacementInfo createPlacementInfo() {
+		return PlacementInfo.NOT_PLACEABLE;
 	}
 
 	@Override
@@ -130,31 +134,6 @@ public class GridRepairRecipe extends ShapelessRecipe {
 	private static boolean isCurse(Enchantment enchantment) {
 		return enchantment.effects().has(EnchantmentEffectComponents.PREVENT_EQUIPMENT_DROP)
 				|| enchantment.effects().has(EnchantmentEffectComponents.PREVENT_ARMOR_CHANGE);
-	}
-
-	public static class Serializer implements RecipeSerializer<GridRepairRecipe> {
-		private static final GridRepairRecipe INSTANCE = new GridRepairRecipe();
-
-		public static final MapCodec<GridRepairRecipe> CODEC = MapCodec.unit(INSTANCE).stable();
-		public static final StreamCodec<RegistryFriendlyByteBuf, GridRepairRecipe> STREAM_CODEC = StreamCodec.of(
-				GridRepairRecipe.Serializer::toNetwork, GridRepairRecipe.Serializer::fromNetwork
-		);
-
-		@Override
-		public MapCodec<GridRepairRecipe> codec() {
-			return CODEC;
-		}
-
-		@Override
-		public StreamCodec<RegistryFriendlyByteBuf, GridRepairRecipe> streamCodec() {
-			return STREAM_CODEC;
-		}
-
-		private static GridRepairRecipe fromNetwork(RegistryFriendlyByteBuf buffer) {
-			return new GridRepairRecipe();
-		}
-
-		private static void toNetwork(RegistryFriendlyByteBuf buffer, GridRepairRecipe recipe) { }
 	}
 }
 

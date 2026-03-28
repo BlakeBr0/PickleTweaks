@@ -6,6 +6,7 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.contents.TranslatableContents;
+import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ProjectileWeaponItem;
@@ -51,7 +52,7 @@ public final class FeatureBowInfo {
 
 				var ammo = getAmmo(player, shootable, stack);
 
-				tooltip.add(ModTooltips.AMMO.args(ammo).build());
+				tooltip.add(ModTooltips.AMMO.args(ammo).toComponent());
 			}
 		}
 	}
@@ -62,11 +63,11 @@ public final class FeatureBowInfo {
 		if (player == null)
 			return ammo;
 
-		var offHand = player.getInventory().offhand.getFirst();
+		var offHand = player.getInventory().getItem(Inventory.SLOT_OFFHAND);
 		if (item.getSupportedHeldProjectiles(stack).test(offHand))
 			ammo += offHand.getCount();
 
-		for (var inventoryStack : player.getInventory().items) {
+		for (var inventoryStack : player.getInventory().getNonEquipmentItems()) {
 			if (item.getSupportedHeldProjectiles(stack).test(inventoryStack))
 				ammo += inventoryStack.getCount();
 		}

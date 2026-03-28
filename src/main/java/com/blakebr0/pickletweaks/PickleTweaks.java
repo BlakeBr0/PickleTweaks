@@ -12,7 +12,6 @@ import com.blakebr0.pickletweaks.feature.client.handler.NightVisionGogglesHandle
 import com.blakebr0.pickletweaks.feature.client.handler.ToggleMagnetInInventoryHandler;
 import com.blakebr0.pickletweaks.feature.crafting.GridRepairOverrides;
 import com.blakebr0.pickletweaks.handler.RegisterCapabilityHandler;
-import com.blakebr0.pickletweaks.init.ModArmorMaterials;
 import com.blakebr0.pickletweaks.init.ModBlocks;
 import com.blakebr0.pickletweaks.init.ModCreativeModeTabs;
 import com.blakebr0.pickletweaks.init.ModDataComponentTypes;
@@ -21,7 +20,7 @@ import com.blakebr0.pickletweaks.init.ModRecipeSerializers;
 import com.blakebr0.pickletweaks.network.NetworkHandler;
 import com.blakebr0.pickletweaks.tweaks.TweakToolBreaking;
 import com.blakebr0.pickletweaks.tweaks.TweakToolUselessifier;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -45,7 +44,6 @@ public final class PickleTweaks {
 		bus.register(this);
 
 		ModBlocks.REGISTRY.register(bus);
-		ModArmorMaterials.REGISTRY.register(bus);
 		ModDataComponentTypes.REGISTRY.register(bus);
 		ModItems.REGISTRY.register(bus);
 		ModCreativeModeTabs.REGISTRY.register(bus);
@@ -54,7 +52,7 @@ public final class PickleTweaks {
 		bus.register(new NetworkHandler());
 		bus.register(new RegisterCapabilityHandler());
 
-		if (FMLEnvironment.dist == Dist.CLIENT) {
+		if (FMLEnvironment.getDist() == Dist.CLIENT) {
 			bus.register(new ColorHandler());
 			bus.register(new ModelHandler());
 			bus.register(new ModClientExtensions());
@@ -87,7 +85,7 @@ public final class PickleTweaks {
 		NeoForge.EVENT_BUS.register(new FeatureBowInfo());
 	}
 
-	public static ResourceLocation resource(String path) {
-		return ResourceLocation.fromNamespaceAndPath(MOD_ID, path);
+	public static Identifier resource(String path) {
+		return Identifier.fromNamespaceAndPath(MOD_ID, path);
 	}
 }

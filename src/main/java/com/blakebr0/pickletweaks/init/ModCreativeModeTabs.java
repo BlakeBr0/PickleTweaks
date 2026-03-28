@@ -16,7 +16,7 @@ public final class ModCreativeModeTabs {
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> CREATIVE_TAB = REGISTRY.register("creative_tab", () -> CreativeModeTab.builder()
             .title(Component.translatable("itemGroup.pickletweaks"))
             .icon(() -> new ItemStack(ModItems.WATERING_CAN.get()))
-            .displayItems(FeatureFlagDisplayItemGenerator.create((parameters, output) -> {
+            .displayItems(FeatureFlagDisplayItemGenerator.create((_, output) -> {
                 output.accept(ModBlocks.WHITE_COBBLESTONE, ModFeatureFlags.COLORED_COBBLESTONE);
                 output.accept(ModBlocks.ORANGE_COBBLESTONE, ModFeatureFlags.COLORED_COBBLESTONE);
                 output.accept(ModBlocks.MAGENTA_COBBLESTONE, ModFeatureFlags.COLORED_COBBLESTONE);

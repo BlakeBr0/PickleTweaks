@@ -4,13 +4,11 @@ import com.blakebr0.cucumber.event.ScytheHarvestCropEvent;
 import com.blakebr0.pickletweaks.config.ModConfigs;
 import com.blakebr0.pickletweaks.lib.ModTooltips;
 import net.minecraft.ChatFormatting;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.DiggerItem;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ProjectileWeaponItem;
 import net.minecraft.world.item.ShearsItem;
-import net.minecraft.world.item.SwordItem;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.entity.player.AttackEntityEvent;
@@ -33,8 +31,7 @@ public final class TweakToolBreaking {
 		if (stack.isEmpty())
 			return;
 
-		var item = stack.getItem();
-		if (stack.isDamageableItem() && isValidTool(item)) {
+		if (stack.isDamageableItem() && isValidTool(stack)) {
 			if (isBroken(stack)) {
 				sendBrokenMessage(player, stack);
 				event.setCanceled(true);
@@ -55,8 +52,7 @@ public final class TweakToolBreaking {
 		if (stack.isEmpty())
 			return;
 
-		var item = stack.getItem();
-		if (stack.isDamageableItem() && isValidTool(item)) {
+		if (stack.isDamageableItem() && isValidTool(stack)) {
 			if (isBroken(stack)) {
 				sendBrokenMessage(player, stack);
 				event.setCanceled(true);
@@ -77,14 +73,10 @@ public final class TweakToolBreaking {
 		if (stack.isEmpty())
 			return;
 
-		if (stack.isDamageableItem()) {
-			var item = stack.getItem();
-
-			if (isValidTool(item) && isBroken(stack)) {
-				sendBrokenMessage(player, stack);
-				event.setCanceled(true);
-			}
-		}
+        if (stack.isDamageableItem() && isValidTool(stack) && isBroken(stack)) {
+            sendBrokenMessage(player, stack);
+            event.setCanceled(true);
+        }
 	}
 
 	@SubscribeEvent(priority = EventPriority.HIGH)
@@ -122,8 +114,7 @@ public final class TweakToolBreaking {
 		if (stack.isEmpty())
 			return;
 
-		var item = stack.getItem();
-		if (stack.isDamageableItem() && isValidTool(item)) {
+		if (stack.isDamageableItem() && isValidTool(stack)) {
 			if (isBroken(stack)) {
 				sendBrokenMessage(player, stack);
 				event.setCanceled(true);
@@ -181,17 +172,21 @@ public final class TweakToolBreaking {
 		if (stack.isDamageableItem()) {
 			var item = stack.getItem();
 
-			if (isValidTool(item) || item instanceof ProjectileWeaponItem) {
+			if (isValidTool(stack) || item instanceof ProjectileWeaponItem) {
 				if (isBroken(stack)) {
 					tooltip.next();
-					tooltip.add(ModTooltips.BROKEN.color(ChatFormatting.RED).build());
+					tooltip.add(ModTooltips.BROKEN.color(ChatFormatting.RED).toComponent());
 				}
 			}
 		}
 	}
 
-	public static boolean isValidTool(Item item) {
-		return item instanceof DiggerItem || item instanceof SwordItem || item instanceof ShearsItem;
+	public static boolean isValidTool(ItemStack stack) {
+		return stack.is(ItemTags.SWORDS)
+				|| stack.is(ItemTags.PICKAXES)
+				|| stack.is(ItemTags.SHOVELS)
+				|| stack.is(ItemTags.AXES)
+				|| stack.is(ItemTags.HOES);
 	}
 
 	public static boolean isBroken(ItemStack stack) {
@@ -199,6 +194,6 @@ public final class TweakToolBreaking {
 	}
 
 	private static void sendBrokenMessage(Player player, ItemStack stack) {
-		player.displayClientMessage(ModTooltips.YOUR_ITEM_IS_BROKEN.args(stack.getHoverName()).color(ChatFormatting.WHITE).build(), true);
+		player.sendOverlayMessage(ModTooltips.YOUR_ITEM_IS_BROKEN.args(stack.getHoverName()).color(ChatFormatting.WHITE).toComponent());
 	}
 }

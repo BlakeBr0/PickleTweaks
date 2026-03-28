@@ -85,7 +85,6 @@
   "tooltip.pickletweaks.gives_buffs": "付与されるバフ",
   "tooltip.pickletweaks.disabled": "無効",
   "tooltip.pickletweaks.enabled": "有効",
-  "tooltip.pickletweaks.mining_level": "採掘レベル：%s",
   "tooltip.pickletweaks.mining_speed": "採掘速度：%s",
   "tooltip.pickletweaks.ammo": "弾数：%s",
   "tooltip.pickletweaks.broken": "壊れています！",

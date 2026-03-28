@@ -1,17 +1,13 @@
 package com.blakebr0.pickletweaks.feature.client;
 
-import com.blakebr0.pickletweaks.config.ModConfigs;
-import com.blakebr0.pickletweaks.feature.client.layer.NightVisionGogglesRenderLayer;
 import com.blakebr0.pickletweaks.feature.client.model.NightVisionGogglesModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
-import net.minecraft.client.renderer.entity.LivingEntityRenderer;
-import net.minecraft.client.resources.PlayerSkin;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 
 public class ModelHandler {
-    public static final ModelLayerLocation NIGHT_VISION_GOGGLES_LAYER = new ModelLayerLocation(ResourceLocation.parse("minecraft:player"), "pickletweaks:night_vision_goggles");
+    public static final ModelLayerLocation NIGHT_VISION_GOGGLES_LAYER = new ModelLayerLocation(Identifier.parse("minecraft:player"), "pickletweaks:night_vision_goggles");
 
     @SubscribeEvent
     public void onRegisterLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
@@ -20,18 +16,18 @@ public class ModelHandler {
 
     @SubscribeEvent
     public void onAddLayers(EntityRenderersEvent.AddLayers event) {
-        if (ModConfigs.isCuriosInstalled()) {
-            addLayerToPlayerSkin(event, PlayerSkin.Model.WIDE);
-            addLayerToPlayerSkin(event, PlayerSkin.Model.SLIM);
-        }
+//        if (ModConfigs.isCuriosInstalled()) {
+//            addLayerToPlayerSkin(event, PlayerSkin.Model.WIDE);
+//            addLayerToPlayerSkin(event, PlayerSkin.Model.SLIM);
+//        }
     }
 
-    @SuppressWarnings("unchecked rawtypes")
-    private static void addLayerToPlayerSkin(EntityRenderersEvent.AddLayers event, PlayerSkin.Model skin) {
-        var renderer = event.getSkin(skin);
-
-        if (renderer instanceof LivingEntityRenderer<?,?> livingEntityRenderer) {
-            livingEntityRenderer.addLayer(new NightVisionGogglesRenderLayer(livingEntityRenderer));
-        }
-    }
+//    @SuppressWarnings("unchecked rawtypes")
+//    private static void addLayerToPlayerSkin(EntityRenderersEvent.AddLayers event, PlayerSkin.Model skin) {
+//        var renderer = event.getSkin(skin);
+//
+//        if (renderer instanceof LivingEntityRenderer<?,?> livingEntityRenderer) {
+//            livingEntityRenderer.addLayer(new NightVisionGogglesRenderLayer(livingEntityRenderer));
+//        }
+//    }
 }

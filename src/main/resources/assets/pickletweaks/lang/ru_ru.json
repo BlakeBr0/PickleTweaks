@@ -85,7 +85,6 @@
   "tooltip.pickletweaks.gives_buffs": "Накладывает эффекты",
   "tooltip.pickletweaks.disabled": "Выключен",
   "tooltip.pickletweaks.enabled": "Включен",
-  "tooltip.pickletweaks.mining_level": "Уровень копания: %s",
   "tooltip.pickletweaks.mining_speed": "Скорость копания: %s",
   "tooltip.pickletweaks.ammo": "Снарядов: %s",
   "tooltip.pickletweaks.broken": "СЛОМАНО",

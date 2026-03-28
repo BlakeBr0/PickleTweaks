@@ -2,7 +2,7 @@ package com.blakebr0.pickletweaks.feature.client.handler;
 
 import com.blakebr0.pickletweaks.compat.curios.CuriosCompat;
 import com.blakebr0.pickletweaks.config.ModConfigs;
-import com.blakebr0.pickletweaks.feature.item.NightVisionGogglesItem;
+import com.blakebr0.pickletweaks.init.ModItems;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -17,13 +17,13 @@ public final class NightVisionGogglesHandler {
     public static final List<String> WEARERS = new ArrayList<>();
 
     public static String getPlayerKey(Player player) {
-        return player.getGameProfile().getName() + ":" + player.isLocalPlayer();
+        return player.getGameProfile().name() + ":" + player.isLocalPlayer();
     }
 
     public static boolean hasGoggles(Player player) {
         var stack = player.getItemBySlot(EquipmentSlot.HEAD);
 
-        return !stack.isEmpty() && stack.getItem() instanceof NightVisionGogglesItem
+        return !stack.isEmpty() && (stack.is(ModItems.NIGHT_VISION_GOGGLES) || stack.is(ModItems.REINFORCED_NIGHT_VISION_GOGGLES))
                 || (ModConfigs.isCuriosInstalled() && CuriosCompat.findNightVisionGogglesCurio(player).isPresent());
     }
 

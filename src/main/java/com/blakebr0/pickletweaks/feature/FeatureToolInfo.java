@@ -4,8 +4,10 @@ import com.blakebr0.pickletweaks.config.ModConfigs;
 import com.blakebr0.pickletweaks.lib.ModTooltips;
 import com.blakebr0.pickletweaks.tweaks.TweakToolUselessifier;
 import com.blakebr0.pickletweaks.util.BlacklistUtils;
-import net.minecraft.world.item.DiggerItem;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.component.Tool;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 
@@ -16,23 +18,25 @@ public final class FeatureToolInfo {
 			return;
 
 		var tooltip = event.getToolTip().listIterator();
-		var item = event.getItemStack().getItem();
+		var stack = event.getItemStack();
+		var item = stack.getItem();
+		var tool = stack.get(DataComponents.TOOL);
 
-		if (item instanceof DiggerItem tool) {
+		if (tool != null) {
 			if (isBlacklisted(item))
 				return;
 
 			tooltip.next();
 
-			tooltip.add(ModTooltips.MINING_SPEED.args(getMiningSpeed(tool)).build());
+			tooltip.add(ModTooltips.MINING_SPEED.args(getMiningSpeed(stack, tool)).toComponent());
 		}
 	}
 
-	private static float getMiningSpeed(DiggerItem item) {
-		if (TweakToolUselessifier.isUselessTool(item))
+	private static float getMiningSpeed(ItemStack stack, Tool tool) {
+		if (TweakToolUselessifier.isUselessTool(stack))
 			return 0F;
 
-		return item.getTier().getSpeed();
+		return tool.defaultMiningSpeed();
 	}
 
 	private static boolean isBlacklisted(Item item) {

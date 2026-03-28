@@ -29,8 +29,8 @@ public final class CuriosCompat {
     }
 
     public static void registerCapabilities(RegisterCapabilitiesEvent event) {
-        event.registerItem(CuriosCapability.ITEM, (stack, unused) -> new MagnetCurio(stack), ModItems.MAGNET.get());
-        event.registerItem(CuriosCapability.ITEM, (stack, unused) -> new NightVisionGogglesCurio(stack),
+        event.registerItem(CuriosCapability.ITEM, (stack, _) -> new MagnetCurio(stack), ModItems.MAGNET.get());
+        event.registerItem(CuriosCapability.ITEM, (stack, _) -> new NightVisionGogglesCurio(stack),
                 ModItems.NIGHT_VISION_GOGGLES.get(), ModItems.REINFORCED_NIGHT_VISION_GOGGLES.get());
     }
 

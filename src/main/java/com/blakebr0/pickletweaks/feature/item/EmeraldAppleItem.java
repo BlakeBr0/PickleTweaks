@@ -3,8 +3,8 @@ package com.blakebr0.pickletweaks.feature.item;
 import com.blakebr0.cucumber.item.BaseItem;
 import com.blakebr0.cucumber.lib.Tooltips;
 import com.blakebr0.pickletweaks.lib.ModTooltips;
-import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
@@ -12,15 +12,16 @@ import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.level.Level;
 
-import java.util.List;
+import java.util.function.Consumer;
 
 public class EmeraldAppleItem extends BaseItem {
 	public static final FoodProperties FOOD = new FoodProperties.Builder().nutrition(10).saturationModifier(2.0F).alwaysEdible().build();
 
-	public EmeraldAppleItem() {
-		super(p -> p.food(FOOD).rarity(Rarity.EPIC));
+	public EmeraldAppleItem(Identifier id) {
+		super(id, p -> p.food(FOOD).rarity(Rarity.EPIC));
 	}
 
 	@Override
@@ -28,10 +29,10 @@ public class EmeraldAppleItem extends BaseItem {
 		MobEffectInstance potion;
 		int duration = 0;
 
-		potion = entity.getEffect(MobEffects.DAMAGE_BOOST);
+		potion = entity.getEffect(MobEffects.STRENGTH);
 		if (potion != null && potion.getAmplifier() >= 0)
 			duration = potion.getDuration();
-		entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, duration + 4800, 0));
+		entity.addEffect(new MobEffectInstance(MobEffects.STRENGTH, duration + 4800, 0));
 
 		potion = entity.getEffect(MobEffects.REGENERATION);
 		if (potion != null && potion.getAmplifier() >= 2)
@@ -48,25 +49,27 @@ public class EmeraldAppleItem extends BaseItem {
 			duration = potion.getDuration();
 		entity.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, duration + 4800, 0));
 
-		potion = entity.getEffect(MobEffects.DAMAGE_RESISTANCE);
+		potion = entity.getEffect(MobEffects.RESISTANCE);
 		if (potion != null && potion.getAmplifier() >= 1)
 			duration = potion.getDuration();
-		entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, duration + 4800, 1));
+		entity.addEffect(new MobEffectInstance(MobEffects.RESISTANCE, duration + 4800, 1));
 
-		return entity.eat(level, stack);
+		stack.shrink(1);
+
+		return stack;
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
-		if (Screen.hasShiftDown()) {
-			tooltip.add(ModTooltips.GIVES_BUFFS.build());
-			tooltip.add(ModTooltips.createMobEffectLine(MobEffects.DAMAGE_BOOST, "I", getDuration(4800)));
-			tooltip.add(ModTooltips.createMobEffectLine(MobEffects.REGENERATION, "III", getDuration(400)));
-			tooltip.add(ModTooltips.createMobEffectLine(MobEffects.ABSORPTION, "IV", getDuration(4800)));
-			tooltip.add(ModTooltips.createMobEffectLine(MobEffects.FIRE_RESISTANCE, "I", getDuration(4800)));
-			tooltip.add(ModTooltips.createMobEffectLine(MobEffects.DAMAGE_RESISTANCE, "II", getDuration(4800)));
+	public void appendHoverText(ItemStack stack, TooltipContext context, TooltipDisplay display, Consumer<Component> builder, TooltipFlag flag) {
+		if (flag.hasShiftDown()) {
+			builder.accept(ModTooltips.GIVES_BUFFS.toComponent());
+			builder.accept(ModTooltips.createMobEffectLine(MobEffects.STRENGTH, "I", getDuration(4800)));
+			builder.accept(ModTooltips.createMobEffectLine(MobEffects.REGENERATION, "III", getDuration(400)));
+			builder.accept(ModTooltips.createMobEffectLine(MobEffects.ABSORPTION, "IV", getDuration(4800)));
+			builder.accept(ModTooltips.createMobEffectLine(MobEffects.FIRE_RESISTANCE, "I", getDuration(4800)));
+			builder.accept(ModTooltips.createMobEffectLine(MobEffects.RESISTANCE, "II", getDuration(4800)));
 		} else {
-			tooltip.add(Tooltips.HOLD_SHIFT_FOR_INFO.build());
+			builder.accept(Tooltips.HOLD_SHIFT_FOR_INFO.toComponent());
 		}
 	}
 

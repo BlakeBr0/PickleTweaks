@@ -1,65 +1,22 @@
 package com.blakebr0.pickletweaks.feature.client.model;
 
-import com.google.common.collect.ImmutableList;
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.CubeDeformation;
 import net.minecraft.client.model.geom.builders.CubeListBuilder;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.client.renderer.entity.state.HumanoidRenderState;
 
-public class NightVisionGogglesModel extends HumanoidModel<LivingEntity> {
+public class NightVisionGogglesModel extends HumanoidModel<HumanoidRenderState> {
     private static final String MAIN = "main";
     private static final String LENS = "lens";
     private static final String LENS_LEFT = "lens_left";
     private static final String LENS_RIGHT = "lens_right";
     private static final String FRAME = "frame";
 
-    private final ModelPart main;
-    private final ModelPart lens;
-    private final ModelPart frame;
-
     public NightVisionGogglesModel(ModelPart part) {
         super(part);
-        this.main = part.getChild(MAIN);
-        this.lens = part.getChild(LENS);
-        this.frame = part.getChild(FRAME);
-    }
-
-    @Override
-    public void renderToBuffer(PoseStack matrix, VertexConsumer buffer, int light, int overlay, int p_350361_) {
-        matrix.pushPose();
-
-        this.head.translateAndRotate(matrix);
-
-        matrix.scale(0.6F, 0.6F, 0.6F);
-
-        this.main.render(matrix, buffer, light, overlay);
-        this.lens.render(matrix, buffer, light, overlay);
-        this.frame.render(matrix, buffer, light, overlay);
-
-        matrix.popPose();
-    }
-
-    @Override
-    protected Iterable<ModelPart> headParts() {
-        this.main.copyFrom(this.head);
-        this.lens.copyFrom(this.main);
-        this.frame.copyFrom(this.main);
-
-        return ImmutableList.of(
-                this.main,
-                this.lens,
-                this.frame
-        );
-    }
-
-    @Override
-    protected Iterable<ModelPart> bodyParts() {
-        return ImmutableList.of();
     }
 
     public static LayerDefinition createBodyLayer() {

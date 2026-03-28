@@ -3,7 +3,7 @@ package com.blakebr0.pickletweaks.feature.crafting;
 import com.blakebr0.pickletweaks.PickleTweaks;
 import com.blakebr0.pickletweaks.config.ModConfigs;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
@@ -120,7 +120,7 @@ public class GridRepairOverrides {
 
 			if (parts.length == 3) { // tag case
 				if (value.startsWith("tag:")) {
-					var tag = ResourceLocation.tryParse(value.substring(4).split("@")[0]);
+					var tag = Identifier.tryParse(value.substring(4).split("@")[0]);
 					if (tag == null) {
 						PickleTweaks.LOGGER.error("Invalid repair material tag: {}", value);
 						return null;
@@ -131,19 +131,19 @@ public class GridRepairOverrides {
 					PickleTweaks.LOGGER.error("Invalid repair material prefix (should be 'tag:'): {}", value);
 				}
 			} else if (parts.length == 2) { // item case
-				var id = ResourceLocation.tryParse(value.split("@")[0]);
+				var id = Identifier.tryParse(value.split("@")[0]);
 				if (id == null) {
 					PickleTweaks.LOGGER.error("Invalid repair material item: {}", value);
 					return null;
 				}
 
 				var item = BuiltInRegistries.ITEM.get(id);
-				if (item == Items.AIR) {
+				if (item.isEmpty() || item.get().value() == Items.AIR) {
 					PickleTweaks.LOGGER.error("Invalid repair material item is null: {}", value);
 					return null;
 				}
 
-				return OverrideIngredient.item(item);
+				return OverrideIngredient.item(item.get().value());
 			} else {
 				PickleTweaks.LOGGER.error("Invalid repair material syntax: {}", value);
 			}

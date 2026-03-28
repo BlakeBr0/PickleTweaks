@@ -23,7 +23,7 @@ public class GridRepairHelper {
 
 	public static boolean isValidRepairItem(ItemStack tool, ItemStack mat) {
 		boolean disabled = ModConfigs.GRID_REPAIR_DISABLE_DEFAULTS.get();
-		return !disabled && tool.getItem().isValidRepairItem(tool, mat);
+		return !disabled && tool.isValidRepairItem(mat);
 	}
 
 	public static boolean isBlacklisted(Item item) {

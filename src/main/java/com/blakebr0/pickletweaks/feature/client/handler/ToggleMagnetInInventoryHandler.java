@@ -9,7 +9,7 @@ import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.sounds.SoundEvents;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.client.event.ScreenEvent;
-import net.neoforged.neoforge.network.PacketDistributor;
+import net.neoforged.neoforge.client.network.ClientPacketDistributor;
 
 public final class ToggleMagnetInInventoryHandler {
     @SubscribeEvent
@@ -30,7 +30,7 @@ public final class ToggleMagnetInInventoryHandler {
                 var stack = slot.getItem();
 
                 if (stack.getItem() instanceof MagnetItem) {
-                    PacketDistributor.sendToServer(new ToggleMagnetPayload(slot.index));
+                    ClientPacketDistributor.sendToServer(new ToggleMagnetPayload(slot.index));
 
                     player.playSound(SoundEvents.EXPERIENCE_ORB_PICKUP, 0.5F, stack.getOrDefault(ModDataComponentTypes.MAGNET_ACTIVE, false) ? 0.5F : 1.0F);
 

@@ -10,5 +10,5 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 public final class ModRecipeSerializers {
 	public static final DeferredRegister<RecipeSerializer<?>> REGISTRY = DeferredRegister.create(Registries.RECIPE_SERIALIZER, PickleTweaks.MOD_ID);
 
-	public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<?>> CRAFTING_GRID_REPAIR = REGISTRY.register("grid_repair", GridRepairRecipe.Serializer::new);
+	public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<?>> CRAFTING_GRID_REPAIR = REGISTRY.register("grid_repair", () -> GridRepairRecipe.SERIALIZER);
 }
