@@ -40,7 +40,7 @@ public final class ModArmorMaterials {
                 map.put(ArmorItem.Type.HELMET, 3);
             }),
             12, SoundEvents.ARMOR_EQUIP_LEATHER,
-            () -> Ingredient.of(Tags.Items.INGOTS_IRON),
+            () -> Ingredient.of(Tags.Items.GEMS_EMERALD),
             List.of(
                     new ArmorMaterial.Layer(PickleTweaks.resource("emerald"), "", false)
             ),
