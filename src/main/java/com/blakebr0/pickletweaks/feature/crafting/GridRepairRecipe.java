@@ -1,6 +1,5 @@
 package com.blakebr0.pickletweaks.feature.crafting;
 
-import com.blakebr0.cucumber.helper.StackHelper;
 import com.blakebr0.pickletweaks.config.ModConfigs;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.NonNullList;
@@ -91,8 +90,7 @@ public class GridRepairRecipe extends NormalCraftingRecipe {
 			}
 		}
 
-		tool = StackHelper.withSize(tool, 1, false);
-
+		tool = tool.copyWithCount(1);
 		tool.setDamageValue(tool.getDamageValue() - (int) (damage * matCount));
 
 		if (ModConfigs.GRID_REPAIR_STRIP_ENCHANTMENTS.get()) {
