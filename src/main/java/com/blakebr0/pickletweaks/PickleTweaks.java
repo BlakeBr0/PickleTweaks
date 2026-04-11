@@ -7,7 +7,7 @@ import com.blakebr0.pickletweaks.feature.FeatureRightClickHarvest;
 import com.blakebr0.pickletweaks.feature.FeatureToolInfo;
 import com.blakebr0.pickletweaks.feature.client.ModClientExtensions;
 import com.blakebr0.pickletweaks.feature.client.ModelHandler;
-import com.blakebr0.pickletweaks.feature.client.handler.ColorHandler;
+import com.blakebr0.pickletweaks.feature.client.handler.TintSourceHandler;
 import com.blakebr0.pickletweaks.feature.client.handler.NightVisionGogglesHandler;
 import com.blakebr0.pickletweaks.feature.client.handler.ToggleMagnetInInventoryHandler;
 import com.blakebr0.pickletweaks.feature.crafting.GridRepairOverrides;
@@ -53,7 +53,7 @@ public final class PickleTweaks {
 		bus.register(new RegisterCapabilityHandler());
 
 		if (FMLEnvironment.getDist() == Dist.CLIENT) {
-			bus.register(new ColorHandler());
+			bus.register(new TintSourceHandler());
 			bus.register(new ModelHandler());
 			bus.register(new ModClientExtensions());
 		}

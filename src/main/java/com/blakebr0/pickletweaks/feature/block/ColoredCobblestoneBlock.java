@@ -3,6 +3,7 @@ package com.blakebr0.pickletweaks.feature.block;
 import com.blakebr0.cucumber.block.BaseBlock;
 import com.blakebr0.cucumber.iface.IColored;
 import net.minecraft.resources.Identifier;
+import net.minecraft.util.ARGB;
 import net.minecraft.world.level.block.SoundType;
 
 public class ColoredCobblestoneBlock extends BaseBlock implements IColored {
@@ -15,7 +16,7 @@ public class ColoredCobblestoneBlock extends BaseBlock implements IColored {
 				.requiresCorrectToolForDrops()
 		);
 
-		this.color = color;
+		this.color = ARGB.opaque(color);
 	}
 
 	@Override
