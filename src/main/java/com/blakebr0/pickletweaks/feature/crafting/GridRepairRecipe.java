@@ -20,8 +20,10 @@ import net.minecraft.world.item.enchantment.ItemEnchantments;
 import net.minecraft.world.level.Level;
 
 public class GridRepairRecipe extends NormalCraftingRecipe {
-	public static final MapCodec<GridRepairRecipe> MAP_CODEC = MapCodec.unit(new GridRepairRecipe());
-	public static final StreamCodec<RegistryFriendlyByteBuf, GridRepairRecipe> STREAM_CODEC = StreamCodec.unit(new GridRepairRecipe());
+	private static final GridRepairRecipe INSTANCE = new GridRepairRecipe();
+
+	public static final MapCodec<GridRepairRecipe> MAP_CODEC = MapCodec.unit(INSTANCE);
+	public static final StreamCodec<RegistryFriendlyByteBuf, GridRepairRecipe> STREAM_CODEC = StreamCodec.unit(INSTANCE);
 	public static final RecipeSerializer<GridRepairRecipe> SERIALIZER = new RecipeSerializer<>(MAP_CODEC, STREAM_CODEC);
 
 	public GridRepairRecipe() {
