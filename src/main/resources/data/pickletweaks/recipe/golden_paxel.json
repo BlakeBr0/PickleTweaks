@@ -12,18 +12,10 @@
     " S "
   ],
   "key": {
-    "A": {
-      "item": "minecraft:golden_axe"
-    },
-    "B": {
-      "item": "minecraft:golden_pickaxe"
-    },
-    "C": {
-      "item": "minecraft:golden_shovel"
-    },
-    "S": {
-      "tag": "c:rods/wooden"
-    }
+    "A": "minecraft:golden_axe",
+    "B": "minecraft:golden_pickaxe",
+    "C": "minecraft:golden_shovel",
+    "S": "#c:rods/wooden"
   },
   "result": {
     "id": "pickletweaks:golden_paxel"

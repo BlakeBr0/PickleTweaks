@@ -16,12 +16,8 @@
     "SI "
   ],
   "key": {
-    "I": {
-      "item": "minecraft:flint"
-    },
-    "S": {
-      "tag": "c:rods/wooden"
-    }
+    "I": "minecraft:flint",
+    "S": "#c:rods/wooden"
   },
   "result": {
     "id": "pickletweaks:flint_sickle"

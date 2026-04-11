@@ -16,18 +16,10 @@
     " S "
   ],
   "key": {
-    "A": {
-      "item": "pickletweaks:flint_axe"
-    },
-    "B": {
-      "item": "pickletweaks:flint_pickaxe"
-    },
-    "C": {
-      "item": "pickletweaks:flint_shovel"
-    },
-    "S": {
-      "tag": "c:rods/wooden"
-    }
+    "A": "pickletweaks:flint_axe",
+    "B": "pickletweaks:flint_pickaxe",
+    "C": "pickletweaks:flint_shovel",
+    "S": "#c:rods/wooden"
   },
   "result": {
     "id": "pickletweaks:flint_paxel"

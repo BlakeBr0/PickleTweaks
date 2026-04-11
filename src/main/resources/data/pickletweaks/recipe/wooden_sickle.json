@@ -12,12 +12,8 @@
     "SI "
   ],
   "key": {
-    "I": {
-      "tag": "minecraft:planks"
-    },
-    "S": {
-      "tag": "c:rods/wooden"
-    }
+    "I": "#minecraft:planks",
+    "S": "#c:rods/wooden"
   },
   "result": {
     "id": "pickletweaks:wooden_sickle"

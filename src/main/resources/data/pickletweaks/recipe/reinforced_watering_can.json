@@ -12,15 +12,9 @@
     " D "
   ],
   "key": {
-    "D": {
-      "tag": "c:gems/diamond"
-    },
-    "W": {
-      "item": "minecraft:bowl"
-    },
-    "B": {
-      "item": "minecraft:bone_meal"
-    }
+    "D": "#c:gems/diamond",
+    "W": "minecraft:bowl",
+    "B": "minecraft:bone_meal"
   },
   "result": {
     "id": "pickletweaks:reinforced_watering_can"

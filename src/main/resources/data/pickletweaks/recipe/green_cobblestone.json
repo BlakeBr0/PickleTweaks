@@ -12,12 +12,8 @@
     "CCC"
   ],
   "key": {
-    "C": {
-      "tag": "c:cobblestones"
-    },
-    "D": {
-      "tag": "c:dyes/green"
-    }
+    "C": "#c:cobblestones",
+    "D": "#c:dyes/green"
   },
   "result": {
     "id": "pickletweaks:green_cobblestone",

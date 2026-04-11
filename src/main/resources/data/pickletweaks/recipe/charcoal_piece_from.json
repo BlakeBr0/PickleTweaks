@@ -7,9 +7,7 @@
     }
   ],
   "ingredients": [
-    {
-      "item": "minecraft:charcoal"
-    }
+    "minecraft:charcoal"
   ],
   "result": {
     "id": "pickletweaks:charcoal_piece",

@@ -12,9 +12,7 @@
     "F F"
   ],
   "key": {
-    "F": {
-      "item": "minecraft:flint"
-    }
+    "F": "minecraft:flint"
   },
   "result": {
     "id": "pickletweaks:flint_leggings"

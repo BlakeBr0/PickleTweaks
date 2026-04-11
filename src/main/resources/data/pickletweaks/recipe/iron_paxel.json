@@ -12,18 +12,10 @@
     " S "
   ],
   "key": {
-    "A": {
-      "item": "minecraft:iron_axe"
-    },
-    "B": {
-      "item": "minecraft:iron_pickaxe"
-    },
-    "C": {
-      "item": "minecraft:iron_shovel"
-    },
-    "S": {
-      "tag": "c:rods/wooden"
-    }
+    "A": "minecraft:iron_axe",
+    "B": "minecraft:iron_pickaxe",
+    "C": "minecraft:iron_shovel",
+    "S": "#c:rods/wooden"
   },
   "result": {
     "id": "pickletweaks:iron_paxel"

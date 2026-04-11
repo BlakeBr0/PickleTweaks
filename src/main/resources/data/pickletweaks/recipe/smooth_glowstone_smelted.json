@@ -6,9 +6,7 @@
       "flag": "pickletweaks:smooth_glowstone"
     }
   ],
-  "ingredient": {
-    "item": "minecraft:glowstone"
-  },
+  "ingredient": "minecraft:glowstone",
   "result": {
     "id": "pickletweaks:smooth_glowstone"
   },

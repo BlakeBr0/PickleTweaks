@@ -12,12 +12,8 @@
     "S  "
   ],
   "key": {
-    "I": {
-      "tag": "c:ingots/gold"
-    },
-    "S": {
-      "tag": "c:rods/wooden"
-    }
+    "I": "#c:ingots/gold",
+    "S": "#c:rods/wooden"
   },
   "result": {
     "id": "pickletweaks:golden_scythe"

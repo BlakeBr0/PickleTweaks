@@ -12,12 +12,8 @@
     "ISI"
   ],
   "key": {
-    "I": {
-      "tag": "c:rods/wooden"
-    },
-    "S": {
-      "item": "minecraft:string"
-    }
+    "I": "#c:rods/wooden",
+    "S": "minecraft:string"
   },
   "result": {
     "id": "pickletweaks:mesh"

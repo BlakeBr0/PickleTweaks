@@ -6,15 +6,9 @@
       "flag": "pickletweaks:paxels"
     }
   ],
-  "addition": {
-    "item": "minecraft:netherite_ingot"
-  },
-  "base": {
-    "tag": "pickletweaks:diamond_scythes"
-  },
-  "template": {
-    "item": "minecraft:netherite_upgrade_smithing_template"
-  },
+  "addition": "minecraft:netherite_ingot",
+  "base": "#pickletweaks:diamond_scythes",
+  "template": "minecraft:netherite_upgrade_smithing_template",
   "result": {
     "id": "pickletweaks:netherite_scythe"
   }

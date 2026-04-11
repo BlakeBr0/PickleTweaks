@@ -12,12 +12,8 @@
     " S"
   ],
   "key": {
-    "F": {
-      "tag": "c:gems/emerald"
-    },
-    "S": {
-      "tag": "c:rods/wooden"
-    }
+    "F": "#c:gems/emerald",
+    "S": "#c:rods/wooden"
   },
   "result": {
     "id": "pickletweaks:emerald_axe"

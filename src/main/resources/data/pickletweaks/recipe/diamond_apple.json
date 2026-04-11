@@ -12,12 +12,8 @@
     "DDD"
   ],
   "key": {
-    "A": {
-      "item": "minecraft:apple"
-    },
-    "D": {
-      "tag": "c:gems/diamond"
-    }
+    "A": "minecraft:apple",
+    "D": "#c:gems/diamond"
   },
   "result": {
     "id": "pickletweaks:diamond_apple"

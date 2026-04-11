@@ -7,30 +7,14 @@
     }
   ],
   "ingredients": [
-    {
-      "item": "pickletweaks:coal_piece"
-    },
-    {
-      "item": "pickletweaks:coal_piece"
-    },
-    {
-      "item": "pickletweaks:coal_piece"
-    },
-    {
-      "item": "pickletweaks:coal_piece"
-    },
-    {
-      "item": "pickletweaks:coal_piece"
-    },
-    {
-      "item": "pickletweaks:coal_piece"
-    },
-    {
-      "item": "pickletweaks:coal_piece"
-    },
-    {
-      "item": "pickletweaks:coal_piece"
-    }
+    "pickletweaks:coal_piece",
+    "pickletweaks:coal_piece",
+    "pickletweaks:coal_piece",
+    "pickletweaks:coal_piece",
+    "pickletweaks:coal_piece",
+    "pickletweaks:coal_piece",
+    "pickletweaks:coal_piece",
+    "pickletweaks:coal_piece"
   ],
   "result": {
     "id": "minecraft:coal"

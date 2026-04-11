@@ -12,18 +12,10 @@
     " S "
   ],
   "key": {
-    "A": {
-      "item": "minecraft:netherite_axe"
-    },
-    "B": {
-      "item": "minecraft:netherite_pickaxe"
-    },
-    "C": {
-      "item": "minecraft:netherite_shovel"
-    },
-    "S": {
-      "tag": "c:rods/wooden"
-    }
+    "A": "minecraft:netherite_axe",
+    "B": "minecraft:netherite_pickaxe",
+    "C": "minecraft:netherite_shovel",
+    "S": "#c:rods/wooden"
   },
   "result": {
     "id": "pickletweaks:netherite_paxel"

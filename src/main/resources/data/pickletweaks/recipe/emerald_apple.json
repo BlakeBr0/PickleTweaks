@@ -12,12 +12,8 @@
     "EEE"
   ],
   "key": {
-    "A": {
-      "item": "minecraft:apple"
-    },
-    "E": {
-      "tag": "c:gems/emerald"
-    }
+    "A": "minecraft:apple",
+    "E": "#c:gems/emerald"
   },
   "result": {
     "id": "pickletweaks:emerald_apple"

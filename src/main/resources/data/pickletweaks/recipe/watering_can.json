@@ -12,15 +12,9 @@
     " I "
   ],
   "key": {
-    "I": {
-      "tag": "c:ingots/iron"
-    },
-    "W": {
-      "item": "minecraft:bowl"
-    },
-    "B": {
-      "item": "minecraft:bone_meal"
-    }
+    "I": "#c:ingots/iron",
+    "W": "minecraft:bowl",
+    "B": "minecraft:bone_meal"
   },
   "result": {
     "id": "pickletweaks:watering_can"

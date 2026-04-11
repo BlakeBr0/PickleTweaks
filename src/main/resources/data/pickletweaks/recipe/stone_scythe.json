@@ -12,12 +12,8 @@
     "S  "
   ],
   "key": {
-    "I": {
-      "tag": "minecraft:stone_tool_materials"
-    },
-    "S": {
-      "tag": "c:rods/wooden"
-    }
+    "I": "#minecraft:stone_tool_materials",
+    "S": "#c:rods/wooden"
   },
   "result": {
     "id": "pickletweaks:stone_scythe"

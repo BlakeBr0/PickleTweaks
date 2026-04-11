@@ -12,12 +12,8 @@
     "ISI"
   ],
   "key": {
-    "I": {
-      "tag": "c:rods/wooden"
-    },
-    "S": {
-      "item": "pickletweaks:grass_fiber"
-    }
+    "I": "#c:rods/wooden",
+    "S": "pickletweaks:grass_fiber"
   },
   "result": {
     "id": "pickletweaks:grass_fiber_mesh"

@@ -12,18 +12,10 @@
     " S "
   ],
   "key": {
-    "A": {
-      "item": "minecraft:wooden_axe"
-    },
-    "B": {
-      "item": "minecraft:wooden_pickaxe"
-    },
-    "C": {
-      "item": "minecraft:wooden_shovel"
-    },
-    "S": {
-      "tag": "c:rods/wooden"
-    }
+    "A": "minecraft:wooden_axe",
+    "B": "minecraft:wooden_pickaxe",
+    "C": "minecraft:wooden_shovel",
+    "S": "#c:rods/wooden"
   },
   "result": {
     "id": "pickletweaks:wooden_paxel"

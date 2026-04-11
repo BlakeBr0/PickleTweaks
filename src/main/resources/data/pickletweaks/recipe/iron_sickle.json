@@ -12,12 +12,8 @@
     "SI "
   ],
   "key": {
-    "I": {
-      "tag": "c:ingots/iron"
-    },
-    "S": {
-      "tag": "c:rods/wooden"
-    }
+    "I": "#c:ingots/iron",
+    "S": "#c:rods/wooden"
   },
   "result": {
     "id": "pickletweaks:iron_sickle"

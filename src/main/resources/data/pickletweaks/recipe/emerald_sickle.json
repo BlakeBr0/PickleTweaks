@@ -16,12 +16,8 @@
     "SI "
   ],
   "key": {
-    "I": {
-      "tag": "c:gems/emerald"
-    },
-    "S": {
-      "tag": "c:rods/wooden"
-    }
+    "I": "#c:gems/emerald",
+    "S": "#c:rods/wooden"
   },
   "result": {
     "id": "pickletweaks:emerald_sickle"

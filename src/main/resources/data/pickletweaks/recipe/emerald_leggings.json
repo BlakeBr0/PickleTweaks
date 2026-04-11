@@ -12,9 +12,7 @@
     "F F"
   ],
   "key": {
-    "F": {
-      "tag": "c:gems/emerald"
-    }
+    "F": "#c:gems/emerald"
   },
   "result": {
     "id": "pickletweaks:emerald_leggings"

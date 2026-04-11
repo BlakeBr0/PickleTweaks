@@ -7,30 +7,14 @@
     }
   ],
   "ingredients": [
-    {
-      "item": "pickletweaks:charcoal_piece"
-    },
-    {
-      "item": "pickletweaks:charcoal_piece"
-    },
-    {
-      "item": "pickletweaks:charcoal_piece"
-    },
-    {
-      "item": "pickletweaks:charcoal_piece"
-    },
-    {
-      "item": "pickletweaks:charcoal_piece"
-    },
-    {
-      "item": "pickletweaks:charcoal_piece"
-    },
-    {
-      "item": "pickletweaks:charcoal_piece"
-    },
-    {
-      "item": "pickletweaks:charcoal_piece"
-    }
+    "pickletweaks:charcoal_piece",
+    "pickletweaks:charcoal_piece",
+    "pickletweaks:charcoal_piece",
+    "pickletweaks:charcoal_piece",
+    "pickletweaks:charcoal_piece",
+    "pickletweaks:charcoal_piece",
+    "pickletweaks:charcoal_piece",
+    "pickletweaks:charcoal_piece"
   ],
   "result": {
     "id": "minecraft:charcoal"

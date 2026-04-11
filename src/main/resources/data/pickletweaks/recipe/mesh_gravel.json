@@ -8,19 +8,11 @@
   ],
   "ingredients": [
     [
-      {
-        "item": "pickletweaks:mesh"
-      },
-      {
-        "item": "pickletweaks:reinforced_mesh"
-      },
-      {
-        "item": "pickletweaks:grass_fiber_mesh"
-      }
+      "pickletweaks:mesh",
+      "pickletweaks:reinforced_mesh",
+      "pickletweaks:grass_fiber_mesh"
     ],
-    {
-      "item": "minecraft:gravel"
-    }
+    "minecraft:gravel"
   ],
   "result": {
     "id": "minecraft:flint"

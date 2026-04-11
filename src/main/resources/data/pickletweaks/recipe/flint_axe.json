@@ -12,12 +12,8 @@
     " S"
   ],
   "key": {
-    "F": {
-      "item": "minecraft:flint"
-    },
-    "S": {
-      "tag": "c:rods/wooden"
-    }
+    "F": "minecraft:flint",
+    "S": "#c:rods/wooden"
   },
   "result": {
     "id": "pickletweaks:flint_axe"

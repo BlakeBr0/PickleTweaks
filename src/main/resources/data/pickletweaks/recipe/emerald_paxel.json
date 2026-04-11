@@ -16,18 +16,10 @@
     " S "
   ],
   "key": {
-    "A": {
-      "item": "pickletweaks:emerald_axe"
-    },
-    "B": {
-      "item": "pickletweaks:emerald_pickaxe"
-    },
-    "C": {
-      "item": "pickletweaks:emerald_shovel"
-    },
-    "S": {
-      "tag": "c:rods/wooden"
-    }
+    "A": "pickletweaks:emerald_axe",
+    "B": "pickletweaks:emerald_pickaxe",
+    "C": "pickletweaks:emerald_shovel",
+    "S": "#c:rods/wooden"
   },
   "result": {
     "id": "pickletweaks:emerald_paxel"
