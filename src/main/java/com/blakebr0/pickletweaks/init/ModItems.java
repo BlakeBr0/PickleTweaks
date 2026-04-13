@@ -72,29 +72,32 @@ public final class ModItems {
 	public static final DeferredHolder<Item, Item> EMERALD_BOOTS = REGISTRY.register("emerald_boots", id -> new BaseArmorItem(id, ModArmorMaterials.EMERALD, ArmorType.BOOTS));
 
 	public static final DeferredHolder<Item, Item> WOODEN_PAXEL = REGISTRY.register("wooden_paxel", id -> new BasePaxelItem(id, ToolMaterial.WOOD));
+	public static final DeferredHolder<Item, Item> COPPER_PAXEL = REGISTRY.register("copper_paxel", id -> new BasePaxelItem(id, ToolMaterial.COPPER));
 	public static final DeferredHolder<Item, Item> STONE_PAXEL = REGISTRY.register("stone_paxel", id -> new BasePaxelItem(id, ToolMaterial.STONE));
 	public static final DeferredHolder<Item, Item> IRON_PAXEL = REGISTRY.register("iron_paxel", id -> new BasePaxelItem(id, ToolMaterial.IRON));
 	public static final DeferredHolder<Item, Item> GOLDEN_PAXEL = REGISTRY.register("golden_paxel", id -> new BasePaxelItem(id, ToolMaterial.GOLD));
 	public static final DeferredHolder<Item, Item> DIAMOND_PAXEL = REGISTRY.register("diamond_paxel", id -> new BasePaxelItem(id, ToolMaterial.DIAMOND));
+	public static final DeferredHolder<Item, Item> NETHERITE_PAXEL = REGISTRY.register("netherite_paxel", id -> new BasePaxelItem(id, ToolMaterial.NETHERITE));
 	public static final DeferredHolder<Item, Item> FLINT_PAXEL = REGISTRY.register("flint_paxel", id -> new BasePaxelItem(id, ModToolMaterials.FLINT));
 	public static final DeferredHolder<Item, Item> EMERALD_PAXEL = REGISTRY.register("emerald_paxel", id -> new BasePaxelItem(id, ModToolMaterials.EMERALD));
-	public static final DeferredHolder<Item, Item> NETHERITE_PAXEL = REGISTRY.register("netherite_paxel", id -> new BasePaxelItem(id, ToolMaterial.NETHERITE));
 
 	public static final DeferredHolder<Item, Item> WOODEN_SICKLE = REGISTRY.register("wooden_sickle", id -> new BaseSickleItem(id, ToolMaterial.WOOD, 1));
 	public static final DeferredHolder<Item, Item> STONE_SICKLE = REGISTRY.register("stone_sickle", id -> new BaseSickleItem(id, ToolMaterial.STONE, 1));
+	public static final DeferredHolder<Item, Item> COPPER_SICKLE = REGISTRY.register("copper_sickle", id -> new BaseSickleItem(id, ToolMaterial.COPPER, 1));
 	public static final DeferredHolder<Item, Item> IRON_SICKLE = REGISTRY.register("iron_sickle", id -> new BaseSickleItem(id, ToolMaterial.IRON, 2));
 	public static final DeferredHolder<Item, Item> GOLDEN_SICKLE = REGISTRY.register("golden_sickle", id -> new BaseSickleItem(id, ToolMaterial.GOLD, 2));
 	public static final DeferredHolder<Item, Item> DIAMOND_SICKLE = REGISTRY.register("diamond_sickle", id -> new BaseSickleItem(id, ToolMaterial.DIAMOND, 3));
+	public static final DeferredHolder<Item, Item> NETHERITE_SICKLE = REGISTRY.register("netherite_sickle", id -> new BaseSickleItem(id, ToolMaterial.NETHERITE, 3));
 	public static final DeferredHolder<Item, Item> FLINT_SICKLE = REGISTRY.register("flint_sickle", id -> new BaseSickleItem(id, ModToolMaterials.FLINT, 1));
 	public static final DeferredHolder<Item, Item> EMERALD_SICKLE = REGISTRY.register("emerald_sickle", id ->  new BaseSickleItem(id, ModToolMaterials.EMERALD, 3));
-	public static final DeferredHolder<Item, Item> NETHERITE_SICKLE = REGISTRY.register("netherite_sickle", id -> new BaseSickleItem(id, ToolMaterial.NETHERITE, 3));
 
 	public static final DeferredHolder<Item, Item> WOODEN_SCYTHE = REGISTRY.register("wooden_scythe", id -> new BaseScytheItem(id, ToolMaterial.WOOD, 1));
 	public static final DeferredHolder<Item, Item> STONE_SCYTHE = REGISTRY.register("stone_scythe", id -> new BaseScytheItem(id, ToolMaterial.STONE, 1));
+	public static final DeferredHolder<Item, Item> COPPER_SCYTHE = REGISTRY.register("copper_scythe", id -> new BaseScytheItem(id, ToolMaterial.COPPER, 1));
 	public static final DeferredHolder<Item, Item> IRON_SCYTHE = REGISTRY.register("iron_scythe", id -> new BaseScytheItem(id, ToolMaterial.IRON, 2));
 	public static final DeferredHolder<Item, Item> GOLDEN_SCYTHE = REGISTRY.register("golden_scythe", id -> new BaseScytheItem(id, ToolMaterial.GOLD, 2));
 	public static final DeferredHolder<Item, Item> DIAMOND_SCYTHE = REGISTRY.register("diamond_scythe", id -> new BaseScytheItem(id, ToolMaterial.DIAMOND, 3));
+	public static final DeferredHolder<Item, Item> NETHERITE_SCYTHE = REGISTRY.register("netherite_scythe", id -> new BaseScytheItem(id, ToolMaterial.NETHERITE, 3));
 	public static final DeferredHolder<Item, Item> FLINT_SCYTHE = REGISTRY.register("flint_scythe", id -> new BaseScytheItem(id, ModToolMaterials.FLINT, 1));
 	public static final DeferredHolder<Item, Item> EMERALD_SCYTHE = REGISTRY.register("emerald_scythe", id -> new BaseScytheItem(id, ModToolMaterials.EMERALD, 3));
-	public static final DeferredHolder<Item, Item> NETHERITE_SCYTHE = REGISTRY.register("netherite_scythe", id -> new BaseScytheItem(id, ToolMaterial.NETHERITE, 3));
 }

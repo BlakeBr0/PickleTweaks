@@ -72,31 +72,34 @@ public final class ModCreativeModeTabs {
                 output.accept(ModItems.EMERALD_BOOTS, ModFeatureFlags.EMERALD_GEAR);
 
                 output.accept(ModItems.WOODEN_PAXEL, ModFeatureFlags.PAXELS);
+                output.accept(ModItems.COPPER_PAXEL, ModFeatureFlags.PAXELS);
                 output.accept(ModItems.STONE_PAXEL, ModFeatureFlags.PAXELS);
                 output.accept(ModItems.IRON_PAXEL, ModFeatureFlags.PAXELS);
                 output.accept(ModItems.GOLDEN_PAXEL, ModFeatureFlags.PAXELS);
                 output.accept(ModItems.DIAMOND_PAXEL, ModFeatureFlags.PAXELS);
+                output.accept(ModItems.NETHERITE_PAXEL, ModFeatureFlags.PAXELS);
                 output.accept(ModItems.FLINT_PAXEL, ModFeatureFlags.PAXELS, ModFeatureFlags.FLINT_GEAR);
                 output.accept(ModItems.EMERALD_PAXEL, ModFeatureFlags.PAXELS, ModFeatureFlags.EMERALD_GEAR);
-                output.accept(ModItems.NETHERITE_PAXEL, ModFeatureFlags.PAXELS);
 
                 output.accept(ModItems.WOODEN_SICKLE, ModFeatureFlags.SICKLES);
+                output.accept(ModItems.COPPER_SICKLE, ModFeatureFlags.SICKLES);
                 output.accept(ModItems.STONE_SICKLE, ModFeatureFlags.SICKLES);
                 output.accept(ModItems.IRON_SICKLE, ModFeatureFlags.SICKLES);
                 output.accept(ModItems.GOLDEN_SICKLE, ModFeatureFlags.SICKLES);
                 output.accept(ModItems.DIAMOND_SICKLE, ModFeatureFlags.SICKLES);
+                output.accept(ModItems.NETHERITE_SICKLE, ModFeatureFlags.SICKLES);
                 output.accept(ModItems.FLINT_SICKLE, ModFeatureFlags.SICKLES, ModFeatureFlags.FLINT_GEAR);
                 output.accept(ModItems.EMERALD_SICKLE, ModFeatureFlags.SICKLES, ModFeatureFlags.EMERALD_GEAR);
-                output.accept(ModItems.NETHERITE_SICKLE, ModFeatureFlags.SICKLES);
 
                 output.accept(ModItems.WOODEN_SCYTHE, ModFeatureFlags.SCYTHES);
+                output.accept(ModItems.COPPER_SCYTHE, ModFeatureFlags.SCYTHES);
                 output.accept(ModItems.STONE_SCYTHE, ModFeatureFlags.SCYTHES);
                 output.accept(ModItems.IRON_SCYTHE, ModFeatureFlags.SCYTHES);
                 output.accept(ModItems.GOLDEN_SCYTHE, ModFeatureFlags.SCYTHES);
                 output.accept(ModItems.DIAMOND_SCYTHE, ModFeatureFlags.SCYTHES);
+                output.accept(ModItems.NETHERITE_SCYTHE, ModFeatureFlags.SCYTHES);
                 output.accept(ModItems.FLINT_SCYTHE, ModFeatureFlags.SCYTHES, ModFeatureFlags.FLINT_GEAR);
                 output.accept(ModItems.EMERALD_SCYTHE, ModFeatureFlags.SCYTHES, ModFeatureFlags.EMERALD_GEAR);
-                output.accept(ModItems.NETHERITE_SCYTHE, ModFeatureFlags.SCYTHES);
             }))
             .build());
 }

@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "neoforge:conditions": [
+    {
+      "type": "cucumber:feature_flag",
+      "flag": "pickletweaks:paxels"
+    }
+  ],
+  "pattern": [
+    "ABC",
+    " S ",
+    " S "
+  ],
+  "key": {
+    "A": "minecraft:copper_axe",
+    "B": "minecraft:copper_pickaxe",
+    "C": "minecraft:copper_shovel",
+    "S": "#c:rods/wooden"
+  },
+  "result": {
+    "id": "pickletweaks:copper_paxel"
+  }
+}

@@ -1,6 +1,9 @@
 {
   "replace": false,
   "values": [
+    "pickletweaks:copper_paxel",
+    "pickletweaks:copper_scythe",
+    "pickletweaks:copper_sickle",
     "pickletweaks:diamond_paxel",
     "pickletweaks:diamond_scythe",
     "pickletweaks:diamond_sickle",

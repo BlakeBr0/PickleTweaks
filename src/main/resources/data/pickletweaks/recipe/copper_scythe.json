@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "neoforge:conditions": [
+    {
+      "type": "cucumber:feature_flag",
+      "flag": "pickletweaks:scythes"
+    }
+  ],
+  "pattern": [
+    "IIS",
+    " S ",
+    "S  "
+  ],
+  "key": {
+    "I": "#c:ingots/copper",
+    "S": "#c:rods/wooden"
+  },
+  "result": {
+    "id": "pickletweaks:copper_scythe"
+  }
+}
