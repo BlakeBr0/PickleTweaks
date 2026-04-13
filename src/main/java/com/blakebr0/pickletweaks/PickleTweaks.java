@@ -4,11 +4,10 @@ import com.blakebr0.pickletweaks.compat.curios.CuriosCompat;
 import com.blakebr0.pickletweaks.config.ModConfigs;
 import com.blakebr0.pickletweaks.feature.FeatureBowInfo;
 import com.blakebr0.pickletweaks.feature.FeatureRightClickHarvest;
-import com.blakebr0.pickletweaks.feature.FeatureToolInfo;
 import com.blakebr0.pickletweaks.feature.client.ModClientExtensions;
 import com.blakebr0.pickletweaks.feature.client.ModelHandler;
-import com.blakebr0.pickletweaks.feature.client.handler.TintSourceHandler;
 import com.blakebr0.pickletweaks.feature.client.handler.NightVisionGogglesHandler;
+import com.blakebr0.pickletweaks.feature.client.handler.TintSourceHandler;
 import com.blakebr0.pickletweaks.feature.client.handler.ToggleMagnetInInventoryHandler;
 import com.blakebr0.pickletweaks.feature.crafting.GridRepairOverrides;
 import com.blakebr0.pickletweaks.handler.RegisterCapabilityHandler;
@@ -58,7 +57,7 @@ public final class PickleTweaks {
 			bus.register(new ModClientExtensions());
 		}
 
-		mod.registerConfig(ModConfig.Type.CLIENT, ModConfigs.CLIENT);
+		mod.registerConfig(ModConfig.Type.CLIENT, ModConfigs.CLIENT, "pickletweaks-client.toml");
 		mod.registerConfig(ModConfig.Type.STARTUP, ModConfigs.COMMON, "pickletweaks-common.toml");
 	}
 
@@ -81,7 +80,6 @@ public final class PickleTweaks {
 	@SubscribeEvent
 	public void onClientSetup(FMLClientSetupEvent event) {
 		NeoForge.EVENT_BUS.register(new ToggleMagnetInInventoryHandler());
-		NeoForge.EVENT_BUS.register(new FeatureToolInfo());
 		NeoForge.EVENT_BUS.register(new FeatureBowInfo());
 	}
 

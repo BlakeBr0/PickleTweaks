@@ -7,6 +7,7 @@ import com.blakebr0.pickletweaks.PickleTweaks;
 @FeatureFlags
 public final class ModFeatureFlags {
     public static final FeatureFlag APPLES = FeatureFlag.create(PickleTweaks.resource("apples"), ModConfigs.ENABLE_APPLES);
+    public static final FeatureFlag BOW_AMMO_TOOLTIP = FeatureFlag.create(PickleTweaks.resource("bow_ammo_tooltip"), ModConfigs.ENABLE_BOW_AMMO_TOOLTIP);
     public static final FeatureFlag COAL_PIECES = FeatureFlag.create(PickleTweaks.resource("coal_pieces"), ModConfigs.ENABLE_COAL_PIECES);
     public static final FeatureFlag COLORED_COBBLESTONE = FeatureFlag.create(PickleTweaks.resource("colored_cobblestone"), ModConfigs.ENABLE_COLORED_COBBLESTONE);
     public static final FeatureFlag EMERALD_GEAR = FeatureFlag.create(PickleTweaks.resource("emerald_gear"), ModConfigs.ENABLE_EMERALD_GEAR);
@@ -21,6 +22,5 @@ public final class ModFeatureFlags {
     public static final FeatureFlag SICKLES = FeatureFlag.create(PickleTweaks.resource("sickles"), ModConfigs.ENABLE_SICKLES);
     public static final FeatureFlag SMOOTH_GLOWSTONE = FeatureFlag.create(PickleTweaks.resource("smooth_glowstone"), ModConfigs.ENABLE_WATERING_CAN);
     public static final FeatureFlag TOOL_BREAKING = FeatureFlag.create(PickleTweaks.resource("tool_breaking"), ModConfigs.ENABLE_TOOL_BREAKING_TWEAK);
-    public static final FeatureFlag TOOL_INFO_TOOLTIP = FeatureFlag.create(PickleTweaks.resource("tool_info_tooltip"), ModConfigs.ENABLE_TOOL_INFO_TOOLTIP);
     public static final FeatureFlag WATERING_CANS = FeatureFlag.create(PickleTweaks.resource("watering_cans"), ModConfigs.ENABLE_WATERING_CAN);
 }

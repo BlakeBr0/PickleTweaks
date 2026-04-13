@@ -11,29 +11,16 @@ public final class ModConfigs {
     public static final ModConfigSpec CLIENT;
     public static final ModConfigSpec COMMON;
 
-    public static final ModConfigSpec.BooleanValue ENABLE_TOOL_INFO_TOOLTIP;
-    public static final ModConfigSpec.ConfigValue<List<String>> TOOL_INFO_TOOLTIP_BLACKLIST;
+    public static final ModConfigSpec.BooleanValue ENABLE_BOW_AMMO_TOOLTIP;
 
     // Client
     static {
         final var client = new ModConfigSpec.Builder();
 
-        client.comment("General configuration options").push("General");
-        TOOL_INFO_TOOLTIP_BLACKLIST = client
-                .comment("""
-                        Here you can specify a list of tools that shouldn't have tool info tooltips.
-                        Ex. ["minecraft:iron_pickaxe", "minecraft:iron_axe"]
-                        You can use tags for tools by doing tag:<tag-id>.
-                        Ex: ["tag:minecraft:tools"]
-                        You can also blacklist entire mods by doing <mod-id>:*
-                        Ex. ["pickletweaks:*"]""")
-                .define("toolInfoTooltipBlacklist", Lists.newArrayList("silentgear:*"));
-        client.pop();
-
         client.comment("Disable features.").push("Features");
-        ENABLE_TOOL_INFO_TOOLTIP = client
-                .comment("Tool Information Tooltips enabled?")
-                .define("toolInfoTooltip", true);
+        ENABLE_BOW_AMMO_TOOLTIP = client
+                .comment("Bow Ammo Tooltips enabled?")
+                .define("bowAmmoTooltip", true);
         client.pop();
 
         CLIENT = client.build();

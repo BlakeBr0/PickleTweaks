@@ -18,7 +18,7 @@ import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 public final class FeatureBowInfo {
 	@SubscribeEvent
 	public void onTooltip(ItemTooltipEvent event) {
-		if (!ModConfigs.ENABLE_TOOL_INFO_TOOLTIP.get())
+		if (!ModConfigs.ENABLE_BOW_AMMO_TOOLTIP.get())
 			return;
 
 		var stack = event.getItemStack();
