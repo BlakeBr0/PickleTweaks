@@ -11,6 +11,7 @@ import com.blakebr0.cucumber.item.tool.BaseScytheItem;
 import com.blakebr0.cucumber.item.tool.BaseShearsItem;
 import com.blakebr0.cucumber.item.tool.BaseShovelItem;
 import com.blakebr0.cucumber.item.tool.BaseSickleItem;
+import com.blakebr0.cucumber.item.tool.BaseSpearItem;
 import com.blakebr0.cucumber.item.tool.BaseSwordItem;
 import com.blakebr0.pickletweaks.PickleTweaks;
 import com.blakebr0.pickletweaks.feature.item.CoalPieceItem;
@@ -55,12 +56,13 @@ public final class ModItems {
 	public static final DeferredHolder<Item, Item> FLINT_AXE = REGISTRY.register("flint_axe", id -> new BaseAxeItem(id, ModToolMaterials.FLINT));
 	public static final DeferredHolder<Item, Item> FLINT_HOE = REGISTRY.register("flint_hoe", id -> new BaseHoeItem(id, ModToolMaterials.FLINT));
 	public static final DeferredHolder<Item, Item> FLINT_SHEARS = REGISTRY.register("flint_shears", id -> new BaseShearsItem(id, p -> p.durability(100)));
-
+	public static final DeferredHolder<Item, Item> FLINT_SPEAR = REGISTRY.register("flint_spear", id -> new BaseSpearItem(id, ModToolMaterials.FLINT, 0.8F, 0.82F, 0.675F, 4.25F, 12.5F, 8.65F, 5.1F, 13F, 4.6F));
 	public static final DeferredHolder<Item, Item> EMERALD_SWORD = REGISTRY.register("emerald_sword", id -> new BaseSwordItem(id, ModToolMaterials.EMERALD));
 	public static final DeferredHolder<Item, Item> EMERALD_PICKAXE = REGISTRY.register("emerald_pickaxe", id -> new BasePickaxeItem(id, ModToolMaterials.EMERALD));
 	public static final DeferredHolder<Item, Item> EMERALD_SHOVEL = REGISTRY.register("emerald_shovel", id -> new BaseShovelItem(id, ModToolMaterials.EMERALD));
 	public static final DeferredHolder<Item, Item> EMERALD_AXE = REGISTRY.register("emerald_axe", id -> new BaseAxeItem(id, ModToolMaterials.EMERALD));
 	public static final DeferredHolder<Item, Item> EMERALD_HOE = REGISTRY.register("emerald_hoe", id -> new BaseHoeItem(id, ModToolMaterials.EMERALD));
+	public static final DeferredHolder<Item, Item> EMERALD_SPEAR = REGISTRY.register("emerald_spear", id -> new BaseSpearItem(id, ModToolMaterials.EMERALD, 1.1F, 1.1F, 0.5F, 2.8F, 9.5F, 6F, 5.1F, 9.5F, 4.6F));
 
 	public static final DeferredHolder<Item, Item> FLINT_HELMET = REGISTRY.register("flint_helmet", id -> new BaseArmorItem(id, ModArmorMaterials.FLINT, ArmorType.HELMET));
 	public static final DeferredHolder<Item, Item> FLINT_CHESTPLATE = REGISTRY.register("flint_chestplate", id -> new BaseArmorItem(id, ModArmorMaterials.FLINT, ArmorType.CHESTPLATE));

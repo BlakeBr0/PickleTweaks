@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "neoforge:conditions": [
+    {
+      "type": "cucumber:feature_flag",
+      "flag": "pickletweaks:emerald_gear"
+    }
+  ],
+  "pattern": [
+    "  F",
+    " S ",
+    "S  "
+  ],
+  "key": {
+    "F": "#c:gems/emerald",
+    "S": "#c:rods/wooden"
+  },
+  "result": {
+    "id": "pickletweaks:emerald_axe"
+  }
+}

@@ -56,11 +56,13 @@ public final class ModCreativeModeTabs {
                 output.accept(ModItems.FLINT_AXE, ModFeatureFlags.FLINT_GEAR);
                 output.accept(ModItems.FLINT_HOE, ModFeatureFlags.FLINT_GEAR);
                 output.accept(ModItems.FLINT_SHEARS, ModFeatureFlags.FLINT_GEAR);
+                output.accept(ModItems.FLINT_SPEAR, ModFeatureFlags.FLINT_GEAR);
                 output.accept(ModItems.EMERALD_SWORD, ModFeatureFlags.EMERALD_GEAR);
                 output.accept(ModItems.EMERALD_PICKAXE, ModFeatureFlags.EMERALD_GEAR);
                 output.accept(ModItems.EMERALD_SHOVEL, ModFeatureFlags.EMERALD_GEAR);
                 output.accept(ModItems.EMERALD_AXE, ModFeatureFlags.EMERALD_GEAR);
                 output.accept(ModItems.EMERALD_HOE, ModFeatureFlags.EMERALD_GEAR);
+                output.accept(ModItems.EMERALD_SPEAR, ModFeatureFlags.EMERALD_GEAR);
 
                 output.accept(ModItems.FLINT_HELMET, ModFeatureFlags.FLINT_GEAR);
                 output.accept(ModItems.FLINT_CHESTPLATE, ModFeatureFlags.FLINT_GEAR);

@@ -1,0 +1,6 @@
+{
+  "parent": "item/spear_in_hand",
+  "textures": {
+    "layer0": "pickletweaks:item/emerald_spear_in_hand"
+  }
+}

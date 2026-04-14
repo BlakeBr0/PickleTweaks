@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "neoforge:conditions": [
+    {
+      "type": "cucumber:feature_flag",
+      "flag": "pickletweaks:flint_gear"
+    }
+  ],
+  "pattern": [
+    "  F",
+    " S ",
+    "S  "
+  ],
+  "key": {
+    "F": "minecraft:flint",
+    "S": "#c:rods/wooden"
+  },
+  "result": {
+    "id": "pickletweaks:flint_spear"
+  }
+}
