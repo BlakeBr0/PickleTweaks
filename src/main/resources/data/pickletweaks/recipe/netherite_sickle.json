@@ -7,7 +7,7 @@
     }
   ],
   "addition": "minecraft:netherite_ingot",
-  "base": "#pickletweaks:diamond_sickles",
+  "base": "pickletweaks:diamond_sickle",
   "template": "minecraft:netherite_upgrade_smithing_template",
   "result": {
     "id": "pickletweaks:netherite_sickle"
