@@ -18,8 +18,8 @@ public final class ModFeatureFlags {
     public static final FeatureFlag NIGHT_VISION_GOGGLES = FeatureFlag.create(PickleTweaks.resource("night_vision_goggles"), ModConfigs.ENABLE_NIGHT_VISION_GOGGLES);
     public static final FeatureFlag PAXELS = FeatureFlag.create(PickleTweaks.resource("paxels"), ModConfigs.ENABLE_PAXELS);
     public static final FeatureFlag RIGHT_CLICK_HARVEST = FeatureFlag.create(PickleTweaks.resource("right_click_harvest"), ModConfigs.ENABLE_RIGHT_CLICK_HARVEST);
-    public static final FeatureFlag SCYTHES = FeatureFlag.create(PickleTweaks.resource("scythes"), ModConfigs.ENABLE_SCYTHES);
-    public static final FeatureFlag SICKLES = FeatureFlag.create(PickleTweaks.resource("sickles"), ModConfigs.ENABLE_SICKLES);
+    public static final FeatureFlag SCYTHES = FeatureFlag.create(PickleTweaks.resource("scythes"), () -> ModConfigs.ENABLE_SCYTHES.get() && !ModConfigs.isMysticalAgricultureLoaded());
+    public static final FeatureFlag SICKLES = FeatureFlag.create(PickleTweaks.resource("sickles"), () -> ModConfigs.ENABLE_SICKLES.get() && !ModConfigs.isMysticalAgricultureLoaded());
     public static final FeatureFlag SMOOTH_GLOWSTONE = FeatureFlag.create(PickleTweaks.resource("smooth_glowstone"), ModConfigs.ENABLE_WATERING_CAN);
     public static final FeatureFlag TOOL_BREAKING = FeatureFlag.create(PickleTweaks.resource("tool_breaking"), ModConfigs.ENABLE_TOOL_BREAKING_TWEAK);
     public static final FeatureFlag WATERING_CANS = FeatureFlag.create(PickleTweaks.resource("watering_cans"), ModConfigs.ENABLE_WATERING_CAN);

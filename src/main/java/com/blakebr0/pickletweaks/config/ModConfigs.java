@@ -109,10 +109,14 @@ public final class ModConfigs {
                 .comment("Enable right click crop harvesting?")
                 .define("rightClickHarvest", true);
         ENABLE_SICKLES = common
-                .comment("Enable Sickles?")
+                .comment("""
+                        Enable Sickles?
+                        Disabled automatically if Mystical Agriculture is installed.""")
                 .define("sickles", true);
         ENABLE_SCYTHES = common
-                .comment("Enable Scythes?")
+                .comment("""
+                        Enable Scythes?
+                        Disabled automatically if Mystical Agriculture is installed.""")
                 .define("scythes", true);
         common.pop();
 
@@ -121,10 +125,10 @@ public final class ModConfigs {
                 .comment("Should Crafting Grid Tool Repairing be enabled?")
                 .define("enabled", true);
         GRID_REPAIR_COST = common
-                .comment("How much material required to fully repair a tool.")
+                .comment("How many materials are required to fully repair a tool.")
                 .defineInRange("cost", 3, 1, 8);
         GRID_REPAIR_ENCHANTMENT_COST = common
-                .comment("How much additional material required to repair enchanted tools.")
+                .comment("How much additional material is required to repair enchanted tools.")
                 .defineInRange("enchantmentCost", 1, 0, 8);
         GRID_REPAIR_STRIP_ENCHANTMENTS = common
                 .comment("Crafting grid repair removes all non-curse enchantments.")
@@ -183,5 +187,9 @@ public final class ModConfigs {
 
     public static boolean isCuriosInstalled() {
         return ModList.get().isLoaded("curios");
+    }
+
+    public static boolean isMysticalAgricultureLoaded() {
+        return ModList.get().isLoaded("mysticalagriculture");
     }
 }
