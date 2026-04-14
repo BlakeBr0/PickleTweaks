@@ -111,12 +111,12 @@ public final class ModConfigs {
         ENABLE_SICKLES = common
                 .comment("""
                         Enable Sickles?
-                        Disabled automatically if Mystical Agriculture is installed.""")
+                        Vanilla materials are disabled automatically if Mystical Agriculture is installed.""")
                 .define("sickles", true);
         ENABLE_SCYTHES = common
                 .comment("""
                         Enable Scythes?
-                        Disabled automatically if Mystical Agriculture is installed.""")
+                        Vanilla materials are disabled automatically if Mystical Agriculture is installed.""")
                 .define("scythes", true);
         common.pop();
 

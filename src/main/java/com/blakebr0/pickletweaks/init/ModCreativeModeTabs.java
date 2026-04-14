@@ -2,6 +2,7 @@ package com.blakebr0.pickletweaks.init;
 
 import com.blakebr0.cucumber.util.FeatureFlagDisplayItemGenerator;
 import com.blakebr0.pickletweaks.PickleTweaks;
+import com.blakebr0.pickletweaks.config.ModConfigs;
 import com.blakebr0.pickletweaks.config.ModFeatureFlags;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -83,23 +84,29 @@ public final class ModCreativeModeTabs {
                 output.accept(ModItems.FLINT_PAXEL, ModFeatureFlags.PAXELS, ModFeatureFlags.FLINT_GEAR);
                 output.accept(ModItems.EMERALD_PAXEL, ModFeatureFlags.PAXELS, ModFeatureFlags.EMERALD_GEAR);
 
-                output.accept(ModItems.WOODEN_SICKLE, ModFeatureFlags.SICKLES);
-                output.accept(ModItems.COPPER_SICKLE, ModFeatureFlags.SICKLES);
-                output.accept(ModItems.STONE_SICKLE, ModFeatureFlags.SICKLES);
-                output.accept(ModItems.IRON_SICKLE, ModFeatureFlags.SICKLES);
-                output.accept(ModItems.GOLDEN_SICKLE, ModFeatureFlags.SICKLES);
-                output.accept(ModItems.DIAMOND_SICKLE, ModFeatureFlags.SICKLES);
-                output.accept(ModItems.NETHERITE_SICKLE, ModFeatureFlags.SICKLES);
+                if (!ModConfigs.isMysticalAgricultureLoaded()) {
+                    output.accept(ModItems.WOODEN_SICKLE, ModFeatureFlags.SICKLES);
+                    output.accept(ModItems.COPPER_SICKLE, ModFeatureFlags.SICKLES);
+                    output.accept(ModItems.STONE_SICKLE, ModFeatureFlags.SICKLES);
+                    output.accept(ModItems.IRON_SICKLE, ModFeatureFlags.SICKLES);
+                    output.accept(ModItems.GOLDEN_SICKLE, ModFeatureFlags.SICKLES);
+                    output.accept(ModItems.DIAMOND_SICKLE, ModFeatureFlags.SICKLES);
+                    output.accept(ModItems.NETHERITE_SICKLE, ModFeatureFlags.SICKLES);
+                }
+
                 output.accept(ModItems.FLINT_SICKLE, ModFeatureFlags.SICKLES, ModFeatureFlags.FLINT_GEAR);
                 output.accept(ModItems.EMERALD_SICKLE, ModFeatureFlags.SICKLES, ModFeatureFlags.EMERALD_GEAR);
 
-                output.accept(ModItems.WOODEN_SCYTHE, ModFeatureFlags.SCYTHES);
-                output.accept(ModItems.COPPER_SCYTHE, ModFeatureFlags.SCYTHES);
-                output.accept(ModItems.STONE_SCYTHE, ModFeatureFlags.SCYTHES);
-                output.accept(ModItems.IRON_SCYTHE, ModFeatureFlags.SCYTHES);
-                output.accept(ModItems.GOLDEN_SCYTHE, ModFeatureFlags.SCYTHES);
-                output.accept(ModItems.DIAMOND_SCYTHE, ModFeatureFlags.SCYTHES);
-                output.accept(ModItems.NETHERITE_SCYTHE, ModFeatureFlags.SCYTHES);
+                if (!ModConfigs.isMysticalAgricultureLoaded()) {
+                    output.accept(ModItems.WOODEN_SCYTHE, ModFeatureFlags.SCYTHES);
+                    output.accept(ModItems.COPPER_SCYTHE, ModFeatureFlags.SCYTHES);
+                    output.accept(ModItems.STONE_SCYTHE, ModFeatureFlags.SCYTHES);
+                    output.accept(ModItems.IRON_SCYTHE, ModFeatureFlags.SCYTHES);
+                    output.accept(ModItems.GOLDEN_SCYTHE, ModFeatureFlags.SCYTHES);
+                    output.accept(ModItems.DIAMOND_SCYTHE, ModFeatureFlags.SCYTHES);
+                    output.accept(ModItems.NETHERITE_SCYTHE, ModFeatureFlags.SCYTHES);
+                }
+
                 output.accept(ModItems.FLINT_SCYTHE, ModFeatureFlags.SCYTHES, ModFeatureFlags.FLINT_GEAR);
                 output.accept(ModItems.EMERALD_SCYTHE, ModFeatureFlags.SCYTHES, ModFeatureFlags.EMERALD_GEAR);
             }))

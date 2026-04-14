@@ -4,6 +4,13 @@
     {
       "type": "cucumber:feature_flag",
       "flag": "pickletweaks:scythes"
+    },
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:mod_loaded",
+        "modid": "mysticalagriculture"
+      }
     }
   ],
   "pattern": [
