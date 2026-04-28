@@ -1,0 +1,9 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "pickletweaks:night_vision_goggles"
+      }
+    ]
+  }
+}

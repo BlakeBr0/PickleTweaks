@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "pickletweaks:emerald"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "pickletweaks:emerald"
+      }
+    ]
+  }
+}

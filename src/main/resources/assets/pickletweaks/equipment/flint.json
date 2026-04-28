@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "pickletweaks:flint"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "pickletweaks:flint"
+      }
+    ]
+  }
+}

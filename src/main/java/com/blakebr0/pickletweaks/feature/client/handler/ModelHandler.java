@@ -1,4 +1,4 @@
-package com.blakebr0.pickletweaks.feature.client;
+package com.blakebr0.pickletweaks.feature.client.handler;
 
 import com.blakebr0.pickletweaks.feature.client.model.NightVisionGogglesModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
@@ -11,7 +11,7 @@ public class ModelHandler {
 
     @SubscribeEvent
     public void onRegisterLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
-        event.registerLayerDefinition(NIGHT_VISION_GOGGLES_LAYER, NightVisionGogglesModel::createBodyLayer);
+        event.registerLayerDefinition(NIGHT_VISION_GOGGLES_LAYER, NightVisionGogglesModel::createArmorLayer);
     }
 
     @SubscribeEvent

@@ -5,7 +5,7 @@ import com.blakebr0.pickletweaks.config.ModConfigs;
 import com.blakebr0.pickletweaks.feature.FeatureBowInfo;
 import com.blakebr0.pickletweaks.feature.FeatureRightClickHarvest;
 import com.blakebr0.pickletweaks.feature.client.ModClientExtensions;
-import com.blakebr0.pickletweaks.feature.client.ModelHandler;
+import com.blakebr0.pickletweaks.feature.client.handler.ModelHandler;
 import com.blakebr0.pickletweaks.feature.client.handler.NightVisionGogglesHandler;
 import com.blakebr0.pickletweaks.feature.client.handler.TintSourceHandler;
 import com.blakebr0.pickletweaks.feature.client.handler.ToggleMagnetInInventoryHandler;

@@ -1,6 +1,6 @@
 package com.blakebr0.pickletweaks.feature.client.extensions;
 
-import com.blakebr0.pickletweaks.feature.client.ModelHandler;
+import com.blakebr0.pickletweaks.feature.client.handler.ModelHandler;
 import com.blakebr0.pickletweaks.feature.client.model.NightVisionGogglesModel;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.Model;
