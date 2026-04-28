@@ -10,7 +10,6 @@ import com.blakebr0.pickletweaks.feature.client.handler.NightVisionGogglesHandle
 import com.blakebr0.pickletweaks.feature.client.handler.TintSourceHandler;
 import com.blakebr0.pickletweaks.feature.client.handler.ToggleMagnetInInventoryHandler;
 import com.blakebr0.pickletweaks.feature.crafting.GridRepairOverrides;
-import com.blakebr0.pickletweaks.handler.RegisterCapabilityHandler;
 import com.blakebr0.pickletweaks.init.ModBlocks;
 import com.blakebr0.pickletweaks.init.ModCreativeModeTabs;
 import com.blakebr0.pickletweaks.init.ModDataComponentTypes;
@@ -41,6 +40,7 @@ public final class PickleTweaks {
 
 	public PickleTweaks(IEventBus bus, ModContainer mod) {
 		bus.register(this);
+		bus.register(new NetworkHandler());
 
 		ModBlocks.REGISTRY.register(bus);
 		ModDataComponentTypes.REGISTRY.register(bus);
@@ -48,13 +48,14 @@ public final class PickleTweaks {
 		ModCreativeModeTabs.REGISTRY.register(bus);
 		ModRecipeSerializers.REGISTRY.register(bus);
 
-		bus.register(new NetworkHandler());
-		bus.register(new RegisterCapabilityHandler());
-
 		if (FMLEnvironment.getDist() == Dist.CLIENT) {
 			bus.register(new TintSourceHandler());
 			bus.register(new ModelHandler());
 			bus.register(new ModClientExtensions());
+		}
+
+		if (ModConfigs.isCuriosInstalled()) {
+			bus.register(new CuriosCompat());
 		}
 
 		mod.registerConfig(ModConfig.Type.CLIENT, ModConfigs.CLIENT, "pickletweaks-client.toml");
@@ -67,10 +68,6 @@ public final class PickleTweaks {
 		NeoForge.EVENT_BUS.register(new FeatureRightClickHarvest());
 		NeoForge.EVENT_BUS.register(new TweakToolBreaking());
 		NeoForge.EVENT_BUS.register(new TweakToolUselessifier());
-
-		if (ModConfigs.isCuriosInstalled()) {
-			NeoForge.EVENT_BUS.register(new CuriosCompat());
-		}
 
 		event.enqueueWork(() -> {
 			GridRepairOverrides.onCommonSetup();

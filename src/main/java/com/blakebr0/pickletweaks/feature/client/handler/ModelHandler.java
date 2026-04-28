@@ -13,21 +13,4 @@ public class ModelHandler {
     public void onRegisterLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(NIGHT_VISION_GOGGLES_LAYER, NightVisionGogglesModel::createArmorLayer);
     }
-
-    @SubscribeEvent
-    public void onAddLayers(EntityRenderersEvent.AddLayers event) {
-//        if (ModConfigs.isCuriosInstalled()) {
-//            addLayerToPlayerSkin(event, PlayerSkin.Model.WIDE);
-//            addLayerToPlayerSkin(event, PlayerSkin.Model.SLIM);
-//        }
-    }
-
-//    @SuppressWarnings("unchecked rawtypes")
-//    private static void addLayerToPlayerSkin(EntityRenderersEvent.AddLayers event, PlayerSkin.Model skin) {
-//        var renderer = event.getSkin(skin);
-//
-//        if (renderer instanceof LivingEntityRenderer<?,?> livingEntityRenderer) {
-//            livingEntityRenderer.addLayer(new NightVisionGogglesRenderLayer(livingEntityRenderer));
-//        }
-//    }
 }
