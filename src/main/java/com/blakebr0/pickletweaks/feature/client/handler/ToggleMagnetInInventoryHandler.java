@@ -18,7 +18,7 @@ public final class ToggleMagnetInInventoryHandler {
 
         if (screen instanceof AbstractContainerScreen<?> container && event.getButton() == 1) {
             var mc = Minecraft.getInstance();
-            var slot = container.getSlotUnderMouse();
+            var slot = container.getHoveredSlot();
             var player = mc.player;
 
             if (player == null)

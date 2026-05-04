@@ -16,6 +16,7 @@ import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
+import net.neoforged.neoforge.event.level.block.BreakBlockEvent;
 
 public final class TweakToolBreaking {
 	@SubscribeEvent(priority = EventPriority.HIGH)
@@ -40,7 +41,7 @@ public final class TweakToolBreaking {
 	}
 
 	@SubscribeEvent(priority = EventPriority.HIGH)
-	public void onBreakBlock(BlockEvent.BreakEvent event) {
+	public void onBreakBlock(BreakBlockEvent event) {
 		if (!ModConfigs.ENABLE_TOOL_BREAKING_TWEAK.get())
 			return;
 
