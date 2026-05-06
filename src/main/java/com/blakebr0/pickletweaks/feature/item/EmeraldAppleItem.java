@@ -54,9 +54,7 @@ public class EmeraldAppleItem extends BaseItem {
 			duration = potion.getDuration();
 		entity.addEffect(new MobEffectInstance(MobEffects.RESISTANCE, duration + 4800, 1));
 
-		stack.shrink(1);
-
-		return stack;
+		return super.finishUsingItem(stack, level, entity);
 	}
 
 	@Override

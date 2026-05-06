@@ -49,9 +49,7 @@ public class DiamondAppleItem extends BaseItem {
 			duration = potion.getDuration();
 		entity.addEffect(new MobEffectInstance(MobEffects.RESISTANCE, duration + 4800, 0));
 
-		stack.shrink(1);
-
-		return stack;
+		return super.finishUsingItem(stack, level, entity);
 	}
 
 	@Override
