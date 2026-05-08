@@ -78,7 +78,7 @@ public class GridRepairRecipe extends NormalCraftingRecipe {
 			if (maxed) return ItemStack.EMPTY;
 
 			var remainder = mat.getCraftingRemainder();
-			if (remainder != null) {
+			if (remainder == null) {
 				double matValue = GridRepairHelper.getMaterialValue(tool, mat);
 				if (matValue == 0) return ItemStack.EMPTY;
 
